@@ -58,24 +58,27 @@ export default function WhyChooseUs() {
           className="mb-12"
         />
 
-        <div className="grid gap-6 md:grid-cols-2">
-          {features.map((feature) => (
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {features.map((feature, idx) => (
             <div
               key={feature.title}
-              className="group relative flex items-start gap-5 rounded-xl border border-[var(--color-gray-200)] border-l-4 border-l-[var(--color-primary)] bg-[var(--color-surface-raised)] p-6 shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lg)] hover:border-l-[var(--color-accent)]"
+              className="group relative flex flex-col items-center text-center rounded-xl border border-[var(--color-gray-200)] bg-[var(--color-surface-raised)] p-8 shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[var(--shadow-lg)]"
             >
-              <div className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full bg-[var(--color-primary)]/10 text-[var(--color-primary)] transition-all duration-300 group-hover:bg-[var(--color-accent)]/10 group-hover:text-[var(--color-accent)] group-hover:scale-110">
+              <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-[var(--color-primary)]/10 text-[var(--color-primary)] transition-all duration-300 group-hover:bg-[var(--color-primary)] group-hover:text-white group-hover:scale-110 group-hover:rotate-3">
                 {feature.icon}
               </div>
 
-              <div className="flex-1">
-                <h3 className="mb-1.5 text-lg font-bold text-[var(--color-gray-900)]">
-                  {feature.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-[var(--color-gray-500)]">
-                  {feature.description}
-                </p>
-              </div>
+              <h3 className="mb-2 text-lg font-bold text-[var(--color-gray-900)]">
+                {feature.title}
+              </h3>
+              <p className="text-sm leading-relaxed text-[var(--color-gray-500)]">
+                {feature.description}
+              </p>
+
+              <div
+                className="mt-6 h-1 w-12 rounded-full bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-accent)] opacity-0 transition-all duration-300 group-hover:w-16 group-hover:opacity-100"
+                aria-hidden
+              />
             </div>
           ))}
         </div>

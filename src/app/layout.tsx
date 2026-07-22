@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import SkipLink from "@/components/layout/SkipLink";
+import UtilityBar from "@/components/home/UtilityBar";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import WhatsAppFloat from "@/components/layout/WhatsAppFloat";
+import WhatsAppSupport from "@/components/home/WhatsAppSupport";
 import BackToTop from "@/components/layout/BackToTop";
 import RouteProgress from "@/components/ui/RouteProgress";
 import { ToastProvider } from "@/components/ui/Toast";
@@ -96,12 +97,13 @@ export default function RootLayout({
         <RouteProgress />
         <SkipLink />
         <ToastProvider>
+          <UtilityBar />
           <Header />
           <main id="main-content" className="flex-1">
             {children}
           </main>
           <Footer />
-          <WhatsAppFloat />
+          <WhatsAppSupport />
           <BackToTop />
         </ToastProvider>
       </body>

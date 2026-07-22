@@ -143,7 +143,7 @@ export default function FeaturedCourses() {
                     Popular
                   </span>
                 )}
-                {course.new && (
+                {course.new && !course.popular && (
                   <span className="absolute top-3 right-3 z-10 inline-flex items-center rounded-full bg-[var(--color-accent)] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[var(--color-gray-900)] shadow-md">
                     New
                   </span>
