@@ -162,10 +162,10 @@ export default function StudentsPage() {
                 <h3 className="mb-1 text-sm font-bold text-[var(--color-text-primary)]">{item.name}</h3>
                 <p className="mb-4 text-xs text-[var(--color-text-muted)]">{item.filename}</p>
                 <a
-                  href="#"
+                  href="/contact"
                   className="inline-flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wider text-[var(--color-primary)] transition-all duration-200 group-hover:gap-2.5"
                 >
-                  Download
+                  Request Document
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                   </svg>

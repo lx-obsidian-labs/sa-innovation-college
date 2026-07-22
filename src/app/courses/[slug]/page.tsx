@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/layout/Container";
-import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
 
 interface CourseData {
@@ -1749,6 +1748,23 @@ export async function generateMetadata({
   };
 }
 
+const categoryImages: Record<string, string> = {
+  "Computer & Digital Skills": "/images/001.jpg",
+  "Business & Administration": "/images/SA-INNOVATION-COLLEGE-2-scaled.webp",
+  "Customer Service & Hospitality": "/images/Intro-Home-page-new.png",
+  "Marketing & Sales": "/images/SA-INNOVATION-COLLEGE2-scaled.jpg",
+  "Management & Entrepreneurship": "/images/SA-INNOVATION-COLLEGE3-scaled.jpg",
+  "Finance & Accounting": "/images/002.jpg",
+  "Human Resources": "/images/blogs01.jpg",
+  "Education & Training": "/images/sa-innovation-graduation.webp",
+  "Early Childhood Development": "/images/blogs01.jpg",
+  "Health & Safety": "/images/SA-INNOVATION-COLLEGE-2-scaled.webp",
+  "Security & Legal Studies": "/images/SA-INNOVATION-COLLEGE3-scaled.jpg",
+  "Engineering": "/images/SA-INNOVATION-COLLEGE2-scaled.jpg",
+  "IT & Software Development": "/images/001.jpg",
+  "Health & Social Services": "/images/blogs01.jpg",
+};
+
 export default async function CourseDetailPage({
   params,
 }: {
@@ -1796,43 +1812,108 @@ export default async function CourseDetailPage({
     );
   }
 
+  const heroImage = categoryImages[course.category] || "/images/SA-INNOVATION-COLLEGE-2-scaled.webp";
+
+  const heroGradients: Record<string, string> = {
+    "Computer & Digital Skills": "from-purple-900/80 via-purple-800/60",
+    "Business & Administration": "from-blue-900/80 via-blue-800/60",
+    "Customer Service & Hospitality": "from-orange-900/80 via-orange-800/60",
+    "Marketing & Sales": "from-amber-900/80 via-amber-800/60",
+    "Management & Entrepreneurship": "from-emerald-900/80 via-emerald-800/60",
+    "Finance & Accounting": "from-green-900/80 via-green-800/60",
+    "Human Resources": "from-teal-900/80 via-teal-800/60",
+    "Education & Training": "from-indigo-900/80 via-indigo-800/60",
+    "Early Childhood Development": "from-rose-900/80 via-rose-800/60",
+    "Health & Safety": "from-red-900/80 via-red-800/60",
+    "Security & Legal Studies": "from-blue-900/80 via-blue-800/60",
+    "Engineering": "from-cyan-900/80 via-cyan-800/60",
+    "IT & Software Development": "from-violet-900/80 via-violet-800/60",
+    "Health & Social Services": "from-pink-900/80 via-pink-800/60",
+  };
+
+  const heroGradient = heroGradients[course.category] || "from-blue-900/80 via-blue-800/60";
+
   return (
     <>
+      <section className="relative overflow-hidden bg-[var(--color-gray-900)]">
+        <div className="absolute inset-0">
+          <img
+            src={heroImage}
+            alt=""
+            className="h-full w-full object-cover opacity-40"
+          />
+          <div className={`absolute inset-0 bg-gradient-to-r ${heroGradient} to-transparent`} />
+        </div>
+
+        <div className="relative z-10 py-16 md:py-20">
+          <Container>
+            <nav className="mb-4 flex items-center gap-2 text-sm text-white/60" aria-label="Breadcrumb">
+              <Link href="/" className="transition-colors hover:text-white">
+                Home
+              </Link>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-3 w-3" aria-hidden>
+                <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+              </svg>
+              <Link href="/courses" className="transition-colors hover:text-white">
+                Courses
+              </Link>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-3 w-3" aria-hidden>
+                <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+              </svg>
+              <span className="text-white/80" aria-current="page">
+                {course.title}
+              </span>
+            </nav>
+
+            <div className="flex flex-wrap items-center gap-3 mb-3">
+              <span className="inline-flex items-center rounded-md bg-white/15 backdrop-blur-sm px-3 py-1 text-xs font-bold uppercase tracking-wider text-white border border-white/20">
+                {course.category}
+              </span>
+              {course.nqfLevel && (
+                <span className="inline-flex items-center rounded-md bg-[var(--color-accent)]/20 backdrop-blur-sm px-3 py-1 text-xs font-bold uppercase tracking-wider text-[var(--color-accent)] border border-[var(--color-accent)]/20">
+                  {course.nqfLevel}
+                </span>
+              )}
+            </div>
+
+            <h1 className="max-w-3xl text-[var(--fs-3xl)] md:text-[var(--fs-4xl)] font-extrabold leading-tight text-white">
+              {course.title}
+            </h1>
+
+            <p className="mt-3 max-w-2xl text-lg leading-relaxed text-white/80">
+              {course.description}
+            </p>
+
+            <div className="mt-6 flex flex-wrap gap-3">
+              <span className="inline-flex items-center gap-1.5 rounded-lg bg-white/10 backdrop-blur-sm px-3 py-1.5 text-xs font-medium text-white/90 border border-white/10">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-3.5 w-3.5" aria-hidden>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                </svg>
+                {course.duration}
+              </span>
+              <span className="inline-flex items-center gap-1.5 rounded-lg bg-white/10 backdrop-blur-sm px-3 py-1.5 text-xs font-medium text-white/90 border border-white/10">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-3.5 w-3.5" aria-hidden>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                </svg>
+                {course.mode}
+              </span>
+              {course.price && course.price !== "Free" && course.price !== "Contact for fees" && (
+                <span className="inline-flex items-center gap-1.5 rounded-lg bg-[var(--color-accent)]/15 backdrop-blur-sm px-3 py-1.5 text-xs font-medium text-[var(--color-accent)] border border-[var(--color-accent)]/20">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-3.5 w-3.5" aria-hidden>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                  </svg>
+                  {course.price}
+                </span>
+              )}
+            </div>
+          </Container>
+        </div>
+      </section>
+
       <section className="bg-[var(--color-surface)] py-12 md:py-16">
         <Container>
-          <nav className="mb-6 flex items-center gap-2 text-sm text-[var(--color-text-muted)]" aria-label="Breadcrumb">
-            <Link href="/" className="transition-colors hover:text-[var(--color-primary)]">
-              Home
-            </Link>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-3 w-3" aria-hidden>
-              <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-            </svg>
-            <Link href="/courses" className="transition-colors hover:text-[var(--color-primary)]">
-              Courses
-            </Link>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-3 w-3" aria-hidden>
-              <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-            </svg>
-            <span className="text-[var(--color-text-secondary)]" aria-current="page">
-              {course.title}
-            </span>
-          </nav>
-
           <div className="grid gap-10 lg:grid-cols-3">
             <div className="lg:col-span-2">
-              <div className="mb-4 flex flex-wrap items-center gap-3">
-                <Badge variant="gray">{course.category}</Badge>
-                {course.nqfLevel && <Badge variant="primary">{course.nqfLevel}</Badge>}
-              </div>
-
-              <h1 className="mb-4 text-[var(--fs-3xl)] font-extrabold leading-tight text-[var(--color-text-primary)]">
-                {course.title}
-              </h1>
-
-              <p className="mb-8 text-[var(--fs-lg)] leading-relaxed text-[var(--color-text-secondary)]">
-                {course.description}
-              </p>
-
               <div className="mb-10">
                 <h2 className="mb-3 text-[var(--fs-xl)] font-bold text-[var(--color-text-primary)]">
                   Programme Overview

@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import Container from "@/components/layout/Container";
 import PageHero from "@/components/layout/PageHero";
 import Button from "@/components/ui/Button";
-import Badge from "@/components/ui/Badge";
+import CourseFilterGrid from "@/components/courses/CourseFilterGrid";
 
 export const metadata: Metadata = {
   title: "Our Courses | SA Innovation College",
@@ -24,31 +23,31 @@ interface CourseItem {
 interface CategoryGroup {
   category: string;
   shortLabel: string;
-  icon: React.ReactNode;
   courses: CourseItem[];
 }
 
-const ClockIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-3.5 w-3.5">
-    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-  </svg>
-);
-
-const UserIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-3.5 w-3.5">
-    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-  </svg>
-);
+const categoryImages: Record<string, string> = {
+  "Computer & Digital Skills": "/images/001.jpg",
+  "Business & Administration": "/images/SA-INNOVATION-COLLEGE-2-scaled.webp",
+  "Customer Service & Hospitality": "/images/Intro-Home-page-new.png",
+  "Marketing & Sales": "/images/SA-INNOVATION-COLLEGE2-scaled.jpg",
+  "Management & Entrepreneurship": "/images/SA-INNOVATION-COLLEGE3-scaled.jpg",
+  "Finance & Accounting": "/images/002.jpg",
+  "Human Resources": "/images/blogs01.jpg",
+  "Education & Training": "/images/sa-innovation-graduation.webp",
+  "Early Childhood Development": "/images/blogs01.jpg",
+  "Health & Safety": "/images/SA-INNOVATION-COLLEGE-2-scaled.webp",
+  "Security & Legal Studies": "/images/SA-INNOVATION-COLLEGE3-scaled.jpg",
+  "Engineering": "/images/SA-INNOVATION-COLLEGE2-scaled.jpg",
+  "IT & Software Development": "/images/001.jpg",
+  "Health & Social Services": "/images/blogs01.jpg",
+  "default": "/images/SA-INNOVATION-COLLEGE-2-scaled.webp",
+};
 
 const categoryGroups: CategoryGroup[] = [
   {
     category: "Computer & Digital Skills",
     shortLabel: "Computer & Digital",
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-6 w-6">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25" />
-      </svg>
-    ),
     courses: [
       {
         title: "Basic Computer Literacy NQF 3",
@@ -129,11 +128,6 @@ const categoryGroups: CategoryGroup[] = [
   {
     category: "Business & Administration",
     shortLabel: "Business & Admin",
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-6 w-6">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
-      </svg>
-    ),
     courses: [
       {
         title: "Office Administration NQF 3",
@@ -182,11 +176,6 @@ const categoryGroups: CategoryGroup[] = [
   {
     category: "Customer Service & Hospitality",
     shortLabel: "Customer Service",
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-6 w-6">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
-      </svg>
-    ),
     courses: [
       {
         title: "Customer Service Skills",
@@ -217,11 +206,6 @@ const categoryGroups: CategoryGroup[] = [
   {
     category: "Marketing & Sales",
     shortLabel: "Marketing & Sales",
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-6 w-6">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 0 4.5 6h7.5a.75.75 0 0 0 .75-.75v-.75m0 0v11.25M3.75 4.5a.75.75 0 0 1 .75-.75h7.5a.75.75 0 0 1 .75.75M3 18.75V6.75" />
-      </svg>
-    ),
     courses: [
       {
         title: "Basic Marketing and Selling NQF 2",
@@ -246,11 +230,6 @@ const categoryGroups: CategoryGroup[] = [
   {
     category: "Management & Entrepreneurship",
     shortLabel: "Management",
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-6 w-6">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0 0 12 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75Z" />
-      </svg>
-    ),
     courses: [
       {
         title: "Entrepreneurship & Small Business (ESB)",
@@ -309,11 +288,6 @@ const categoryGroups: CategoryGroup[] = [
   {
     category: "Finance & Accounting",
     shortLabel: "Finance",
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-6 w-6">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-      </svg>
-    ),
     courses: [
       {
         title: "Basic Financial Management",
@@ -345,11 +319,6 @@ const categoryGroups: CategoryGroup[] = [
   {
     category: "Human Resources",
     shortLabel: "HR",
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-6 w-6">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
-      </svg>
-    ),
     courses: [
       {
         title: "Human Resources Management N4-N6",
@@ -374,11 +343,6 @@ const categoryGroups: CategoryGroup[] = [
   {
     category: "Education & Training",
     shortLabel: "Education & Training",
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-6 w-6">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342" />
-      </svg>
-    ),
     courses: [
       {
         title: "Facilitator Course NQF 5",
@@ -446,11 +410,6 @@ const categoryGroups: CategoryGroup[] = [
   {
     category: "Early Childhood Development",
     shortLabel: "ECD",
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-6 w-6">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v12m-8-8a8 8 0 0 1 16 0m-8-8a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" />
-      </svg>
-    ),
     courses: [
       {
         title: "Early Childhood Development NQF 4",
@@ -475,11 +434,6 @@ const categoryGroups: CategoryGroup[] = [
   {
     category: "Health & Safety",
     shortLabel: "Health & Safety",
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-6 w-6">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
-      </svg>
-    ),
     courses: [
       {
         title: "Basic Health and Safety",
@@ -519,11 +473,6 @@ const categoryGroups: CategoryGroup[] = [
   {
     category: "Security & Legal Studies",
     shortLabel: "Security & Legal",
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-6 w-6">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
-      </svg>
-    ),
     courses: [
       {
         title: "Traffic Officer Course",
@@ -565,11 +514,6 @@ const categoryGroups: CategoryGroup[] = [
   {
     category: "Engineering",
     shortLabel: "Engineering",
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-6 w-6">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M11.42 15.17 17.25 21A2.652 2.652 0 0 0 21 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 1 1-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 0 0 4.486-6.336l-3.276 3.277a3.004 3.004 0 0 1-2.25-2.25l3.276-3.276a4.5 4.5 0 0 0-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.087 4.113" />
-      </svg>
-    ),
     courses: [
       {
         title: "Mechanical Engineering N1-N6",
@@ -603,11 +547,6 @@ const categoryGroups: CategoryGroup[] = [
   {
     category: "IT & Software Development",
     shortLabel: "IT & Software",
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-6 w-6">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z" />
-      </svg>
-    ),
     courses: [
       {
         title: "CompTIA IT Fundamentals",
@@ -663,11 +602,6 @@ const categoryGroups: CategoryGroup[] = [
   {
     category: "Health & Social Services",
     shortLabel: "Health & Social",
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-6 w-6">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
-      </svg>
-    ),
     courses: [
       {
         title: "Health Promotion Officer NQF 5",
@@ -682,73 +616,6 @@ const categoryGroups: CategoryGroup[] = [
   },
 ];
 
-const filterLabels = categoryGroups.map((g) => g.shortLabel);
-
-function CourseCard({ course }: { course: CourseItem }) {
-  return (
-    <Link
-      href={`/courses/${course.slug}`}
-      className="group relative flex flex-col rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-6 shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-card-hover)] hover:border-[var(--color-primary)]/30"
-    >
-      <div className="mb-3 flex items-center gap-2">
-        <Badge variant="gray">{course.category}</Badge>
-      </div>
-      <h3 className="mb-2 text-[var(--fs-lg)] font-bold leading-snug text-[var(--color-text-primary)] transition-colors duration-200 group-hover:text-[var(--color-primary)]">
-        {course.title}
-      </h3>
-      <p className="mb-4 line-clamp-2 text-sm leading-relaxed text-[var(--color-text-secondary)]">
-        {course.description}
-      </p>
-      <div className="mt-auto flex flex-wrap items-center gap-2">
-        <span className="inline-flex items-center gap-1 rounded-md bg-[var(--color-gray-50)] px-2.5 py-1 text-xs font-medium text-[var(--color-gray-600)]">
-          <ClockIcon />
-          {course.duration}
-        </span>
-        {course.nqf && (
-          <span className="inline-flex items-center gap-1 rounded-md bg-[var(--color-primary)]/10 px-2.5 py-1 text-xs font-medium text-[var(--color-primary)]">
-            {course.nqf}
-          </span>
-        )}
-        <span className="inline-flex items-center gap-1 rounded-md bg-[var(--color-gray-50)] px-2.5 py-1 text-xs font-medium text-[var(--color-gray-600)]">
-          <UserIcon />
-          {course.mode}
-        </span>
-      </div>
-      <span className="mt-4 inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-[var(--color-primary)] transition-all duration-200 group-hover:gap-2">
-        Learn More
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5">
-          <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-        </svg>
-      </span>
-    </Link>
-  );
-}
-
-function CategorySection({ group }: { group: CategoryGroup }) {
-  return (
-    <section>
-      <div className="mb-6 flex items-center gap-3">
-        <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--color-primary)]/10 text-[var(--color-primary)]">
-          {group.icon}
-        </span>
-        <div>
-          <h2 className="text-[var(--fs-2xl)] font-bold text-[var(--color-text-primary)]">
-            {group.category}
-          </h2>
-          <p className="text-sm text-[var(--color-text-muted)]">
-            {group.courses.length} course{group.courses.length !== 1 ? "s" : ""}
-          </p>
-        </div>
-      </div>
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {group.courses.map((course) => (
-          <CourseCard key={course.slug} course={course} />
-        ))}
-      </div>
-    </section>
-  );
-}
-
 export default function CoursesPage() {
   return (
     <>
@@ -757,28 +624,13 @@ export default function CoursesPage() {
         description="Find your path to success with 50+ accredited programmes across 14 fields of study."
       />
 
-      <section className="py-[var(--section-py)]">
+      <section className="py-16 md:py-24">
         <Container>
-          <div className="mb-10 overflow-x-auto pb-2">
-            <div className="flex flex-nowrap gap-2 min-w-max">
-              <span className="inline-block cursor-default rounded-full bg-[var(--color-primary)] px-5 py-2 text-xs font-bold uppercase tracking-wide text-[var(--color-text-inverse)] shadow-sm">
-                All Courses
-              </span>
-              {filterLabels.map((label) => (
-                <span
-                  key={label}
-                  className="inline-block cursor-default rounded-full border border-[var(--color-border)] bg-[var(--color-surface-raised)] px-5 py-2 text-xs font-semibold uppercase tracking-wide text-[var(--color-gray-600)] transition-colors duration-200 hover:bg-[var(--color-gray-50)] hover:text-[var(--color-gray-900)]"
-                >
-                  {label}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div className="space-y-16">
-            {categoryGroups.map((group) => (
-              <CategorySection key={group.category} group={group} />
-            ))}
+          <div className="mb-8">
+            <CourseFilterGrid
+              groups={categoryGroups}
+              categoryImages={categoryImages}
+            />
           </div>
         </Container>
       </section>
