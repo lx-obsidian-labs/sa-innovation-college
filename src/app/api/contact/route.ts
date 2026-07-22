@@ -1,28 +1,23 @@
 import { NextResponse } from "next/server";
+import { sendContactEmail } from "@/lib/email";
 
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { name, phone, email, course, message } = body;
+    const { name, surname, company, preferredContact, phone, email, course, message } = body;
 
-    if (!name || !phone || !email || !message) {
+    if (!name || !surname || !phone || !email || !message) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
-    const payload = {
-      type: "contact",
-      name,
-      phone,
-      email,
-      course: course || "Not specified",
-      message,
-      timestamp: new Date().toISOString(),
-    };
-
-    console.log("[Contact Submission]", JSON.stringify(payload, null, 2));
+    await sendContactEmail({
+      name, surname, company: company || "", preferredContact: preferredContact || "Phone",
+      phone, email, course: course || "", message,
+    });
 
     return NextResponse.json({ success: true, message: "Thank you for reaching out. We will get back to you soon." });
-  } catch {
-    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+  } catch (err) {
+    console.error("[Contact Error]", err);
+    return NextResponse.json({ error: "Failed to send enquiry. Please try again later." }, { status: 500 });
   }
 }

@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { sendApplicationEmail } from "@/lib/email";
 
 function generateRef(): string {
   const prefix = "SAIC";
@@ -10,7 +11,11 @@ function generateRef(): string {
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { title, fullName, idNumber, dob, phone, email, address, startDate, course, category, education, employStatus, hearAbout, agree } = body;
+    const {
+      title, fullName, gender, nationality, postalCode, idNumber, dob,
+      phone, email, address, startDate, category, course, education,
+      previousSchool, employStatus, fundingSource, emergencyName, emergencyPhone, hearAbout, agree,
+    } = body;
 
     if (!fullName || !phone || !email || !course || !agree) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
@@ -18,33 +23,37 @@ export async function POST(req: Request) {
 
     const refNumber = generateRef();
 
-    const payload = {
-      type: "application",
+    await sendApplicationEmail({
       refNumber,
-      title: title || "Not specified",
+      title: title || "",
       fullName,
-      idNumber: idNumber || "Not provided",
-      dob: dob || "Not provided",
+      gender: gender || "",
+      nationality: nationality || "",
+      postalCode: postalCode || "",
+      idNumber: idNumber || "",
+      dob: dob || "",
       phone,
       email,
-      address: address || "Not provided",
-      startDate: startDate || "Not specified",
+      address: address || "",
+      startDate: startDate || "",
+      category: category || "",
       course,
-      category: category || "Not specified",
-      education: education || "Not provided",
-      employStatus: employStatus || "Not provided",
-      hearAbout: hearAbout || "Not specified",
-      timestamp: new Date().toISOString(),
-    };
-
-    console.log("[Application Submission]", JSON.stringify(payload, null, 2));
+      education: education || "",
+      previousSchool: previousSchool || "",
+      employStatus: employStatus || "",
+      fundingSource: fundingSource || "",
+      emergencyName: emergencyName || "",
+      emergencyPhone: emergencyPhone || "",
+      hearAbout: hearAbout || "",
+    });
 
     return NextResponse.json({
       success: true,
       refNumber,
       message: "Application submitted successfully! Our admissions team will contact you within 2-3 business days.",
     });
-  } catch {
-    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+  } catch (err) {
+    console.error("[Application Error]", err);
+    return NextResponse.json({ error: "Failed to submit application. Please try again later." }, { status: 500 });
   }
 }
