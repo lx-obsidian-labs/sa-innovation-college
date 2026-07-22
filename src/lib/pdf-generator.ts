@@ -1,124 +1,255 @@
 import { jsPDF } from "jspdf";
 
-const PRIMARY = "#1B4D8E";
-const GRAY = "#555";
-const LIGHT_GRAY = "#CCC";
+function setColor(doc: jsPDF, hex: string) {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  doc.setTextColor(r, g, b);
+}
 
-function header(doc: jsPDF, title: string) {
-  doc.setFillColor(27, 77, 142);
-  doc.rect(0, 0, doc.internal.pageSize.width, 28, "F");
-  doc.setTextColor(255, 255, 255);
-  doc.setFontSize(14);
+function setFill(doc: jsPDF, hex: string) {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  doc.setFillColor(r, g, b);
+}
+
+const BLUE = "#1B4D8E";
+const BLUE_LIGHT = "#EBF1FA";
+const GOLD = "#F59E0B";
+const GRAY_DARK = "#505050";
+const GRAY_MED = "#8C8C8C";
+const GRAY_LIGHT = "#DCDCDC";
+const WHITE = "#FFFFFF";
+const BLACK = "#000000";
+
+const PAGE_W = 210;
+const PAGE_H = 297;
+const MARGIN = 12;
+const COL_WIDTH = PAGE_W - MARGIN * 2;
+const LABEL_W = 46;
+const VALUE_W = COL_WIDTH - LABEL_W - 4;
+
+function fmtDate() {
+  const d = new Date();
+  return d.toLocaleDateString("en-ZA", { day: "2-digit", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" });
+}
+
+function refNumber() {
+  const n = Date.now().toString(36).toUpperCase().slice(-6);
+  return `SAIC-${n}`;
+}
+
+function pageBorder(doc: jsPDF) {
+  doc.setDrawColor(220, 220, 220);
+  doc.setLineWidth(0.5);
+  doc.rect(5, 5, PAGE_W - 10, PAGE_H - 10);
+}
+
+function brandHeader(doc: jsPDF, pageNum: number) {
+  const top = 10;
+  const h = 22;
+
+  setFill(doc, BLUE);
+  doc.rect(MARGIN, top, COL_WIDTH, h, "F");
+
+  setFill(doc, GOLD);
+  doc.rect(MARGIN, top + h - 1.5, COL_WIDTH, 1.5, "F");
+
+  setColor(doc, WHITE);
+  doc.setFontSize(13);
   doc.setFont("helvetica", "bold");
-  doc.text("SA INNOVATION COLLEGE", 14, 18);
-  doc.setFontSize(9);
+  doc.text("SA INNOVATION COLLEGE", MARGIN + 6, top + 8);
+  doc.setFontSize(7);
   doc.setFont("helvetica", "normal");
-  doc.text("Empowering South African Youth Through Education", 14, 25);
-  doc.setTextColor(27, 77, 142);
+  doc.text("Empowering South African Youth Through Quality Education", MARGIN + 6, top + 14.5);
+  doc.text(`Page ${pageNum}`, MARGIN + COL_WIDTH - 6, top + 14.5, { align: "right" });
+}
+
+function formTitle(doc: jsPDF, y: number, title: string, ref?: string) {
+  setColor(doc, BLUE);
   doc.setFontSize(16);
   doc.setFont("helvetica", "bold");
-  doc.text(title, doc.internal.pageSize.width / 2, 48, { align: "center" });
-  doc.setDrawColor(27, 77, 142);
-  doc.setLineWidth(0.5);
-  doc.line(14, 54, doc.internal.pageSize.width - 14, 54);
-}
-
-function footer(doc: jsPDF, page: number, total: number) {
-  doc.setDrawColor(LIGHT_GRAY);
-  doc.setLineWidth(0.3);
-  doc.line(14, doc.internal.pageSize.height - 20, doc.internal.pageSize.width - 14, doc.internal.pageSize.height - 20);
-  doc.setTextColor(150, 150, 150);
+  doc.text(title, PAGE_W / 2, y, { align: "center" });
+  y += 8;
+  if (ref) {
+    doc.setFontSize(8);
+    doc.setFont("helvetica", "normal");
+    setColor(doc, GRAY_DARK);
+    doc.text(`Reference: ${ref}`, PAGE_W / 2, y, { align: "center" });
+    y += 5;
+  }
   doc.setFontSize(7);
-  doc.setFont("helvetica", "normal");
-  doc.text("147 Burger Avenue, 1st Floor, Barclays Centre, Lyttelton Manor, Centurion, 0157", 14, doc.internal.pageSize.height - 12);
-  doc.text("Tel: 0800 014 568 | Email: info@sainnovationcollege.co.za | www.sainnovationcollege.co.za", 14, doc.internal.pageSize.height - 7);
-  doc.text(`Page ${page} of ${total}`, doc.internal.pageSize.width - 14, doc.internal.pageSize.height - 7, { align: "right" });
+  setColor(doc, GRAY_MED);
+  doc.text(`Generated: ${fmtDate()}`, PAGE_W / 2, y, { align: "center" });
+  y += 3;
+  doc.setDrawColor(245, 158, 11);
+  doc.setLineWidth(0.4);
+  doc.line(MARGIN + 30, y, MARGIN + COL_WIDTH - 30, y);
+  return y + 10;
 }
 
-function section(doc: jsPDF, y: number, label: string): number {
-  doc.setFillColor(240, 245, 250);
-  doc.rect(14, y, doc.internal.pageSize.width - 28, 8, "F");
-  doc.setTextColor(27, 77, 142);
-  doc.setFontSize(10);
-  doc.setFont("helvetica", "bold");
-  doc.text(label, 18, y + 5.5);
-  return y + 14;
-}
-
-function field(doc: jsPDF, y: number, label: string, value: string, width?: number): number {
-  const colW = width || (doc.internal.pageSize.width - 48);
-  doc.setTextColor(100, 100, 100);
-  doc.setFontSize(7);
-  doc.setFont("helvetica", "bold");
-  doc.text(label.toUpperCase(), 14, y);
-  doc.setTextColor(0, 0, 0);
-  doc.setFontSize(10);
-  doc.setFont("helvetica", "normal");
-  const display = value || "________________________";
-  doc.text(display, 14, y + 6);
-  doc.setDrawColor(LIGHT_GRAY);
+function foot(doc: jsPDF, page: number, total: number) {
+  const y = PAGE_H - 14;
+  doc.setDrawColor(220, 220, 220);
   doc.setLineWidth(0.3);
-  doc.line(14, y + 9, 14 + colW, y + 9);
-  return y + 14;
+  doc.line(MARGIN, y - 3, MARGIN + COL_WIDTH, y - 3);
+  setColor(doc, GRAY_MED);
+  doc.setFontSize(6.5);
+  doc.setFont("helvetica", "normal");
+  doc.text("147 Burger Avenue, 1st Floor, Barclays Centre, Lyttelton Manor, Centurion, 0157", MARGIN, y);
+  doc.text("Tel: 0800 014 568 | Email: info@sainnovationcollege.co.za | www.sainnovationcollege.co.za", MARGIN, y + 4);
+  doc.text(`Page ${page} of ${total}`, MARGIN + COL_WIDTH, y + 4, { align: "right" });
+}
+
+function sectionHdr(doc: jsPDF, y: number, label: string): number {
+  setFill(doc, BLUE);
+  doc.rect(MARGIN, y, COL_WIDTH, 9, "F");
+  setColor(doc, WHITE);
+  doc.setFontSize(9);
+  doc.setFont("helvetica", "bold");
+  doc.text(label, MARGIN + 5, y + 6);
+  return y + 13;
+}
+
+function fieldRow(doc: jsPDF, y: number, label: string, value: string, valueWidth?: number): number {
+  const vw = valueWidth || VALUE_W;
+  const bg = y % 28 < 14 ? "#FFFFFF" : "#F8F9FB";
+  doc.setFillColor(parseInt(bg.slice(1,3),16), parseInt(bg.slice(3,5),16), parseInt(bg.slice(5,7),16));
+  doc.rect(MARGIN, y - 3.5, COL_WIDTH, 15, "F");
+
+  setColor(doc, GRAY_DARK);
+  doc.setFontSize(7.5);
+  doc.setFont("helvetica", "bold");
+  doc.text(label.toUpperCase(), MARGIN + 4, y + 1.5);
+
+  const val = value || "";
+  setColor(doc, BLACK);
+  doc.setFontSize(10);
+  doc.setFont("helvetica", "normal");
+
+  if (!val) {
+    doc.setDrawColor(220, 220, 220);
+    doc.setLineWidth(0.3);
+    doc.line(MARGIN + LABEL_W, y + 4, MARGIN + LABEL_W + vw, y + 4);
+  } else {
+    const maxW = vw - 4;
+    const display = doc.splitTextToSize(val, maxW);
+    display.forEach((line: string, i: number) => {
+      if (y + 1.5 + i * 5 < PAGE_H - 45) {
+        doc.text(line, MARGIN + LABEL_W + 2, y + 1.5 + i * 5);
+      }
+    });
+    doc.setDrawColor(220, 220, 220);
+    doc.setLineWidth(0.3);
+    const lastY = Math.min(y + 4 + Math.max(0, display.length - 1) * 5, PAGE_H - 50);
+    doc.line(MARGIN + LABEL_W, lastY, MARGIN + LABEL_W + vw, lastY);
+  }
+
+  return y + 15;
 }
 
 function fieldPair(doc: jsPDF, y: number, left: [string, string], right: [string, string]): number {
-  const mid = doc.internal.pageSize.width / 2;
-  const colW = mid - 24;
-  doc.setTextColor(100, 100, 100);
-  doc.setFontSize(7);
-  doc.setFont("helvetica", "bold");
-  doc.text(left[0].toUpperCase(), 14, y);
-  doc.text(right[0].toUpperCase(), mid + 10, y);
-  doc.setTextColor(0, 0, 0);
-  doc.setFontSize(10);
+  const halfW = (COL_WIDTH - 6) / 2;
+  const bg = y % 28 < 14 ? "#FFFFFF" : "#F8F9FB";
+  doc.setFillColor(parseInt(bg.slice(1,3),16), parseInt(bg.slice(3,5),16), parseInt(bg.slice(5,7),16));
+  doc.rect(MARGIN, y - 3.5, COL_WIDTH, 15, "F");
+
+  [left, right].forEach(([lbl, val], idx) => {
+    const ox = MARGIN + (idx === 0 ? 4 : halfW + 7);
+    const valX = ox + LABEL_W;
+    const valW = halfW - LABEL_W - 4;
+
+    setColor(doc, GRAY_DARK);
+    doc.setFontSize(7.5);
+    doc.setFont("helvetica", "bold");
+    doc.text(lbl.toUpperCase(), ox, y + 1.5);
+    setColor(doc, BLACK);
+    doc.setFontSize(10);
+    doc.setFont("helvetica", "normal");
+
+    if (!val) {
+      doc.setDrawColor(220, 220, 220);
+      doc.setLineWidth(0.3);
+      doc.line(valX, y + 4, valX + valW, y + 4);
+    } else {
+      doc.text(val, valX + 2, y + 1.5);
+      doc.setDrawColor(220, 220, 220);
+      doc.setLineWidth(0.3);
+      doc.line(valX, y + 4, valX + valW, y + 4);
+    }
+  });
+
+  return y + 15;
+}
+
+function checkbox(doc: jsPDF, y: number, x: number, checked: boolean, label: string) {
+  doc.setDrawColor(0, 0, 0);
+  doc.setLineWidth(0.5);
+  doc.rect(x, y - 3.5, 6, 6);
+  if (checked) {
+    setColor(doc, BLUE);
+    doc.setFontSize(8);
+    doc.setFont("helvetica", "bold");
+    doc.text("\u2713", x + 1.5, y + 0.5);
+  }
+  setColor(doc, BLACK);
+  doc.setFontSize(8.5);
   doc.setFont("helvetica", "normal");
-  doc.text(left[1] || "________________________", 14, y + 6);
-  doc.text(right[1] || "________________________", mid + 10, y + 6);
-  doc.setDrawColor(LIGHT_GRAY);
-  doc.setLineWidth(0.3);
-  doc.line(14, y + 9, 14 + colW, y + 9);
-  doc.line(mid + 10, y + 9, mid + 10 + colW, y + 9);
-  return y + 14;
+  doc.text(label, x + 9, y + 1);
+}
+
+function boxedSection(doc: jsPDF, y: number, title: string, content: () => number): number {
+  const pad = 4;
+  const boxY = y - 2;
+  const startY = y;
+
+  const endY = content();
+
+  doc.setDrawColor(220, 220, 220);
+  doc.setLineWidth(0.4);
+  doc.rect(MARGIN, boxY, COL_WIDTH, endY - boxY + 4);
+
+  setFill(doc, WHITE);
+  doc.rect(MARGIN + 8, boxY - 3, doc.getTextWidth(title) + 12, 7, "F");
+  setColor(doc, BLUE);
+  doc.setFontSize(7.5);
+  doc.setFont("helvetica", "bold");
+  doc.text(title, MARGIN + 14, boxY + 2);
+
+  return endY + 2;
 }
 
 export function generateContactPdf(data: { name: string; phone: string; email: string; course: string; message: string }): jsPDF {
   const doc = new jsPDF();
-  const totalPages = 1;
-  header(doc, "Enquiry / Contact Form");
-  footer(doc, 1, totalPages);
+  pageBorder(doc);
+  brandHeader(doc, 1);
+  let y = 38;
 
-  let y = 66;
-  y = field(doc, y, "Full Name", data.name);
-  y = field(doc, y, "Phone Number", data.phone);
-  y = field(doc, y, "Email Address", data.email);
-  y = field(doc, y, "Course Interested In", data.course);
-  doc.setTextColor(100, 100, 100);
-  doc.setFontSize(7);
-  doc.setFont("helvetica", "bold");
-  doc.text("MESSAGE".toUpperCase(), 14, y);
-  doc.setTextColor(0, 0, 0);
-  doc.setFontSize(10);
-  doc.setFont("helvetica", "normal");
-  const lines = doc.splitTextToSize(data.message || "________________________", doc.internal.pageSize.width - 28);
-  doc.text(lines, 14, y + 6);
-  y += 8 + lines.length * 5;
+  y = formTitle(doc, y, "Enquiry / Contact Form");
+  y = sectionHdr(doc, y, "Contact Details");
+  y = fieldRow(doc, y, "Full Name", data.name);
+  y = fieldRow(doc, y, "Phone Number", data.phone);
+  y = fieldRow(doc, y, "Email Address", data.email);
+  y = fieldRow(doc, y, "Course Interested In", data.course);
+  y = sectionHdr(doc, y + 2, "Message");
+  y = fieldRow(doc, y, "Message", data.message, COL_WIDTH - LABEL_W - 10);
 
-  y = Math.max(y + 10, doc.internal.pageSize.height - 40);
-  doc.setDrawColor(PRIMARY);
-  doc.setLineWidth(0.5);
-  doc.line(14, y, doc.internal.pageSize.width - 14, y);
-  y += 6;
-  doc.setTextColor(PRIMARY);
-  doc.setFontSize(8);
-  doc.setFont("helvetica", "bold");
-  doc.text("Office Use Only", 14, y);
-  doc.setFont("helvetica", "normal");
-  doc.setTextColor(GRAY);
-  doc.setFontSize(8);
-  doc.text("Received: ________________", 14, y + 6);
-  doc.text("Action: __________________", doc.internal.pageSize.width / 2 + 10, y + 6);
+  y = Math.max(y + 6, PAGE_H - 52);
+  boxedSection(doc, y, "Office Use Only", () => {
+    let yy = y + 4;
+    doc.setFontSize(7.5);
+    setColor(doc, GRAY_DARK);
+    doc.setFont("helvetica", "normal");
+    doc.text(`Received: _________________________`, MARGIN + 6, yy);
+    doc.text(`Action Taken: ____________________`, MARGIN + COL_WIDTH / 2 + 4, yy);
+    yy += 8;
+    doc.text(`Staff Initials: ___________________`, MARGIN + 6, yy);
+    doc.text(`Date Processed: __________________`, MARGIN + COL_WIDTH / 2 + 4, yy);
+    return yy + 4;
+  });
 
+  foot(doc, 1, 1);
   return doc;
 }
 
@@ -129,102 +260,102 @@ export function generateApplicationPdf(data: {
   employStatus: string; hearAbout: string;
 }): jsPDF {
   const doc = new jsPDF();
+  const ref = refNumber();
   let page = 1;
-  const pageH = doc.internal.pageSize.height;
-  let y = 66;
+  let y = 38;
 
   function checkPage() {
-    if (y > pageH - 50) {
-      footer(doc, page, 0);
+    if (y > PAGE_H - 55) {
+      foot(doc, page, 0);
       doc.addPage();
       page++;
-      header(doc, "Application Form (continued)");
-      y = 66;
+      pageBorder(doc);
+      brandHeader(doc, page);
+      y = 38;
+      y = formTitle(doc, y, "Application Form (continued)", ref);
     }
   }
 
-  header(doc, "Online Application Form");
-
-  y = section(doc, y, "1. Personal Information");
+  pageBorder(doc);
+  brandHeader(doc, page);
+  y = formTitle(doc, y, "Online Application Form", ref);
+  y = sectionHdr(doc, y, "1. Personal Information");
   checkPage();
-  y = field(doc, y, "Title", data.title);
+  y = fieldPair(doc, y, ["Title", data.title], ["Full Name", data.fullName]);
   checkPage();
-  y = field(doc, y, "Full Name", data.fullName);
+  y = fieldPair(doc, y, ["ID / Passport Number", data.idNumber], ["Date of Birth", data.dob]);
   checkPage();
-  y = fieldPair(doc, y,
-    ["ID / Passport Number", data.idNumber],
-    ["Date of Birth", data.dob]
-  );
+  y = fieldPair(doc, y, ["Phone Number", data.phone], ["Email Address", data.email]);
   checkPage();
-  y = fieldPair(doc, y,
-    ["Phone Number", data.phone],
-    ["Email Address", data.email]
-  );
+  y = fieldRow(doc, y, "Physical Address", data.address);
   checkPage();
-  y = field(doc, y, "Physical Address", data.address);
-  checkPage();
-  y = field(doc, y, "Preferred Start Date", data.startDate);
+  y = fieldRow(doc, y, "Preferred Start Date", data.startDate);
   checkPage();
 
-  y = section(doc, y + 4, "2. Course Selection");
+  y = sectionHdr(doc, y + 2, "2. Course Selection");
   checkPage();
-  y = fieldPair(doc, y,
-    ["Category", data.category],
-    ["Course", data.course]
-  );
+  y = fieldPair(doc, y, ["Category", data.category], ["Course", data.course]);
   checkPage();
 
-  y = section(doc, y + 4, "3. Education & Employment");
+  y = sectionHdr(doc, y + 2, "3. Education & Employment");
   checkPage();
-  y = field(doc, y, "Highest Education Level", data.education);
+  y = fieldRow(doc, y, "Highest Education", data.education);
   checkPage();
-  y = field(doc, y, "Employment Status", data.employStatus);
+  y = fieldRow(doc, y, "Employment Status", data.employStatus);
   checkPage();
-  y = field(doc, y, "How Did You Hear About Us?", data.hearAbout);
+  y = fieldRow(doc, y, "How Did You Hear About Us?", data.hearAbout);
   checkPage();
 
-  y = section(doc, y + 4, "4. Declaration");
+  y = sectionHdr(doc, y + 2, "4. Declaration");
   checkPage();
-  doc.setFontSize(8);
-  doc.setTextColor(0, 0, 0);
-  const declLines = doc.splitTextToSize(
-    "By submitting this application, I confirm that I have read, understood, and agree to SA Innovation College's Terms & Conditions and Refund Policy. I confirm that all information provided is accurate and complete.",
-    doc.internal.pageSize.width - 28
-  );
-  doc.text(declLines, 14, y);
-  y += declLines.length * 5 + 6;
-
-  checkPage();
-  doc.setDrawColor(0);
-  doc.setLineWidth(0.5);
-  doc.rect(14, y, 6, 6);
-  doc.setTextColor(0);
-  doc.setFontSize(9);
-  doc.text("I agree to the Terms & Conditions and Refund Policy", 24, y + 5);
-
-  y += 16;
-  checkPage();
-  doc.setTextColor(PRIMARY);
-  doc.setFontSize(8);
-  doc.setFont("helvetica", "bold");
-  doc.text("Applicant Signature: ________________________", 14, y);
-  doc.text("Date: ________________", doc.internal.pageSize.width / 2 + 20, y);
-
-  y += 10;
-  checkPage();
-  doc.setDrawColor(PRIMARY);
-  doc.setLineWidth(0.5);
-  doc.line(14, y, doc.internal.pageSize.width - 14, y);
-  y += 6;
-  doc.setTextColor(PRIMARY);
-  doc.setFontSize(8);
-  doc.setFont("helvetica", "bold");
-  doc.text("Office Use Only", 14, y);
+  setFill(doc, BLUE_LIGHT);
+  doc.rect(MARGIN, y, COL_WIDTH, 18, "F");
+  doc.setDrawColor(27, 77, 142);
+  doc.setLineWidth(0.3);
+  doc.rect(MARGIN, y, COL_WIDTH, 18);
+  setColor(doc, BLACK);
+  doc.setFontSize(7.5);
   doc.setFont("helvetica", "normal");
-  doc.setTextColor(GRAY);
-  doc.setFontSize(8);
-  doc.text("Received: ________________  Verified: ________________  Approved: ____", 14, y + 6);
+  const declText = "I confirm that I have read, understood, and agree to SA Innovation College's Terms & Conditions and Refund Policy. I confirm that all information provided in this application is accurate and complete to the best of my knowledge.";
+  const declLines = doc.splitTextToSize(declText, COL_WIDTH - 16);
+  doc.text(declLines, MARGIN + 8, y + 5);
+  y += 22;
+  checkPage();
+  checkbox(doc, y, MARGIN + 4, false, "I agree to the Terms & Conditions and Refund Policy");
+  y += 12;
+  checkPage();
+  doc.setDrawColor(220, 220, 220);
+  doc.setLineWidth(0.4);
+  doc.rect(MARGIN, y, COL_WIDTH, 18, "F");
+  doc.setFontSize(8.5);
+  setColor(doc, BLUE);
+  doc.setFont("helvetica", "bold");
+  doc.text("Applicant Signature", MARGIN + 6, y + 5);
+  doc.setDrawColor(220, 220, 220);
+  doc.setLineWidth(0.5);
+  doc.line(MARGIN + 6, y + 12, MARGIN + COL_WIDTH / 2 - 6, y + 12);
+  setColor(doc, GRAY_DARK);
+  doc.setFont("helvetica", "normal");
+  doc.text("Date: ________________", MARGIN + COL_WIDTH / 2 + 6, y + 12);
+  y += 22;
 
-  footer(doc, page, page);
+  checkPage();
+  boxedSection(doc, y, "Office Use Only", () => {
+    let yy = y + 4;
+    doc.setFontSize(7.5);
+    setColor(doc, GRAY_DARK);
+    doc.setFont("helvetica", "normal");
+    doc.text(`Received: _________________________`, MARGIN + 6, yy);
+    doc.text(`Verified: _________________________`, MARGIN + COL_WIDTH / 2 + 4, yy);
+    yy += 8;
+    doc.text(`Documents Checked: _______________`, MARGIN + 6, yy);
+    doc.text(`Approved: ____  Declined: ____`, MARGIN + COL_WIDTH / 2 + 4, yy);
+    yy += 8;
+    doc.text(`Staff Initials: ___________________`, MARGIN + 6, yy);
+    doc.text(`Date Processed: __________________`, MARGIN + COL_WIDTH / 2 + 4, yy);
+    return yy + 2;
+  });
+
+  foot(doc, page, page);
   return doc;
 }
