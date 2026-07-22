@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useCallback, type FormEvent } from "react";
 import { cn } from "@/lib/utils";
 import Icon, { type IconName } from "@/components/ui/Icon";
+import DownloadPdfButton from "@/components/ui/DownloadPdfButton";
 
 const TITLES = ["Mr", "Mrs", "Miss", "Ms", "Dr", "Prof"];
 
@@ -319,6 +320,10 @@ export default function ApplicationForm() {
           </div>
         </div>
       )}
+
+      <div className="flex justify-end mb-4 no-print">
+        <DownloadPdfButton type="application" data={form} label="Download PDF" />
+      </div>
 
       <form onSubmit={(e) => { e.preventDefault(); setShowConfirm(true); }} noValidate>
         <div className="mb-10">

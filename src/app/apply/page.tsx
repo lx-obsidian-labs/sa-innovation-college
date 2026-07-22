@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Container from "@/components/layout/Container";
 import PageHero from "@/components/layout/PageHero";
 import ApplicationForm from "@/components/ui/ApplicationForm";
-import DownloadPdfButton from "@/components/ui/DownloadPdfButton";
 import { PrintableApplyForm } from "@/components/ui/PrintableForm";
 import { getWhatsAppUrl, getTelUrl } from "@/lib/utils";
 import Icon from "@/components/ui/Icon";
@@ -40,10 +39,9 @@ export default function ApplyPage() {
                 <h2 className="mb-2 text-[var(--fs-3xl)] font-extrabold text-[var(--color-text-primary)]">
                   Online Application Form
                 </h2>
-                <p className="text-[var(--color-text-secondary)] mb-4">
+                <p className="text-[var(--color-text-secondary)]">
                   Complete your application in a few easy steps.
                 </p>
-                <DownloadPdfButton targetId="apply-form-section" label="Download Blank Form (PDF)" />
               </div>
 
               <div id="apply-form-section">

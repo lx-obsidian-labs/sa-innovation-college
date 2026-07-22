@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, type FormEvent } from "react";
 import { cn } from "@/lib/utils";
 import Icon, { type IconName } from "@/components/ui/Icon";
+import DownloadPdfButton from "@/components/ui/DownloadPdfButton";
 
 const COURSE_OPTIONS = [
   { category: "Computer & Digital Skills", courses: ["Basic Computer Literacy NQF 3", "Advanced Computer Literacy NQF 3", "MS Word (Intro\u2013Advanced)", "MS Excel (Intro\u2013Advanced)", "MS PowerPoint (Intro\u2013Advanced)", "MS Access", "MS Outlook", "MS Project", "5-Day Website Design"] },
@@ -171,6 +172,10 @@ export default function ContactForm() {
 
   return (
     <>
+      <div className="flex justify-end mb-4 no-print">
+        <DownloadPdfButton type="contact" data={formData} label="Download PDF" />
+      </div>
+
       {showConfirm && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4" onClick={() => setShowConfirm(false)}>
           <div className="max-w-md w-full rounded-2xl bg-white p-6 shadow-2xl animate-scaleIn" onClick={(e) => e.stopPropagation()}>

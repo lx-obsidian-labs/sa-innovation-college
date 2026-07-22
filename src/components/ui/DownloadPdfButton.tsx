@@ -1,22 +1,55 @@
 "use client";
 
+import { useCallback } from "react";
 import Icon from "@/components/ui/Icon";
+import { generateContactPdf, generateApplicationPdf } from "@/lib/pdf-generator";
 
-interface DownloadPdfButtonProps {
-  targetId: string;
-  label?: string;
-  className?: string;
+type FormType = "contact" | "application";
+
+interface ContactData {
+  name: string; phone: string; email: string; course: string; message: string;
 }
 
-export default function DownloadPdfButton({ targetId, label = "Download PDF", className = "" }: DownloadPdfButtonProps) {
-  const handleDownload = () => {
-    const el = document.getElementById(targetId);
-    if (!el) return;
-    const original = document.title;
-    document.title = document.querySelector("h1")?.textContent?.trim() || "SA Innovation College";
-    window.print();
-    document.title = original;
-  };
+interface ApplicationData {
+  title: string; fullName: string; idNumber: string; dob: string;
+  phone: string; email: string; address: string; startDate: string;
+  category: string; course: string; education: string;
+  employStatus: string; hearAbout: string;
+}
+
+interface ContactPdfProps {
+  type: "contact";
+  data: ContactData;
+}
+
+interface ApplicationPdfProps {
+  type: "application";
+  data: ApplicationData;
+}
+
+type DownloadPdfButtonProps = {
+  label?: string;
+  className?: string;
+  fileName?: string;
+} & (ContactPdfProps | ApplicationPdfProps);
+
+export default function DownloadPdfButton(props: DownloadPdfButtonProps) {
+  const { label = "Download PDF", className = "", fileName } = props;
+
+  const handleDownload = useCallback(() => {
+    let doc: import("jspdf").jsPDF;
+    let name: string;
+
+    if (props.type === "contact") {
+      doc = generateContactPdf(props.data);
+      name = fileName || `Enquiry-${props.data.name.replace(/\s+/g, "_") || "Form"}`;
+    } else {
+      doc = generateApplicationPdf(props.data);
+      name = fileName || `Application-${props.data.fullName.replace(/\s+/g, "_") || "Form"}`;
+    }
+
+    doc.save(`${name}.pdf`);
+  }, [props, fileName]);
 
   return (
     <button
