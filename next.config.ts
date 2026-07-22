@@ -1,9 +1,5 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-  turbopack: {
-    root: "C:\\Users\\KAIRO VILANE NATHAN\\Desktop\\SA Innovation\\sa-innovation-nextjs",
-  },
-};
+const nextConfig: NextConfig = {};
 
 export default nextConfig;
