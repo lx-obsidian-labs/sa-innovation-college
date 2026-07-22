@@ -194,8 +194,8 @@ export default function Footer() {
             &copy; {currentYear} SA Innovation College. All rights reserved.
           </p>
           <div className="flex items-center gap-4 text-xs text-[var(--color-gray-500)]">
-            <Link href="/privacy" className="hover:text-[var(--color-gray-300)] transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-[var(--color-gray-300)] transition-colors">Terms & Conditions</Link>
+            <Link href="/contact" className="hover:text-[var(--color-gray-300)] transition-colors">Contact Us</Link>
+            <Link href="/about" className="hover:text-[var(--color-gray-300)] transition-colors">About</Link>
           </div>
         </Container>
       </div>

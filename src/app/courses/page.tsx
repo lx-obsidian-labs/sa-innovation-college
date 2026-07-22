@@ -3,6 +3,7 @@ import Container from "@/components/layout/Container";
 import PageHero from "@/components/layout/PageHero";
 import Button from "@/components/ui/Button";
 import CourseFilterGrid from "@/components/courses/CourseFilterGrid";
+import { categoryImages } from "@/lib/course-images";
 
 export const metadata: Metadata = {
   title: "Our Courses | SA Innovation College",
@@ -25,24 +26,6 @@ interface CategoryGroup {
   shortLabel: string;
   courses: CourseItem[];
 }
-
-const categoryImages: Record<string, string> = {
-  "Computer & Digital Skills": "/images/001.jpg",
-  "Business & Administration": "/images/SA-INNOVATION-COLLEGE-2-scaled.webp",
-  "Customer Service & Hospitality": "/images/Intro-Home-page-new.png",
-  "Marketing & Sales": "/images/SA-INNOVATION-COLLEGE2-scaled.jpg",
-  "Management & Entrepreneurship": "/images/SA-INNOVATION-COLLEGE3-scaled.jpg",
-  "Finance & Accounting": "/images/002.jpg",
-  "Human Resources": "/images/blogs01.jpg",
-  "Education & Training": "/images/sa-innovation-graduation.webp",
-  "Early Childhood Development": "/images/blogs01.jpg",
-  "Health & Safety": "/images/SA-INNOVATION-COLLEGE-2-scaled.webp",
-  "Security & Legal Studies": "/images/SA-INNOVATION-COLLEGE3-scaled.jpg",
-  "Engineering": "/images/SA-INNOVATION-COLLEGE2-scaled.jpg",
-  "IT & Software Development": "/images/001.jpg",
-  "Health & Social Services": "/images/blogs01.jpg",
-  "default": "/images/SA-INNOVATION-COLLEGE-2-scaled.webp",
-};
 
 const categoryGroups: CategoryGroup[] = [
   {

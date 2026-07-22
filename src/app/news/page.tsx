@@ -15,7 +15,7 @@ const articles = [
     title: "New Intake Open for 2026",
     excerpt:
       "Applications are now open for our January 2026 intake across all programmes. Apply early to secure your spot.",
-    href: "/news/2026-intake-applications-open",
+    href: "/apply",
     img: "/images/blogs01.jpg",
   },
   {
@@ -23,7 +23,7 @@ const articles = [
     title: "Computer Literacy Now Free",
     excerpt:
       "SA Innovation College launches free basic computer literacy programme to empower our community with essential digital skills.",
-    href: "/news/free-computer-literacy-launch",
+    href: "/courses/free-computer-literacy",
     img: "/images/SA-INNOVATION-COLLEGE3-scaled.jpg",
   },
   {
@@ -31,7 +31,7 @@ const articles = [
     title: "Traffic Officer Programme Update",
     excerpt:
       "Enhanced curriculum and new industry partnerships for our flagship Traffic Officer programme.",
-    href: "/news/traffic-officer-programme-update",
+    href: "/courses/traffic-officer-course",
     img: "/images/002.jpg",
   },
   {
@@ -39,7 +39,7 @@ const articles = [
     title: "New Partnership with MICT SETA",
     excerpt:
       "SA Innovation College partners with MICT SETA to offer accredited ICT qualifications.",
-    href: "/news/mict-seta-partnership",
+    href: "/courses",
     img: "/images/SA-INNOVATION-COLLEGE2-scaled.jpg",
   },
   {
@@ -47,7 +47,7 @@ const articles = [
     title: "Student Success: From Student to Employer",
     excerpt:
       "Read how one SA Innovation graduate went from learner to business owner.",
-    href: "/news/student-success-story",
+    href: "/students",
     img: "/images/001.jpg",
   },
   {
@@ -55,7 +55,7 @@ const articles = [
     title: "Campus Expansion Announcement",
     excerpt:
       "SA Innovation College announces facility upgrades and expanded classroom capacity.",
-    href: "/news/campus-expansion",
+    href: "/contact",
     img: "/images/hero-horizontal.jpg",
   },
 ];

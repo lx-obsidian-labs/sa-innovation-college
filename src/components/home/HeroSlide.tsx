@@ -8,7 +8,6 @@ interface HeroSlideProps {
 
 export default function HeroSlide({ slide, index, current }: HeroSlideProps) {
   const isActive = index === current;
-  const prev = index === current - 1 || (current === 0 && index === 0);
 
   return (
     <div

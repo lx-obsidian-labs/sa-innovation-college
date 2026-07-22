@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/layout/Container";
 import Button from "@/components/ui/Button";
+import { categoryImages, heroGradients } from "@/lib/course-images";
 
 interface CourseData {
   slug: string;
@@ -1748,23 +1749,6 @@ export async function generateMetadata({
   };
 }
 
-const categoryImages: Record<string, string> = {
-  "Computer & Digital Skills": "/images/001.jpg",
-  "Business & Administration": "/images/SA-INNOVATION-COLLEGE-2-scaled.webp",
-  "Customer Service & Hospitality": "/images/Intro-Home-page-new.png",
-  "Marketing & Sales": "/images/SA-INNOVATION-COLLEGE2-scaled.jpg",
-  "Management & Entrepreneurship": "/images/SA-INNOVATION-COLLEGE3-scaled.jpg",
-  "Finance & Accounting": "/images/002.jpg",
-  "Human Resources": "/images/blogs01.jpg",
-  "Education & Training": "/images/sa-innovation-graduation.webp",
-  "Early Childhood Development": "/images/blogs01.jpg",
-  "Health & Safety": "/images/SA-INNOVATION-COLLEGE-2-scaled.webp",
-  "Security & Legal Studies": "/images/SA-INNOVATION-COLLEGE3-scaled.jpg",
-  "Engineering": "/images/SA-INNOVATION-COLLEGE2-scaled.jpg",
-  "IT & Software Development": "/images/001.jpg",
-  "Health & Social Services": "/images/blogs01.jpg",
-};
-
 export default async function CourseDetailPage({
   params,
 }: {
@@ -1812,25 +1796,7 @@ export default async function CourseDetailPage({
     );
   }
 
-  const heroImage = categoryImages[course.category] || "/images/SA-INNOVATION-COLLEGE-2-scaled.webp";
-
-  const heroGradients: Record<string, string> = {
-    "Computer & Digital Skills": "from-purple-900/80 via-purple-800/60",
-    "Business & Administration": "from-blue-900/80 via-blue-800/60",
-    "Customer Service & Hospitality": "from-orange-900/80 via-orange-800/60",
-    "Marketing & Sales": "from-amber-900/80 via-amber-800/60",
-    "Management & Entrepreneurship": "from-emerald-900/80 via-emerald-800/60",
-    "Finance & Accounting": "from-green-900/80 via-green-800/60",
-    "Human Resources": "from-teal-900/80 via-teal-800/60",
-    "Education & Training": "from-indigo-900/80 via-indigo-800/60",
-    "Early Childhood Development": "from-rose-900/80 via-rose-800/60",
-    "Health & Safety": "from-red-900/80 via-red-800/60",
-    "Security & Legal Studies": "from-blue-900/80 via-blue-800/60",
-    "Engineering": "from-cyan-900/80 via-cyan-800/60",
-    "IT & Software Development": "from-violet-900/80 via-violet-800/60",
-    "Health & Social Services": "from-pink-900/80 via-pink-800/60",
-  };
-
+  const heroImage = categoryImages[course.category] || categoryImages["default"];
   const heroGradient = heroGradients[course.category] || "from-blue-900/80 via-blue-800/60";
 
   return (
@@ -2088,7 +2054,7 @@ export default async function CourseDetailPage({
                     <Button
                       variant="outline"
                       size="lg"
-                      href={`https://wa.me/27761234567?text=${encodeURIComponent(`Hi, I'd like more information about the ${course.title} programme.`)}`}
+                      href={`https://wa.me/27727733960?text=${encodeURIComponent(`Hi, I'd like more information about the ${course.title} programme.`)}`}
                       className="w-full"
                     >
                       <svg
