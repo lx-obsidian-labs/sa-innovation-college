@@ -5,7 +5,7 @@ import { getWhatsAppUrl, getTelUrl } from "@/lib/utils";
 export default function UtilityBar() {
   return (
     <div className="bg-[var(--color-primary-dark)] text-[var(--color-text-inverse)] text-[var(--fs-xs)]">
-      <div className="mx-auto flex max-w-[var(--container-max)] items-center justify-between px-[var(--container-padding)] h-10">
+      <div className="mx-auto flex max-w-[var(--container-max)] items-center justify-between px-[var(--container-padding)] h-9">
         <div className="flex items-center gap-6">
           <a
             href={getTelUrl("0800 014 568")}

@@ -13,7 +13,6 @@ const accreditations = [
   { name: "AgriSETA", file: "2.png" },
   { name: "TETA", file: "13.png" },
   { name: "FP&M SETA", file: "14.png" },
-  { name: "Cyberdomain Solutions", file: "6.png" },
 ];
 
 export default function AccreditationLogos() {
@@ -22,7 +21,7 @@ export default function AccreditationLogos() {
       <div className="absolute top-20 right-10 w-72 h-72 bg-[var(--color-primary)]/5 rounded-full blur-3xl" aria-hidden />
       <Container>
         <SectionHeader
-          eyebrow="Accreditations & Partners"
+          eyebrow="Accreditations & Regulatory Bodies"
           title="Trusted by Industry Leaders"
           description="We collaborate with leading SETAs, government bodies, and industry partners to ensure our curriculum stays relevant and our graduates are sought after."
           className="mb-12"
