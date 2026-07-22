@@ -147,7 +147,7 @@ export default function FeaturedCourses() {
                 className="group relative flex flex-col rounded-2xl bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg overflow-hidden"
               >
                 <div className="relative flex items-start gap-4 p-5 pb-4">
-                  <div className={`shrink-0 w-12 h-12 rounded-xl ${theme?.iconBg || "bg-gray-100 text-gray-600"} flex items-center justify-center transition-transform duration-300 group-hover:scale-110`}>
+                  <div className={`shrink-0 w-12 h-12 rounded-xl ${theme?.iconBg || "bg-gray-100 text-gray-600"} flex items-center justify-center transition-transform duration-300 group-hover:scale-105`}>
                     {course.icon}
                   </div>
 

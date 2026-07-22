@@ -62,9 +62,9 @@ export default function WhyChooseUs() {
           {features.map((feature, idx) => (
             <div
               key={feature.title}
-              className="group relative flex flex-col items-center text-center rounded-xl border border-[var(--color-gray-200)] bg-[var(--color-surface-raised)] p-8 shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[var(--shadow-lg)]"
+              className="group relative flex flex-col items-center text-center rounded-xl border border-[var(--color-gray-200)] bg-[var(--color-surface-raised)] p-8 shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lg)]"
             >
-              <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-[var(--color-primary)]/10 text-[var(--color-primary)] transition-all duration-300 group-hover:bg-[var(--color-primary)] group-hover:text-white group-hover:scale-110 group-hover:rotate-3">
+              <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-[var(--color-primary)]/10 text-[var(--color-primary)] transition-all duration-300 group-hover:bg-[var(--color-primary)] group-hover:text-white group-hover:scale-105 group-hover:-translate-y-0.5">
                 {feature.icon}
               </div>
 
