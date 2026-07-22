@@ -1,19 +1,24 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
-import Button from "@/components/ui/Button";
+import { useCallback, useRef, useEffect } from "react";
 import Container from "@/components/layout/Container";
+import Button from "@/components/ui/Button";
+import HeroSlide from "./HeroSlide";
+import HeroBenefitCards from "./HeroBenefitCards";
+import CarouselControls from "./CarouselControls";
+import CarouselPagination from "./CarouselPagination";
+import { useHeroCarousel } from "./use-hero-carousel";
+import type { SlideData, BenefitCard } from "./hero-carousel.types";
 import { getWhatsAppUrl } from "@/lib/utils";
 
-const slides = [
+const slides: SlideData[] = [
   {
     image: "/images/SA-INNOVATION-COLLEGE-2-scaled.webp",
     tag: "Applications Open for 2026",
     title: "Your Future in Education",
     highlight: "Starts Here",
     tagline: "Through Knowledge, We Grow Towards Excellence",
-    description:
-      "At SA Innovation College, we empower learners with knowledge, skills, and innovation to unlock opportunities. From world-class courses to practical training, we're here to help you build a brighter tomorrow.",
+    description: "Empowering learners with knowledge, skills, and innovation to unlock career opportunities.",
     cta: { text: "Explore Courses", href: "/courses" },
     secondary: { text: "Talk to Us", href: getWhatsAppUrl("+27727733960") },
   },
@@ -23,8 +28,7 @@ const slides = [
     title: "Industry-Aligned",
     highlight: "Qualifications",
     tagline: "SETA & QCTO Accredited",
-    description:
-      "Our programmes are designed with industry experts to ensure you graduate with the skills employers demand. From law enforcement to digital skills, find your path today.",
+    description: "Industry-aligned programmes designed with experts to ensure you graduate job-ready.",
     cta: { text: "View Programmes", href: "/courses" },
     secondary: { text: "Contact Us", href: "/contact" },
   },
@@ -34,14 +38,13 @@ const slides = [
     title: "Education for",
     highlight: "Everyone",
     tagline: "Accessible Learning Opportunities",
-    description:
-      "We believe education should be accessible to all. Many of our programmes don't require a matric certificate. Start your journey with SA Innovation College today.",
+    description: "Education accessible to all — no matric required for select programmes.",
     cta: { text: "Apply Now", href: "/apply" },
     secondary: { text: "Chat on WhatsApp", href: getWhatsAppUrl("+27727733960") },
   },
 ];
 
-const benefitCards = [
+const benefitCards: BenefitCard[] = [
   {
     icon: (
       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -72,56 +75,54 @@ const benefitCards = [
 ];
 
 export default function HeroCarousel() {
-  const [current, setCurrent] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(false);
+  const { context, dispatch } = useHeroCarousel(slides.length);
+  const sectionRef = useRef<HTMLElement>(null);
 
-  const goTo = useCallback(
-    (index: number) => {
-      if (isTransitioning) return;
-      setIsTransitioning(true);
-      setCurrent(index);
-      setTimeout(() => setIsTransitioning(false), 700);
-    },
-    [isTransitioning]
-  );
+  const slide = slides[context.current];
 
-  const next = useCallback(() => goTo((current + 1) % slides.length), [current, goTo]);
-  const prev = useCallback(() => goTo((current - 1 + slides.length) % slides.length), [current, goTo]);
+  const handlePrev = useCallback(() => dispatch({ type: "PREV" }), [dispatch]);
+  const handleNext = useCallback(() => dispatch({ type: "NEXT" }), [dispatch]);
+  const handleGoTo = useCallback((index: number) => dispatch({ type: "GO_TO", index }), [dispatch]);
+  const handleTogglePause = useCallback(() => {
+    dispatch(context.state === "paused" ? { type: "PLAY" } : { type: "PAUSE" });
+  }, [dispatch, context.state]);
 
   useEffect(() => {
-    const timer = setInterval(next, 7000);
-    return () => clearInterval(timer);
-  }, [next]);
+    const el = sectionRef.current;
+    if (!el) return;
 
-  const slide = slides[current];
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") { e.preventDefault(); dispatch({ type: "PREV" }); }
+      if (e.key === "ArrowRight") { e.preventDefault(); dispatch({ type: "NEXT" }); }
+    };
+
+    el.addEventListener("keydown", handleKey);
+    return () => el.removeEventListener("keydown", handleKey);
+  }, [dispatch]);
 
   return (
-    <section id="hero" className="relative min-h-[85vh] lg:min-h-screen flex items-center overflow-hidden">
+    <section
+      ref={sectionRef}
+      id="hero"
+      className="relative min-h-[70vh] lg:min-h-[75vh] flex items-center overflow-hidden"
+      role="region"
+      aria-roledescription="carousel"
+      aria-label="Featured slides"
+      tabIndex={0}
+      onMouseEnter={() => dispatch({ type: "HOVER_ENTER" })}
+      onMouseLeave={() => dispatch({ type: "HOVER_LEAVE" })}
+      onFocus={() => dispatch({ type: "FOCUS_ENTER" })}
+      onBlur={() => dispatch({ type: "FOCUS_LEAVE" })}
+    >
       {slides.map((s, idx) => (
-        <div
-          key={idx}
-          className="absolute inset-0 transition-all duration-700 ease-in-out"
-          style={{
-            opacity: idx === current ? 1 : 0,
-            transform: `scale(${idx === current ? 1 : 1.05})`,
-            zIndex: idx === current ? 1 : 0,
-          }}
-        >
-          <img
-            src={s.image}
-            alt=""
-            className="h-full w-full object-cover"
-            loading={idx === 0 ? "eager" : "lazy"}
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-primary-dark)]/80 via-[var(--color-primary)]/70 to-[#0B1F3F]/80" />
-        </div>
+        <HeroSlide key={idx} slide={s} index={idx} current={context.current} />
       ))}
 
       <Container className="relative z-10 w-full">
-        <div className="mx-auto max-w-4xl text-center pt-16 lg:pt-0">
+        <div className="mx-auto max-w-4xl text-center pt-12 lg:pt-0">
           <div
-            className="mb-5 inline-flex items-center gap-2 rounded-full border border-[var(--color-accent)]/40 bg-[var(--color-accent)]/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--color-accent)] backdrop-blur-sm"
-            key={`tag-${current}`}
+            className="mb-4 inline-flex items-center gap-2 rounded-full border border-[var(--color-accent)]/40 bg-[var(--color-accent)]/15 px-4 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--color-accent)] backdrop-blur-sm"
+            key={`tag-${context.current}`}
           >
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--color-accent)] opacity-75" />
@@ -131,8 +132,8 @@ export default function HeroCarousel() {
           </div>
 
           <h1
-            className="mb-3 text-[var(--fs-4xl)] font-extrabold leading-[1.05] tracking-tight text-white"
-            key={`title-${current}`}
+            className="mb-2 text-[var(--fs-4xl)] font-extrabold leading-[1.05] tracking-tight text-white"
+            key={`title-${context.current}`}
           >
             <span className="animate-fadeInUp" style={{ animationDelay: "0.1s", display: "inline-block" }}>
               {slide.title}
@@ -143,80 +144,47 @@ export default function HeroCarousel() {
             </span>
           </h1>
 
-          <p className="mb-2 text-lg font-medium text-[var(--color-accent)]/90 animate-fadeInUp" style={{ animationDelay: "0.25s" }} key={`tagline-${current}`}>
+          <p className="mb-2 text-lg font-medium text-[var(--color-accent)]/90 animate-fadeInUp" style={{ animationDelay: "0.25s" }} key={`tagline-${context.current}`}>
             {slide.tagline}
           </p>
 
-          <p className="mx-auto mb-8 max-w-2xl text-base leading-relaxed text-white/80 animate-fadeInUp" style={{ animationDelay: "0.3s" }} key={`desc-${current}`}>
+          <p className="mx-auto mb-6 max-w-2xl text-base leading-relaxed text-white/80 animate-fadeInUp" style={{ animationDelay: "0.3s" }} key={`desc-${context.current}`}>
             {slide.description}
           </p>
 
-          <div className="flex animate-fadeInUp flex-wrap justify-center gap-4 mb-12" style={{ animationDelay: "0.4s" }} key={`cta-${current}`}>
+          <div className="flex animate-fadeInUp flex-wrap justify-center gap-4 mb-8" style={{ animationDelay: "0.4s" }} key={`cta-${context.current}`}>
             <Button variant="accent" size="lg" href={slide.cta.href} className="shadow-lg shadow-[var(--color-accent)]/25">
               {slide.cta.text}
             </Button>
-            <Button
-              variant="secondary"
-              size="lg"
-              href={slide.secondary.href}
-              className="!border-white/40 !text-white hover:!bg-white/10"
-            >
-              {slide.secondary.text}
-            </Button>
+            {slide.secondary && (
+              <Button
+                variant="secondary"
+                size="lg"
+                href={slide.secondary.href}
+                className="!border-white/40 !text-white hover:!bg-white/10"
+              >
+                {slide.secondary.text}
+              </Button>
+            )}
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto animate-fadeInUp" style={{ animationDelay: "0.5s" }}>
-            {benefitCards.map((card) => (
-              <div
-                key={card.title}
-                className="glass rounded-xl p-4 flex items-center gap-3"
-              >
-                <div className="shrink-0 w-10 h-10 rounded-lg bg-[var(--color-accent)]/20 flex items-center justify-center text-[var(--color-accent)]">
-                  {card.icon}
-                </div>
-                <div className="text-left">
-                  <p className="text-sm font-semibold text-white">{card.title}</p>
-                  <p className="text-xs text-white/70">{card.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <HeroBenefitCards cards={benefitCards} />
         </div>
       </Container>
 
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[var(--color-gray-50)] to-transparent z-10" aria-hidden />
+      <CarouselPagination
+        total={slides.length}
+        current={context.current}
+        onGoTo={handleGoTo}
+      />
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex gap-3">
-        {slides.map((_, idx) => (
-          <button
-            key={idx}
-            onClick={() => goTo(idx)}
-            className={`h-2 rounded-full transition-all duration-300 ${
-              idx === current ? "w-8 bg-[var(--color-accent)]" : "w-2 bg-white/40 hover:bg-white/60"
-            }`}
-            aria-label={`Go to slide ${idx + 1}`}
-          />
-        ))}
-      </div>
-
-      <button
-        onClick={prev}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-all duration-200 opacity-0 lg:opacity-100"
-        aria-label="Previous slide"
-      >
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-        </svg>
-      </button>
-      <button
-        onClick={next}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white hover:bg-white/20 transition-all duration-200 opacity-0 lg:opacity-100"
-        aria-label="Next slide"
-      >
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-        </svg>
-      </button>
+      <CarouselControls
+        total={slides.length}
+        isPaused={context.state === "paused"}
+        onPrev={handlePrev}
+        onNext={handleNext}
+        onTogglePause={handleTogglePause}
+      />
     </section>
   );
 }
