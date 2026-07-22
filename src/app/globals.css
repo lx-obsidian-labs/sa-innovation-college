@@ -745,3 +745,154 @@
   outline: none;
   box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.2), 0 0 0 1px var(--color-primary);
 }
+
+@media print {
+  body {
+    font-size: 11pt;
+    color: #000 !important;
+    background: #fff !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  header, footer, .floating-blob, .bg-mesh-gradient, .bg-mesh-gradient-subtle,
+  .bg-noise, [aria-hidden="true"], iframe,
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .print-form-card {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .print-form-card h2,
+  .print-form-card h3 {
+    color: #1B4D8E !important;
+  }
+
+  .print-form-header {
+    text-align: center;
+    border-bottom: 2px solid #1B4D8E;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .print-form-header .logo {
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: #1B4D8E;
+  }
+
+  .print-form-header .subtitle {
+    font-size: 0.85rem;
+    color: #555;
+    margin-top: 0.25rem;
+  }
+
+  .print-field-group {
+    margin-bottom: 0.75rem;
+  }
+
+  .print-field-group label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 0.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .print-field-line {
+    border-bottom: 1px solid #999;
+    height: 1.6rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .print-field-line-sm {
+    border-bottom: 1px solid #999;
+    height: 1.2rem;
+    margin-bottom: 0.2rem;
+    width: 90%;
+  }
+
+  .print-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .print-grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .print-grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .print-section-title {
+    font-size: 0.9rem;
+    font-weight: 800;
+    color: #1B4D8E;
+    border-bottom: 1px solid #1B4D8E;
+    padding-bottom: 0.25rem;
+    margin-top: 1rem;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .print-footer {
+    text-align: center;
+    font-size: 0.7rem;
+    color: #888;
+    margin-top: 2rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid #ccc;
+  }
+
+  .print-declaration {
+    margin-top: 1.5rem;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    font-size: 0.75rem;
+    line-height: 1.4;
+    color: #333;
+  }
+
+  .print-checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .print-checkbox {
+    width: 1rem;
+    height: 1rem;
+    border: 1px solid #333;
+  }
+
+  .print-signature-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  @page {
+    margin: 1.5cm;
+  }
+}

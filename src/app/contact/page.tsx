@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Container from "@/components/layout/Container";
 import PageHero from "@/components/layout/PageHero";
 import ContactForm from "@/components/ui/ContactForm";
+import DownloadPdfButton from "@/components/ui/DownloadPdfButton";
+import { PrintableContactForm } from "@/components/ui/PrintableForm";
 import { getWhatsAppUrl, getTelUrl } from "@/lib/utils";
 import Icon from "@/components/ui/Icon";
 
@@ -96,14 +98,19 @@ export default function ContactPage() {
             </div>
 
             <div>
-              <h2 className="text-[var(--fs-2xl)] font-bold text-[var(--color-text-primary)] mb-2">
-                Send Us a Message
-              </h2>
+              <div className="flex items-center justify-between mb-2 flex-wrap gap-3">
+                <h2 className="text-[var(--fs-2xl)] font-bold text-[var(--color-text-primary)]">
+                  Send Us a Message
+                </h2>
+                <DownloadPdfButton targetId="contact-form-section" label="Download Form (PDF)" />
+              </div>
               <p className="text-[var(--color-text-secondary)] mb-8">
                 Fill in the form below and we&apos;ll get back to you as soon as possible.
               </p>
-
-              <ContactForm />
+              <div id="contact-form-section">
+                <ContactForm />
+                <PrintableContactForm />
+              </div>
             </div>
           </div>
         </Container>
