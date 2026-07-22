@@ -1,6 +1,8 @@
 import Button from "@/components/ui/Button";
 import SectionHeader from "@/components/ui/SectionHeader";
 import Container from "@/components/layout/Container";
+import { StaggerReveal } from "@/components/ui/ScrollReveal";
+import Icon from "@/components/ui/Icon";
 
 const courses = [
   {
@@ -106,6 +108,7 @@ const categoryThemes: Record<string, { badge: string; tag: string; accent: strin
 export default function FeaturedCourses() {
   return (
     <section id="courses" className="relative py-16 md:py-24 overflow-hidden bg-[var(--color-gray-50)]">
+      <div className="absolute inset-0 bg-noise opacity-40 pointer-events-none" aria-hidden />
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute top-0 right-0 w-[40rem] h-[40rem] bg-[var(--color-primary)]/[0.03] rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-[30rem] h-[30rem] bg-[var(--color-accent)]/[0.03] rounded-full blur-3xl" />
@@ -119,20 +122,21 @@ export default function FeaturedCourses() {
           className="mb-12"
         />
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <StaggerReveal className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {courses.map((course) => {
             const theme = categoryThemes[course.category];
             return (
               <a
                 key={course.title}
                 href={course.href}
-                className="group relative flex flex-col rounded-2xl bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg overflow-hidden"
+                className="group relative flex flex-col rounded-2xl bg-white shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl overflow-hidden before:absolute before:inset-0 before:rounded-2xl before:opacity-0 before:transition-opacity before:duration-500 hover:before:opacity-100 before:pointer-events-none before:bg-gradient-to-br before:from-[var(--color-primary)]/[0.04] before:to-transparent"
+                style={{ perspective: "800px" }}
               >
                 <div className="relative h-48 overflow-hidden bg-[var(--color-gray-200)]">
                   <img
                     src={course.image}
                     alt=""
-                    className="h-full w-full object-cover transition-all duration-500 group-hover:scale-105"
+                    className="h-full w-full object-cover transition-all duration-700 group-hover:scale-110"
                     loading="lazy"
                   />
                   <div className={`absolute inset-0 bg-gradient-to-t ${course.gradient}`} />
@@ -141,7 +145,7 @@ export default function FeaturedCourses() {
                     {course.category}
                   </span>
 
-                  <div className="absolute top-3 right-3 flex flex-col gap-1">
+                  <div className="absolute top-3 right-3 flex flex-col gap-1.5">
                     {course.free && (
                       <span className="inline-flex items-center rounded-md bg-emerald-500 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-lg">
                         FREE
@@ -166,43 +170,35 @@ export default function FeaturedCourses() {
                   </div>
                 </div>
 
-                <div className="flex flex-1 flex-col p-4">
+                <div className="flex flex-1 flex-col p-5">
                   <p className="text-sm leading-relaxed text-[var(--color-gray-500)] line-clamp-2 mb-4">
                     {course.description}
                   </p>
 
                   <div className="flex flex-wrap gap-1.5 mb-4">
                     <span className="inline-flex items-center gap-1 rounded-lg bg-[var(--color-gray-50)] border border-[var(--color-gray-200)] px-2 py-1 text-[11px] font-medium text-[var(--color-gray-600)]">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-3 w-3" aria-hidden>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                      </svg>
+                      <Icon name="clock" size={3} />
                       {course.duration}
                     </span>
                     <span className="inline-flex items-center gap-1 rounded-lg bg-[var(--color-gray-50)] border border-[var(--color-gray-200)] px-2 py-1 text-[11px] font-medium text-[var(--color-gray-600)]">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-3 w-3" aria-hidden>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342" />
-                      </svg>
+                      <Icon name="academic-cap" size={3} />
                       {course.nqf}
                     </span>
                     <span className="inline-flex items-center gap-1 rounded-lg bg-[var(--color-gray-50)] border border-[var(--color-gray-200)] px-2 py-1 text-[11px] font-medium text-[var(--color-gray-600)]">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="h-3 w-3" aria-hidden>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-                      </svg>
+                      <Icon name="user" size={3} />
                       {course.mode}
                     </span>
                   </div>
 
                   <div className="mt-auto flex items-center gap-1.5 text-sm font-semibold text-[var(--color-primary)] group/link">
                     <span>View Course Details</span>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="w-4 h-4 transition-transform duration-200 group-hover/link:translate-x-1">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                    </svg>
+                    <Icon name="arrow-right" size={4} className="transition-transform duration-200 group-hover/link:translate-x-1 icon-hover-slide-right" />
                   </div>
                 </div>
               </a>
             );
           })}
-        </div>
+        </StaggerReveal>
 
         <div className="mt-12 text-center">
           <Button variant="accent" size="lg" href="/courses" className="shadow-lg shadow-[var(--color-accent)]/20">

@@ -11,11 +11,12 @@ export default function HeroSlide({ slide, index, current }: HeroSlideProps) {
 
   return (
     <div
-      className="absolute inset-0 transition-all duration-700 ease-in-out"
+      className="absolute inset-0 transition-all duration-1000 ease-in-out"
       style={{
         opacity: isActive ? 1 : 0,
-        transform: `scale(${isActive ? 1 : 1.05})`,
+        transform: `scale(${isActive ? 1 : 1.08})`,
         zIndex: isActive ? 1 : 0,
+        filter: isActive ? "none" : "blur(4px)",
       }}
       role="group"
       aria-roledescription="slide"
@@ -29,7 +30,7 @@ export default function HeroSlide({ slide, index, current }: HeroSlideProps) {
         loading={index === 0 ? "eager" : "lazy"}
         fetchPriority={index === 0 ? "high" : "auto"}
       />
-      <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-primary-dark)]/80 via-[var(--color-primary)]/70 to-[#0B1F3F]/80" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-primary-dark)]/85 via-[var(--color-primary)]/75 to-[#0B1F3F]/85" />
     </div>
   );
 }

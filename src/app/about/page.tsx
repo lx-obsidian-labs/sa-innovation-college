@@ -3,6 +3,7 @@ import Container from "@/components/layout/Container";
 import PageHero from "@/components/layout/PageHero";
 import Button from "@/components/ui/Button";
 import SectionHeader from "@/components/ui/SectionHeader";
+import Icon from "@/components/ui/Icon";
 
 export const metadata: Metadata = {
   title: "About Us | SA Innovation College",
@@ -14,38 +15,22 @@ const values = [
   {
     title: "Excellence",
     description: "We pursue the highest standards in education and service delivery.",
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-8 w-8">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
-      </svg>
-    ),
+    icon: <Icon name="star" size={8} />,
   },
   {
     title: "Innovation",
     description: "We embrace modern technology and creative approaches to learning.",
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-8 w-8">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
-      </svg>
-    ),
+    icon: <Icon name="light-bulb" size={8} />,
   },
   {
     title: "Accessibility",
     description: "We make quality education available to all, regardless of background.",
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-8 w-8">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
-      </svg>
-    ),
+    icon: <Icon name="globe-alt" size={8} />,
   },
   {
     title: "Integrity",
     description: "We operate with honesty, transparency, and accountability.",
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-8 w-8">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
-      </svg>
-    ),
+    icon: <Icon name="check-badge" size={8} />,
   },
 ];
 
@@ -71,9 +56,11 @@ export default function AboutPage() {
         description="Through Knowledge, We Grow Towards Excellence"
       />
 
-      <section className="py-[var(--section-py)]">
+      <section className="py-[var(--section-py)] bg-white relative overflow-hidden">
+        <div className="floating-blob" style={{ width: 350, height: 350, top: "-10%", right: "-5%", opacity: 0.04 }} aria-hidden />
+        <div className="floating-blob" style={{ width: 250, height: 250, bottom: "10%", left: "-8%", opacity: 0.03, animationDelay: "4s" }} aria-hidden />
         <Container>
-          <div className="grid gap-12 md:grid-cols-2 items-center">
+          <div className="grid gap-12 md:grid-cols-2 items-center relative z-10">
             <div>
               <h2 className="mb-4 text-[var(--fs-2xl)] font-bold text-[var(--color-primary)]">Our Mission</h2>
               <p className="text-[var(--color-text-secondary)] leading-relaxed text-[var(--fs-md)]">
@@ -98,20 +85,23 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <section className="bg-[var(--color-surface)] py-[var(--section-py)]">
-        <Container>
+      <section className="bg-[var(--color-surface)] py-[var(--section-py)] relative overflow-hidden">
+        <div className="bg-mesh-gradient-subtle absolute inset-0" aria-hidden />
+        <div className="floating-blob" style={{ width: 300, height: 300, top: "20%", right: "-5%", opacity: 0.05 }} aria-hidden />
+        <Container className="relative z-10">
           <SectionHeader
             title="Our Story"
             description="How SA Innovation College began and where we are today."
             className="mb-12"
           />
           <p className="mx-auto max-w-3xl text-center text-[var(--color-text-secondary)] leading-relaxed text-[var(--fs-md)]">
-            SA Innovation College was founded with a clear purpose — to bridge the skills gap in South Africa by providing accessible, career-focused education. Located in Centurion, Gauteng, we serve a diverse community of learners from across the province and beyond. Our programmes are designed in collaboration with industry experts to ensure our graduates are workplace-ready from day one.
+            SA Innovation College was founded with a clear purpose &mdash; to bridge the skills gap in South Africa by providing accessible, career-focused education. Located in Centurion, Gauteng, we serve a diverse community of learners from across the province and beyond. Our programmes are designed in collaboration with industry experts to ensure our graduates are workplace-ready from day one.
           </p>
           <div className="mt-12 grid grid-cols-2 gap-6 md:grid-cols-4">
             {stats.map((stat) => (
-              <div key={stat.label} className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-6 text-center shadow-[var(--shadow-card)]">
-                <div className="text-[var(--fs-3xl)] font-extrabold text-[var(--color-primary)]">{stat.value}</div>
+              <div key={stat.label} className="group relative rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-6 text-center shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lg)] overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-primary)]/[0.02] to-transparent pointer-events-none" aria-hidden />
+                <div className="text-[var(--fs-3xl)] font-extrabold text-[var(--color-primary)] group-hover:text-[var(--color-accent)] transition-colors">{stat.value}</div>
                 <div className="mt-1 text-sm font-medium uppercase tracking-wider text-[var(--color-text-secondary)]">{stat.label}</div>
               </div>
             ))}
@@ -119,7 +109,7 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <section className="py-[var(--section-py)]">
+      <section className="py-[var(--section-py)] bg-white">
         <Container>
           <SectionHeader
             eyebrow="What We Stand For"
@@ -131,9 +121,9 @@ export default function AboutPage() {
             {values.map((value) => (
               <div
                 key={value.title}
-                className="group rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-6 shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lg)]"
+                className="group rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-6 shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[var(--shadow-lg)]"
               >
-                <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-[var(--color-primary)]/10 text-[var(--color-primary)] transition-colors duration-300 group-hover:bg-[var(--color-primary)] group-hover:text-white">
+                <div className="icon-hover-scale mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-[var(--color-primary)]/10 text-[var(--color-primary)] transition-all duration-300 group-hover:bg-[var(--color-primary)] group-hover:text-white group-hover:shadow-md">
                   {value.icon}
                 </div>
                 <h3 className="mb-2 text-lg font-bold text-[var(--color-text-primary)]">{value.title}</h3>
@@ -144,8 +134,10 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <section className="bg-[var(--color-surface)] py-[var(--section-py)]">
-        <Container>
+      <section className="bg-[var(--color-surface)] py-[var(--section-py)] relative overflow-hidden">
+        <div className="bg-dot-grid-primary absolute inset-0" aria-hidden />
+        <div className="floating-blob" style={{ width: 400, height: 400, top: "-15%", left: "-10%", opacity: 0.04 }} aria-hidden />
+        <Container className="relative z-10">
           <SectionHeader
             eyebrow="Meet Our Team"
             title="Leadership & Faculty"
@@ -156,9 +148,9 @@ export default function AboutPage() {
             {teamMembers.map((member) => (
               <div
                 key={member.name}
-                className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-6 text-center shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lg)]"
+                className="group rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-6 text-center shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[var(--shadow-lg)]"
               >
-                <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-[var(--color-primary)] text-xl font-bold text-white">
+                <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-primary-dark)] text-xl font-bold text-white shadow-md transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg">
                   {member.initials}
                 </div>
                 <h3 className="text-lg font-bold text-[var(--color-text-primary)]">{member.name}</h3>
@@ -170,8 +162,8 @@ export default function AboutPage() {
       </section>
 
       <section className="relative overflow-hidden bg-gradient-to-br from-[var(--color-primary)] via-[var(--color-primary-dark)] to-[#0B1F3F] py-16 md:py-24">
-        <div className="absolute top-0 left-1/3 h-64 w-64 rounded-full bg-[var(--color-accent)]/10 blur-3xl" aria-hidden />
-        <div className="absolute bottom-0 right-1/4 h-80 w-80 rounded-full bg-[var(--color-primary-light)]/10 blur-3xl" aria-hidden />
+        <div className="absolute top-0 left-1/3 h-64 w-64 rounded-full bg-[var(--color-accent)]/10 blur-3xl animate-float" aria-hidden />
+        <div className="absolute bottom-0 right-1/4 h-80 w-80 rounded-full bg-[var(--color-primary-light)]/10 blur-3xl animate-float" style={{ animationDelay: "2s" }} aria-hidden />
         <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)", backgroundSize: "40px 40px" }} aria-hidden />
         <Container className="relative z-10">
           <div className="mx-auto max-w-3xl text-center">

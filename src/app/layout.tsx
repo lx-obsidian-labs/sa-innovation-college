@@ -7,7 +7,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppSupport from "@/components/home/WhatsAppSupport";
 import BackToTop from "@/components/layout/BackToTop";
-import RouteProgress from "@/components/ui/RouteProgress";
+import RouteProgress, { ReadingProgress } from "@/components/ui/RouteProgress";
 import { ToastProvider } from "@/components/ui/Toast";
 
 const inter = Inter({
@@ -95,6 +95,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} h-full`}>
       <body className="min-h-full flex flex-col font-[var(--font-family-body)]">
         <RouteProgress />
+        <ReadingProgress />
         <SkipLink />
         <ToastProvider>
           <UtilityBar />

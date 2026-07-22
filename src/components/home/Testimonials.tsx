@@ -1,5 +1,7 @@
 import SectionHeader from "@/components/ui/SectionHeader";
 import Container from "@/components/layout/Container";
+import { StaggerReveal } from "@/components/ui/ScrollReveal";
+import Icon from "@/components/ui/Icon";
 
 const testimonials = [
   {
@@ -34,6 +36,7 @@ const avatarGradients = [
 export default function Testimonials() {
   return (
     <section id="testimonials" className="relative bg-[var(--color-gray-50)] py-16 md:py-24 overflow-hidden">
+      <div className="bg-mesh-gradient absolute inset-0" aria-hidden />
       <div
         className="absolute inset-0 opacity-[0.03]"
         style={{
@@ -42,6 +45,8 @@ export default function Testimonials() {
         }}
         aria-hidden
       />
+      <div className="floating-blob" style={{ width: 350, height: 350, top: "10%", left: "-5%", opacity: 0.05 }} aria-hidden />
+      <div className="floating-blob" style={{ width: 250, height: 250, bottom: "5%", right: "-3%", opacity: 0.04, animationDelay: "3s" }} aria-hidden />
 
       <Container className="relative z-10">
         <SectionHeader
@@ -51,7 +56,7 @@ export default function Testimonials() {
           className="mb-12"
         />
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <StaggerReveal className="grid gap-6 md:grid-cols-3">
           {testimonials.map((t, idx) => {
             const initials = t.name
               .split(" ")
@@ -62,7 +67,7 @@ export default function Testimonials() {
             return (
               <div
                 key={t.name}
-                className="group relative flex flex-col rounded-xl border border-[var(--color-gray-200)] bg-[var(--color-surface-raised)] p-6 shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lg)]"
+                className="group relative flex flex-col rounded-xl border border-[var(--color-gray-200)] bg-[var(--color-surface-raised)] p-6 shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[var(--shadow-lg)]"
               >
                 <div className="absolute top-3 right-4 select-none text-6xl font-serif leading-none text-[var(--color-primary)]/10" aria-hidden>
                   &ldquo;
@@ -70,16 +75,7 @@ export default function Testimonials() {
 
                 <div className="mb-4 flex gap-0.5" aria-label={`${t.rating} out of 5 stars`}>
                   {Array.from({ length: t.rating }).map((_, i) => (
-                    <svg
-                      key={i}
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                      className="h-5 w-5 text-[var(--color-accent)]"
-                      aria-hidden
-                    >
-                      <path fillRule="evenodd" d="M10.868 2.884c-.321-1.011-1.416-1.011-1.736 0l-1.83 5.696-5.778.444c-1.072.082-1.5 1.335-.738 2.092L6.596 14.91l-1.082 5.702c-.219 1.155 1.026 2.039 2.004 1.356L10 17.736l3.482 2.232c.978.683 2.223-.201 2.004-1.356l-1.082-5.702 4.076-3.794c.762-.757.334-2.01-.738-2.092l-5.778-.444-1.83-5.696Z" clipRule="evenodd" />
-                    </svg>
+                    <Icon key={i} name="star-solid" size={5} className="text-[var(--color-accent)]" />
                   ))}
                 </div>
 
@@ -88,7 +84,7 @@ export default function Testimonials() {
                 </blockquote>
 
                 <div className="flex items-center gap-3 border-t border-[var(--color-gray-100)] pt-4">
-                  <div className={`flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br ${avatarGradients[idx]} text-sm font-bold text-white shadow-sm`}>
+                  <div className={`flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br ${avatarGradients[idx]} text-sm font-bold text-white shadow-sm ring-2 ring-white`}>
                     {initials}
                   </div>
                   <div>
@@ -101,7 +97,7 @@ export default function Testimonials() {
               </div>
             );
           })}
-        </div>
+        </StaggerReveal>
       </Container>
     </section>
   );

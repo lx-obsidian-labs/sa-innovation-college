@@ -1,4 +1,5 @@
 import Container from "@/components/layout/Container";
+import Icon from "@/components/ui/Icon";
 
 interface PageHeroProps {
   title: string;
@@ -8,7 +9,7 @@ interface PageHeroProps {
 
 export default function PageHero({ title, description, breadcrumbs }: PageHeroProps) {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-primary-dark)] pt-24 pb-12 md:pt-32 md:pb-16">
+    <section className="relative overflow-hidden bg-gradient-to-br from-[var(--color-primary)] via-[var(--color-primary-dark)] to-[#0B1F3F] pt-24 pb-14 md:pt-32 md:pb-20">
       <div
         className="absolute inset-0 opacity-[0.06]"
         style={{
@@ -17,8 +18,9 @@ export default function PageHero({ title, description, breadcrumbs }: PageHeroPr
         }}
         aria-hidden
       />
-      <div className="absolute top-10 right-10 h-64 w-64 rounded-full bg-[var(--color-accent)]/10 blur-3xl" aria-hidden />
-      <div className="absolute bottom-0 left-1/3 h-48 w-48 rounded-full bg-[var(--color-primary-light)]/10 blur-3xl" aria-hidden />
+      <div className="absolute top-10 right-10 h-64 w-64 rounded-full bg-[var(--color-accent)]/10 blur-3xl animate-float" aria-hidden />
+      <div className="absolute bottom-0 left-1/3 h-48 w-48 rounded-full bg-[var(--color-primary-light)]/10 blur-3xl animate-float" style={{ animationDelay: "2s" }} aria-hidden />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--color-accent)]/30 to-transparent" aria-hidden />
 
       <Container className="relative z-10">
         {breadcrumbs && breadcrumbs.length > 0 && (
@@ -26,9 +28,7 @@ export default function PageHero({ title, description, breadcrumbs }: PageHeroPr
             {breadcrumbs.map((crumb, i) => (
               <span key={crumb.href} className="flex items-center gap-2">
                 {i > 0 && (
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-3 w-3" aria-hidden>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                  </svg>
+                  <Icon name="chevron-right" size={3} />
                 )}
                 {i === breadcrumbs.length - 1 ? (
                   <span className="text-white/80" aria-current="page">{crumb.label}</span>

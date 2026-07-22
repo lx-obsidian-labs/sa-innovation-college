@@ -1,6 +1,7 @@
 "use client";
 
-import { createContext, useCallback, useContext, useState, type ReactNode } from "react";
+import { createContext, useCallback, useContext, useState, useEffect, useRef, type ReactNode } from "react";
+import Icon from "@/components/ui/Icon";
 
 type ToastType = "success" | "error" | "info";
 
@@ -8,6 +9,7 @@ interface Toast {
   id: number;
   type: ToastType;
   message: string;
+  progress: number;
 }
 
 interface ToastContextValue {
@@ -18,49 +20,84 @@ const ToastContext = createContext<ToastContextValue | null>(null);
 
 let nextId = 0;
 
+function ToastItem({ t, onClose }: { t: Toast; onClose: (id: number) => void }) {
+  const [exiting, setExiting] = useState(false);
+  const barRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const bar = barRef.current;
+    if (!bar) return;
+    bar.style.transition = "none";
+    bar.style.width = "100%";
+    requestAnimationFrame(() => {
+      bar.style.transition = "width 4s linear";
+      bar.style.width = "0%";
+    });
+  }, []);
+
+  const handleClose = () => {
+    setExiting(true);
+    setTimeout(() => onClose(t.id), 300);
+  };
+
+  const icon = {
+    success: <Icon name="check-circle" size={5} />,
+    error: <Icon name="exclamation-circle" size={5} />,
+    info: <Icon name="information-circle" size={5} />,
+  }[t.type];
+
+  const colors = {
+    success: "bg-emerald-600/95 border-emerald-500",
+    error: "bg-red-600/95 border-red-500",
+    info: "bg-[var(--color-primary)]/95 border-[var(--color-primary)]",
+  }[t.type];
+
+  const progressColors = {
+    success: "bg-emerald-400/60",
+    error: "bg-red-400/60",
+    info: "bg-white/30",
+  }[t.type];
+
+  return (
+    <div
+      className={`pointer-events-auto flex items-start gap-3 rounded-xl px-4 py-3.5 text-sm font-medium shadow-2xl border backdrop-blur-sm transition-all duration-300 ${
+        exiting ? "opacity-0 translate-x-8 scale-95" : "opacity-100 translate-x-0 scale-100"
+      } ${colors}`}
+      role="alert"
+    >
+      <span className="mt-0.5">{icon}</span>
+      <span className="flex-1 text-white">{t.message}</span>
+      <button onClick={handleClose} className="shrink-0 text-white/60 hover:text-white transition-colors" aria-label="Dismiss">
+        <Icon name="x-mark" size={4} />
+      </button>
+      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-black/10 rounded-b-xl overflow-hidden">
+        <div ref={barRef} className={`h-full rounded-full ${progressColors}`} />
+      </div>
+    </div>
+  );
+}
+
 export function ToastProvider({ children }: { children: ReactNode }) {
   const [toasts, setToasts] = useState<Toast[]>([]);
 
+  const removeToast = useCallback((id: number) => {
+    setToasts((prev) => prev.filter((t) => t.id !== id));
+  }, []);
+
   const addToast = useCallback((message: string, type: ToastType = "info") => {
     const id = ++nextId;
-    setToasts((prev) => [...prev, { id, type, message }]);
+    setToasts((prev) => [...prev, { id, type, message, progress: 100 }]);
     setTimeout(() => {
       setToasts((prev) => prev.filter((t) => t.id !== id));
-    }, 4000);
+    }, 4200);
   }, []);
 
   return (
     <ToastContext.Provider value={{ toast: addToast }}>
       {children}
-      <div className="fixed bottom-24 right-6 z-[9999] flex flex-col gap-3 pointer-events-none" aria-live="polite" aria-label="Notifications">
+      <div className="fixed bottom-24 right-6 z-[9999] flex flex-col gap-3 w-full max-w-sm" aria-live="polite" aria-label="Notifications">
         {toasts.map((t) => (
-          <div
-            key={t.id}
-            className={`
-              pointer-events-auto flex items-center gap-3 rounded-xl px-5 py-4 text-sm font-medium shadow-2xl
-              backdrop-blur-md border transition-all duration-500 animate-slideInRight
-              ${t.type === "success" ? "bg-green-600/90 text-white border-green-500" : ""}
-              ${t.type === "error" ? "bg-red-600/90 text-white border-red-500" : ""}
-              ${t.type === "info" ? "bg-[var(--color-primary)]/90 text-white border-[var(--color-primary)]" : ""}
-            `}
-          >
-            {t.type === "success" && (
-              <svg className="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-              </svg>
-            )}
-            {t.type === "error" && (
-              <svg className="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
-              </svg>
-            )}
-            {t.type === "info" && (
-              <svg className="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
-              </svg>
-            )}
-            {t.message}
-          </div>
+          <ToastItem key={t.id} t={t} onClose={removeToast} />
         ))}
       </div>
     </ToastContext.Provider>

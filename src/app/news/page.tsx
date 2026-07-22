@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Container from "@/components/layout/Container";
 import PageHero from "@/components/layout/PageHero";
 import SectionHeader from "@/components/ui/SectionHeader";
+import Icon from "@/components/ui/Icon";
 
 export const metadata: Metadata = {
   title: "News & Updates | SA Innovation College",
@@ -68,7 +69,9 @@ export default function NewsPage() {
         description="Stay informed with the latest from SA Innovation College"
       />
 
-      <section className="py-[var(--section-py)]">
+      <section className="py-[var(--section-py)] bg-gradient-to-b from-white to-[var(--color-gray-50)] relative overflow-hidden">
+        <div className="floating-blob" style={{ width: 400, height: 400, top: "-10%", right: "-5%", opacity: 0.04 }} aria-hidden />
+        <div className="floating-blob" style={{ width: 300, height: 300, bottom: "10%", left: "-8%", opacity: 0.03, animationDelay: "3s" }} aria-hidden />
         <Container>
           <SectionHeader
             eyebrow="Latest News"
@@ -80,17 +83,17 @@ export default function NewsPage() {
             {articles.map((article) => (
               <div
                 key={article.title}
-                className="group relative flex flex-col rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lg)] overflow-hidden"
+                className="group relative flex flex-col rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[var(--shadow-lg)] overflow-hidden"
               >
                 <div className="relative h-48 overflow-hidden">
                   <img
                     src={article.img}
                     alt={article.title}
-                    className="h-full w-full object-cover transition-all duration-500 group-hover:scale-110"
+                    className="h-full w-full object-cover transition-all duration-700 group-hover:scale-110"
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                  <div className="absolute bottom-3 left-4 inline-block rounded-md bg-[var(--color-primary)] px-3 py-1 text-xs font-semibold text-white">
+                  <div className="absolute bottom-3 left-4 inline-flex items-center rounded-md bg-[var(--color-primary)] px-3 py-1.5 text-xs font-semibold text-white shadow-md">
                     {article.date}
                   </div>
                 </div>
@@ -106,9 +109,7 @@ export default function NewsPage() {
                     className="inline-flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wider text-[var(--color-primary)] transition-all duration-200 group-hover:gap-2.5"
                   >
                     Read More
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-                    </svg>
+                    <Icon name="arrow-right" size={4} className="transition-transform duration-200 group-hover:translate-x-1" />
                   </a>
                 </div>
               </div>
@@ -116,7 +117,7 @@ export default function NewsPage() {
           </div>
 
           <div className="mt-12 flex items-center justify-center gap-2 text-sm text-[var(--color-text-secondary)]">
-            <span className="rounded-lg border border-[var(--color-border)] bg-[var(--color-primary)] px-3 py-1.5 font-semibold text-white">
+            <span className="rounded-lg border border-[var(--color-border)] bg-[var(--color-primary)] px-3 py-1.5 font-semibold text-white shadow-sm">
               1
             </span>
             <span className="px-3 py-1.5">Page 1 of 1</span>

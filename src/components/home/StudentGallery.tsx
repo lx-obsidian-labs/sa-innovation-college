@@ -12,7 +12,7 @@ const images = [
 
 export default function StudentGallery() {
   return (
-    <section id="gallery" className="relative py-16 md:py-24 overflow-hidden">
+    <section id="gallery" className="relative py-16 md:py-24 overflow-hidden bg-white">
       <Container>
         <SectionHeader
           eyebrow="Our Community"
@@ -25,17 +25,20 @@ export default function StudentGallery() {
           {images.map((img, idx) => (
             <div
               key={img.src}
-              className={`group relative overflow-hidden rounded-xl bg-[var(--color-gray-100)] ${
+              className={`group relative overflow-hidden rounded-xl bg-[var(--color-gray-100)] shadow-sm transition-all duration-300 hover:shadow-lg ${
                 idx === 0 ? "row-span-2 col-span-2 md:col-span-1" : ""
               }`}
             >
               <img
                 src={img.src}
                 alt={img.alt}
-                className="h-full w-full object-cover transition-all duration-300 group-hover:scale-105"
+                className="h-full w-full object-cover transition-all duration-500 group-hover:scale-110"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                <p className="text-sm text-white font-medium drop-shadow-sm">{img.alt}</p>
+              </div>
             </div>
           ))}
         </div>

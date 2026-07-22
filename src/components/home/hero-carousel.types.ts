@@ -1,5 +1,7 @@
+import type { IconName } from "@/components/ui/Icon";
+
 export interface BenefitCard {
-  icon: React.ReactNode;
+  icon: IconName;
   title: string;
   desc: string;
 }

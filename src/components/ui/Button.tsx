@@ -3,6 +3,7 @@
 import { useCallback, useRef, useState } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import Icon from "@/components/ui/Icon";
 
 type ButtonVariant = "primary" | "secondary" | "accent" | "ghost" | "outline" | "primary-glow";
 type ButtonSize = "sm" | "md" | "lg";
@@ -15,6 +16,8 @@ interface ButtonBaseProps {
   iconLeft?: React.ReactNode;
   iconRight?: React.ReactNode;
   fullWidth?: boolean;
+  disabled?: boolean;
+  loading?: boolean;
 }
 
 interface ButtonAsLink extends ButtonBaseProps {
@@ -63,12 +66,15 @@ export default function Button({
   iconLeft,
   iconRight,
   fullWidth,
+  disabled,
+  loading,
 }: ButtonProps) {
   const [ripples, setRipples] = useState<{ id: number; x: number; y: number }[]>([]);
   const ripplesRef = useRef<number>(0);
 
   const handleClick = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
+      if (disabled || loading) return;
       const id = ++ripplesRef.current;
       const rect = e.currentTarget.getBoundingClientRect();
       const x = e.clientX - rect.left;
@@ -79,11 +85,12 @@ export default function Button({
       }, 600);
       onClick?.(e);
     },
-    [onClick]
+    [onClick, disabled, loading]
   );
 
   const classes = cn(
     "inline-flex items-center justify-center font-semibold uppercase tracking-wide rounded-lg transition-all duration-200 cursor-pointer whitespace-nowrap relative overflow-hidden hover:scale-[1.02] active:scale-[0.98]",
+    (disabled || loading) && "opacity-60 cursor-not-allowed hover:scale-100 active:scale-100",
     VARIANT_CLASSES[variant],
     SIZE_CLASSES[size],
     fullWidth && "w-full",
@@ -92,13 +99,19 @@ export default function Button({
 
   const content = (
     <>
-      {iconLeft && <span className="shrink-0">{iconLeft}</span>}
+      {loading && (
+        <Icon name="spinner" size={4} animated="spin" />
+      )}
+      {!loading && iconLeft && <span className="shrink-0">{iconLeft}</span>}
       {children}
-      {iconRight && <span className="shrink-0">{iconRight}</span>}
+      {!loading && iconRight && <span className="shrink-0">{iconRight}</span>}
     </>
   );
 
   if (href) {
+    if (disabled) {
+      return <span className={classes} aria-disabled>{content}</span>;
+    }
     return (
       <Link href={href} className={classes}>
         {content}
@@ -107,7 +120,7 @@ export default function Button({
   }
 
   return (
-    <button type={type} onClick={handleClick} className={classes}>
+    <button type={type} onClick={handleClick} className={classes} disabled={disabled || loading}>
       {content}
       {ripples.map((r) => (
         <span

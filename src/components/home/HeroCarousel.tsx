@@ -46,29 +46,17 @@ const slides: SlideData[] = [
 
 const benefitCards: BenefitCard[] = [
   {
-    icon: (
-      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75m-2.672-3.493 2.02-2.02a2.25 2.25 0 0 1 3.182 0l.707.707a2.25 2.25 0 0 1 0 3.182l-2.02 2.02m-2.02 2.02-1.59 1.59a2.25 2.25 0 0 1-3.182 0l-.707-.707a2.25 2.25 0 0 1 0-3.182l1.59-1.59m6.364-6.364L21 12l-5.636 5.636m-5.364-5.364L3 12l5.636 5.636" />
-      </svg>
-    ),
+    icon: "check-badge",
     title: "Accredited Programmes",
     desc: "Formally recognised and industry-endorsed qualifications",
   },
   {
-    icon: (
-      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
-      </svg>
-    ),
+    icon: "user-group",
     title: "Expert Instructors",
     desc: "Learn from qualified professionals with real-world experience",
   },
   {
-    icon: (
-      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-      </svg>
-    ),
+    icon: "clock",
     title: "Flexible Learning",
     desc: "Full-time, part-time, and online study options available",
   },
@@ -104,7 +92,7 @@ export default function HeroCarousel() {
     <section
       ref={sectionRef}
       id="hero"
-      className="relative min-h-[70vh] lg:min-h-[75vh] flex items-center overflow-hidden"
+      className="relative min-h-[65vh] lg:min-h-[75vh] flex items-center overflow-hidden"
       role="region"
       aria-roledescription="carousel"
       aria-label="Featured slides"
@@ -114,14 +102,18 @@ export default function HeroCarousel() {
       onFocus={() => dispatch({ type: "FOCUS_ENTER" })}
       onBlur={() => dispatch({ type: "FOCUS_LEAVE" })}
     >
+      <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-primary-darker)] via-[var(--color-primary-dark)] to-[var(--color-primary)]" />
+      <div className="absolute inset-0 bg-noise opacity-50" aria-hidden />
+      <div className="floating-blob" style={{ width: 500, height: 500, background: "var(--color-accent)", top: "-15%", right: "-10%", opacity: 0.05, animationDelay: "0s" }} aria-hidden />
+      <div className="floating-blob" style={{ width: 400, height: 400, background: "var(--color-primary-light)", bottom: "-20%", left: "-5%", opacity: 0.06, animationDelay: "3s" }} aria-hidden />
       {slides.map((s, idx) => (
         <HeroSlide key={idx} slide={s} index={idx} current={context.current} />
       ))}
 
       <Container className="relative z-10 w-full">
-        <div className="mx-auto max-w-4xl text-center pt-12 lg:pt-0">
+        <div className="mx-auto max-w-4xl text-center pt-16 lg:pt-0">
           <div
-            className="mb-4 inline-flex items-center gap-2 rounded-full border border-[var(--color-accent)]/40 bg-[var(--color-accent)]/15 px-4 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--color-accent)] backdrop-blur-sm"
+            className="mb-5 inline-flex items-center gap-2 rounded-full border border-[var(--color-accent)]/40 bg-[var(--color-accent)]/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--color-accent)] backdrop-blur-sm"
             key={`tag-${context.current}`}
           >
             <span className="relative flex h-2 w-2">
@@ -132,7 +124,7 @@ export default function HeroCarousel() {
           </div>
 
           <h1
-            className="mb-2 text-[var(--fs-4xl)] font-extrabold leading-[1.05] tracking-tight text-white"
+            className="mb-3 text-[var(--fs-4xl)] font-extrabold leading-[1.05] tracking-tight text-white"
             key={`title-${context.current}`}
           >
             <span className="animate-fadeInUp" style={{ animationDelay: "0.1s", display: "inline-block" }}>
@@ -148,7 +140,7 @@ export default function HeroCarousel() {
             {slide.tagline}
           </p>
 
-          <p className="mx-auto mb-6 max-w-2xl text-base leading-relaxed text-white/80 animate-fadeInUp" style={{ animationDelay: "0.3s" }} key={`desc-${context.current}`}>
+          <p className="mx-auto mb-8 max-w-2xl text-base leading-relaxed text-white/80 animate-fadeInUp" style={{ animationDelay: "0.3s" }} key={`desc-${context.current}`}>
             {slide.description}
           </p>
 
