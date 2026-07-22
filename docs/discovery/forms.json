@@ -1,0 +1,86 @@
+{
+  "discovery_date": "2026-07-21",
+  "total_forms": 1,
+  "forms": [
+    {
+      "id": "contact-form",
+      "name": "New Form",
+      "page": "/contact/",
+      "method": "POST",
+      "widget_type": "ehp-form.default",
+      "widget_id": "13e372bf",
+      "elementor_page_id": 151,
+      "layout_preset": "quick-connect",
+      "box_shape": "sharp",
+      "button_shape": "round",
+      "button_width": 33,
+      "hidden_fields": [
+        {"name": "post_id", "value": "151"},
+        {"name": "form_id", "value": "13e372bf"},
+        {"name": "referer_title", "value": "Contact"},
+        {"name": "queried_id", "value": "151"}
+      ],
+      "fields": [
+        {
+          "label": "Name",
+          "name": "form_fields[name]",
+          "type": "text",
+          "id": "form-field-name",
+          "placeholder": "Full name",
+          "required": false,
+          "validation": null,
+          "width": {"default": 100, "md": 100, "sm": 100}
+        },
+        {
+          "label": "Phone",
+          "name": "form_fields[field_981c0a4]",
+          "type": "ehp-tel",
+          "id": "form-field-field_981c0a4",
+          "placeholder": "Phone",
+          "required": false,
+          "validation": {
+            "pattern": "[0-9()#&+\\-=.]+",
+            "title": "Only numbers and phone characters (#, -, *, etc) are accepted."
+          },
+          "width": {"default": 100, "md": 100, "sm": 100}
+        },
+        {
+          "label": "Email",
+          "name": "form_fields[email]",
+          "type": "email",
+          "id": "form-field-email",
+          "placeholder": "Email",
+          "required": true,
+          "validation": "email",
+          "width": {"default": 100, "md": 100, "sm": 100}
+        },
+        {
+          "label": "Write us",
+          "name": "form_fields[message]",
+          "type": "textarea",
+          "id": "form-field-message",
+          "placeholder": "Write us",
+          "required": false,
+          "rows": 4,
+          "width": {"default": 100, "md": 100, "sm": 100}
+        }
+      ],
+      "submit_button": {
+        "text": "Send",
+        "type": "submit",
+        "icon": "e-fas-arrow-right",
+        "shape": "round",
+        "width": 33,
+        "alignment": "flex-end"
+      }
+    }
+  ],
+  "other_interactive_elements": [
+    {
+      "type": "floating_contact_widget",
+      "platform": "email",
+      "url": "",
+      "note": "Empty href - broken link"
+    }
+  ]
+}

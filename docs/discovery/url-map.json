@@ -1,0 +1,138 @@
+{
+  "site": {
+    "domain": "www.sainnovationcollege.co.za",
+    "protocol": "https",
+    "wordpress_version": "7.0.2",
+    "theme": "hello-biz",
+    "page_builder": "elementor"
+  },
+  "pages": [
+    {
+      "id": 1,
+      "url": "/",
+      "title": "SA Innovation College",
+      "slug": "home",
+      "last_modified": "2026-07-21",
+      "sections": [
+        "hero",
+        "stats",
+        "features",
+        "courses",
+        "process",
+        "timeline",
+        "testimonials",
+        "partners",
+        "gallery",
+        "faq",
+        "cta-banner"
+      ]
+    },
+    {
+      "id": 2,
+      "url": "/about/",
+      "title": "About - SA Innovation College",
+      "slug": "about",
+      "last_modified": "2025-08-16",
+      "sections": [
+        "hero",
+        "intro-content",
+        "team-section",
+        "client-carousel",
+        "cta-section"
+      ]
+    },
+    {
+      "id": 3,
+      "url": "/courses/",
+      "title": "Courses - SA Innovation College",
+      "slug": "courses",
+      "last_modified": "2025-08-19",
+      "sections": [
+        "hero",
+        "course-grid",
+        "services-section",
+        "cta-section"
+      ]
+    },
+    {
+      "id": 4,
+      "url": "/students/",
+      "title": "For Students - SA Innovation College",
+      "slug": "students",
+      "last_modified": "2025-08-19",
+      "sections": [
+        "hero",
+        "client-carousels",
+        "cta-section",
+        "testimonials",
+        "footer-cta"
+      ]
+    },
+    {
+      "id": 5,
+      "url": "/contact/",
+      "title": "Contact - SA Innovation College",
+      "slug": "contact",
+      "last_modified": "2025-08-16",
+      "sections": [
+        "hero",
+        "contact-form",
+        "map",
+        "cta-footer"
+      ]
+    }
+  ],
+  "navigation": {
+    "main_menu": [
+      {
+        "label": "Home",
+        "url": "/",
+        "order": 1
+      },
+      {
+        "label": "About",
+        "url": "/about/",
+        "order": 2
+      },
+      {
+        "label": "Courses",
+        "url": "/courses/",
+        "order": 3
+      },
+      {
+        "label": "For Students",
+        "url": "/students/",
+        "order": 4
+      },
+      {
+        "label": "Contact",
+        "url": "/contact/",
+        "order": 5
+      }
+    ],
+    "footer_columns": 4,
+    "social_links": [
+      "facebook",
+      "twitter",
+      "linkedin",
+      "instagram"
+    ]
+  },
+  "external_links": [
+    {
+      "url": "https://maps.app.goo.gl/V4LqhhDbZeSUgGN37",
+      "type": "google_maps",
+      "context": "contact_page"
+    },
+    {
+      "url": "tel:0800014568",
+      "type": "phone",
+      "context": "header_and_footer"
+    },
+    {
+      "url": "https://wa.me/27727733960",
+      "type": "whatsapp",
+      "context": "floating_button"
+    }
+  ]
+}

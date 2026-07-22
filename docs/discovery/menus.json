@@ -1,0 +1,86 @@
+{
+  "discovery_date": "2026-07-21",
+  "navigation_block": {
+    "id": 4,
+    "title": "Navigation",
+    "items": [
+      {"label": "About", "url": "/about/", "order": 1},
+      {"label": "Contact", "url": "/contact/", "order": 2},
+      {"label": "Courses", "url": "/courses/", "order": 3},
+      {"label": "For Students", "url": "/students/", "order": 4},
+      {"label": "Home", "url": "/", "order": 5}
+    ]
+  },
+  "header_menu": {
+    "type": "Elementor Hello Plus Header (ehp-header)",
+    "template_id": 63,
+    "items": [
+      {"label": "About", "url": "/about/", "has_submenu": false},
+      {"label": "Courses", "url": "/courses/", "has_submenu": false},
+      {"label": "For Students", "url": "/students/", "has_submenu": false},
+      {"label": "Contact", "url": "/contact/", "has_submenu": false}
+    ],
+    "header_ctas": [
+      {"type": "phone", "label": "0800 014 568", "url": "tel:+27800%20014%20568", "icon": "e-fas-phone-alt"},
+      {"type": "maps", "label": "Visit", "url": "https://maps.app.goo.gl/V4LqhhDbZeSUgGN37", "icon": "e-fas-map-marker-alt"},
+      {"type": "whatsapp", "label": "WhatsApp", "url": "https://wa.me/+27727733960", "icon": "e-fab-whatsapp"}
+    ],
+    "logo": {
+      "url": "/wp-content/uploads/2025/08/SA-INNOVATION-COLLEGE.webp",
+      "alt": "SA INNOVATION COLLEGE",
+      "shape": "sharp"
+    },
+    "sticky": true,
+    "blur_background": true,
+    "scale_logo_on_scroll": true
+  },
+  "footer_menu": {
+    "type": "Elementor Hello Plus Footer (ehp-flex-footer)",
+    "template_id": 60,
+    "preset": "quick-reference",
+    "groups": [
+      {
+        "title": "SA INNOVATION",
+        "description": "Using smart strategies, modern technology, and creative ideas to open opportunities, grow skills, and create real results for our students.",
+        "link": "/"
+      },
+      {
+        "title": "Navigation",
+        "links": [
+          {"label": "About", "url": "/about/"},
+          {"label": "Courses", "url": "/courses/"},
+          {"label": "For Students", "url": "/students/"},
+          {"label": "Contact", "url": "/contact/"}
+        ]
+      },
+      {
+        "title": "Social Links",
+        "links": [
+          {"platform": "Facebook", "url": "", "icon": "icon-facebook", "broken": true},
+          {"platform": "Instagram", "url": "https://www.instagram.com/", "icon": "e-fab-instagram", "broken": true},
+          {"platform": "X (Twitter)", "url": "https://www.twitter.com/", "icon": "e-fab-x-twitter", "broken": true},
+          {"platform": "TikTok", "url": "https://www.tiktok.com/", "icon": "e-fab-tiktok", "broken": true}
+        ]
+      },
+      {
+        "title": "Address",
+        "text": "147 Burger Avenue\n1st Floor Barclays Centre\nLyttelton Manor\nCenturion 0157"
+      }
+    ],
+    "copyright": "©2026. Developed by Cyberdomain Solutions"
+  },
+  "floating_buttons": {
+    "id": 162,
+    "title": "Contact",
+    "platform": "email",
+    "profile_image": "Team-9-300x209.png",
+    "profile_name": "Kiara Foster",
+    "profile_title": "Head of Content",
+    "chat_bubble_name": "Kiara",
+    "chat_bubble_text": "Edit this chat template from WP Admin > Templates > Floating Elements",
+    "cta_text": "Send us a message",
+    "cta_url": "",
+    "animation": "grow",
+    "powered_by": "Elementor"
+  }
+}

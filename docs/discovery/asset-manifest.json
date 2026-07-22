@@ -1,0 +1,585 @@
+{
+  "assets": [
+    {
+      "id": 1,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/SA-INNOVATION-COLLEGE.webp",
+      "type": "image",
+      "format": "webp",
+      "context": "site_logo",
+      "pages": ["home", "about", "courses", "students", "contact"],
+      "alt_text": "SA INNOVATION COLLEGE",
+      "priority": "high"
+    },
+    {
+      "id": 2,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/SA-INNOVATION-COLLEGE-2-scaled.webp",
+      "type": "image",
+      "format": "webp",
+      "context": "hero_background",
+      "pages": ["home"],
+      "alt_text": "",
+      "priority": "high"
+    },
+    {
+      "id": 3,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/sa-innovation-graduation.webp",
+      "type": "image",
+      "format": "webp",
+      "context": "about_cta",
+      "pages": ["home"],
+      "alt_text": "",
+      "priority": "medium"
+    },
+    {
+      "id": 4,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/1.png",
+      "type": "image",
+      "format": "png",
+      "context": "partner_logo",
+      "pages": ["home", "about"],
+      "alt_text": "1.png",
+      "priority": "low"
+    },
+    {
+      "id": 5,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/14.png",
+      "type": "image",
+      "format": "png",
+      "context": "partner_logo",
+      "pages": ["home", "about"],
+      "alt_text": "14.png",
+      "priority": "low"
+    },
+    {
+      "id": 6,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/13.png",
+      "type": "image",
+      "format": "png",
+      "context": "partner_logo",
+      "pages": ["home", "about"],
+      "alt_text": "13.png",
+      "priority": "low"
+    },
+    {
+      "id": 7,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/8.png",
+      "type": "image",
+      "format": "png",
+      "context": "partner_logo",
+      "pages": ["home", "about"],
+      "alt_text": "8.png",
+      "priority": "low"
+    },
+    {
+      "id": 8,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/4.png",
+      "type": "image",
+      "format": "png",
+      "context": "partner_logo",
+      "pages": ["home", "about"],
+      "alt_text": "4.png",
+      "priority": "low"
+    },
+    {
+      "id": 9,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/3.png",
+      "type": "image",
+      "format": "png",
+      "context": "partner_logo",
+      "pages": ["home", "about"],
+      "alt_text": "3.png",
+      "priority": "low"
+    },
+    {
+      "id": 10,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/2.png",
+      "type": "image",
+      "format": "png",
+      "context": "partner_logo",
+      "pages": ["home", "about"],
+      "alt_text": "2.png",
+      "priority": "low"
+    },
+    {
+      "id": 11,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/Favicon-150x150.webp",
+      "type": "image",
+      "format": "webp",
+      "context": "favicon",
+      "pages": ["all"],
+      "alt_text": "",
+      "priority": "high"
+    },
+    {
+      "id": 12,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/Favicon-300x300.webp",
+      "type": "image",
+      "format": "webp",
+      "context": "favicon_large",
+      "pages": ["all"],
+      "alt_text": "",
+      "priority": "medium"
+    },
+    {
+      "id": 13,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/about-banner.webp",
+      "type": "image",
+      "format": "webp",
+      "context": "about_hero",
+      "pages": ["about"],
+      "alt_text": "",
+      "priority": "high"
+    },
+    {
+      "id": 14,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/Untitled-1-1.webp",
+      "type": "image",
+      "format": "webp",
+      "context": "team_member",
+      "pages": ["about"],
+      "alt_text": "",
+      "priority": "medium"
+    },
+    {
+      "id": 15,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/Untitled-4-2.webp",
+      "type": "image",
+      "format": "webp",
+      "context": "team_member",
+      "pages": ["about"],
+      "alt_text": "",
+      "priority": "medium"
+    },
+    {
+      "id": 16,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/Untitled-3-1.webp",
+      "type": "image",
+      "format": "webp",
+      "context": "team_member",
+      "pages": ["about"],
+      "alt_text": "",
+      "priority": "medium"
+    },
+    {
+      "id": 17,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/Asset-1.webp",
+      "type": "image",
+      "format": "webp",
+      "context": "value_icon",
+      "pages": ["about"],
+      "alt_text": "",
+      "priority": "low"
+    },
+    {
+      "id": 18,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/Asset-4-2.webp",
+      "type": "image",
+      "format": "webp",
+      "context": "value_icon",
+      "pages": ["about"],
+      "alt_text": "",
+      "priority": "low"
+    },
+    {
+      "id": 19,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/Asset-2.webp",
+      "type": "image",
+      "format": "webp",
+      "context": "value_icon",
+      "pages": ["about"],
+      "alt_text": "",
+      "priority": "low"
+    },
+    {
+      "id": 20,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/Asset-5-2.webp",
+      "type": "image",
+      "format": "webp",
+      "context": "value_icon",
+      "pages": ["about"],
+      "alt_text": "",
+      "priority": "low"
+    },
+    {
+      "id": 21,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/Post-1.png",
+      "type": "image",
+      "format": "png",
+      "context": "about_content",
+      "pages": ["about"],
+      "alt_text": "Post-1.png",
+      "priority": "medium"
+    },
+    {
+      "id": 22,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/About-Page-intro-pic.png",
+      "type": "image",
+      "format": "png",
+      "context": "about_content",
+      "pages": ["about"],
+      "alt_text": "About-Page-intro-pic.png",
+      "priority": "medium"
+    },
+    {
+      "id": 23,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/Team-5.png",
+      "type": "image",
+      "format": "png",
+      "context": "team_member",
+      "pages": ["about"],
+      "alt_text": "",
+      "priority": "medium"
+    },
+    {
+      "id": 24,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/Team-2-1.png",
+      "type": "image",
+      "format": "png",
+      "context": "team_member",
+      "pages": ["about"],
+      "alt_text": "",
+      "priority": "medium"
+    },
+    {
+      "id": 25,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/Team-3-1.png",
+      "type": "image",
+      "format": "png",
+      "context": "team_member",
+      "pages": ["about"],
+      "alt_text": "",
+      "priority": "medium"
+    },
+    {
+      "id": 26,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/Team-8.png",
+      "type": "image",
+      "format": "png",
+      "context": "team_member",
+      "pages": ["about"],
+      "alt_text": "",
+      "priority": "medium"
+    },
+    {
+      "id": 27,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/Team-4-1.png",
+      "type": "image",
+      "format": "png",
+      "context": "team_member",
+      "pages": ["about"],
+      "alt_text": "",
+      "priority": "medium"
+    },
+    {
+      "id": 28,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/Team-1-1.png",
+      "type": "image",
+      "format": "png",
+      "context": "team_member",
+      "pages": ["about"],
+      "alt_text": "",
+      "priority": "medium"
+    },
+    {
+      "id": 29,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/Team-6.png",
+      "type": "image",
+      "format": "png",
+      "context": "team_member",
+      "pages": ["about"],
+      "alt_text": "",
+      "priority": "medium"
+    },
+    {
+      "id": 30,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/Team-7.png",
+      "type": "image",
+      "format": "png",
+      "context": "team_member",
+      "pages": ["about"],
+      "alt_text": "",
+      "priority": "medium"
+    },
+    {
+      "id": 31,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/Team-9.png",
+      "type": "image",
+      "format": "png",
+      "context": "team_member",
+      "pages": ["about"],
+      "alt_text": "",
+      "priority": "medium"
+    },
+    {
+      "id": 32,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/16.png",
+      "type": "image",
+      "format": "png",
+      "context": "partner_logo",
+      "pages": ["about"],
+      "alt_text": "16.png",
+      "priority": "low"
+    },
+    {
+      "id": 33,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/CTA-About-new.png",
+      "type": "image",
+      "format": "png",
+      "context": "cta_background",
+      "pages": ["about"],
+      "alt_text": "",
+      "priority": "medium"
+    },
+    {
+      "id": 34,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/Our-Services-pic-1.png",
+      "type": "image",
+      "format": "png",
+      "context": "course_image",
+      "pages": ["courses"],
+      "alt_text": "",
+      "priority": "medium"
+    },
+    {
+      "id": 35,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/Our-Services-pic-2.png",
+      "type": "image",
+      "format": "png",
+      "context": "course_image",
+      "pages": ["courses"],
+      "alt_text": "",
+      "priority": "medium"
+    },
+    {
+      "id": 36,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/CTA-Our-Services.png",
+      "type": "image",
+      "format": "png",
+      "context": "cta_background",
+      "pages": ["courses"],
+      "alt_text": "",
+      "priority": "medium"
+    },
+    {
+      "id": 37,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/1-1.png",
+      "type": "image",
+      "format": "png",
+      "context": "client_logo",
+      "pages": ["students"],
+      "alt_text": "1-1.png",
+      "priority": "low"
+    },
+    {
+      "id": 38,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/3-1.png",
+      "type": "image",
+      "format": "png",
+      "context": "client_logo",
+      "pages": ["students"],
+      "alt_text": "3-1.png",
+      "priority": "low"
+    },
+    {
+      "id": 39,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/4-1.png",
+      "type": "image",
+      "format": "png",
+      "context": "client_logo",
+      "pages": ["students"],
+      "alt_text": "4-1.png",
+      "priority": "low"
+    },
+    {
+      "id": 40,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/5.png",
+      "type": "image",
+      "format": "png",
+      "context": "client_logo",
+      "pages": ["students"],
+      "alt_text": "5.png",
+      "priority": "low"
+    },
+    {
+      "id": 41,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/6.png",
+      "type": "image",
+      "format": "png",
+      "context": "client_logo",
+      "pages": ["students"],
+      "alt_text": "6.png",
+      "priority": "low"
+    },
+    {
+      "id": 42,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/7.png",
+      "type": "image",
+      "format": "png",
+      "context": "client_logo",
+      "pages": ["students"],
+      "alt_text": "7.png",
+      "priority": "low"
+    },
+    {
+      "id": 43,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/9.png",
+      "type": "image",
+      "format": "png",
+      "context": "client_logo",
+      "pages": ["students"],
+      "alt_text": "9.png",
+      "priority": "low"
+    },
+    {
+      "id": 44,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/10.png",
+      "type": "image",
+      "format": "png",
+      "context": "client_logo",
+      "pages": ["students"],
+      "alt_text": "10.png",
+      "priority": "low"
+    },
+    {
+      "id": 45,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/11-1.png",
+      "type": "image",
+      "format": "png",
+      "context": "client_logo",
+      "pages": ["students"],
+      "alt_text": "11-1.png",
+      "priority": "low"
+    },
+    {
+      "id": 46,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/12-1.png",
+      "type": "image",
+      "format": "png",
+      "context": "client_logo",
+      "pages": ["students"],
+      "alt_text": "12-1.png",
+      "priority": "low"
+    },
+    {
+      "id": 47,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/15.png",
+      "type": "image",
+      "format": "png",
+      "context": "client_logo",
+      "pages": ["students"],
+      "alt_text": "15.png",
+      "priority": "low"
+    },
+    {
+      "id": 48,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/16-1.png",
+      "type": "image",
+      "format": "png",
+      "context": "client_logo",
+      "pages": ["students"],
+      "alt_text": "16-1.png",
+      "priority": "low"
+    },
+    {
+      "id": 49,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/Our-Clients-pic-2.png",
+      "type": "image",
+      "format": "png",
+      "context": "cta_image",
+      "pages": ["students"],
+      "alt_text": "",
+      "priority": "medium"
+    },
+    {
+      "id": 50,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/Our-Clients-pic-1.png",
+      "type": "image",
+      "format": "png",
+      "context": "cta_image",
+      "pages": ["students"],
+      "alt_text": "",
+      "priority": "medium"
+    },
+    {
+      "id": 51,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/Testimonial-2.png",
+      "type": "image",
+      "format": "png",
+      "context": "testimonial_portrait",
+      "pages": ["students"],
+      "alt_text": "",
+      "priority": "medium"
+    },
+    {
+      "id": 52,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/Testimonial-1.png",
+      "type": "image",
+      "format": "png",
+      "context": "testimonial_portrait",
+      "pages": ["students"],
+      "alt_text": "",
+      "priority": "medium"
+    },
+    {
+      "id": 53,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/Testimonial-3-1.png",
+      "type": "image",
+      "format": "png",
+      "context": "testimonial_portrait",
+      "pages": ["students"],
+      "alt_text": "",
+      "priority": "medium"
+    },
+    {
+      "id": 54,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/Clients-CTA-Footer.jpg",
+      "type": "image",
+      "format": "jpg",
+      "context": "cta_background",
+      "pages": ["students"],
+      "alt_text": "",
+      "priority": "medium"
+    },
+    {
+      "id": 55,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/CTA-contact-us-new.png",
+      "type": "image",
+      "format": "png",
+      "context": "cta_background",
+      "pages": ["contact"],
+      "alt_text": "",
+      "priority": "medium"
+    },
+    {
+      "id": 56,
+      "url": "https://www.sainnovationcollege.co.za/wp-content/uploads/2025/08/Team-9-300x209.png",
+      "type": "image",
+      "format": "png",
+      "context": "floating_widget",
+      "pages": ["about", "courses", "students", "contact"],
+      "alt_text": "",
+      "priority": "low"
+    }
+  ],
+  "summary": {
+    "total_assets": 56,
+    "by_type": {
+      "image": 56
+    },
+    "by_format": {
+      "webp": 12,
+      "png": 41,
+      "jpg": 3
+    },
+    "by_priority": {
+      "high": 5,
+      "medium": 28,
+      "low": 23
+    },
+    "issues": {
+      "missing_alt_text": 42,
+      "poor_alt_text": 14,
+      "total_issues": 56
+    }
+  }
+}

@@ -1,0 +1,247 @@
+{
+  "discovery_date": "2026-07-21",
+  "source": "https://www.sainnovationcollege.co.za",
+  "wordpress_version": "7.0.2",
+  "total_pages": 5,
+  "total_posts": 0,
+  "pages": [
+    {
+      "id": 67,
+      "slug": "home",
+      "url": "/",
+      "title": "Home",
+      "rendered_title": "SA INNOVATION – Knowledge Growth Excellence",
+      "canonical": "https://www.sainnovationcollege.co.za/",
+      "template": "elementor_header_footer",
+      "elementor_id": 67,
+      "last_modified": "2026-07-21",
+      "meta_description": null,
+      "og_tags": null,
+      "twitter_cards": null,
+      "schema": null,
+      "featured_media": 0,
+      "sections": [
+        "hero (flex-hero)",
+        "about (cta showcase)",
+        "courses (cta focus + 3 icon-boxes)",
+        "partners (heading + image-carousel)",
+        "cta-grow (gradient + waves divider + image)"
+      ],
+      "headings": {
+        "h1": ["Your future in education is ready to take off"],
+        "h2": ["We provide innovative education that shapes your future.", "We empower real futures", "They believe in us", "Want to grow your future?", "SA INNOVATION"],
+        "h3": ["Through Knowledge, We Grow Towards Excellence.", "FREE Computer Literacy", "Table Service Course", "Traffic Officer Course", "Meet our Training & Corporate Partners"]
+      },
+      "forms": 0,
+      "images_on_page": 11,
+      "internal_links": 4,
+      "external_links": 4,
+      "buttons_ctas": 9
+    },
+    {
+      "id": 95,
+      "slug": "about",
+      "url": "/about/",
+      "title": "About",
+      "rendered_title": "About – SA INNOVATION",
+      "canonical": "https://www.sainnovationcollege.co.za/about/",
+      "template": "elementor_header_footer",
+      "elementor_id": 95,
+      "last_modified": "2025-08-16",
+      "meta_description": null,
+      "og_tags": null,
+      "twitter_cards": null,
+      "schema": null,
+      "featured_media": 0,
+      "sections": [
+        "hero (gradient + waves bottom)",
+        "zigzag (2 items)",
+        "values (4 columns) + cta-text",
+        "team (9 image-boxes)",
+        "clients (image-carousel 7 slides)",
+        "cta-bottom (gradient + waves top)"
+      ],
+      "headings": {
+        "h1": ["About us"],
+        "h2": ["We go beyond", "Digital lovers", "We believe in hard work and dedication", "The faces behind our success", "We work for you", "Do you want to grow your business?", "SA INNOVATION"],
+        "h3": ["Behind the scenes at Beyond", "Your dream. Our mission.", "Meet our amazing team", "Timothy Powell", "Jennie Ryan", "Susan Poore", "Lisa R. Boone", "Rod Mikey", "Edward Smith", "Jennie Stone", "Nichole Reed", "Kiara Foster", "Meet our clients"],
+        "h4": ["We stop at nothing", "We love to explore", "We take it step-by-step", "We keep it simple"]
+      },
+      "team_members": [
+        {"name": "Timothy Powell", "role": "Creative Director", "image": "Team-5.png"},
+        {"name": "Jennie Ryan", "role": "Art Director", "image": "Team-2-1.png"},
+        {"name": "Susan Poore", "role": "Digital Consultant", "image": "Team-3-1.png"},
+        {"name": "Lisa R. Boone", "role": "PPC Ninja", "image": "Team-8.png"},
+        {"name": "Rod Mikey", "role": "SEO Specialist", "image": "Team-4-1.png"},
+        {"name": "Edward Smith", "role": "Strategy Dreamer", "image": "Team-1-1.png"},
+        {"name": "Jennie Stone", "role": "Social Media", "image": "Team-6.png"},
+        {"name": "Nichole Reed", "role": "Senior Designer", "image": "Team-7.png"},
+        {"name": "Kiara Foster", "role": "Head of Content", "image": "Team-9.png"}
+      ],
+      "partner_logos": ["1.png", "14.png", "13.png", "8.png", "4.png", "3.png", "16.png"],
+      "forms": 0,
+      "images_on_page": 21,
+      "internal_links": 4,
+      "external_links": 6,
+      "buttons_ctas": 10
+    },
+    {
+      "id": 112,
+      "slug": "courses",
+      "url": "/courses/",
+      "title": "Courses",
+      "rendered_title": "Courses – SA INNOVATION",
+      "canonical": "https://www.sainnovationcollege.co.za/courses/",
+      "template": "elementor_header_footer",
+      "elementor_id": 112,
+      "last_modified": "2025-08-19",
+      "meta_description": null,
+      "og_tags": null,
+      "twitter_cards": null,
+      "schema": null,
+      "featured_media": 0,
+      "sections": [
+        "hero (gradient + waves bottom)",
+        "services-intro + 9 service-cards",
+        "increase-sales + images",
+        "faq (2 toggle groups, 8 questions)",
+        "cta-bottom (gradient + waves top)"
+      ],
+      "headings": {
+        "h1": ["Our services"],
+        "h2": ["One-stop digital agency", "Increase sales", "The ROI experts", "Best practices", "Ask us anything", "We strive to make our clients happy", "SA INNOVATION"],
+        "h3": ["Just say the word, we can do it all!", "A step-by-step roadmap to success", "Social Media", "SEO", "PPC", "Strategy", "Web Design", "Content Marketing", "Graphic Design", "Research", "Strategy", "Rise to the top", "Count on us", "Try, try again", "We have great answers"]
+      },
+      "services": [
+        {"name": "Social Media", "icon": "social-media.svg"},
+        {"name": "SEO", "icon": "SEO.svg"},
+        {"name": "PPC", "icon": "PPC.svg"},
+        {"name": "Strategy", "icon": "Strategy.svg"},
+        {"name": "Web Design", "icon": "Web-Design.svg"},
+        {"name": "Content Marketing", "icon": "content-marketing.svg"},
+        {"name": "Graphic Design", "icon": "Branding.svg"},
+        {"name": "Research", "icon": "Research.svg"},
+        {"name": "Strategy (duplicate)", "icon": "Strategy.svg"}
+      ],
+      "faq_items": [
+        {"q": "What is your best social media product?", "a": "Our top social media product is tailored campaign management..."},
+        {"q": "Should I be on every social network?", "a": "Not necessarily. The best social platforms..."},
+        {"q": "Can good content improve my SEO score?", "a": "Absolutely! Quality content drives traffic..."},
+        {"q": "Can you boost my business fast?", "a": "While results take time, we focus on sustainable growth..."},
+        {"q": "Is print really dead?", "a": "Print is far from dead!..."},
+        {"q": "What is the best advice for a newbie?", "a": "Focus on consistency and authenticity..."},
+        {"q": "Do you provide full service?", "a": "Yes, we offer comprehensive services..."},
+        {"q": "What is your success rate?", "a": "We're proud to have a proven track record..."}
+      ],
+      "forms": 0,
+      "images_on_page": 5,
+      "internal_links": 4,
+      "external_links": 2,
+      "buttons_ctas": 6,
+      "note": "Page contains generic digital agency content, NOT actual college course listings"
+    },
+    {
+      "id": 125,
+      "slug": "students",
+      "url": "/students/",
+      "title": "For Students",
+      "rendered_title": "For Students – SA INNOVATION",
+      "canonical": "https://www.sainnovationcollege.co.za/students/",
+      "template": "elementor_header_footer",
+      "elementor_id": 125,
+      "last_modified": "2025-08-19",
+      "meta_description": null,
+      "og_tags": null,
+      "twitter_cards": null,
+      "schema": null,
+      "featured_media": 0,
+      "sections": [
+        "hero (gradient + waves bottom)",
+        "clients-text + 4 image-carousels (16 logos)",
+        "cta-two-column (images + text)",
+        "testimonials (3 items)",
+        "cta-bottom (gradient + waves top + image)"
+      ],
+      "headings": {
+        "h1": ["Our clients"],
+        "h2": ["Built on trust and collaboration", "Let's grow your business together", "What our clients have to say", "Take a minute to get to know us", "SA INNOVATION"],
+        "h3": ["Welcome to the Beyond family", "Service with a smile", "Tailor-made digital marketing", "We love them"]
+      },
+      "testimonials": [
+        {"name": "Sophie Leornard", "company": "Creative Shark", "quote": "Working with this team has been a game-changer...", "image": "Testimonial-2.png"},
+        {"name": "Herman Norton", "company": "InspireWorks", "quote": "Collaborating with them was a fantastic experience...", "image": "Testimonial-1.png"},
+        {"name": "Amanda Parks", "company": "CYBERO", "quote": "Their professionalism and expertise were evident from the start...", "image": "Testimonial-3-1.png"}
+      ],
+      "client_logos": ["1-1.png", "2.png", "3-1.png", "4-1.png", "5.png", "6.png", "7.png", "8.png", "9.png", "10.png", "11-1.png", "12-1.png", "13.png", "14.png", "15.png", "16-1.png"],
+      "forms": 0,
+      "images_on_page": 24,
+      "internal_links": 4,
+      "external_links": 2,
+      "buttons_ctas": 6
+    },
+    {
+      "id": 151,
+      "slug": "contact",
+      "url": "/contact/",
+      "title": "Contact",
+      "rendered_title": "Contact – SA INNOVATION",
+      "canonical": "https://www.sainnovationcollege.co.za/contact/",
+      "template": "elementor_header_footer",
+      "elementor_id": 151,
+      "last_modified": "2025-08-16",
+      "meta_description": null,
+      "og_tags": null,
+      "twitter_cards": null,
+      "schema": null,
+      "featured_media": 0,
+      "sections": [
+        "hero (gradient + waves bottom)",
+        "contact-form + info-text",
+        "lets-meet + 3 icon-boxes",
+        "cta-bottom (gradient + waves top + image)"
+      ],
+      "headings": {
+        "h1": ["Contact us"],
+        "h2": ["Get in touch with us", "Want to learn more about our services?", "SA INNOVATION"],
+        "h3": ["We'd love to hear from you", "Let's connect and talk about how we can help your business", "Give us a call", "We're on the map", "Write us"],
+        "h4": ["Let's meet"]
+      },
+      "contact_info": {
+        "phone_tollfree": "0800 014 568",
+        "phone_displayed": "209-337-5705",
+        "whatsapp": "+27 72 773 3960",
+        "email_displayed": "beyond@info.com",
+        "address_displayed": "137 Carriage Court",
+        "address_footer": "147 Burger Avenue, 1st Floor Barclays Centre, Lyttelton Manor, Centurion 0157",
+        "maps_url": "https://maps.app.goo.gl/V4LqhhDbZeSUgGN37",
+        "business_hours": "Monday – Friday: 9AM – 6PM"
+      },
+      "forms": [
+        {
+          "name": "New Form",
+          "method": "POST",
+          "widget_type": "ehp-form.default",
+          "fields": [
+            {"label": "Name", "name": "form_fields[name]", "type": "text", "required": false, "placeholder": "Full name"},
+            {"label": "Phone", "name": "form_fields[field_981c0a4]", "type": "ehp-tel", "required": false, "placeholder": "Phone", "pattern": "[0-9()#&+\\-=.]+"},
+            {"label": "Email", "name": "form_fields[email]", "type": "email", "required": true, "placeholder": "Email"},
+            {"label": "Write us", "name": "form_fields[message]", "type": "textarea", "required": false, "placeholder": "Write us", "rows": 4}
+          ],
+          "submit_button": {"text": "Send", "icon": "fas-arrow-right", "shape": "round"}
+        }
+      ],
+      "images_on_page": 3,
+      "internal_links": 4,
+      "external_links": 2,
+      "buttons_ctas": 3
+    }
+  ],
+  "summary": {
+    "total_images_across_all_pages": 64,
+    "total_forms": 1,
+    "total_internal_links": 20,
+    "total_external_links": 16,
+    "total_buttons_ctas": 34,
+    "total_headings": 72
+  }
+}
