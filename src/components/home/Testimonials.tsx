@@ -75,8 +75,7 @@ export default function Testimonials() {
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 20 20"
                       fill="currentColor"
-                      className="h-5 w-5 text-[var(--color-accent)] animate-scaleIn"
-                      style={{ animationDelay: `${i * 100}ms` }}
+                      className="h-5 w-5 text-[var(--color-accent)]"
                       aria-hidden
                     >
                       <path fillRule="evenodd" d="M10.868 2.884c-.321-1.011-1.416-1.011-1.736 0l-1.83 5.696-5.778.444c-1.072.082-1.5 1.335-.738 2.092L6.596 14.91l-1.082 5.702c-.219 1.155 1.026 2.039 2.004 1.356L10 17.736l3.482 2.232c.978.683 2.223-.201 2.004-1.356l-1.082-5.702 4.076-3.794c.762-.757.334-2.01-.738-2.092l-5.778-.444-1.83-5.696Z" clipRule="evenodd" />

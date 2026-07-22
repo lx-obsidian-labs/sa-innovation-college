@@ -32,7 +32,7 @@ export default function StudentGallery() {
               <img
                 src={img.src}
                 alt={img.alt}
-                className="h-full w-full object-cover transition-all duration-500 group-hover:scale-110"
+                className="h-full w-full object-cover transition-all duration-300 group-hover:scale-105"
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

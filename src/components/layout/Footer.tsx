@@ -51,7 +51,7 @@ export default function Footer() {
               <div className="flex items-center gap-3">
                 <a
                   href="#"
-                  className="w-9 h-9 rounded-full bg-[var(--color-gray-800)] flex items-center justify-center hover:bg-[#1877F2] transition-all duration-200 group"
+                  className="w-10 h-10 rounded-full bg-[var(--color-gray-800)] flex items-center justify-center hover:bg-[var(--color-accent)] transition-all duration-200 group"
                   aria-label="Follow us on Facebook"
                 >
                   <svg className="w-4 h-4 text-[var(--color-gray-400)] group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="currentColor">
@@ -60,7 +60,7 @@ export default function Footer() {
                 </a>
                 <a
                   href="#"
-                  className="w-9 h-9 rounded-full bg-[var(--color-gray-800)] flex items-center justify-center hover:bg-gradient-to-br from-[#F58529] via-[#DD2A7B] to-[#8134AF] transition-all duration-200 group"
+                  className="w-10 h-10 rounded-full bg-[var(--color-gray-800)] flex items-center justify-center hover:bg-[var(--color-accent)] transition-all duration-200 group"
                   aria-label="Follow us on Instagram"
                 >
                   <svg className="w-4 h-4 text-[var(--color-gray-400)] group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="currentColor">
@@ -69,7 +69,7 @@ export default function Footer() {
                 </a>
                 <a
                   href="#"
-                  className="w-9 h-9 rounded-full bg-[var(--color-gray-800)] flex items-center justify-center hover:bg-[#000] transition-all duration-200 group"
+                  className="w-10 h-10 rounded-full bg-[var(--color-gray-800)] flex items-center justify-center hover:bg-[var(--color-accent)] transition-all duration-200 group"
                   aria-label="Follow us on X"
                 >
                   <svg className="w-4 h-4 text-[var(--color-gray-400)] group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="currentColor">
@@ -78,7 +78,7 @@ export default function Footer() {
                 </a>
                 <a
                   href="#"
-                  className="w-9 h-9 rounded-full bg-[var(--color-gray-800)] flex items-center justify-center hover:bg-[#0A66C2] transition-all duration-200 group"
+                  className="w-10 h-10 rounded-full bg-[var(--color-gray-800)] flex items-center justify-center hover:bg-[var(--color-accent)] transition-all duration-200 group"
                   aria-label="Follow us on LinkedIn"
                 >
                   <svg className="w-4 h-4 text-[var(--color-gray-400)] group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="currentColor">
@@ -87,7 +87,7 @@ export default function Footer() {
                 </a>
                 <a
                   href="#"
-                  className="w-9 h-9 rounded-full bg-[var(--color-gray-800)] flex items-center justify-center hover:bg-[#111] transition-all duration-200 group"
+                  className="w-10 h-10 rounded-full bg-[var(--color-gray-800)] flex items-center justify-center hover:bg-[var(--color-accent)] transition-all duration-200 group"
                   aria-label="Follow us on TikTok"
                 >
                   <svg className="w-4 h-4 text-[var(--color-gray-400)] group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="currentColor">

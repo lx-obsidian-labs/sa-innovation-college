@@ -127,16 +127,19 @@ export default function Header() {
           : "bg-white shadow-sm"
       )}
     >
-      <Container className="flex items-center justify-between h-16 lg:h-[88px]">
-        <Link href="/" className="flex items-center gap-3 shrink-0">
-          <img
-            src="/images/SA-INNOVATION-COLLEGE.webp"
-            alt="SA Innovation College"
-            width={160}
-            height={48}
-            className={cn("h-10 lg:h-14 w-auto transition-all duration-300", scrolled && "lg:h-12")}
-            loading="eager"
-          />
+      <Container className="flex items-center justify-between h-12 lg:h-[80px]">
+        <Link href="/" className="flex items-center gap-3 shrink-0 group">
+          <div className={cn(
+            "rounded-full overflow-hidden border-2 border-white/80 shadow-sm transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-md",
+            scrolled ? "h-[48px] w-[48px]" : "h-[44px] w-[44px] lg:h-[56px] lg:w-[56px]"
+          )}>
+            <img
+              src="/images/SA-INNOVATION-COLLEGE.webp"
+              alt="SA Innovation College"
+              className="h-full w-full object-cover"
+              loading="eager"
+            />
+          </div>
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1" aria-label="Main navigation">
@@ -145,7 +148,7 @@ export default function Header() {
               <Link
                 href={item.url}
                 className={cn(
-                  "relative inline-flex items-center px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-200",
+                  "relative inline-flex items-center px-3 py-2 text-[15px] font-semibold rounded-lg transition-all duration-200",
                   "after:absolute after:bottom-[2px] after:left-1/2 after:-translate-x-1/2 after:h-[2px] after:w-0 after:bg-[var(--color-primary)] after:rounded-full after:transition-all after:duration-200",
                   "hover:after:w-[60%] hover:text-[var(--color-primary)] hover:bg-[var(--color-gray-50)]",
                   isActive(item.url)
@@ -222,7 +225,7 @@ export default function Header() {
         <div className="hidden lg:flex items-center gap-3">
           <Link
             href="/apply"
-            className="inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold uppercase tracking-wide text-[var(--color-text-inverse)] bg-[var(--color-primary)] rounded-xl hover:bg-[var(--color-primary-dark)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg shadow-md"
+            className="inline-flex items-center justify-center px-5 py-2 h-[44px] text-sm font-bold uppercase tracking-wide text-[var(--color-text-inverse)] bg-[var(--color-primary)] rounded-xl hover:bg-[var(--color-primary-dark)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg shadow-md"
           >
             Apply Now
           </Link>
@@ -231,7 +234,7 @@ export default function Header() {
         <button
           ref={toggleRef}
           type="button"
-          className="lg:hidden inline-flex flex-col items-center justify-center w-11 h-11 rounded-lg hover:bg-[var(--color-gray-100)] transition-colors gap-[5px]"
+          className="lg:hidden inline-flex flex-col items-center justify-center w-10 h-10 rounded-lg hover:bg-[var(--color-gray-100)] transition-colors gap-[5px]"
           onClick={() => setIsOpen(!isOpen)}
           aria-expanded={isOpen}
           aria-controls="mobile-menu"
@@ -245,7 +248,7 @@ export default function Header() {
 
       <div
         className={cn(
-          "fixed inset-0 top-16 z-[var(--z-modal-backdrop)] bg-[var(--color-gray-900)]/50 lg:hidden transition-opacity duration-300",
+          "fixed inset-0 top-12 z-[var(--z-modal-backdrop)] bg-[var(--color-gray-900)]/50 lg:hidden transition-opacity duration-300",
           isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         )}
         onClick={() => setIsOpen(false)}
@@ -256,7 +259,7 @@ export default function Header() {
         ref={menuRef}
         id="mobile-menu"
         className={cn(
-          "fixed top-16 right-0 bottom-0 w-full sm:w-[400px] z-[var(--z-modal)] bg-[var(--color-white)] shadow-xl transform transition-all duration-300 ease-in-out lg:hidden overflow-y-auto",
+          "fixed top-12 right-0 bottom-0 w-full sm:w-[400px] z-[var(--z-modal)] bg-[var(--color-white)] shadow-xl transform transition-all duration-300 ease-in-out lg:hidden overflow-y-auto",
           isOpen ? "translate-x-0" : "translate-x-full"
         )}
         role="dialog"
