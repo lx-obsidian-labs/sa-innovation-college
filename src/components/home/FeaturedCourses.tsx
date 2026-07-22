@@ -129,14 +129,13 @@ export default function FeaturedCourses() {
               <a
                 key={course.title}
                 href={course.href}
-                className="group relative flex flex-col rounded-2xl bg-white shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl overflow-hidden before:absolute before:inset-0 before:rounded-2xl before:opacity-0 before:transition-opacity before:duration-500 hover:before:opacity-100 before:pointer-events-none before:bg-gradient-to-br before:from-[var(--color-primary)]/[0.04] before:to-transparent"
-                style={{ perspective: "800px" }}
+                className="group relative flex flex-col rounded-2xl bg-white shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl overflow-hidden hover-border-glow before:absolute before:inset-0 before:rounded-2xl before:opacity-0 before:transition-opacity before:duration-500 hover:before:opacity-100 before:pointer-events-none before:bg-gradient-to-br before:from-[var(--color-primary)]/[0.04] before:to-transparent"
               >
                 <div className="relative h-48 overflow-hidden bg-[var(--color-gray-200)]">
                   <img
                     src={course.image}
                     alt=""
-                    className="h-full w-full object-cover transition-all duration-700 group-hover:scale-110"
+                    className="h-full w-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
                     loading="lazy"
                   />
                   <div className={`absolute inset-0 bg-gradient-to-t ${course.gradient}`} />
@@ -201,8 +200,8 @@ export default function FeaturedCourses() {
         </StaggerReveal>
 
         <div className="mt-12 text-center">
-          <Button variant="accent" size="lg" href="/courses" className="shadow-lg shadow-[var(--color-accent)]/20">
-            View All Courses &rarr;
+          <Button variant="premium" size="lg" href="/courses" className="shadow-lg shadow-[var(--color-primary)]/20 btn-shine">
+            View All Courses
           </Button>
         </div>
       </Container>

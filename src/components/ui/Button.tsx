@@ -5,7 +5,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import Icon from "@/components/ui/Icon";
 
-type ButtonVariant = "primary" | "secondary" | "accent" | "ghost" | "outline" | "primary-glow";
+type ButtonVariant = "primary" | "secondary" | "accent" | "ghost" | "outline" | "primary-glow" | "premium";
 type ButtonSize = "sm" | "md" | "lg";
 
 interface ButtonBaseProps {
@@ -36,17 +36,19 @@ type ButtonProps = ButtonAsLink | ButtonAsButton;
 
 const VARIANT_CLASSES: Record<ButtonVariant, string> = {
   primary:
-    "bg-[var(--color-primary)] text-[var(--color-text-inverse)] border border-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] hover:border-[var(--color-primary-dark)] shadow-sm hover:shadow-md",
+    "bg-[var(--color-primary)] text-[var(--color-text-inverse)] border border-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] hover:border-[var(--color-primary-dark)] shadow-sm hover:shadow-md btn-shine",
   secondary:
     "bg-transparent text-[var(--color-primary)] border border-[var(--color-primary)] hover:bg-[var(--color-primary)] hover:text-[var(--color-text-inverse)]",
   accent:
-    "bg-[var(--color-accent)] text-[var(--color-gray-900)] border border-[var(--color-accent)] hover:bg-[var(--color-accent-dark)] hover:border-[var(--color-accent-dark)]",
+    "bg-[var(--color-accent)] text-[var(--color-gray-900)] border border-[var(--color-accent)] hover:bg-[var(--color-accent-dark)] hover:border-[var(--color-accent-dark)] btn-shine",
   ghost:
     "bg-transparent text-[var(--color-primary)] border border-transparent hover:bg-[var(--color-gray-100)]",
   outline:
     "bg-transparent text-[var(--color-primary)] border border-[var(--color-gray-300)] hover:border-[var(--color-primary)] hover:bg-[var(--color-gray-50)]",
   "primary-glow":
     "bg-[var(--color-primary)] text-[var(--color-text-inverse)] border border-[var(--color-primary)] shadow-[0_0_20px_rgba(var(--color-primary-rgb),0.4)] hover:shadow-[0_0_30px_rgba(var(--color-primary-rgb),0.6)] hover:bg-[var(--color-primary-dark)]",
+  premium:
+    "bg-gradient-to-r from-[var(--color-primary)] via-[var(--color-primary-light)] to-[var(--color-primary-dark)] text-[var(--color-text-inverse)] border-0 bg-[length:200%_200%] animate-border-flow shadow-md hover:shadow-lg btn-shine",
 };
 
 const SIZE_CLASSES: Record<ButtonSize, string> = {

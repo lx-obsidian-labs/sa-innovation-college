@@ -1,6 +1,8 @@
+"use client";
+
+import { useState, useEffect, useCallback } from "react";
 import SectionHeader from "@/components/ui/SectionHeader";
 import Container from "@/components/layout/Container";
-import { StaggerReveal } from "@/components/ui/ScrollReveal";
 import Icon from "@/components/ui/Icon";
 
 const testimonials = [
@@ -34,6 +36,18 @@ const avatarGradients = [
 ];
 
 export default function Testimonials() {
+  const [current, setCurrent] = useState(0);
+
+  const next = useCallback(() => setCurrent((p) => (p + 1) % testimonials.length), []);
+  const goTo = useCallback((i: number) => setCurrent(i), []);
+
+  useEffect(() => {
+    const t = setInterval(next, 5000);
+    return () => clearInterval(t);
+  }, [next]);
+
+  const visible = (i: number) => (i === current ? "opacity-100 scale-100 z-10" : "opacity-0 scale-95 z-0");
+
   return (
     <section id="testimonials" className="relative bg-[var(--color-gray-50)] py-16 md:py-24 overflow-hidden">
       <div className="bg-mesh-gradient absolute inset-0" aria-hidden />
@@ -56,7 +70,7 @@ export default function Testimonials() {
           className="mb-12"
         />
 
-        <StaggerReveal className="grid gap-6 md:grid-cols-3">
+        <div className="relative mx-auto max-w-3xl min-h-[340px]">
           {testimonials.map((t, idx) => {
             const initials = t.name
               .split(" ")
@@ -67,37 +81,45 @@ export default function Testimonials() {
             return (
               <div
                 key={t.name}
-                className="group relative flex flex-col rounded-xl border border-[var(--color-gray-200)] bg-[var(--color-surface-raised)] p-6 shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[var(--shadow-lg)]"
+                className={`absolute inset-0 transition-all duration-700 ease-in-out ${visible(idx)}`}
+                aria-hidden={idx !== current}
               >
-                <div className="absolute top-3 right-4 select-none text-6xl font-serif leading-none text-[var(--color-primary)]/10" aria-hidden>
-                  &ldquo;
-                </div>
+                <div className="group relative flex flex-col rounded-2xl border border-[var(--color-gray-200)] bg-[var(--color-surface-raised)] p-8 md:p-10 shadow-md text-center items-center hover-border-glow">
+                  <div className="absolute top-4 right-6 select-none text-7xl font-serif leading-none text-[var(--color-primary)]/8" aria-hidden>
+                    &ldquo;
+                  </div>
 
-                <div className="mb-4 flex gap-0.5" aria-label={`${t.rating} out of 5 stars`}>
-                  {Array.from({ length: t.rating }).map((_, i) => (
-                    <Icon key={i} name="star-solid" size={5} className="text-[var(--color-accent)]" />
-                  ))}
-                </div>
+                  <div className="mb-5 flex gap-1" aria-label={`${t.rating} out of 5 stars`}>
+                    {Array.from({ length: t.rating }).map((_, i) => (
+                      <Icon key={i} name="star-solid" size={5} className="text-[var(--color-accent)]" />
+                    ))}
+                  </div>
 
-                <blockquote className="relative mb-5 flex-grow text-sm leading-relaxed text-[var(--color-gray-500)] italic">
-                  &ldquo;{t.quote}&rdquo;
-                </blockquote>
+                  <blockquote className="relative mb-6 text-base md:text-lg leading-relaxed text-[var(--color-gray-500)] italic max-w-xl">
+                    &ldquo;{t.quote}&rdquo;
+                  </blockquote>
 
-                <div className="flex items-center gap-3 border-t border-[var(--color-gray-100)] pt-4">
-                  <div className={`flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br ${avatarGradients[idx]} text-sm font-bold text-white shadow-sm ring-2 ring-white`}>
+                  <div className={`flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br ${avatarGradients[idx]} text-lg font-bold text-white shadow-sm ring-4 ring-white/80 mb-3`}>
                     {initials}
                   </div>
-                  <div>
-                    <strong className="block text-sm font-bold text-[var(--color-gray-900)]">
-                      {t.name}
-                    </strong>
-                    <span className="text-xs text-[var(--color-gray-400)]">{t.programme}</span>
-                  </div>
+                  <strong className="block text-sm font-bold text-[var(--color-gray-900)]">{t.name}</strong>
+                  <span className="text-xs text-[var(--color-gray-400)]">{t.programme}</span>
                 </div>
               </div>
             );
           })}
-        </StaggerReveal>
+        </div>
+
+        <div className="mt-8 flex justify-center gap-2">
+          {testimonials.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => goTo(idx)}
+              className={`h-2.5 rounded-full transition-all duration-300 ${idx === current ? "w-8 bg-[var(--color-primary)]" : "w-2.5 bg-[var(--color-gray-300)] hover:bg-[var(--color-gray-400)]"}`}
+              aria-label={`Go to testimonial ${idx + 1}`}
+            />
+          ))}
+        </div>
       </Container>
     </section>
   );

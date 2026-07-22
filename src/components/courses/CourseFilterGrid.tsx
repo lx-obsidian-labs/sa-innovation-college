@@ -49,7 +49,7 @@ function FilterBar({
               placeholder="Search courses..."
               value={searchQuery}
               onChange={(e) => onSearchChange(e.target.value)}
-              className="w-full rounded-xl border border-[var(--color-gray-200)] bg-white py-2.5 pl-10 pr-10 text-sm text-[var(--color-text-primary)] placeholder-[var(--color-gray-400)] transition-all duration-200 focus:border-[var(--color-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)]/10"
+              className="w-full rounded-xl border border-[var(--color-gray-200)] bg-white py-3 pl-10 pr-10 text-sm text-[var(--color-text-primary)] placeholder-[var(--color-gray-400)] transition-all duration-200 focus:border-[var(--color-primary)] focus:outline-none focus:ring-3 focus:ring-[var(--color-primary)]/10 hover:border-[var(--color-gray-300)]"
             />
             {searchQuery && (
               <button
@@ -66,11 +66,11 @@ function FilterBar({
             <button
               key={label}
               onClick={() => onCategoryChange(label)}
-              className={`whitespace-nowrap rounded-full px-4 py-2 text-xs font-bold uppercase tracking-wide transition-all duration-200 ${
-                activeCategory === label
-                  ? "bg-[var(--color-primary)] text-white shadow-sm"
-                  : "bg-white border border-[var(--color-border)] text-[var(--color-gray-600)] hover:bg-[var(--color-gray-50)] hover:text-[var(--color-gray-900)] hover:border-[var(--color-primary)]/30 hover:-translate-y-0.5"
-              }`}
+      className={`whitespace-nowrap rounded-full px-4 py-2 text-xs font-bold uppercase tracking-wide transition-all duration-200 ${
+        activeCategory === label
+          ? "bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-dark)] text-white shadow-sm"
+          : "bg-white border border-[var(--color-border)] text-[var(--color-gray-600)] hover:bg-[var(--color-gray-50)] hover:text-[var(--color-gray-900)] hover:border-[var(--color-primary)]/30 hover:-translate-y-0.5"
+      }`}
             >
               {label}
             </button>
@@ -93,7 +93,7 @@ function EmptyState({ onClear }: { onClear: () => void }) {
       </p>
       <button
         onClick={onClear}
-        className="inline-flex items-center gap-2 rounded-lg bg-[var(--color-primary)] px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-[var(--color-primary-dark)] hover:-translate-y-0.5 hover:shadow-md"
+        className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-dark)] px-5 py-2.5 text-sm font-semibold text-white transition-all hover:shadow-lg hover:-translate-y-0.5 btn-shine"
       >
         <Icon name="arrow-uturn-left" size={4} />
         Clear Filters
@@ -107,7 +107,7 @@ function LoadMoreButton({ remaining, onLoad }: { remaining: number; onLoad: () =
     <div className="mt-10 text-center">
       <button
         onClick={onLoad}
-        className="inline-flex items-center gap-2 rounded-xl border-2 border-[var(--color-primary)]/20 px-6 py-3 text-sm font-semibold text-[var(--color-primary)] transition-all hover:border-[var(--color-primary)] hover:bg-[var(--color-primary)]/5 hover:-translate-y-0.5 hover:shadow-md"
+        className="inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-bold uppercase tracking-wide text-white bg-gradient-to-r from-[var(--color-primary)] via-[var(--color-primary-light)] to-[var(--color-primary-dark)] bg-[length:200%_200%] animate-border-flow transition-all hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] btn-shine"
       >
         Show {Math.min(9, remaining)} More Courses
         <Icon name="chevron-down" size={4} />
@@ -120,13 +120,13 @@ function CourseCard({ course, imageSrc, gradient }: { course: CourseItem; imageS
   return (
     <Link
       href={`/courses/${course.slug}`}
-      className="group relative flex flex-col rounded-2xl bg-white shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl overflow-hidden"
+      className="group relative flex flex-col rounded-2xl bg-white shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl overflow-hidden hover-border-glow"
     >
       <div className="relative h-44 overflow-hidden bg-[var(--color-gray-200)]">
         <img
           src={imageSrc}
           alt=""
-          className="h-full w-full object-cover transition-all duration-700 group-hover:scale-110"
+          className="h-full w-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
           loading="lazy"
         />
         <div className={`absolute inset-0 bg-gradient-to-t ${gradient}`} />

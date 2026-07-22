@@ -4,15 +4,16 @@ import { cn } from "@/lib/utils";
 
 export type IconName =
   | "academic-cap" | "arrow-down-tray" | "arrow-left" | "arrow-path"
-  | "arrow-right" | "arrow-up" | "arrow-uturn-left" | "briefcase"
-  | "building-library" | "calendar" | "chat-bubble-left-right" | "check"
-  | "check-badge" | "check-circle" | "chevron-down" | "chevron-left"
-  | "chevron-right" | "chevron-up" | "clock" | "currency-dollar"
-  | "display" | "download" | "envelope" | "exclamation-circle"
-  | "exclamation-triangle" | "facebook" | "gift" | "globe-alt"
-  | "heart" | "information-circle" | "instagram" | "light-bulb"
-  | "linkedin" | "magnifying-glass" | "map-pin" | "menu"
-  | "pause" | "phone" | "play" | "search"
+  | "arrow-right" | "arrow-up" | "arrow-uturn-left" | "book-open"
+  | "briefcase" | "building-library" | "calendar"
+  | "chat-bubble-left-right" | "check" | "check-badge" | "check-circle"
+  | "chevron-down" | "chevron-left" | "chevron-right" | "chevron-up"
+  | "clock" | "currency-dollar" | "display" | "download"
+  | "envelope" | "exclamation-circle" | "exclamation-triangle"
+  | "facebook" | "gift" | "globe-alt" | "heart" | "identification"
+  | "information-circle" | "instagram" | "light-bulb" | "linkedin"
+  | "magnifying-glass" | "map-pin" | "megaphone" | "menu"
+  | "paper-airplane" | "pause" | "pencil" | "phone" | "play" | "search"
   | "shield-check" | "shield-health" | "sparkles" | "spinner"
   | "star" | "star-solid" | "tiktok" | "twitter"
   | "user" | "user-group" | "whatsapp" | "x-mark";
@@ -234,6 +235,23 @@ const ICON_PATHS: Record<IconName, { paths: string[]; viewBox?: string; fill?: b
   },
   "x-mark": {
     paths: ["M6 18 18 6M6 6l12 12"]
+  },
+  "book-open": {
+    paths: ["M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"]
+  },
+  identification: {
+    paths: [
+      "M15 9h3.75M15 12h3.75M15 15h3.75M4.5 19.5h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Zm6-10.125a1.875 1.875 0 1 1-3.75 0 1.875 1.875 0 0 1 3.75 0Zm1.294 6.336a6.721 6.721 0 0 1-3.17.789 6.721 6.721 0 0 1-3.168-.789 3.376 3.376 0 0 1 6.338 0Z"
+    ]
+  },
+  megaphone: {
+    paths: ["M10.34 15.84c-.688-.06-1.386-.09-2.09-.09H7.5a4.5 4.5 0 1 1 0-9h.75c.704 0 1.402-.03 2.09-.09m0 9.18c.253.962.584 1.902.99 2.795A3.752 3.752 0 0 0 15 15.75v-3a.75.75 0 0 0-.75-.75h-.75m-2.16 3.24 1.12 4.231a.75.75 0 0 0 1.088.511l4.485-2.242a.75.75 0 0 0 .392-.621l.348-2.878m-7.389-.001a47.612 47.612 0 0 1 6.213-1.09M5.25 9.75v3.75m13.5-3.75a1.5 1.5 0 0 1 1.5 1.5v2.25a1.5 1.5 0 0 1-1.5 1.5h-.75"]
+  },
+  "paper-airplane": {
+    paths: ["M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5"]
+  },
+  pencil: {
+    paths: ["M16.862 4.487l1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"]
   },
 };
 

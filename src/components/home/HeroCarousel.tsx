@@ -106,6 +106,22 @@ export default function HeroCarousel() {
       <div className="absolute inset-0 bg-noise opacity-50" aria-hidden />
       <div className="floating-blob" style={{ width: 500, height: 500, background: "var(--color-accent)", top: "-15%", right: "-10%", opacity: 0.05, animationDelay: "0s" }} aria-hidden />
       <div className="floating-blob" style={{ width: 400, height: 400, background: "var(--color-primary-light)", bottom: "-20%", left: "-5%", opacity: 0.06, animationDelay: "3s" }} aria-hidden />
+      <div className="absolute inset-0 pointer-events-none" aria-hidden>
+        {Array.from({ length: 12 }).map((_, i) => (
+          <div
+            key={i}
+            className="absolute rounded-full bg-white/20 animate-float-particle"
+            style={{
+              width: `${2 + (i % 3)}px`,
+              height: `${2 + (i % 3)}px`,
+              left: `${5 + (i * 8) % 90}%`,
+              top: `${10 + (i * 7) % 80}%`,
+              animationDelay: `${i * 0.7}s`,
+              animationDuration: `${3 + (i % 4)}s`,
+            }}
+          />
+        ))}
+      </div>
       {slides.map((s, idx) => (
         <HeroSlide key={idx} slide={s} index={idx} current={context.current} />
       ))}

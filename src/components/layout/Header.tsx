@@ -226,12 +226,12 @@ export default function Header() {
         </nav>
 
         <div className="hidden lg:flex items-center gap-3">
-          <Link
-            href="/apply"
-            className="inline-flex items-center justify-center px-5 py-2 h-[44px] text-sm font-bold uppercase tracking-wide text-[var(--color-text-inverse)] bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-dark)] rounded-xl hover:from-[var(--color-primary-dark)] hover:to-[var(--color-primary-dark)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg shadow-md"
-          >
-            Apply Now
-          </Link>
+            <Link
+              href="/apply"
+              className="btn-shine inline-flex items-center justify-center px-5 py-2 h-[44px] text-sm font-bold uppercase tracking-wide text-[var(--color-text-inverse)] bg-gradient-to-r from-[var(--color-primary)] via-[var(--color-primary-light)] to-[var(--color-primary-dark)] bg-[length:200%_200%] animate-border-flow rounded-xl transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg shadow-md"
+            >
+              Apply Now
+            </Link>
         </div>
 
         <button
@@ -291,7 +291,7 @@ export default function Header() {
             <Link
               href="/apply"
               onClick={() => setIsOpen(false)}
-              className="block w-full text-center px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-[var(--color-text-inverse)] bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-dark)] rounded-xl hover:from-[var(--color-primary-dark)] hover:to-[var(--color-primary-dark)] transition-all duration-200"
+              className="btn-shine block w-full text-center px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-[var(--color-text-inverse)] bg-gradient-to-r from-[var(--color-primary)] via-[var(--color-primary-light)] to-[var(--color-primary-dark)] bg-[length:200%_200%] animate-border-flow rounded-xl transition-all duration-200"
             >
               Apply Now
             </Link>

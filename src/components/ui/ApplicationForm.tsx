@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback, type FormEvent } from "react";
 import { cn } from "@/lib/utils";
+import Icon, { type IconName } from "@/components/ui/Icon";
 
 const TITLES = ["Mr", "Mrs", "Miss", "Ms", "Dr", "Prof"];
 
@@ -37,6 +38,18 @@ const initialForm: FormValues = {
 
 const STEP_LABELS = ["Personal Info", "Course Selection", "Education & Employment", "Review & Submit"];
 
+function useMediaQuery(query: string) {
+  const [matches, setMatches] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia(query);
+    setMatches(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setMatches(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, [query]);
+  return matches;
+}
+
 export default function ApplicationForm() {
   const [step, setStep] = useState(1);
   const [direction, setDirection] = useState<"forward" | "back">("forward");
@@ -47,6 +60,7 @@ export default function ApplicationForm() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [showConfirm, setShowConfirm] = useState(false);
   const nameRef = useRef<HTMLInputElement>(null);
+  const isMobile = useMediaQuery("(max-width: 639px)");
 
   const hasData = Object.values(form).some((v) => typeof v === "string" && v.trim().length > 0);
 
@@ -138,11 +152,15 @@ export default function ApplicationForm() {
     }
   }
 
+  const inpIcon = (field: string) => cn(
+    "pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 transition-colors duration-200",
+    errors[field] ? "text-red-400" : "text-[var(--color-gray-400)] group-focus-within:text-[var(--color-primary)]"
+  );
   const inp = (field: string) => cn(
-    "w-full px-4 py-3 rounded-lg border bg-[var(--color-white)] text-[var(--color-text-primary)] placeholder-[var(--color-text-muted)] outline-none transition",
+    "w-full rounded-xl border bg-[var(--color-white)] text-[var(--color-text-primary)] placeholder-[var(--color-text-muted)] outline-none transition-all duration-200 text-sm pl-10 pr-4 py-3",
     errors[field]
       ? "border-red-400 focus:border-red-500 focus:ring-3 focus:ring-red-500/10"
-      : "border-[var(--color-border)] focus:border-[var(--color-border-focus)] focus:ring-3 focus:ring-[var(--color-primary)]/10"
+      : "border-[var(--color-border)] focus:border-[var(--color-border-focus)] focus:ring-3 focus:ring-[var(--color-primary)]/10 hover:border-[var(--color-gray-300)]"
   );
 
   const stepContentClass = cn(
@@ -150,13 +168,113 @@ export default function ApplicationForm() {
     direction === "forward" ? "animate-slideInRight" : "animate-slideInLeft"
   );
 
+  const ICONS: Record<string, IconName> = {
+    fullName: "user",
+    idNumber: "identification",
+    dob: "calendar",
+    phone: "phone",
+    email: "envelope",
+    address: "map-pin",
+    startDate: "calendar",
+    category: "academic-cap",
+    course: "book-open",
+    education: "academic-cap",
+    employStatus: "briefcase",
+    hearAbout: "megaphone",
+  };
+
+  function InputField({ field, label, required, type = "text", placeholder, autoFocus }: { field: string; label: string; required?: boolean; type?: string; placeholder?: string; autoFocus?: boolean }) {
+    const id = `af-${field}`;
+    const val = form[field as keyof typeof form] as string;
+    const iconName = ICONS[field];
+    return (
+      <div>
+        <label htmlFor={id} className="block text-sm font-medium text-[var(--color-text-primary)] mb-1.5">{label}{required && <span className="text-red-500 ml-0.5">*</span>}</label>
+        <div className="relative group">
+          {iconName && <Icon name={iconName} size={4} className={inpIcon(field)} />}
+          {type === "textarea" ? (
+            <textarea id={id} rows={2} maxLength={500} value={val}
+              onChange={(e) => setForm({ ...form, [field]: e.target.value })}
+              placeholder={placeholder || `Enter ${label.toLowerCase()}`}
+              className={cn(inp(field), "resize-y min-h-[80px]")}
+            />
+          ) : type === "select" ? (
+            <select id={id} value={val} onChange={(e) => setForm({ ...form, [field]: e.target.value })}
+              className={cn(inp(field), "appearance-none cursor-pointer")}
+            >
+              {placeholder && <option value="">{placeholder}</option>}
+            </select>
+          ) : (
+            <input ref={autoFocus ? nameRef : undefined} autoFocus={autoFocus} type={type} id={id}
+              maxLength={field === "email" ? 200 : field === "phone" ? 20 : field === "idNumber" ? 20 : 100}
+              required={required} value={val}
+              onChange={(e) => setForm({ ...form, [field]: e.target.value })}
+              placeholder={placeholder || `Enter ${label.toLowerCase()}`}
+              className={inp(field)}
+            />
+          )}
+        </div>
+        {errors[field] && (
+          <p className="mt-1.5 flex items-center gap-1 text-xs text-red-500">
+            <Icon name="exclamation-circle" size={3} />
+            {errors[field]}
+          </p>
+        )}
+      </div>
+    );
+  }
+
+  function SelectField({ field, label, required, placeholder, children, autoFocus }: { field: string; label: string; required?: boolean; placeholder: string; children: React.ReactNode; autoFocus?: boolean }) {
+    const id = `af-${field}`;
+    const val = form[field as keyof typeof form] as string;
+    const iconName = ICONS[field];
+    return (
+      <div>
+        <label htmlFor={id} className="block text-sm font-medium text-[var(--color-text-primary)] mb-1.5">{label}{required && <span className="text-red-500 ml-0.5">*</span>}</label>
+        <div className="relative group">
+          {iconName && <Icon name={iconName} size={4} className={inpIcon(field)} />}
+          <select id={id} autoFocus={autoFocus} value={val}
+            onChange={(e) => setForm({ ...form, [field]: e.target.value })}
+            className={cn(inp(field), "appearance-none cursor-pointer")}
+          >
+            <option value="">{placeholder}</option>
+            {children}
+          </select>
+        </div>
+        {errors[field] && (
+          <p className="mt-1.5 flex items-center gap-1 text-xs text-red-500">
+            <Icon name="exclamation-circle" size={3} />
+            {errors[field]}
+          </p>
+        )}
+      </div>
+    );
+  }
+
+  function NavButtons({ nextLabel = "Next Step", showBack = true }: { nextLabel?: string; showBack?: boolean }) {
+    return (
+      <div className="flex gap-3 pt-4">
+        {showBack && (
+          <button type="button" onClick={prevStep}
+            className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold uppercase tracking-wide rounded-xl border border-[var(--color-border)] text-[var(--color-text-primary)] hover:bg-[var(--color-gray-50)] hover:border-[var(--color-gray-300)] transition-all">
+            <Icon name="arrow-left" size={4} />
+            Back
+          </button>
+        )}
+        <button type="button" onClick={nextStep}
+          className="flex-1 inline-flex items-center justify-center gap-2 px-8 py-3 text-sm font-bold uppercase tracking-wide rounded-xl bg-gradient-to-r from-[var(--color-primary)] via-[var(--color-primary-light)] to-[var(--color-primary-dark)] bg-[length:200%_200%] animate-border-flow text-white hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all btn-shine">
+          {nextLabel}
+          <Icon name="arrow-right" size={4} />
+        </button>
+      </div>
+    );
+  }
+
   if (state === "success") {
     return (
-      <div className="flex flex-col items-center justify-center rounded-xl border border-green-200 bg-gradient-to-br from-green-50 to-emerald-50 p-12 text-center animate-scaleIn">
+      <div className="flex flex-col items-center justify-center rounded-2xl border border-green-200 bg-gradient-to-br from-green-50 to-emerald-50 p-12 text-center animate-scaleIn">
         <div className="mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-green-400 to-emerald-500 text-white shadow-lg shadow-green-200">
-          <svg className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-          </svg>
+          <Icon name="check" size={12} />
         </div>
         <h3 className="mb-2 text-2xl font-extrabold text-green-800">Application Submitted!</h3>
         <p className="mb-6 max-w-md text-green-700">{message}</p>
@@ -168,10 +286,8 @@ export default function ApplicationForm() {
           Please save your reference number. Our admissions team will contact you within 2-3 business days.
         </p>
         <button onClick={() => { setState("idle"); setForm(initialForm); setStep(1); setRefNumber(""); }}
-          className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold rounded-lg bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary-dark)] transition-all">
-          <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182" />
-          </svg>
+          className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold rounded-xl bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-dark)] text-white hover:shadow-lg btn-shine transition-all">
+          <Icon name="arrow-uturn-left" size={4} />
           Submit Another Application
         </button>
       </div>
@@ -184,28 +300,27 @@ export default function ApplicationForm() {
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4" onClick={() => setShowConfirm(false)}>
           <div className="max-w-md w-full rounded-2xl bg-white p-6 shadow-2xl animate-scaleIn" onClick={(e) => e.stopPropagation()}>
             <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-[var(--color-accent)]/10 text-[var(--color-accent)]">
-              <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
+              <Icon name="check-badge" size={7} />
             </div>
             <h3 className="text-lg font-bold text-[var(--color-text-primary)] mb-2 text-center">Ready to Submit?</h3>
             <p className="text-sm text-[var(--color-text-secondary)] mb-2 text-center">Please confirm your details are correct. Our admissions team will be in touch within 2-3 business days.</p>
-            <div className="mb-6 rounded-lg bg-[var(--color-gray-50)] p-4 text-sm space-y-1">
+            <div className="mb-6 rounded-xl bg-[var(--color-gray-50)] p-4 text-sm space-y-1 border border-[var(--color-border)]">
               <p><span className="font-medium text-[var(--color-text-muted)]">Name:</span> {form.title ? `${form.title} ` : ""}{form.fullName}</p>
               <p><span className="font-medium text-[var(--color-text-muted)]">Course:</span> {form.course}</p>
               <p><span className="font-medium text-[var(--color-text-muted)]">Phone:</span> {form.phone}</p>
               <p><span className="font-medium text-[var(--color-text-muted)]">Email:</span> {form.email}</p>
             </div>
             <div className="flex gap-3">
-              <button onClick={() => setShowConfirm(false)} className="flex-1 px-4 py-2.5 text-sm font-semibold rounded-lg border border-[var(--color-border)] text-[var(--color-text-primary)] hover:bg-[var(--color-gray-50)] transition-all">Review Again</button>
-              <button onClick={handleSubmit} className="flex-1 px-4 py-2.5 text-sm font-semibold rounded-lg bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-dark)] text-white hover:shadow-lg transition-all">Confirm & Submit</button>
+              <button onClick={() => setShowConfirm(false)}
+                className="flex-1 px-4 py-2.5 text-sm font-semibold rounded-xl border border-[var(--color-border)] text-[var(--color-text-primary)] hover:bg-[var(--color-gray-50)] transition-all">Review Again</button>
+              <button onClick={handleSubmit}
+                className="flex-1 px-4 py-2.5 text-sm font-semibold rounded-xl bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-dark)] text-white hover:shadow-lg btn-shine transition-all">Confirm & Submit</button>
             </div>
           </div>
         </div>
       )}
 
       <form onSubmit={(e) => { e.preventDefault(); setShowConfirm(true); }} noValidate>
-        {/* Steps indicator */}
         <div className="mb-10">
           <div className="flex items-center justify-between">
             {STEP_LABELS.map((label, i) => {
@@ -224,15 +339,15 @@ export default function ApplicationForm() {
                       step > s ? "bg-green-500 text-white shadow-md" : step === s ? "bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-primary-dark)] text-white shadow-lg shadow-[var(--color-primary)]/30 scale-110" : "bg-[var(--color-gray-200)] text-[var(--color-text-muted)]"
                     )}>
                       {step > s ? (
-                        <svg className="h-5 w-5 animate-scaleIn" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                        </svg>
+                        <Icon name="check" size={5} className="animate-scaleIn" />
                       ) : s}
                     </div>
-                    <span className={cn(
-                      "mt-2 text-[11px] font-medium leading-tight text-center max-w-[80px] hidden sm:block",
-                      step === s ? "text-[var(--color-primary)]" : "text-[var(--color-text-muted)]"
-                    )}>{label}</span>
+                    {!isMobile && (
+                      <span className={cn(
+                        "mt-2 text-[11px] font-medium leading-tight text-center max-w-[80px]",
+                        step === s ? "text-[var(--color-primary)]" : "text-[var(--color-text-muted)]"
+                      )}>{label}</span>
+                    )}
                   </button>
                   {i < STEP_LABELS.length - 1 && (
                     <div className={cn(
@@ -246,15 +361,12 @@ export default function ApplicationForm() {
           </div>
         </div>
 
-        {/* Step 1: Personal Information */}
         {step === 1 && (
           <div className={stepContentClass}>
             <div className="space-y-5">
               <div className="flex items-center gap-3 mb-2">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--color-primary)]/10 text-[var(--color-primary)]">
-                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                  </svg>
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--color-primary)]/10 text-[var(--color-primary)]">
+                  <Icon name="user" size={5} />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-[var(--color-text-primary)]">Personal Information</h3>
@@ -265,73 +377,42 @@ export default function ApplicationForm() {
               <div className="grid sm:grid-cols-4 gap-5">
                 <div>
                   <label htmlFor="af-title" className="block text-sm font-medium text-[var(--color-text-primary)] mb-1.5">Title</label>
-                  <select id="af-title" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} className={inp("title")}>
+                  <select id="af-title" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })}
+                    className="w-full rounded-xl border border-[var(--color-border)] bg-[var(--color-white)] text-[var(--color-text-primary)] outline-none transition-all duration-200 text-sm px-4 py-3 focus:border-[var(--color-border-focus)] focus:ring-3 focus:ring-[var(--color-primary)]/10 hover:border-[var(--color-gray-300)] appearance-none cursor-pointer">
                     <option value="">Select</option>
                     {TITLES.map((t) => <option key={t} value={t}>{t}</option>)}
                   </select>
                 </div>
                 <div className="sm:col-span-3">
-                  <label htmlFor="af-name" className="block text-sm font-medium text-[var(--color-text-primary)] mb-1.5">Full Name <span className="text-red-500">*</span></label>
-                  <input ref={nameRef} autoFocus type="text" id="af-name" maxLength={100} value={form.fullName} onChange={(e) => setForm({ ...form, fullName: e.target.value })} placeholder="e.g. Thando Mokoena" className={inp("fullName")} />
-                  {errors.fullName && <p className="mt-1 text-xs text-red-500">{errors.fullName}</p>}
+                  <InputField field="fullName" label="Full Name" required autoFocus />
                 </div>
               </div>
 
               <div className="grid sm:grid-cols-2 gap-5">
-                <div>
-                  <label htmlFor="af-id" className="block text-sm font-medium text-[var(--color-text-primary)] mb-1.5">ID / Passport Number</label>
-                  <input type="text" id="af-id" maxLength={20} value={form.idNumber} onChange={(e) => setForm({ ...form, idNumber: e.target.value })} placeholder="e.g. 000101 0000 000" className={inp("idNumber")} />
-                </div>
-                <div>
-                  <label htmlFor="af-dob" className="block text-sm font-medium text-[var(--color-text-primary)] mb-1.5">Date of Birth</label>
-                  <input type="date" id="af-dob" value={form.dob} onChange={(e) => setForm({ ...form, dob: e.target.value })} className={inp("dob")} />
-                </div>
+                <InputField field="idNumber" label="ID / Passport Number" placeholder="e.g. 000101 0000 000" />
+                <InputField field="dob" label="Date of Birth" type="date" />
               </div>
 
               <div className="grid sm:grid-cols-2 gap-5">
-                <div>
-                  <label htmlFor="af-phone" className="block text-sm font-medium text-[var(--color-text-primary)] mb-1.5">Phone Number <span className="text-red-500">*</span></label>
-                  <input type="tel" id="af-phone" maxLength={20} value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} placeholder="e.g. 071 234 5678" className={inp("phone")} />
-                  {errors.phone && <p className="mt-1 text-xs text-red-500">{errors.phone}</p>}
-                </div>
-                <div>
-                  <label htmlFor="af-email" className="block text-sm font-medium text-[var(--color-text-primary)] mb-1.5">Email Address <span className="text-red-500">*</span></label>
-                  <input type="email" id="af-email" maxLength={200} value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder="your@email.com" className={inp("email")} />
-                  {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email}</p>}
-                </div>
+                <InputField field="phone" label="Phone Number" required type="tel" />
+                <InputField field="email" label="Email Address" required type="email" />
               </div>
 
-              <div>
-                <label htmlFor="af-address" className="block text-sm font-medium text-[var(--color-text-primary)] mb-1.5">Physical Address</label>
-                <textarea id="af-address" rows={2} maxLength={500} value={form.address} onChange={(e) => setForm({ ...form, address: e.target.value })} placeholder="Your residential address" className={cn(inp("address"), "resize-y")} />
-              </div>
+              <InputField field="address" label="Physical Address" type="textarea" />
 
-              <div>
-                <label htmlFor="af-start" className="block text-sm font-medium text-[var(--color-text-primary)] mb-1.5">Preferred Start Date</label>
-                <input type="date" id="af-start" value={form.startDate} onChange={(e) => setForm({ ...form, startDate: e.target.value })} className={inp("startDate")} />
-              </div>
+              <InputField field="startDate" label="Preferred Start Date" type="date" />
 
-              <div className="flex justify-end pt-4">
-                <button type="button" onClick={nextStep} className="inline-flex items-center gap-2 px-8 py-3 text-sm font-semibold uppercase tracking-wide rounded-lg bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-dark)] text-white hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all">
-                  Next Step
-                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                  </svg>
-                </button>
-              </div>
+              <NavButtons />
             </div>
           </div>
         )}
 
-        {/* Step 2: Course Selection */}
         {step === 2 && (
           <div className={stepContentClass}>
             <div className="space-y-5">
               <div className="flex items-center gap-3 mb-2">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--color-accent)]/10 text-[var(--color-accent)]">
-                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342" />
-                  </svg>
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--color-accent)]/10 text-[var(--color-accent)]">
+                  <Icon name="academic-cap" size={5} />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-[var(--color-text-primary)]">Course Selection</h3>
@@ -339,31 +420,35 @@ export default function ApplicationForm() {
                 </div>
               </div>
 
-              <div>
-                <label htmlFor="af-category" className="block text-sm font-medium text-[var(--color-text-primary)] mb-1.5">Category <span className="text-red-500">*</span></label>
-                <select id="af-category" value={form.category} onChange={(e) => setForm({ ...form, category: e.target.value, course: "" })} className={inp("category")} autoFocus>
-                  <option value="">Select a category</option>
-                  {CATEGORIES.map((c) => <option key={c.id} value={c.id}>{c.label}</option>)}
-                </select>
-                {errors.category && <p className="mt-1 text-xs text-red-500">{errors.category}</p>}
-              </div>
+              <SelectField field="category" label="Category" required placeholder="Select a category" autoFocus>
+                {CATEGORIES.map((c) => <option key={c.id} value={c.id}>{c.label}</option>)}
+              </SelectField>
 
               <div>
-                <label htmlFor="af-course" className="block text-sm font-medium text-[var(--color-text-primary)] mb-1.5">Course <span className="text-red-500">*</span></label>
-                <select id="af-course" value={form.course} onChange={(e) => setForm({ ...form, course: e.target.value })} className={inp("course")} disabled={!form.category}>
-                  <option value="">{form.category ? "Select a course" : "First select a category"}</option>
-                  {selectedCourses().map((c) => <option key={c} value={c}>{c}</option>)}
-                </select>
-                {errors.course && <p className="mt-1 text-xs text-red-500">{errors.course}</p>}
+                <label htmlFor="af-course" className="block text-sm font-medium text-[var(--color-text-primary)] mb-1.5">Course <span className="text-red-500 ml-0.5">*</span></label>
+                <div className="relative group">
+                  <Icon name="book-open" size={4} className={inpIcon("course")} />
+                  <select id="af-course" value={form.course}
+                    onChange={(e) => setForm({ ...form, course: e.target.value })}
+                    className={cn(inp("course"), "appearance-none cursor-pointer")}
+                    disabled={!form.category}>
+                    <option value="">{form.category ? "Select a course" : "First select a category"}</option>
+                    {selectedCourses().map((c) => <option key={c} value={c}>{c}</option>)}
+                  </select>
+                </div>
+                {errors.course && (
+                  <p className="mt-1.5 flex items-center gap-1 text-xs text-red-500">
+                    <Icon name="exclamation-circle" size={3} />
+                    {errors.course}
+                  </p>
+                )}
               </div>
 
               {form.course && (
                 <div className="rounded-xl border border-[var(--color-primary)]/20 bg-gradient-to-br from-[var(--color-primary)]/[0.04] to-transparent p-5 animate-fadeIn">
                   <div className="flex items-start gap-3">
                     <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--color-primary)]/10 text-[var(--color-primary)]">
-                      <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
+                      <Icon name="check" size={4} />
                     </div>
                     <div>
                       <p className="text-sm font-semibold text-[var(--color-text-primary)]">Selected Programme</p>
@@ -373,33 +458,17 @@ export default function ApplicationForm() {
                 </div>
               )}
 
-              <div className="flex gap-3 pt-4">
-                <button type="button" onClick={prevStep} className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold uppercase tracking-wide rounded-lg border border-[var(--color-border)] text-[var(--color-text-primary)] hover:bg-[var(--color-gray-50)] transition-all">
-                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
-                  </svg>
-                  Back
-                </button>
-                <button type="button" onClick={nextStep} className="flex-1 inline-flex items-center justify-center gap-2 px-8 py-3 text-sm font-semibold uppercase tracking-wide rounded-lg bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-dark)] text-white hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all">
-                  Next Step
-                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                  </svg>
-                </button>
-              </div>
+              <NavButtons />
             </div>
           </div>
         )}
 
-        {/* Step 3: Education & Employment */}
         {step === 3 && (
           <div className={stepContentClass}>
             <div className="space-y-5">
               <div className="flex items-center gap-3 mb-2">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--color-primary)]/10 text-[var(--color-primary)]">
-                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342" />
-                  </svg>
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--color-primary)]/10 text-[var(--color-primary)]">
+                  <Icon name="briefcase" size={5} />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-[var(--color-text-primary)]">Education & Employment</h3>
@@ -407,64 +476,36 @@ export default function ApplicationForm() {
                 </div>
               </div>
 
-              <div>
-                <label htmlFor="af-education" className="block text-sm font-medium text-[var(--color-text-primary)] mb-1.5">Highest Education Level</label>
-                <select id="af-education" value={form.education} onChange={(e) => setForm({ ...form, education: e.target.value })} className={inp("education")} autoFocus>
-                  <option value="">Select (optional)</option>
-                  <option value="grade-9">Grade 9</option>
-                  <option value="grade-10">Grade 10</option>
-                  <option value="grade-11">Grade 11</option>
-                  <option value="grade-12">Grade 12 / Matric</option>
-                  <option value="certificate">Certificate</option>
-                  <option value="diploma">Diploma</option>
-                  <option value="degree">Degree</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
+              <SelectField field="education" label="Highest Education Level" placeholder="Select (optional)">
+                <option value="grade-9">Grade 9</option>
+                <option value="grade-10">Grade 10</option>
+                <option value="grade-11">Grade 11</option>
+                <option value="grade-12">Grade 12 / Matric</option>
+                <option value="certificate">Certificate</option>
+                <option value="diploma">Diploma</option>
+                <option value="degree">Degree</option>
+                <option value="other">Other</option>
+              </SelectField>
 
-              <div>
-                <label htmlFor="af-employ" className="block text-sm font-medium text-[var(--color-text-primary)] mb-1.5">Employment Status</label>
-                <select id="af-employ" value={form.employStatus} onChange={(e) => setForm({ ...form, employStatus: e.target.value })} className={inp("employStatus")}>
-                  <option value="">Select (optional)</option>
-                  {EMPLOY_OPTIONS.map((o) => <option key={o} value={o}>{o}</option>)}
-                </select>
-              </div>
+              <SelectField field="employStatus" label="Employment Status" placeholder="Select (optional)">
+                {EMPLOY_OPTIONS.map((o) => <option key={o} value={o}>{o}</option>)}
+              </SelectField>
 
-              <div>
-                <label htmlFor="af-hear" className="block text-sm font-medium text-[var(--color-text-primary)] mb-1.5">How did you hear about us?</label>
-                <select id="af-hear" value={form.hearAbout} onChange={(e) => setForm({ ...form, hearAbout: e.target.value })} className={inp("hearAbout")}>
-                  <option value="">Select (optional)</option>
-                  {HEAR_OPTIONS.map((o) => <option key={o} value={o}>{o}</option>)}
-                </select>
-              </div>
+              <SelectField field="hearAbout" label="How did you hear about us?" placeholder="Select (optional)">
+                {HEAR_OPTIONS.map((o) => <option key={o} value={o}>{o}</option>)}
+              </SelectField>
 
-              <div className="flex gap-3 pt-4">
-                <button type="button" onClick={prevStep} className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold uppercase tracking-wide rounded-lg border border-[var(--color-border)] text-[var(--color-text-primary)] hover:bg-[var(--color-gray-50)] transition-all">
-                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
-                  </svg>
-                  Back
-                </button>
-                <button type="button" onClick={nextStep} className="flex-1 inline-flex items-center justify-center gap-2 px-8 py-3 text-sm font-semibold uppercase tracking-wide rounded-lg bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-dark)] text-white hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all">
-                  Review Application
-                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                  </svg>
-                </button>
-              </div>
+              <NavButtons nextLabel="Review Application" />
             </div>
           </div>
         )}
 
-        {/* Step 4: Review, Declaration & Submit */}
         {step === 4 && (
           <div className={stepContentClass}>
             <div className="space-y-6">
               <div className="flex items-center gap-3 mb-2">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--color-accent)]/10 text-[var(--color-accent)]">
-                  <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
-                  </svg>
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--color-accent)]/10 text-[var(--color-accent)]">
+                  <Icon name="shield-check" size={5} />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-[var(--color-text-primary)]">Review & Submit</h3>
@@ -472,14 +513,15 @@ export default function ApplicationForm() {
                 </div>
               </div>
 
-              {/* Summary card */}
               <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] overflow-hidden">
                 <div className="grid divide-y divide-[var(--color-border)]">
-                  {/* Personal section */}
                   <div className="p-5">
                     <div className="flex items-center justify-between mb-3">
                       <h4 className="text-sm font-bold uppercase tracking-wider text-[var(--color-text-muted)]">Personal Information</h4>
-                      <button type="button" onClick={() => goToStep(1)} className="text-xs font-semibold text-[var(--color-primary)] hover:underline">Edit</button>
+                      <button type="button" onClick={() => goToStep(1)} className="text-xs font-semibold text-[var(--color-primary)] hover:underline flex items-center gap-1">
+                        <Icon name="pencil" size={3} />
+                        Edit
+                      </button>
                     </div>
                     <div className="grid sm:grid-cols-2 gap-x-6 gap-y-2 text-sm">
                       <div><span className="text-[var(--color-text-muted)]">Name:</span> <span className="font-medium text-[var(--color-text-primary)]">{form.title ? `${form.title} ` : ""}{form.fullName}</span></div>
@@ -492,11 +534,13 @@ export default function ApplicationForm() {
                     </div>
                   </div>
 
-                  {/* Course section */}
                   <div className="p-5">
                     <div className="flex items-center justify-between mb-3">
                       <h4 className="text-sm font-bold uppercase tracking-wider text-[var(--color-text-muted)]">Course Selection</h4>
-                      <button type="button" onClick={() => goToStep(2)} className="text-xs font-semibold text-[var(--color-primary)] hover:underline">Edit</button>
+                      <button type="button" onClick={() => goToStep(2)} className="text-xs font-semibold text-[var(--color-primary)] hover:underline flex items-center gap-1">
+                        <Icon name="pencil" size={3} />
+                        Edit
+                      </button>
                     </div>
                     <div className="text-sm">
                       <div><span className="text-[var(--color-text-muted)]">Category:</span> <span className="font-medium text-[var(--color-text-primary)]">{CATEGORIES.find(c => c.id === form.category)?.label || form.category}</span></div>
@@ -504,11 +548,13 @@ export default function ApplicationForm() {
                     </div>
                   </div>
 
-                  {/* Education section */}
                   <div className="p-5">
                     <div className="flex items-center justify-between mb-3">
                       <h4 className="text-sm font-bold uppercase tracking-wider text-[var(--color-text-muted)]">Background</h4>
-                      <button type="button" onClick={() => goToStep(3)} className="text-xs font-semibold text-[var(--color-primary)] hover:underline">Edit</button>
+                      <button type="button" onClick={() => goToStep(3)} className="text-xs font-semibold text-[var(--color-primary)] hover:underline flex items-center gap-1">
+                        <Icon name="pencil" size={3} />
+                        Edit
+                      </button>
                     </div>
                     <div className="grid sm:grid-cols-2 gap-x-6 gap-y-2 text-sm">
                       <div><span className="text-[var(--color-text-muted)]">Education:</span> <span className="font-medium text-[var(--color-text-primary)]">{form.education || "Not provided"}</span></div>
@@ -519,59 +565,60 @@ export default function ApplicationForm() {
                 </div>
               </div>
 
-              {/* Declaration */}
               <div className="rounded-xl border border-[var(--color-border)] bg-gradient-to-br from-[var(--color-primary)]/[0.03] to-transparent p-6">
                 <h4 className="mb-3 text-sm font-bold uppercase tracking-wider text-[var(--color-text-primary)]">Declaration</h4>
                 <p className="mb-4 text-sm leading-relaxed text-[var(--color-text-secondary)]">
                   By submitting this application, you confirm that you have read, understood, and agree to SA Innovation College&apos;s Terms & Conditions and Refund Policy. You also confirm that all information provided is accurate and complete.
                 </p>
-                <div className="flex items-start gap-3">
+                <label className="flex items-start gap-3 cursor-pointer select-none group">
                   <div className="relative flex h-5 w-5 shrink-0 mt-0.5">
                     <input
                       type="checkbox"
                       id="af-agree"
                       checked={form.agree}
                       onChange={(e) => setForm({ ...form, agree: e.target.checked })}
-                      className="h-5 w-5 rounded border-[var(--color-border)] text-[var(--color-primary)] focus:ring-[var(--color-primary)] cursor-pointer"
+                      className="h-5 w-5 rounded-md border-[var(--color-border)] text-[var(--color-primary)] focus:ring-[var(--color-primary)] cursor-pointer transition-all"
                     />
                   </div>
-                  <label htmlFor="af-agree" className="text-sm font-medium text-[var(--color-text-primary)] cursor-pointer select-none">
+                  <span className="text-sm font-medium text-[var(--color-text-primary)] group-hover:text-[var(--color-primary)] transition-colors">
                     I Agree to the Terms & Conditions and Refund Policy <span className="text-red-500">*</span>
-                  </label>
-                </div>
-                {errors.agree && <p className="mt-2 text-xs text-red-500">{errors.agree}</p>}
+                  </span>
+                </label>
+                {errors.agree && (
+                  <p className="mt-2 flex items-center gap-1 text-xs text-red-500">
+                    <Icon name="exclamation-circle" size={3} />
+                    {errors.agree}
+                  </p>
+                )}
               </div>
 
               {state === "error" && (
-                <div className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">{message}</div>
+                <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 flex items-center gap-2">
+                  <Icon name="exclamation-circle" size={4} className="shrink-0" />
+                  {message}
+                </div>
               )}
 
               <div className="flex gap-3 pt-2">
-                <button type="button" onClick={prevStep} className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold uppercase tracking-wide rounded-lg border border-[var(--color-border)] text-[var(--color-text-primary)] hover:bg-[var(--color-gray-50)] transition-all">
-                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
-                  </svg>
+                <button type="button" onClick={prevStep}
+                  className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold uppercase tracking-wide rounded-xl border border-[var(--color-border)] text-[var(--color-text-primary)] hover:bg-[var(--color-gray-50)] hover:border-[var(--color-gray-300)] transition-all">
+                  <Icon name="arrow-left" size={4} />
                   Back
                 </button>
                 <button type="submit" disabled={state === "loading"} className={cn(
-                  "flex-1 inline-flex items-center justify-center gap-2 px-8 py-3 text-sm font-semibold uppercase tracking-wide rounded-lg transition-all",
+                  "flex-1 inline-flex items-center justify-center gap-2 px-8 py-3 text-sm font-bold uppercase tracking-wide rounded-xl transition-all btn-shine",
                   state === "loading"
                     ? "bg-[var(--color-primary)]/60 text-white cursor-not-allowed"
                     : "bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-dark)] text-[var(--color-gray-900)] hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] shadow-sm"
                 )}>
                   {state === "loading" ? (
                     <>
-                      <svg className="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                      </svg>
+                      <Icon name="spinner" size={4} animated="spin" />
                       Submitting...
                     </>
                   ) : (
                     <>
-                      <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
+                      <Icon name="check-badge" size={4} />
                       Submit Application
                     </>
                   )}
