@@ -13,8 +13,22 @@ export function PrintableApplyForm() {
           <div className="print-field-line-sm" />
         </div>
         <div className="print-field-group" style={{ gridColumn: "span 3" }}>
-          <label>Full Name</label>
+          <label>Full Name & Surname</label>
           <div className="print-field-line" />
+        </div>
+      </div>
+      <div className="print-grid-3">
+        <div className="print-field-group">
+          <label>Gender</label>
+          <div className="print-field-line-sm" />
+        </div>
+        <div className="print-field-group">
+          <label>Nationality</label>
+          <div className="print-field-line-sm" />
+        </div>
+        <div className="print-field-group">
+          <label>Postal Code</label>
+          <div className="print-field-line-sm" />
         </div>
       </div>
       <div className="print-grid-2">
@@ -66,7 +80,17 @@ export function PrintableApplyForm() {
           <div className="print-field-line" />
         </div>
         <div className="print-field-group">
+          <label>Previous School / Institution</label>
+          <div className="print-field-line" />
+        </div>
+        <div className="print-field-group">
           <label>Employment Status</label>
+          <div className="print-field-line" />
+        </div>
+      </div>
+      <div className="print-grid-2">
+        <div className="print-field-group">
+          <label>Funding / Sponsorship</label>
           <div className="print-field-line" />
         </div>
         <div className="print-field-group">
@@ -75,7 +99,19 @@ export function PrintableApplyForm() {
         </div>
       </div>
 
-      <div className="print-section-title">4. Declaration</div>
+      <div className="print-section-title">4. Emergency Contact</div>
+      <div className="print-grid-2">
+        <div className="print-field-group">
+          <label>Emergency Contact Name</label>
+          <div className="print-field-line" />
+        </div>
+        <div className="print-field-group">
+          <label>Emergency Contact Phone</label>
+          <div className="print-field-line" />
+        </div>
+      </div>
+
+      <div className="print-section-title">5. Declaration</div>
       <div className="print-declaration">
         By submitting this application, I confirm that I have read, understood, and agree to
         SA Innovation College&apos;s Terms &amp; Conditions and Refund Policy. I confirm that all
@@ -116,17 +152,33 @@ export function PrintableContactForm() {
 
       <div className="print-grid-2">
         <div className="print-field-group">
-          <label>Full Name</label>
+          <label>First Name</label>
           <div className="print-field-line" />
         </div>
+        <div className="print-field-group">
+          <label>Surname</label>
+          <div className="print-field-line" />
+        </div>
+      </div>
+      <div className="print-grid-2">
+        <div className="print-field-group">
+          <label>Company / Organisation</label>
+          <div className="print-field-line" />
+        </div>
+        <div className="print-field-group">
+          <label>Preferred Contact Method</label>
+          <div className="print-field-line" />
+        </div>
+      </div>
+      <div className="print-grid-2">
         <div className="print-field-group">
           <label>Phone Number</label>
           <div className="print-field-line" />
         </div>
-      </div>
-      <div className="print-field-group">
-        <label>Email Address</label>
-        <div className="print-field-line" />
+        <div className="print-field-group">
+          <label>Email Address</label>
+          <div className="print-field-line" />
+        </div>
       </div>
       <div className="print-field-group">
         <label>Course Interested In</label>

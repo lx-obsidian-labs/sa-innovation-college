@@ -22,10 +22,12 @@ const COURSE_OPTIONS = [
   { category: "Health & Social Services", courses: ["Health Promotion Officer NQF 5"] },
 ];
 
+const PREFERRED_CONTACT_OPTIONS = ["Phone", "Email", "WhatsApp"];
+
 export default function ContactForm() {
   const [state, setState] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
-  const [formData, setFormData] = useState({ name: "", phone: "", email: "", course: "", message: "" });
+  const [formData, setFormData] = useState({ name: "", surname: "", company: "", preferredContact: "", phone: "", email: "", course: "", message: "" });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [showConfirm, setShowConfirm] = useState(false);
   const nameRef = useRef<HTMLInputElement>(null);
@@ -43,6 +45,7 @@ export default function ContactForm() {
   function validate() {
     const errs: Record<string, string> = {};
     if (!formData.name.trim()) errs.name = "Full name is required";
+    if (!formData.surname.trim()) errs.surname = "Surname is required";
     if (!formData.phone.trim()) errs.phone = "Phone number is required";
     else if (!/^[\d\s+\-()]{7,15}$/.test(formData.phone)) errs.phone = "Enter a valid phone number";
     if (!formData.email.trim()) errs.email = "Email is required";
@@ -73,7 +76,7 @@ export default function ContactForm() {
       if (res.ok) {
         setState("success");
         setMessage(data.message);
-        setFormData({ name: "", phone: "", email: "", course: "", message: "" });
+        setFormData({ name: "", surname: "", company: "", preferredContact: "", phone: "", email: "", course: "", message: "" });
       } else {
         setState("error");
         setMessage(data.error || "Something went wrong. Please try again.");
@@ -81,7 +84,7 @@ export default function ContactForm() {
     } catch {
       setState("error");
       setMessage("Could not connect to the server. Your email client will open as a backup.");
-      const mailto = `mailto:info@sainnovationcollege.co.za?subject=Contact%20from%20${encodeURIComponent(formData.name)}&body=${encodeURIComponent(`Name: ${formData.name}%0APhone: ${formData.phone}%0AEmail: ${formData.email}%0ACourse: ${formData.course}%0A%0A${formData.message}`)}`;
+      const mailto = `mailto:info@sainnovationcollege.co.za?subject=Contact%20from%20${encodeURIComponent(formData.name)}&body=${encodeURIComponent(`Name: ${formData.name} ${formData.surname}%0ACompany: ${formData.company || "N/A"}%0APreferred Contact: ${formData.preferredContact || "N/A"}%0APhone: ${formData.phone}%0AEmail: ${formData.email}%0ACourse: ${formData.course}%0A%0A${formData.message}`)}`;
       setTimeout(() => { window.location.href = mailto; }, 1500);
     }
   }
@@ -102,6 +105,9 @@ export default function ContactForm() {
 
   const ICONS: Record<string, IconName> = {
     name: "user",
+    surname: "user",
+    company: "briefcase",
+    preferredContact: "chat-bubble-left-right",
     phone: "phone",
     email: "envelope",
     course: "academic-cap",
@@ -196,11 +202,31 @@ export default function ContactForm() {
 
       <form onSubmit={(e) => { e.preventDefault(); setShowConfirm(true); }} className="space-y-5" noValidate>
         <div className="grid sm:grid-cols-2 gap-5">
-          <Field field="name" label="Full Name" required />
+          <Field field="name" label="First Name" required />
+          <Field field="surname" label="Surname" required />
+        </div>
+
+        <div className="grid sm:grid-cols-2 gap-5">
+          <Field field="company" label="Company / Organisation" />
           <Field field="phone" label="Phone Number" required type="tel" />
         </div>
 
-        <Field field="email" label="Email Address" required type="email" />
+        <div className="grid sm:grid-cols-2 gap-5">
+          <Field field="email" label="Email Address" required type="email" />
+          <div className={inputWrap}>
+            <label htmlFor="cf-preferredContact" className={labelClass}>Preferred Contact Method</label>
+            <div className="relative group">
+              <Icon name={ICONS["preferredContact"]} size={4} className={inputIcon("preferredContact")} />
+              <select id="cf-preferredContact" value={formData.preferredContact}
+                onChange={(e) => setFormData({ ...formData, preferredContact: e.target.value })}
+                className={cn(inputClass("preferredContact"), "appearance-none cursor-pointer")}
+              >
+                <option value="">Select preferred method</option>
+                {PREFERRED_CONTACT_OPTIONS.map((o) => <option key={o} value={o}>{o}</option>)}
+              </select>
+            </div>
+          </div>
+        </div>
 
         <Field field="course" label="Course Interested In" type="select" />
 

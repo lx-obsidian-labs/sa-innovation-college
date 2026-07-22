@@ -7,15 +7,7 @@ function setColor(doc: jsPDF, hex: string) {
   doc.setTextColor(r, g, b);
 }
 
-function setFill(doc: jsPDF, hex: string) {
-  const r = parseInt(hex.slice(1, 3), 16);
-  const g = parseInt(hex.slice(3, 5), 16);
-  const b = parseInt(hex.slice(5, 7), 16);
-  doc.setFillColor(r, g, b);
-}
-
 const BLUE = "#1B4D8E";
-const BLUE_LIGHT = "#EBF1FA";
 const GOLD = "#F59E0B";
 const GRAY_DARK = "#505050";
 const GRAY_MED = "#8C8C8C";
@@ -49,13 +41,10 @@ function pageBorder(doc: jsPDF) {
 function brandHeader(doc: jsPDF, pageNum: number) {
   const top = 10;
   const h = 22;
-
-  setFill(doc, BLUE);
+  doc.setFillColor(27, 77, 142);
   doc.rect(MARGIN, top, COL_WIDTH, h, "F");
-
-  setFill(doc, GOLD);
+  doc.setFillColor(245, 158, 11);
   doc.rect(MARGIN, top + h - 1.5, COL_WIDTH, 1.5, "F");
-
   setColor(doc, WHITE);
   doc.setFontSize(13);
   doc.setFont("helvetica", "bold");
@@ -103,7 +92,7 @@ function foot(doc: jsPDF, page: number, total: number) {
 }
 
 function sectionHdr(doc: jsPDF, y: number, label: string): number {
-  setFill(doc, BLUE);
+  doc.setFillColor(27, 77, 142);
   doc.rect(MARGIN, y, COL_WIDTH, 9, "F");
   setColor(doc, WHITE);
   doc.setFontSize(9);
@@ -115,19 +104,16 @@ function sectionHdr(doc: jsPDF, y: number, label: string): number {
 function fieldRow(doc: jsPDF, y: number, label: string, value: string, valueWidth?: number): number {
   const vw = valueWidth || VALUE_W;
   const bg = y % 28 < 14 ? "#FFFFFF" : "#F8F9FB";
-  doc.setFillColor(parseInt(bg.slice(1,3),16), parseInt(bg.slice(3,5),16), parseInt(bg.slice(5,7),16));
+  doc.setFillColor(parseInt(bg.slice(1, 3), 16), parseInt(bg.slice(3, 5), 16), parseInt(bg.slice(5, 7), 16));
   doc.rect(MARGIN, y - 3.5, COL_WIDTH, 15, "F");
-
   setColor(doc, GRAY_DARK);
   doc.setFontSize(7.5);
   doc.setFont("helvetica", "bold");
   doc.text(label.toUpperCase(), MARGIN + 4, y + 1.5);
-
   const val = value || "";
   setColor(doc, BLACK);
   doc.setFontSize(10);
   doc.setFont("helvetica", "normal");
-
   if (!val) {
     doc.setDrawColor(220, 220, 220);
     doc.setLineWidth(0.3);
@@ -136,30 +122,25 @@ function fieldRow(doc: jsPDF, y: number, label: string, value: string, valueWidt
     const maxW = vw - 4;
     const display = doc.splitTextToSize(val, maxW);
     display.forEach((line: string, i: number) => {
-      if (y + 1.5 + i * 5 < PAGE_H - 45) {
-        doc.text(line, MARGIN + LABEL_W + 2, y + 1.5 + i * 5);
-      }
+      if (y + 1.5 + i * 5 < PAGE_H - 45) doc.text(line, MARGIN + LABEL_W + 2, y + 1.5 + i * 5);
     });
     doc.setDrawColor(220, 220, 220);
     doc.setLineWidth(0.3);
     const lastY = Math.min(y + 4 + Math.max(0, display.length - 1) * 5, PAGE_H - 50);
     doc.line(MARGIN + LABEL_W, lastY, MARGIN + LABEL_W + vw, lastY);
   }
-
   return y + 15;
 }
 
 function fieldPair(doc: jsPDF, y: number, left: [string, string], right: [string, string]): number {
   const halfW = (COL_WIDTH - 6) / 2;
   const bg = y % 28 < 14 ? "#FFFFFF" : "#F8F9FB";
-  doc.setFillColor(parseInt(bg.slice(1,3),16), parseInt(bg.slice(3,5),16), parseInt(bg.slice(5,7),16));
+  doc.setFillColor(parseInt(bg.slice(1, 3), 16), parseInt(bg.slice(3, 5), 16), parseInt(bg.slice(5, 7), 16));
   doc.rect(MARGIN, y - 3.5, COL_WIDTH, 15, "F");
-
   [left, right].forEach(([lbl, val], idx) => {
     const ox = MARGIN + (idx === 0 ? 4 : halfW + 7);
     const valX = ox + LABEL_W;
     const valW = halfW - LABEL_W - 4;
-
     setColor(doc, GRAY_DARK);
     doc.setFontSize(7.5);
     doc.setFont("helvetica", "bold");
@@ -167,7 +148,6 @@ function fieldPair(doc: jsPDF, y: number, left: [string, string], right: [string
     setColor(doc, BLACK);
     doc.setFontSize(10);
     doc.setFont("helvetica", "normal");
-
     if (!val) {
       doc.setDrawColor(220, 220, 220);
       doc.setLineWidth(0.3);
@@ -179,20 +159,13 @@ function fieldPair(doc: jsPDF, y: number, left: [string, string], right: [string
       doc.line(valX, y + 4, valX + valW, y + 4);
     }
   });
-
   return y + 15;
 }
 
-function checkbox(doc: jsPDF, y: number, x: number, checked: boolean, label: string) {
+function checkbox(doc: jsPDF, y: number, x: number, label: string) {
   doc.setDrawColor(0, 0, 0);
   doc.setLineWidth(0.5);
   doc.rect(x, y - 3.5, 6, 6);
-  if (checked) {
-    setColor(doc, BLUE);
-    doc.setFontSize(8);
-    doc.setFont("helvetica", "bold");
-    doc.text("\u2713", x + 1.5, y + 0.5);
-  }
   setColor(doc, BLACK);
   doc.setFontSize(8.5);
   doc.setFont("helvetica", "normal");
@@ -200,37 +173,35 @@ function checkbox(doc: jsPDF, y: number, x: number, checked: boolean, label: str
 }
 
 function boxedSection(doc: jsPDF, y: number, title: string, content: () => number): number {
-  const pad = 4;
   const boxY = y - 2;
   const startY = y;
-
   const endY = content();
-
   doc.setDrawColor(220, 220, 220);
   doc.setLineWidth(0.4);
   doc.rect(MARGIN, boxY, COL_WIDTH, endY - boxY + 4);
-
-  setFill(doc, WHITE);
+  doc.setFillColor(255, 255, 255);
   doc.rect(MARGIN + 8, boxY - 3, doc.getTextWidth(title) + 12, 7, "F");
   setColor(doc, BLUE);
   doc.setFontSize(7.5);
   doc.setFont("helvetica", "bold");
   doc.text(title, MARGIN + 14, boxY + 2);
-
   return endY + 2;
 }
 
-export function generateContactPdf(data: { name: string; phone: string; email: string; course: string; message: string }): jsPDF {
+export function generateContactPdf(data: {
+  name: string; surname: string; company: string; preferredContact: string;
+  phone: string; email: string; course: string; message: string;
+}): jsPDF {
   const doc = new jsPDF();
   pageBorder(doc);
   brandHeader(doc, 1);
   let y = 38;
-
   y = formTitle(doc, y, "Enquiry / Contact Form");
-  y = sectionHdr(doc, y, "Contact Details");
-  y = fieldRow(doc, y, "Full Name", data.name);
-  y = fieldRow(doc, y, "Phone Number", data.phone);
-  y = fieldRow(doc, y, "Email Address", data.email);
+  y = sectionHdr(doc, y, "Personal Details");
+  y = fieldPair(doc, y, ["First Name", data.name], ["Surname", data.surname]);
+  y = fieldPair(doc, y, ["Company / Organisation", data.company], ["Preferred Contact", data.preferredContact]);
+  y = sectionHdr(doc, y + 2, "Contact Details");
+  y = fieldPair(doc, y, ["Phone Number", data.phone], ["Email Address", data.email]);
   y = fieldRow(doc, y, "Course Interested In", data.course);
   y = sectionHdr(doc, y + 2, "Message");
   y = fieldRow(doc, y, "Message", data.message, COL_WIDTH - LABEL_W - 10);
@@ -254,10 +225,10 @@ export function generateContactPdf(data: { name: string; phone: string; email: s
 }
 
 export function generateApplicationPdf(data: {
-  title: string; fullName: string; idNumber: string; dob: string;
-  phone: string; email: string; address: string; startDate: string;
-  category: string; course: string; education: string;
-  employStatus: string; hearAbout: string;
+  title: string; fullName: string; gender: string; nationality: string; postalCode: string;
+  idNumber: string; dob: string; phone: string; email: string; address: string; startDate: string;
+  category: string; course: string; education: string; employStatus: string; hearAbout: string;
+  emergencyName: string; emergencyPhone: string; fundingSource: string; previousSchool: string;
 }): jsPDF {
   const doc = new jsPDF();
   const ref = refNumber();
@@ -279,9 +250,12 @@ export function generateApplicationPdf(data: {
   pageBorder(doc);
   brandHeader(doc, page);
   y = formTitle(doc, y, "Online Application Form", ref);
+
   y = sectionHdr(doc, y, "1. Personal Information");
   checkPage();
   y = fieldPair(doc, y, ["Title", data.title], ["Full Name", data.fullName]);
+  checkPage();
+  y = fieldPair(doc, y, ["Gender", data.gender], ["Nationality", data.nationality]);
   checkPage();
   y = fieldPair(doc, y, ["ID / Passport Number", data.idNumber], ["Date of Birth", data.dob]);
   checkPage();
@@ -289,7 +263,7 @@ export function generateApplicationPdf(data: {
   checkPage();
   y = fieldRow(doc, y, "Physical Address", data.address);
   checkPage();
-  y = fieldRow(doc, y, "Preferred Start Date", data.startDate);
+  y = fieldPair(doc, y, ["Postal Code", data.postalCode], ["Preferred Start Date", data.startDate]);
   checkPage();
 
   y = sectionHdr(doc, y + 2, "2. Course Selection");
@@ -301,14 +275,21 @@ export function generateApplicationPdf(data: {
   checkPage();
   y = fieldRow(doc, y, "Highest Education", data.education);
   checkPage();
-  y = fieldRow(doc, y, "Employment Status", data.employStatus);
+  y = fieldPair(doc, y, ["Previous School", data.previousSchool], ["Employment Status", data.employStatus]);
+  checkPage();
+  y = fieldRow(doc, y, "Funding / Sponsorship", data.fundingSource);
   checkPage();
   y = fieldRow(doc, y, "How Did You Hear About Us?", data.hearAbout);
   checkPage();
 
-  y = sectionHdr(doc, y + 2, "4. Declaration");
+  y = sectionHdr(doc, y + 2, "4. Emergency Contact");
   checkPage();
-  setFill(doc, BLUE_LIGHT);
+  y = fieldPair(doc, y, ["Emergency Contact", data.emergencyName], ["Emergency Phone", data.emergencyPhone]);
+  checkPage();
+
+  y = sectionHdr(doc, y + 2, "5. Declaration");
+  checkPage();
+  doc.setFillColor(235, 241, 250);
   doc.rect(MARGIN, y, COL_WIDTH, 18, "F");
   doc.setDrawColor(27, 77, 142);
   doc.setLineWidth(0.3);
@@ -321,12 +302,14 @@ export function generateApplicationPdf(data: {
   doc.text(declLines, MARGIN + 8, y + 5);
   y += 22;
   checkPage();
-  checkbox(doc, y, MARGIN + 4, false, "I agree to the Terms & Conditions and Refund Policy");
+  checkbox(doc, y, MARGIN + 4, "I agree to the Terms & Conditions and Refund Policy");
   y += 12;
   checkPage();
+  doc.setFillColor(248, 249, 251);
+  doc.rect(MARGIN, y, COL_WIDTH, 18, "F");
   doc.setDrawColor(220, 220, 220);
   doc.setLineWidth(0.4);
-  doc.rect(MARGIN, y, COL_WIDTH, 18, "F");
+  doc.rect(MARGIN, y, COL_WIDTH, 18);
   doc.setFontSize(8.5);
   setColor(doc, BLUE);
   doc.setFont("helvetica", "bold");

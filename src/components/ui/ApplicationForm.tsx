@@ -26,15 +26,21 @@ const CATEGORIES = [
 
 const EMPLOY_OPTIONS = ["Employed Full-time", "Employed Part-time", "Self-employed", "Unemployed", "Student", "Other"];
 const HEAR_OPTIONS = ["Google / Search", "Facebook", "Instagram", "WhatsApp", "Friend / Family", "Walk-in", "Radio / TV", "Other"];
+const FUNDING_OPTIONS = ["Self-funded", "Employer / Company", "Bursary / Scholarship", "NSFAS", "Other"];
+const GENDER_OPTIONS = ["Male", "Female", "Other", "Prefer not to say"];
 
 interface FormValues {
   title: string; fullName: string; idNumber: string; dob: string; phone: string; email: string; address: string; startDate: string;
   category: string; course: string; education: string; employStatus: string; hearAbout: string; agree: boolean;
+  gender: string; nationality: string; postalCode: string; emergencyName: string; emergencyPhone: string;
+  fundingSource: string; previousSchool: string;
 }
 
 const initialForm: FormValues = {
   title: "", fullName: "", idNumber: "", dob: "", phone: "", email: "", address: "", startDate: "",
   category: "", course: "", education: "", employStatus: "", hearAbout: "", agree: false,
+  gender: "", nationality: "", postalCode: "", emergencyName: "", emergencyPhone: "",
+  fundingSource: "", previousSchool: "",
 };
 
 const STEP_LABELS = ["Personal Info", "Course Selection", "Education & Employment", "Review & Submit"];
@@ -147,7 +153,7 @@ export default function ApplicationForm() {
       setState("error");
       setMessage("Could not connect to the server. Your email client will open as a backup.");
       const subject = `Application: ${form.fullName} - ${form.course}`;
-      const body = `Online Application\n\nTitle: ${form.title}\nFull Name: ${form.fullName}\nID Number: ${form.idNumber || "N/A"}\nDOB: ${form.dob || "N/A"}\nPhone: ${form.phone}\nEmail: ${form.email}\nAddress: ${form.address || "N/A"}\nPreferred Start: ${form.startDate || "N/A"}\nCourse: ${form.course}\nEducation: ${form.education || "N/A"}\nEmployment: ${form.employStatus || "N/A"}\nHeard via: ${form.hearAbout || "N/A"}`;
+      const body = `Online Application\n\nTitle: ${form.title}\nFull Name: ${form.fullName}\nGender: ${form.gender || "N/A"}\nNationality: ${form.nationality || "N/A"}\nPostal Code: ${form.postalCode || "N/A"}\nID Number: ${form.idNumber || "N/A"}\nDOB: ${form.dob || "N/A"}\nPhone: ${form.phone}\nEmail: ${form.email}\nAddress: ${form.address || "N/A"}\nPreferred Start: ${form.startDate || "N/A"}\nCourse: ${form.course}\nEducation: ${form.education || "N/A"}\nPrevious School: ${form.previousSchool || "N/A"}\nEmployment: ${form.employStatus || "N/A"}\nFunding: ${form.fundingSource || "N/A"}\nEmergency: ${form.emergencyName || "N/A"} (${form.emergencyPhone || "N/A"})\nHeard via: ${form.hearAbout || "N/A"}`;
       setRefNumber(`SAIC-${Date.now().toString(36).toUpperCase()}`);
       setTimeout(() => { window.location.href = `mailto:info@sainnovationcollege.co.za?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`; }, 1500);
     }
@@ -171,7 +177,10 @@ export default function ApplicationForm() {
 
   const ICONS: Record<string, IconName> = {
     fullName: "user",
+    gender: "user",
+    nationality: "globe-alt",
     idNumber: "identification",
+    postalCode: "map-pin",
     dob: "calendar",
     phone: "phone",
     email: "envelope",
@@ -182,6 +191,10 @@ export default function ApplicationForm() {
     education: "academic-cap",
     employStatus: "briefcase",
     hearAbout: "megaphone",
+    emergencyName: "user",
+    emergencyPhone: "phone",
+    fundingSource: "currency-dollar",
+    previousSchool: "academic-cap",
   };
 
   function InputField({ field, label, required, type = "text", placeholder, autoFocus }: { field: string; label: string; required?: boolean; type?: string; placeholder?: string; autoFocus?: boolean }) {
@@ -310,6 +323,7 @@ export default function ApplicationForm() {
               <p><span className="font-medium text-[var(--color-text-muted)]">Course:</span> {form.course}</p>
               <p><span className="font-medium text-[var(--color-text-muted)]">Phone:</span> {form.phone}</p>
               <p><span className="font-medium text-[var(--color-text-muted)]">Email:</span> {form.email}</p>
+              {form.emergencyName && <p><span className="font-medium text-[var(--color-text-muted)]">Emergency:</span> {form.emergencyName} ({form.emergencyPhone})</p>}
             </div>
             <div className="flex gap-3">
               <button onClick={() => setShowConfirm(false)}
@@ -407,6 +421,14 @@ export default function ApplicationForm() {
 
               <InputField field="startDate" label="Preferred Start Date" type="date" />
 
+              <div className="grid sm:grid-cols-3 gap-5">
+                <SelectField field="gender" label="Gender" placeholder="Select (optional)">
+                  {GENDER_OPTIONS.map((o) => <option key={o} value={o}>{o}</option>)}
+                </SelectField>
+                <InputField field="nationality" label="Nationality" placeholder="e.g. South African" />
+                <InputField field="postalCode" label="Postal Code" placeholder="e.g. 0157" />
+              </div>
+
               <NavButtons />
             </div>
           </div>
@@ -500,6 +522,40 @@ export default function ApplicationForm() {
                 {HEAR_OPTIONS.map((o) => <option key={o} value={o}>{o}</option>)}
               </SelectField>
 
+              <div className="border-t border-[var(--color-border)] pt-5">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-100 text-emerald-600">
+                    <Icon name="heart" size={4} />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-bold text-[var(--color-text-primary)]">Emergency Contact</h4>
+                    <p className="text-xs text-[var(--color-text-muted)]">Who should we contact in case of an emergency?</p>
+                  </div>
+                </div>
+                <div className="grid sm:grid-cols-2 gap-5">
+                  <InputField field="emergencyName" label="Emergency Contact Name" placeholder="Full name" />
+                  <InputField field="emergencyPhone" label="Emergency Contact Phone" type="tel" placeholder="Phone number" />
+                </div>
+              </div>
+
+              <div className="border-t border-[var(--color-border)] pt-5">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-purple-100 text-purple-600">
+                    <Icon name="currency-dollar" size={4} />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-bold text-[var(--color-text-primary)]">Additional Information</h4>
+                    <p className="text-xs text-[var(--color-text-muted)]">Funding and previous education</p>
+                  </div>
+                </div>
+                <div className="grid sm:grid-cols-2 gap-5">
+                  <SelectField field="fundingSource" label="Funding / Sponsorship" placeholder="Select (optional)">
+                    {FUNDING_OPTIONS.map((o) => <option key={o} value={o}>{o}</option>)}
+                  </SelectField>
+                  <InputField field="previousSchool" label="Previous School / Institution" placeholder="e.g. ABC High School" />
+                </div>
+              </div>
+
               <NavButtons nextLabel="Review Application" />
             </div>
           </div>
@@ -530,10 +586,13 @@ export default function ApplicationForm() {
                     </div>
                     <div className="grid sm:grid-cols-2 gap-x-6 gap-y-2 text-sm">
                       <div><span className="text-[var(--color-text-muted)]">Name:</span> <span className="font-medium text-[var(--color-text-primary)]">{form.title ? `${form.title} ` : ""}{form.fullName}</span></div>
+                      <div><span className="text-[var(--color-text-muted)]">Gender:</span> <span className="font-medium text-[var(--color-text-primary)]">{form.gender || "Not specified"}</span></div>
+                      <div><span className="text-[var(--color-text-muted)]">Nationality:</span> <span className="font-medium text-[var(--color-text-primary)]">{form.nationality || "Not specified"}</span></div>
+                      <div><span className="text-[var(--color-text-muted)]">Postal Code:</span> <span className="font-medium text-[var(--color-text-primary)]">{form.postalCode || "Not provided"}</span></div>
                       <div><span className="text-[var(--color-text-muted)]">ID Number:</span> <span className="font-medium text-[var(--color-text-primary)]">{form.idNumber || "Not provided"}</span></div>
                       <div><span className="text-[var(--color-text-muted)]">DOB:</span> <span className="font-medium text-[var(--color-text-primary)]">{form.dob || "Not provided"}</span></div>
                       <div><span className="text-[var(--color-text-muted)]">Phone:</span> <span className="font-medium text-[var(--color-text-primary)]">{form.phone}</span></div>
-                      <div className="sm:col-span-2"><span className="text-[var(--color-text-muted)]">Email:</span> <span className="font-medium text-[var(--color-text-primary)]">{form.email}</span></div>
+                      <div><span className="text-[var(--color-text-muted)]">Email:</span> <span className="font-medium text-[var(--color-text-primary)]">{form.email}</span></div>
                       {form.address && <div className="sm:col-span-2"><span className="text-[var(--color-text-muted)]">Address:</span> <span className="font-medium text-[var(--color-text-primary)]">{form.address}</span></div>}
                       {form.startDate && <div><span className="text-[var(--color-text-muted)]">Preferred Start:</span> <span className="font-medium text-[var(--color-text-primary)]">{form.startDate}</span></div>}
                     </div>
@@ -564,6 +623,9 @@ export default function ApplicationForm() {
                     <div className="grid sm:grid-cols-2 gap-x-6 gap-y-2 text-sm">
                       <div><span className="text-[var(--color-text-muted)]">Education:</span> <span className="font-medium text-[var(--color-text-primary)]">{form.education || "Not provided"}</span></div>
                       <div><span className="text-[var(--color-text-muted)]">Employment:</span> <span className="font-medium text-[var(--color-text-primary)]">{form.employStatus || "Not provided"}</span></div>
+                      <div><span className="text-[var(--color-text-muted)]">Previous School:</span> <span className="font-medium text-[var(--color-text-primary)]">{form.previousSchool || "Not provided"}</span></div>
+                      <div><span className="text-[var(--color-text-muted)]">Funding:</span> <span className="font-medium text-[var(--color-text-primary)]">{form.fundingSource || "Not specified"}</span></div>
+                      <div><span className="text-[var(--color-text-muted)]">Emergency Contact:</span> <span className="font-medium text-[var(--color-text-primary)]">{form.emergencyName ? `${form.emergencyName} (${form.emergencyPhone})` : "Not provided"}</span></div>
                       <div><span className="text-[var(--color-text-muted)]">Heard via:</span> <span className="font-medium text-[var(--color-text-primary)]">{form.hearAbout || "Not specified"}</span></div>
                     </div>
                   </div>
