@@ -1,121 +1,70 @@
-"use client";
+import { cva, type VariantProps } from 'class-variance-authority';
+import { cn } from '@/lib/utils';
+import React from 'react';
 
-import { useCallback, useRef, useState } from "react";
-import Link from "next/link";
-import { cn } from "@/lib/utils";
-
-type ButtonVariant = "primary" | "secondary" | "accent" | "ghost" | "outline" | "primary-glow";
-type ButtonSize = "sm" | "md" | "lg";
-
-interface ButtonBaseProps {
-  variant?: ButtonVariant;
-  size?: ButtonSize;
-  children: React.ReactNode;
-  className?: string;
-  iconLeft?: React.ReactNode;
-  iconRight?: React.ReactNode;
-  fullWidth?: boolean;
-}
-
-interface ButtonAsLink extends ButtonBaseProps {
-  href: string;
-  onClick?: never;
-  type?: never;
-}
-
-interface ButtonAsButton extends ButtonBaseProps {
-  href?: never;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  type?: "button" | "submit" | "reset";
-}
-
-type ButtonProps = ButtonAsLink | ButtonAsButton;
-
-const VARIANT_CLASSES: Record<ButtonVariant, string> = {
-  primary:
-    "bg-[var(--color-primary)] text-[var(--color-text-inverse)] border border-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] hover:border-[var(--color-primary-dark)] shadow-sm hover:shadow-md",
-  secondary:
-    "bg-transparent text-[var(--color-primary)] border border-[var(--color-primary)] hover:bg-[var(--color-primary)] hover:text-[var(--color-text-inverse)]",
-  accent:
-    "bg-[var(--color-accent)] text-[var(--color-gray-900)] border border-[var(--color-accent)] hover:bg-[var(--color-accent-dark)] hover:border-[var(--color-accent-dark)]",
-  ghost:
-    "bg-transparent text-[var(--color-primary)] border border-transparent hover:bg-[var(--color-gray-100)]",
-  outline:
-    "bg-transparent text-[var(--color-primary)] border border-[var(--color-gray-300)] hover:border-[var(--color-primary)] hover:bg-[var(--color-gray-50)]",
-  "primary-glow":
-    "bg-[var(--color-primary)] text-[var(--color-text-inverse)] border border-[var(--color-primary)] shadow-[0_0_20px_rgba(var(--color-primary-rgb),0.4)] hover:shadow-[0_0_30px_rgba(var(--color-primary-rgb),0.6)] hover:bg-[var(--color-primary-dark)]",
-};
-
-const SIZE_CLASSES: Record<ButtonSize, string> = {
-  sm: "px-3 py-1.5 text-[0.8125rem] gap-1.5",
-  md: "px-5 py-2.5 text-sm gap-2",
-  lg: "px-6 py-3 text-base gap-2.5",
-};
-
-export default function Button({
-  variant = "primary",
-  size = "md",
-  children,
-  className,
-  href,
-  onClick,
-  type = "button",
-  iconLeft,
-  iconRight,
-  fullWidth,
-}: ButtonProps) {
-  const [ripples, setRipples] = useState<{ id: number; x: number; y: number }[]>([]);
-  const ripplesRef = useRef<number>(0);
-
-  const handleClick = useCallback(
-    (e: React.MouseEvent<HTMLButtonElement>) => {
-      const id = ++ripplesRef.current;
-      const rect = e.currentTarget.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      setRipples((prev) => [...prev, { id, x, y }]);
-      setTimeout(() => {
-        setRipples((prev) => prev.filter((r) => r.id !== id));
-      }, 600);
-      onClick?.(e);
+const buttonVariants = cva(
+  'inline-flex items-center justify-center gap-2 font-semibold rounded-lg transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
+  {
+    variants: {
+      variant: {
+        primary: 'bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-dark)] text-white hover:shadow-lg hover:shadow-[var(--color-primary)]/30 hover:scale-[1.02] active:scale-[0.98]',
+        secondary: 'bg-[var(--color-surface)] text-[var(--color-text-primary)] border border-[var(--color-border)] hover:bg-[var(--color-surface-alt)] hover:border-[var(--color-border-strong)]',
+        accent: 'bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-dark)] text-[var(--color-gray-900)] hover:shadow-lg hover:shadow-[var(--color-accent)]/30 hover:scale-[1.02] active:scale-[0.98]',
+        ghost: 'text-[var(--color-primary)] hover:bg-[var(--color-primary)]/10',
+        outline: 'border border-[var(--color-primary)] text-[var(--color-primary)] hover:bg-[var(--color-primary)]/5',
+        danger: 'bg-red-600 text-white hover:bg-red-700 hover:shadow-lg hover:shadow-red-600/30',
+        success: 'bg-green-600 text-white hover:bg-green-700 hover:shadow-lg hover:shadow-green-600/30',
+      },
+      size: {
+        xs: 'px-2.5 py-1.5 text-xs font-medium',
+        sm: 'px-3 py-1.5 text-sm',
+        md: 'px-4 py-2.5 text-sm',
+        lg: 'px-6 py-3 text-base',
+        xl: 'px-8 py-4 text-lg',
+      },
+      fullWidth: {
+        true: 'w-full',
+        false: '',
+      },
     },
-    [onClick]
-  );
-
-  const classes = cn(
-    "inline-flex items-center justify-center font-semibold uppercase tracking-wide rounded-lg transition-all duration-200 cursor-pointer whitespace-nowrap relative overflow-hidden hover:scale-[1.02] active:scale-[0.98]",
-    VARIANT_CLASSES[variant],
-    SIZE_CLASSES[size],
-    fullWidth && "w-full",
-    className
-  );
-
-  const content = (
-    <>
-      {iconLeft && <span className="shrink-0">{iconLeft}</span>}
-      {children}
-      {iconRight && <span className="shrink-0">{iconRight}</span>}
-    </>
-  );
-
-  if (href) {
-    return (
-      <Link href={href} className={classes}>
-        {content}
-      </Link>
-    );
+    defaultVariants: {
+      variant: 'primary',
+      size: 'md',
+      fullWidth: false,
+    },
   }
+);
 
-  return (
-    <button type={type} onClick={handleClick} className={classes}>
-      {content}
-      {ripples.map((r) => (
-        <span
-          key={r.id}
-          className="absolute pointer-events-none rounded-full bg-white/30 animate-ripple"
-          style={{ left: r.x, top: r.y, width: 8, height: 8, transform: "translate(-50%, -50%)" }}
-        />
-      ))}
-    </button>
-  );
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  isLoading?: boolean;
+  asChild?: boolean;
 }
+
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant, size, fullWidth, isLoading, children, ...props }, ref) => (
+    <button
+      className={cn(buttonVariants({ variant, size, fullWidth }), className)}
+      disabled={isLoading || props.disabled}
+      ref={ref}
+      {...props}
+    >
+      {isLoading ? (
+        <>
+          <svg className="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none">
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+          </svg>
+          <span>Loading...</span>
+        </>
+      ) : (
+        children
+      )}
+    </button>
+  )
+);
+
+Button.displayName = 'Button';
+
+export default Button;

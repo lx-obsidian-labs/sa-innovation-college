@@ -1,66 +1,30 @@
-import Image from "next/image";
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils';
+import React from 'react';
 
-interface CardProps {
-  children: React.ReactNode;
-  className?: string;
-  padding?: "none" | "sm" | "md" | "lg";
+export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   hover?: boolean;
-  image?: string;
-  imageAlt?: string;
-  badge?: string;
-  badgeVariant?: "primary" | "accent" | "success" | "warning" | "error";
+  border?: boolean;
+  shadow?: 'sm' | 'md' | 'lg' | 'none';
 }
 
-const PADDING_CLASSES = {
-  none: "",
-  sm: "p-4",
-  md: "p-6",
-  lg: "p-8",
-};
-
-const BADGE_CLASSES = {
-  primary: "bg-[var(--color-primary)] text-white",
-  accent: "bg-[var(--color-accent)] text-[var(--color-gray-900)]",
-  success: "bg-[var(--color-success)] text-white",
-  warning: "bg-[var(--color-warning)] text-white",
-  error: "bg-[var(--color-error)] text-white",
-};
-
-export default function Card({
-  children,
-  className,
-  padding = "md",
-  hover = false,
-  image,
-  imageAlt = "",
-  badge,
-  badgeVariant = "primary",
-}: CardProps) {
-  return (
+const Card = React.forwardRef<HTMLDivElement, CardProps>(
+  ({ className, hover = false, border = true, shadow = 'md', ...props }, ref) => (
     <div
+      ref={ref}
       className={cn(
-        "rounded-lg border border-[var(--color-border)] bg-[var(--color-surface-raised)] shadow-[var(--shadow-card)] relative overflow-hidden",
-        hover && "transition-shadow duration-200 hover:shadow-[var(--shadow-card-hover)]",
+        'rounded-xl bg-[var(--color-surface-raised)] overflow-hidden',
+        border && 'border border-[var(--color-border)]',
+        shadow === 'sm' && 'shadow-[var(--shadow-sm)]',
+        shadow === 'md' && 'shadow-[var(--shadow-md)]',
+        shadow === 'lg' && 'shadow-[var(--shadow-lg)]',
+        hover && 'hover:shadow-[var(--shadow-lg)] hover:border-[var(--color-border-strong)] hover:-translate-y-1 transition-all duration-300 cursor-pointer',
         className
       )}
-    >
-      {image && (
-        <div className="relative w-full h-48 overflow-hidden">
-          <Image src={image} alt={imageAlt} fill className="object-cover" />
-        </div>
-      )}
-      {badge && (
-        <span
-          className={cn(
-            "absolute top-3 right-3 z-10 text-xs font-semibold uppercase px-2.5 py-0.5 rounded-full",
-            BADGE_CLASSES[badgeVariant]
-          )}
-        >
-          {badge}
-        </span>
-      )}
-      <div className={PADDING_CLASSES[padding]}>{children}</div>
-    </div>
-  );
-}
+      {...props}
+    />
+  )
+);
+
+Card.displayName = 'Card';
+
+export default Card;
