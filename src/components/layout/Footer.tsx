@@ -7,7 +7,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden bg-gradient-to-br from-[var(--saic-navy-950)] via-[var(--saic-navy-900)] to-[var(--saic-campaign-crimson-dark)] text-[var(--color-gray-300)]">
+    <footer className="relative overflow-hidden bg-gradient-to-br from-[var(--saic-navy-950)] via-[var(--saic-navy-900)] to-[var(--saic-campaign-crimson-dark)] text-[var(--color-gray-300)] [&_a]:text-[var(--color-gray-300)] [&_a:hover]:text-[var(--color-accent)]">
       <div className="pointer-events-none absolute inset-0 bg-noise opacity-20" aria-hidden />
       <div className="pointer-events-none absolute -right-40 top-20 h-96 w-96 rounded-full bg-[var(--color-accent)]/5 blur-3xl" aria-hidden />
       <div className="absolute inset-x-0 top-0 h-0.5 animate-gold-shimmer" aria-hidden />
@@ -180,9 +180,9 @@ export default function Footer() {
             &copy; {currentYear} SA Innovation College. All rights reserved.
           </p>
           <div className="flex items-center gap-4 text-xs text-[var(--color-gray-500)]">
-            <Link href="/contact" className="hover:text-[var(--color-gray-300)] transition-colors">Contact Us</Link>
-            <Link href="/about" className="hover:text-[var(--color-gray-300)] transition-colors">About</Link>
-            <Link href="/apply" className="hover:text-[var(--color-gray-300)] transition-colors">Apply</Link>
+            <Link href="/contact" className="transition-colors hover:text-[var(--color-accent)]">Contact Us</Link>
+            <Link href="/about" className="transition-colors hover:text-[var(--color-accent)]">About</Link>
+            <Link href="/apply" className="transition-colors hover:text-[var(--color-accent)]">Apply</Link>
           </div>
         </Container>
       </div>
