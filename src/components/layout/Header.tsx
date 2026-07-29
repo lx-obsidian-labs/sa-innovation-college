@@ -17,13 +17,13 @@ const NAV_ITEMS = [
 ];
 
 const COURSE_CATEGORIES = [
-  { title: "Business & Administration", slug: "business-administration", icon: "building-library" as const },
-  { title: "Computer Skills", slug: "computer-skills", icon: "display" as const },
-  { title: "Education & Training", slug: "education-training", icon: "academic-cap" as const },
-  { title: "Health & Safety", slug: "health-safety", icon: "shield-health" as const },
-  { title: "Hospitality", slug: "hospitality", icon: "gift" as const },
-  { title: "Entrepreneurship", slug: "entrepreneurship", icon: "briefcase" as const },
-  { title: "Policing & Law Enforcement", slug: "policing-law-enforcement", icon: "shield-check" as const },
+  { title: "Business & Administration", slug: "Business%20%26%20Admin", icon: "building-library" as const },
+  { title: "Computer Skills", slug: "Computer%20%26%20Digital", icon: "display" as const },
+  { title: "Education & Training", slug: "Education%20%26%20Training", icon: "academic-cap" as const },
+  { title: "Health & Safety", slug: "Health%20%26%20Safety", icon: "shield-health" as const },
+  { title: "Hospitality", slug: "Customer%20Service%20%26%20Hospitality", icon: "gift" as const },
+  { title: "Entrepreneurship", slug: "Management%20%26%20Entrepreneurship", icon: "briefcase" as const },
+  { title: "Policing & Law Enforcement", slug: "Security%20%26%20Legal%20Studies", icon: "shield-check" as const },
 ];
 
 const FOCUSABLE = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';

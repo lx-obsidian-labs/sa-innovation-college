@@ -1,4 +1,5 @@
 import Button from "@/components/ui/Button";
+import Link from "next/link";
 import Container from "@/components/layout/Container";
 import { getWhatsAppUrl, getTelUrl } from "@/lib/utils";
 import Icon from "@/components/ui/Icon";
@@ -63,18 +64,18 @@ export default function ApplicationCTA() {
             <Button variant="accent" size="lg" href="/apply" className="shadow-lg shadow-[var(--color-accent)]/25">
               Apply Now &mdash; It&apos;s Free
             </Button>
-            <a
+            <Link
               href="/courses"
               className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold rounded-lg border-2 border-white/40 text-white bg-transparent hover:bg-white/10 transition-all duration-200 hover:-translate-y-0.5"
             >
               View Courses
-            </a>
-            <a
+            </Link>
+            <Link
               href="/contact"
               className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold rounded-lg border-2 border-white/40 text-white bg-transparent hover:bg-white/10 transition-all duration-200 hover:-translate-y-0.5"
             >
               Contact Us
-            </a>
+            </Link>
           </div>
 
           <div className="flex flex-wrap justify-center gap-4 mb-14">

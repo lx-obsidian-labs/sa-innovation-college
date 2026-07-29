@@ -96,7 +96,7 @@ export default function ApplicationForm() {
 
   useEffect(() => {
     if (step === 1) nameRef.current?.focus();
-  }, [step]);
+  }, [step, form]);
 
   function selectedCourses() {
     return CATEGORIES.find((c) => c.id === form.category)?.courses || [];

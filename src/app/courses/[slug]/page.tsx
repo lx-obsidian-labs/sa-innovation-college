@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import Container from "@/components/layout/Container";
 import Button from "@/components/ui/Button";
 import { categoryImages, heroGradients } from "@/lib/course-images";
@@ -1758,7 +1759,8 @@ export default async function CourseDetailPage({
   const course = getCourseBySlug(slug);
 
   if (!course) {
-    return (
+    notFound();
+    /* return (
       <>
         <section className="py-[var(--section-py)]">
           <Container>
@@ -1793,7 +1795,7 @@ export default async function CourseDetailPage({
           </Container>
         </section>
       </>
-    );
+    ); */
   }
 
   const heroImage = categoryImages[course.category] || categoryImages["default"];

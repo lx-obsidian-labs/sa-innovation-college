@@ -609,7 +609,7 @@ export default function CoursesPage() {
 
       <section className="py-16 md:py-24">
         <Container>
-          <div className="mb-8">
+          <div className="mb-8" id="all-courses">
             <CourseFilterGrid
               groups={categoryGroups}
               categoryImages={categoryImages}

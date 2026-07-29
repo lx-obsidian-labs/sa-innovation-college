@@ -2,6 +2,7 @@
 
 import Container from "@/components/layout/Container";
 import Icon from "@/components/ui/Icon";
+import Link from "next/link";
 
 export default function Error({
   error,
@@ -31,12 +32,12 @@ export default function Error({
               <Icon name="arrow-path" size={4} />
               Try Again
             </button>
-            <a
+            <Link
               href="/"
               className="inline-flex items-center gap-2 rounded-xl border border-[var(--color-border)] px-6 py-3 text-sm font-semibold text-[var(--color-text-primary)] transition-all hover:bg-[var(--color-gray-50)]"
             >
               Go Home
-            </a>
+            </Link>
           </div>
         </div>
       </Container>

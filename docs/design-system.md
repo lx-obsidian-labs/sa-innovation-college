@@ -13,15 +13,15 @@
 ```css
 :root {
   /* ─── Primary Palette ─── */
-  --color-primary:           #1B4D8E;
-  --color-primary-light:     #2563EB;
-  --color-primary-dark:      #0F2D5E;
+  --color-primary:           #BE3B12;
+  --color-primary-light:     #C13911;
+  --color-primary-dark:      #982E0D;
   --color-primary-rgb:       27, 77, 142;
 
   /* ─── Accent Palette ─── */
-  --color-accent:            #F59E0B;
-  --color-accent-light:      #FBBF24;
-  --color-accent-dark:       #D97706;
+  --color-accent:            #E8B544;
+  --color-accent-light:      #F2C968;
+  --color-accent-dark:       #D9A02A;
   --color-accent-rgb:        245, 158, 11;
 
   /* ─── Neutrals ─── */

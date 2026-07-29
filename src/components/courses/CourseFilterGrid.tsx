@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Icon from "@/components/ui/Icon";
@@ -181,7 +181,10 @@ const CARD_GRADIENTS = [
 ];
 
 export default function CourseFilterGrid({ groups, categoryImages }: CourseFilterGridProps) {
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [activeCategory, setActiveCategory] = useState(() => {
+    if (typeof window === "undefined" || !window.location.hash) return "All";
+    return decodeURIComponent(window.location.hash.slice(1));
+  });
   const [searchQuery, setSearchQuery] = useState("");
   const [visibleCount, setVisibleCount] = useState(12);
 
@@ -213,8 +216,6 @@ export default function CourseFilterGrid({ groups, categoryImages }: CourseFilte
     })).filter((g) => g.courses.length > 0);
   }, [groups, activeCategory, searchQuery]);
 
-  useEffect(() => { setVisibleCount(12); }, [activeCategory, searchQuery]);
-
   const getGradient = (index: number) => CARD_GRADIENTS[index % CARD_GRADIENTS.length];
   const getImage = (course: CourseItem) => {
     const group = groups.find((g) => g.courses.some((c) => c.slug === course.slug));
@@ -224,6 +225,12 @@ export default function CourseFilterGrid({ groups, categoryImages }: CourseFilte
   const handleCategoryChange = (label: string) => {
     setActiveCategory(label);
     setSearchQuery("");
+    setVisibleCount(12);
+  };
+
+  const handleSearchChange = (query: string) => {
+    setSearchQuery(query);
+    setVisibleCount(12);
   };
 
   const handleClear = () => {
@@ -238,7 +245,7 @@ export default function CourseFilterGrid({ groups, categoryImages }: CourseFilte
         activeCategory={activeCategory}
         searchQuery={searchQuery}
         onCategoryChange={handleCategoryChange}
-        onSearchChange={setSearchQuery}
+        onSearchChange={handleSearchChange}
       />
 
       {activeCategory !== "All" && filteredGroups.length > 0 && (
