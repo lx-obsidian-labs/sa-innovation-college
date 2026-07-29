@@ -22,7 +22,7 @@ export default function HeroSlide({ index, current }: HeroSlideProps) {
     >
       <div className="absolute inset-0 bg-[var(--saic-campaign-crimson)]" />
       <img
-        src="/images/hero-student.svg"
+        src="/images/SA-INNOVATION-COLLEGE-2-scaled.webp"
         alt=""
         aria-hidden="true"
         className="pointer-events-none absolute bottom-0 right-[-5%] z-[1] hidden h-[92%] w-auto max-w-[58%] object-contain object-bottom sm:block lg:right-[3%] lg:h-[98%]"
