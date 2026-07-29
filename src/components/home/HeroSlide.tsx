@@ -25,7 +25,7 @@ export default function HeroSlide({ index, current }: HeroSlideProps) {
         src="/images/hero_image-final.webp"
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute bottom-0 right-[-5%] z-[1] hidden h-[88%] w-auto max-w-[54%] object-contain object-bottom sm:block lg:right-[3%] lg:h-[94%]"
+        className="pointer-events-none absolute bottom-0 right-[-5%] z-[1] hidden h-[82%] w-auto max-w-[50%] object-contain object-bottom sm:block lg:right-[3%] lg:h-[88%]"
       />
     </div>
   );
