@@ -7,15 +7,19 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[var(--saic-navy-900)] text-[var(--color-gray-300)]">
-      <div className="border-b border-[var(--saic-navy-700)]">
+    <footer className="relative overflow-hidden bg-gradient-to-br from-[var(--saic-navy-950)] via-[var(--saic-navy-900)] to-[var(--saic-campaign-crimson-dark)] text-[var(--color-gray-300)]">
+      <div className="pointer-events-none absolute inset-0 bg-noise opacity-20" aria-hidden />
+      <div className="pointer-events-none absolute -right-40 top-20 h-96 w-96 rounded-full bg-[var(--color-accent)]/5 blur-3xl" aria-hidden />
+      <div className="absolute inset-x-0 top-0 h-0.5 animate-gold-shimmer" aria-hidden />
+      <div className="relative border-b border-white/10">
         <Container className="py-10 lg:py-12">
-          <div className="max-w-xl mx-auto text-center">
-            <h3 className="text-[var(--color-white)] font-semibold text-lg mb-2">Stay Updated</h3>
+          <div className="mx-auto max-w-xl rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-7 text-center shadow-2xl shadow-black/10 backdrop-blur-sm sm:px-8">
+            <span className="mb-2 inline-block text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--color-accent)]">Keep connected</span>
+            <h3 className="mb-2 text-lg font-semibold text-[var(--color-white)]">Stay Updated</h3>
             <p className="text-sm text-[var(--color-gray-400)] mb-6">
               Subscribe to our newsletter for course updates and news.
             </p>
-            <form action="#" className="flex max-w-md mx-auto shadow-sm rounded-xl overflow-hidden focus-within:ring-2 focus-within:ring-[var(--color-accent)]/30 focus-within:ring-offset-2 focus-within:ring-offset-[var(--saic-navy-900)] transition-all">
+            <form action="#" className="mx-auto flex max-w-md overflow-hidden rounded-xl border border-white/15 shadow-sm transition-all focus-within:ring-2 focus-within:ring-[var(--color-accent)]/50 focus-within:ring-offset-2 focus-within:ring-offset-[var(--saic-navy-950)]">
               <input
                 type="email"
                 placeholder="Enter your email"
@@ -33,11 +37,11 @@ export default function Footer() {
         </Container>
       </div>
 
-      <div className="py-12 lg:py-16">
+      <div className="relative py-12 lg:py-16">
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
             <div className="lg:col-span-1">
-              <Link href="/" className="flex items-center gap-3 mb-4 group">
+              <Link href="/" className="group mb-4 flex items-center gap-3">
                 <div className="w-10 h-10 bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-primary-dark)] rounded-lg flex items-center justify-center shadow-md transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-0.5">
                   <span className="text-[var(--color-text-inverse)] font-bold text-lg">SA</span>
                 </div>
@@ -60,19 +64,19 @@ export default function Footer() {
                   <a
                     key={social.label}
                     href="#"
-                    className="w-10 h-10 rounded-full bg-[var(--color-gray-800)] flex items-center justify-center hover:bg-[var(--color-accent)] hover:-translate-y-0.5 transition-all duration-200 group"
+                    className="group flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--color-accent)]/60 hover:bg-[var(--color-accent)] hover:shadow-lg hover:shadow-[var(--color-accent)]/20"
                     aria-label={`Follow us on ${social.label}`}
                   >
-                    <Icon name={social.icon} size={4} className="text-[var(--color-gray-400)] group-hover:text-white transition-colors" />
+                    <Icon name={social.icon} size={4} className="text-[var(--color-gray-400)] transition-colors group-hover:text-[var(--saic-navy-950)]" />
                   </a>
                 ))}
               </div>
             </div>
 
             <div>
-              <h3 className="text-[var(--color-white)] font-semibold text-sm uppercase tracking-wider mb-4 relative inline-block">
+              <h3 className="relative mb-4 inline-block text-sm font-semibold uppercase tracking-wider text-[var(--color-white)]">
                 Quick Links
-                <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-[var(--color-accent)] to-transparent rounded-full" />
+                <span className="absolute -bottom-1 left-0 right-0 h-0.5 animate-gold-shimmer rounded-full" />
               </h3>
               <ul className="space-y-2.5 mt-5">
                 {[
@@ -89,9 +93,9 @@ export default function Footer() {
                   </li>
                 ))}
               </ul>
-              <h3 className="text-[var(--color-white)] font-semibold text-sm uppercase tracking-wider mt-8 mb-4 relative inline-block">
+              <h3 className="relative mb-4 mt-8 inline-block text-sm font-semibold uppercase tracking-wider text-[var(--color-white)]">
                 Applications
-                <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-[var(--color-accent)] to-transparent rounded-full" />
+                <span className="absolute -bottom-1 left-0 right-0 h-0.5 animate-gold-shimmer rounded-full" />
               </h3>
               <ul className="space-y-2.5 mt-5">
                 <li>
@@ -108,9 +112,9 @@ export default function Footer() {
             </div>
 
             <div>
-              <h3 className="text-[var(--color-white)] font-semibold text-sm uppercase tracking-wider mb-4 relative inline-block">
+              <h3 className="relative mb-4 inline-block text-sm font-semibold uppercase tracking-wider text-[var(--color-white)]">
                 Programmes
-                <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-[var(--color-accent)] to-transparent rounded-full" />
+                <span className="absolute -bottom-1 left-0 right-0 h-0.5 animate-gold-shimmer rounded-full" />
               </h3>
               <ul className="space-y-2.5 mt-5">
                 {[
@@ -131,9 +135,9 @@ export default function Footer() {
             </div>
 
             <div>
-              <h3 className="text-[var(--color-white)] font-semibold text-sm uppercase tracking-wider mb-4 relative inline-block">
+              <h3 className="relative mb-4 inline-block text-sm font-semibold uppercase tracking-wider text-[var(--color-white)]">
                 Contact Us
-                <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-[var(--color-accent)] to-transparent rounded-full" />
+                <span className="absolute -bottom-1 left-0 right-0 h-0.5 animate-gold-shimmer rounded-full" />
               </h3>
               <ul className="space-y-3.5 mt-5">
                 <li>
@@ -170,8 +174,7 @@ export default function Footer() {
         </Container>
       </div>
 
-      <div className="relative">
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--color-gray-700)] to-transparent" />
+      <div className="relative border-t border-white/10 bg-black/15">
         <Container className="flex flex-col sm:flex-row items-center justify-between gap-3 py-5">
           <p className="text-xs text-[var(--color-gray-500)]">
             &copy; {currentYear} SA Innovation College. All rights reserved.
