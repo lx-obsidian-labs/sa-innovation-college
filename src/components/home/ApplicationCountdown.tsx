@@ -46,10 +46,10 @@ export default function ApplicationCountdown() {
   ] as const;
 
   return (
-    <div className="mx-auto mb-7 max-w-xl rounded-2xl border-2 border-[var(--color-accent)]/70 bg-[var(--saic-navy-950)]/90 px-4 py-4 text-left shadow-[0_12px_32px_rgba(18,46,83,0.35)] backdrop-blur-sm">
+    <div className="mx-auto mb-7 max-w-xl rounded-2xl border border-white/20 bg-black/10 px-4 py-4 text-left shadow-[0_12px_32px_rgba(80,0,18,0.25)] backdrop-blur-sm">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <p className="text-sm font-extrabold uppercase tracking-[0.14em] text-[var(--color-accent)]">Applications close soon</p>
+          <p className="text-sm font-extrabold uppercase tracking-[0.14em] text-white">Applications close soon</p>
           <p className="mt-1 text-sm font-medium text-white">September 2026 intake · Apply before places fill</p>
           <p className="mt-1 text-xs text-white/75">Closing: {deadlineLabel} (South Africa)</p>
         </div>
@@ -58,11 +58,11 @@ export default function ApplicationCountdown() {
         </Link>
       </div>
       <div className="mt-4" role="timer" aria-label={remaining.ended ? "Applications are currently closed" : `Time remaining until applications close on ${deadlineLabel}`}>
-        {remaining.ended ? <p className="rounded-lg bg-[var(--saic-red-700)] px-3 py-3 text-sm font-bold text-white">Applications are currently closed. Contact Admissions for the next intake.</p> : <div className="flex gap-2">
+          {remaining.ended ? <p className="rounded-lg bg-[var(--saic-campaign-crimson-dark)] px-3 py-3 text-sm font-bold text-white">Applications are currently closed. Contact Admissions for the next intake.</p> : <div className="flex gap-2">
           {units.map(([value, label]) => (
-          <div key={label} className="min-w-0 flex-1 rounded-lg border border-white/15 bg-white px-2 py-2 text-center">
-            <span className="block text-2xl font-black leading-none text-[var(--saic-navy-950)] tabular-nums sm:text-3xl">{String(value).padStart(2, "0")}</span>
-            <span className="mt-1 block text-[10px] font-extrabold uppercase tracking-wide text-[var(--saic-navy-700)]">{label}</span>
+          <div key={label} className="min-w-0 flex-1 rounded-none border border-white/10 bg-black px-2 py-2 text-center shadow-[0_5px_10px_rgba(0,0,0,0.2)]">
+            <span className="block text-2xl font-black leading-none text-white tabular-nums sm:text-3xl">{String(value).padStart(2, "0")}</span>
+            <span className="mt-1 block text-[10px] font-extrabold uppercase tracking-wide text-white/85">{label}</span>
           </div>
           ))}
         </div>}

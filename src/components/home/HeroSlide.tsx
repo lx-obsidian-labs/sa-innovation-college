@@ -1,12 +1,9 @@
-import type { SlideData } from "./hero-carousel.types";
-
 interface HeroSlideProps {
-  slide: SlideData;
   index: number;
   current: number;
 }
 
-export default function HeroSlide({ slide, index, current }: HeroSlideProps) {
+export default function HeroSlide({ index, current }: HeroSlideProps) {
   const isActive = index === current;
 
   return (
@@ -23,14 +20,13 @@ export default function HeroSlide({ slide, index, current }: HeroSlideProps) {
       aria-label={`Slide ${index + 1}`}
       aria-hidden={!isActive}
     >
+      <div className="absolute inset-0 bg-[var(--saic-campaign-crimson)]" />
       <img
-        src={slide.image}
+        src="/images/hero-student.svg"
         alt=""
-        className="h-full w-full object-cover"
-        loading={index === 0 ? "eager" : "lazy"}
-        fetchPriority={index === 0 ? "high" : "auto"}
+        aria-hidden="true"
+        className="pointer-events-none absolute bottom-0 right-[-5%] z-[1] hidden h-[92%] w-auto max-w-[58%] object-contain object-bottom sm:block lg:right-[3%] lg:h-[98%]"
       />
-      <div className="absolute inset-0 bg-gradient-to-br from-[var(--saic-navy-950)]/90 via-[var(--saic-navy-900)]/80 to-[var(--saic-navy-700)]/85" />
     </div>
   );
 }

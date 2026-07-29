@@ -23,7 +23,7 @@ export default function CarouselControls({
     <>
       <button
         onClick={onPrev}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-white/10 backdrop-blur-md text-white hover:bg-white/25 hover:scale-105 transition-all duration-200 opacity-0 lg:opacity-100 focus-visible:opacity-100"
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-[var(--saic-campaign-crimson-dark)]/80 backdrop-blur-md text-white hover:bg-[var(--saic-campaign-crimson-dark)] hover:scale-105 transition-all duration-200 opacity-0 lg:opacity-100 focus-visible:opacity-100"
         aria-label="Previous slide"
         style={{ minWidth: "44px", minHeight: "44px" }}
       >
@@ -32,7 +32,7 @@ export default function CarouselControls({
 
       <button
         onClick={onNext}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-white/10 backdrop-blur-md text-white hover:bg-white/25 hover:scale-105 transition-all duration-200 opacity-0 lg:opacity-100 focus-visible:opacity-100"
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-12 h-12 rounded-full bg-[var(--saic-campaign-crimson-dark)]/80 backdrop-blur-md text-white hover:bg-[var(--saic-campaign-crimson-dark)] hover:scale-105 transition-all duration-200 opacity-0 lg:opacity-100 focus-visible:opacity-100"
         aria-label="Next slide"
         style={{ minWidth: "44px", minHeight: "44px" }}
       >

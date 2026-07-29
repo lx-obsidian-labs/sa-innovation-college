@@ -16,6 +16,9 @@
     --saic-navy-700: #2A4F83;
     --saic-red-700: #982E0D;
     --saic-red-600: #BE3B12;
+    /* Reference campaign crimson supplied by the brand: #B21A32. */
+    --saic-campaign-crimson: #B21A32;
+    --saic-campaign-crimson-dark: #98142C;
     --saic-gold-600: #D9A02A;
     --saic-gold-500: #E8B544;
     --saic-gold-100: #F8EBC7;
