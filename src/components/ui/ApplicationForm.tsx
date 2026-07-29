@@ -361,7 +361,17 @@ export default function ApplicationForm() {
       </div>
 
       <form onSubmit={(e) => { e.preventDefault(); setShowConfirm(true); }} noValidate>
-        <div className="mb-10 rounded-xl border border-[var(--color-border)] bg-[var(--color-gray-50)]/70 px-3 py-5 sm:px-5">
+        <div className="mb-10 rounded-xl border border-[var(--color-border)] bg-[var(--color-gray-50)]/70 px-3 py-5 shadow-[var(--shadow-xs)] sm:px-5">
+          <div className="mb-4 flex items-center justify-between gap-4">
+            <div>
+              <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[var(--color-accent-dark)]">Application progress</p>
+              <p className="mt-1 text-xs font-medium text-[var(--color-text-secondary)]">Step {step} of {STEP_LABELS.length} · {STEP_LABELS[step - 1]}</p>
+            </div>
+            <span className="text-sm font-bold tabular-nums text-[var(--color-primary)]">{Math.round((step / STEP_LABELS.length) * 100)}%</span>
+          </div>
+          <div className="mb-5 h-1.5 overflow-hidden rounded-full bg-[var(--color-gray-200)]" role="progressbar" aria-label="Application progress" aria-valuemin={1} aria-valuemax={STEP_LABELS.length} aria-valuenow={step}>
+            <div className="h-full rounded-full bg-gradient-to-r from-[var(--color-primary)] via-[var(--color-accent)] to-[var(--color-primary-dark)] transition-all duration-500" style={{ width: `${(step / STEP_LABELS.length) * 100}%` }} />
+          </div>
           <div className="flex items-center justify-between">
             {STEP_LABELS.map((label, i) => {
               const s = i + 1;

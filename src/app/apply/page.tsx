@@ -22,8 +22,8 @@ export default function ApplyPage() {
   return (
     <>
       <PageHero
-        title="Apply Now"
-        description="Take the first step toward your future \u2014 complete your online application today."
+        title="Start your application"
+        description="Tell us about your goals, choose a programme and get guidance from Admissions on the next step."
       />
 
       <section className="relative overflow-hidden bg-gradient-to-b from-white via-[var(--color-gray-50)] to-[var(--saic-gold-100)]/30 py-16 md:py-24">
@@ -35,14 +35,29 @@ export default function ApplyPage() {
               <div className="mb-8 text-center">
                 <span className="mb-3 inline-flex items-center gap-2 rounded-full border border-[var(--color-accent)]/30 bg-[var(--color-accent)]/10 px-4 py-1 text-xs font-bold uppercase tracking-widest text-[var(--color-primary)]">
                   <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[var(--color-accent)]" aria-hidden />
-                  Begin Your Journey
+                  Begin your journey
                 </span>
                 <h2 className="mb-2 text-[var(--fs-3xl)] font-extrabold text-[var(--color-text-primary)]">
-                  Online Application Form
+                  Apply online in a few clear steps
                 </h2>
                 <p className="text-[var(--color-text-secondary)]">
-                  Complete your application in a few easy steps.
+                  Review your details before submitting. Admissions will contact you about requirements, fees and registration.
                 </p>
+              </div>
+
+              <div className="mb-8 grid gap-3 border-y border-[var(--color-border)] py-4 text-center sm:grid-cols-3 sm:text-left">
+                <div className="flex items-center justify-center gap-2 sm:justify-start">
+                  <Icon name="clock" size={4} className="text-[var(--color-accent-dark)]" />
+                  <span className="text-xs font-semibold text-[var(--color-text-secondary)]">Save your progress</span>
+                </div>
+                <div className="flex items-center justify-center gap-2 sm:justify-start">
+                  <Icon name="check-badge" size={4} className="text-[var(--color-accent-dark)]" />
+                  <span className="text-xs font-semibold text-[var(--color-text-secondary)]">Review before sending</span>
+                </div>
+                <div className="flex items-center justify-center gap-2 sm:justify-start">
+                  <Icon name="chat-bubble-left-right" size={4} className="text-[var(--color-accent-dark)]" />
+                  <span className="text-xs font-semibold text-[var(--color-text-secondary)]">Admissions guidance</span>
+                </div>
               </div>
 
               <div id="apply-form-section">
