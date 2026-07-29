@@ -103,7 +103,7 @@ export default function HeroCarousel() {
       onFocus={() => dispatch({ type: "FOCUS_ENTER" })}
       onBlur={() => dispatch({ type: "FOCUS_LEAVE" })}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-primary-darker)] via-[var(--color-primary-dark)] to-[var(--color-primary)]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[var(--saic-navy-950)] via-[var(--saic-navy-900)] to-[var(--saic-navy-700)]" />
       <div className="absolute inset-0 bg-noise opacity-50" aria-hidden />
       <div className="floating-blob" style={{ width: 500, height: 500, background: "var(--color-accent)", top: "-15%", right: "-10%", opacity: 0.05, animationDelay: "0s" }} aria-hidden />
       <div className="floating-blob" style={{ width: 400, height: 400, background: "var(--color-primary-light)", bottom: "-20%", left: "-5%", opacity: 0.06, animationDelay: "3s" }} aria-hidden />
@@ -164,7 +164,7 @@ export default function HeroCarousel() {
           <ApplicationCountdown />
 
           <div className="flex animate-fadeInUp flex-wrap justify-center gap-4 mb-8" style={{ animationDelay: "0.4s" }} key={`cta-${context.current}`}>
-            <Button variant="accent" size="lg" href={slide.cta.href} className="shadow-lg shadow-[var(--color-accent)]/25">
+            <Button variant="primary" size="lg" href={slide.cta.href} className="shadow-lg shadow-[var(--color-primary)]/30">
               {slide.cta.text}
             </Button>
             {slide.secondary && (

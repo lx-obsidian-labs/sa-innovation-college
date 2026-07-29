@@ -99,11 +99,11 @@ const courses = [
 ];
 
 const categoryThemes: Record<string, { badge: string; tag: string; accent: string }> = {
-  "Law Enforcement": { badge: "bg-red-500", tag: "bg-red-100 text-red-700", accent: "text-red-600" },
-  "Computer & Digital Skills": { badge: "bg-purple-500", tag: "bg-purple-100 text-purple-700", accent: "text-purple-600" },
-  "Hospitality": { badge: "bg-orange-500", tag: "bg-orange-100 text-orange-700", accent: "text-orange-600" },
-  "Policing": { badge: "bg-blue-500", tag: "bg-blue-100 text-blue-700", accent: "text-blue-600" },
-  "Management & Entrepreneurship": { badge: "bg-amber-500", tag: "bg-amber-100 text-amber-700", accent: "text-amber-600" },
+  "Law Enforcement": { badge: "bg-[var(--saic-navy-900)]", tag: "bg-[var(--saic-gold-100)] text-[var(--saic-navy-950)]", accent: "text-[var(--saic-navy-700)]" },
+  "Computer & Digital Skills": { badge: "bg-[var(--saic-navy-700)]", tag: "bg-[var(--saic-gold-100)] text-[var(--saic-navy-950)]", accent: "text-[var(--saic-navy-700)]" },
+  "Hospitality": { badge: "bg-[var(--saic-red-600)]", tag: "bg-[var(--saic-gold-100)] text-[var(--saic-red-700)]", accent: "text-[var(--saic-red-700)]" },
+  "Policing": { badge: "bg-[var(--saic-navy-900)]", tag: "bg-[var(--saic-gold-100)] text-[var(--saic-navy-950)]", accent: "text-[var(--saic-navy-700)]" },
+  "Management & Entrepreneurship": { badge: "bg-[var(--saic-green-700)]", tag: "bg-[var(--saic-green-100)] text-[var(--saic-green-700)]", accent: "text-[var(--saic-green-700)]" },
 };
 
 export default function FeaturedCourses() {
@@ -148,7 +148,7 @@ export default function FeaturedCourses() {
 
                   <div className="absolute top-3 right-3 flex flex-col gap-1.5">
                     {course.free && (
-                      <span className="inline-flex items-center rounded-md bg-emerald-500 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-lg">
+                      <span className="inline-flex items-center rounded-md bg-[var(--saic-green-700)] px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-lg">
                         FREE
                       </span>
                     )}

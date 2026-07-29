@@ -34,7 +34,7 @@ export default function ApplicationCTA() {
   return (
     <section
       id="cta"
-      className="relative overflow-hidden bg-gradient-to-br from-[var(--color-primary)] via-[var(--color-primary-dark)] to-[#0B1F3F] py-16 md:py-24"
+      className="relative overflow-hidden bg-gradient-to-br from-[var(--saic-navy-950)] via-[var(--saic-navy-900)] to-[var(--saic-navy-700)] py-16 md:py-24"
     >
       <div className="absolute top-10 left-10 w-72 h-72 rounded-full bg-[var(--color-accent)]/10 blur-3xl animate-float" aria-hidden />
       <div className="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-[var(--color-accent)]/5 blur-3xl animate-float" style={{ animationDelay: "2s" }} aria-hidden />

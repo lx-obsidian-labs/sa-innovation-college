@@ -30,7 +30,7 @@ export default function HeroSlide({ slide, index, current }: HeroSlideProps) {
         loading={index === 0 ? "eager" : "lazy"}
         fetchPriority={index === 0 ? "high" : "auto"}
       />
-      <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-primary-dark)]/85 via-[var(--color-primary)]/75 to-[#0B1F3F]/85" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[var(--saic-navy-950)]/90 via-[var(--saic-navy-900)]/80 to-[var(--saic-navy-700)]/85" />
     </div>
   );
 }
