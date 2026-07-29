@@ -161,12 +161,12 @@ export default function ContactForm() {
 
   if (state === "success") {
     return (
-      <div className="flex flex-col items-center justify-center rounded-2xl border border-green-200 bg-gradient-to-br from-green-50 to-emerald-50 p-12 text-center animate-scaleIn">
-        <div className="mb-5 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-green-400 to-emerald-500 text-white shadow-lg shadow-green-200">
+      <div className="flex flex-col items-center justify-center rounded-2xl border border-[var(--saic-green-700)]/20 bg-[var(--saic-green-100)] p-12 text-center animate-scaleIn">
+        <div className="mb-5 flex h-20 w-20 items-center justify-center rounded-full bg-[var(--saic-green-700)] text-white shadow-lg shadow-[var(--saic-green-700)]/20">
           <Icon name="check" size={10} />
         </div>
-        <h3 className="mb-2 text-xl font-extrabold text-green-800">Message Sent!</h3>
-        <p role="status" aria-live="polite" className="mb-6 max-w-sm text-green-700">{message}</p>
+        <h3 className="mb-2 text-xl font-extrabold text-[var(--saic-green-700)]">Message Sent!</h3>
+        <p role="status" aria-live="polite" className="mb-6 max-w-sm text-[var(--saic-green-700)]">{message}</p>
         <button onClick={() => setState("idle")}
           className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold rounded-xl bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-dark)] text-white hover:shadow-lg btn-shine transition-all">
           <Icon name="envelope" size={4} />

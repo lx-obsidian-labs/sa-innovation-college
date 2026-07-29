@@ -15,8 +15,8 @@ export default function Error({
     <section className="py-24 md:py-32 bg-gradient-to-b from-white to-[var(--color-gray-50)]">
       <Container>
         <div className="mx-auto max-w-xl text-center">
-          <div className="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-red-50 shadow-inner">
-            <Icon name="exclamation-triangle" size={12} className="text-red-500" />
+          <div className="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-[var(--color-error-light)] shadow-inner">
+            <Icon name="exclamation-triangle" size={12} className="text-[var(--color-error)]" />
           </div>
           <h1 className="mb-3 text-[var(--fs-3xl)] font-bold text-[var(--color-text-primary)]">
             Something went wrong

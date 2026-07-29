@@ -302,12 +302,12 @@ export default function ApplicationForm() {
 
   if (state === "success") {
     return (
-      <div className="flex flex-col items-center justify-center rounded-2xl border border-green-200 bg-gradient-to-br from-green-50 to-emerald-50 p-12 text-center animate-scaleIn">
-        <div className="mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-green-400 to-emerald-500 text-white shadow-lg shadow-green-200">
+      <div className="flex flex-col items-center justify-center rounded-2xl border border-[var(--saic-green-700)]/20 bg-[var(--saic-green-100)] p-12 text-center animate-scaleIn">
+        <div className="mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-[var(--saic-green-700)] text-white shadow-lg shadow-[var(--saic-green-700)]/20">
           <Icon name="check" size={12} />
         </div>
-        <h3 className="mb-2 text-2xl font-extrabold text-green-800">Application Submitted!</h3>
-        <p role="status" aria-live="polite" className="mb-6 max-w-md text-green-700">{message}</p>
+        <h3 className="mb-2 text-2xl font-extrabold text-[var(--saic-green-700)]">Application Submitted!</h3>
+        <p role="status" aria-live="polite" className="mb-6 max-w-md text-[var(--saic-green-700)]">{message}</p>
         <div className="mb-8 rounded-xl border border-green-200 bg-white px-8 py-5 shadow-sm">
           <p className="mb-1 text-xs font-medium uppercase tracking-wider text-[var(--color-text-muted)]">Reference Number</p>
           <p className="text-2xl font-bold tracking-wider text-[var(--color-primary)]">{refNumber}</p>

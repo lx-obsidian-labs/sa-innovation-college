@@ -47,14 +47,14 @@ function ToastItem({ t, onClose }: { t: Toast; onClose: (id: number) => void }) 
   }[t.type];
 
   const colors = {
-    success: "bg-emerald-600/95 border-emerald-500",
-    error: "bg-red-600/95 border-red-500",
+    success: "bg-[var(--saic-green-700)]/95 border-[var(--saic-green-700)]",
+    error: "bg-[var(--saic-red-700)]/95 border-[var(--saic-red-700)]",
     info: "bg-[var(--color-primary)]/95 border-[var(--color-primary)]",
   }[t.type];
 
   const progressColors = {
-    success: "bg-emerald-400/60",
-    error: "bg-red-400/60",
+    success: "bg-[var(--saic-green-700)]/60",
+    error: "bg-[var(--saic-red-600)]/60",
     info: "bg-white/30",
   }[t.type];
 
