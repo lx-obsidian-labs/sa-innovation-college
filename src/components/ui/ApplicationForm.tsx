@@ -355,12 +355,13 @@ export default function ApplicationForm() {
         </div>
       )}
 
-      <div className="flex justify-end mb-4 no-print">
+      <div className="mb-4 flex items-center justify-between no-print">
+        <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--color-accent-dark)]">Secure online application</span>
         <DownloadPdfButton type="application" data={form} label="Download PDF" />
       </div>
 
       <form onSubmit={(e) => { e.preventDefault(); setShowConfirm(true); }} noValidate>
-        <div className="mb-10">
+        <div className="mb-10 rounded-xl border border-[var(--color-border)] bg-[var(--color-gray-50)]/70 px-3 py-5 sm:px-5">
           <div className="flex items-center justify-between">
             {STEP_LABELS.map((label, i) => {
               const s = i + 1;
@@ -375,7 +376,7 @@ export default function ApplicationForm() {
                   >
                     <div className={cn(
                       "flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold transition-all duration-500",
-                      step > s ? "bg-green-500 text-white shadow-md" : step === s ? "bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-primary-dark)] text-white shadow-lg shadow-[var(--color-primary)]/30 scale-110" : "bg-[var(--color-gray-200)] text-[var(--color-text-muted)]"
+                      step > s ? "bg-[var(--saic-green-700)] text-white shadow-md" : step === s ? "bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-primary-dark)] text-white shadow-lg shadow-[var(--color-primary)]/30 scale-110 ring-4 ring-[var(--color-accent)]/20" : "bg-[var(--color-gray-200)] text-[var(--color-text-muted)]"
                     )}>
                       {step > s ? (
                         <Icon name="check" size={5} className="animate-scaleIn" />
@@ -391,7 +392,7 @@ export default function ApplicationForm() {
                   {i < STEP_LABELS.length - 1 && (
                     <div className={cn(
                       "flex-1 h-0.5 mx-2 sm:mx-4 transition-all duration-500",
-                      step > s ? "bg-green-500" : step === s ? "bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-gray-200)]" : "bg-[var(--color-gray-200)]"
+                      step > s ? "bg-[var(--saic-green-700)]" : step === s ? "bg-gradient-to-r from-[var(--color-primary)] via-[var(--color-accent)] to-[var(--color-gray-200)]" : "bg-[var(--color-gray-200)]"
                     )} />
                   )}
                 </div>
