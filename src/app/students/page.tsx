@@ -41,7 +41,7 @@ const steps = [
 
 const downloads = [
   { name: "Student Handbook", filename: "SAIC-Student-Handbook-2026.pdf", description: "A practical guide to learner support, academic expectations, conduct, and key college contacts." },
-  { name: "Application Form", filename: "SAIC-FRM-ADM-001-Rev-1-Application-Form.pdf", description: "A printer-friendly blank application form for applicants who prefer to submit a hard copy." },
+  { name: "Application Form", filename: "SAIC-FRM-ADM-001-2026.1-Application-Form.pdf", description: "A printer-friendly blank application form for applicants who prefer to submit a hard copy." },
   { name: "Fee Schedule", filename: "SAIC-Fee-Schedule-2026.pdf", description: "Programme fees and payment information. Confirm the current quotation with Admissions before payment." },
   { name: "Course Prospectus", filename: "SAIC-Course-Prospectus-2026.pdf", description: "An overview of available programmes, study options, and the application journey." },
 ];
@@ -153,7 +153,7 @@ export default function StudentsPage() {
                   <Icon name="download" size={8} />
                 </div>
                 <h3 className="mb-1 text-sm font-bold text-[var(--color-text-primary)]">{item.name}</h3>
-                <p className="mb-2 text-xs text-[var(--color-text-muted)]">Version 1.0 · Published 01 Jan 2026</p>
+                <p className="mb-2 text-xs text-[var(--color-text-muted)]">Version 2026.1 · Published 01 Jan 2026</p>
                 {item.name === "Application Form" ? <BlankApplicationDownload /> : <ResourcePdfButton name={item.name} filename={item.filename} version="1.0" description={item.description} />}
               </div>
             ))}
