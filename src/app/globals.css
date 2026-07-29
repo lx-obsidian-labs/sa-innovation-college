@@ -10,52 +10,73 @@
 
 @layer base {
   :root {
-    --color-primary: #1B4D8E;
-    --color-primary-light: #2563EB;
-    --color-primary-dark: #0F2D5E;
-    --color-primary-darker: #081B36;
-    --color-primary-rgb: 27, 77, 142;
+    /* SA Innovation College brand palette */
+    --saic-navy-900: #1D4174;
+    --saic-navy-700: #2A4F83;
+    --saic-navy-500: #316C9C;
+    --saic-red-700: #982E0D;
+    --saic-red-600: #BE3B12;
+    --saic-red-500: #C13911;
+    --saic-gold-600: #D9A02A;
+    --saic-gold-500: #E8B544;
+    --saic-gold-100: #F8EBC7;
+    --saic-green-700: #4A795A;
+    --saic-green-600: #62945F;
+    --saic-green-100: #E6EFE5;
+    --saic-ink: #242B31;
+    --saic-text: #3E474D;
+    --saic-muted: #74716B;
+    --saic-border: #D8DDD8;
+    --saic-background: #F8F6F0;
 
-    --color-accent: #F59E0B;
-    --color-accent-light: #FBBF24;
-    --color-accent-lighter: #FDE68A;
-    --color-accent-dark: #D97706;
-    --color-accent-rgb: 245, 158, 11;
+    --color-primary: var(--saic-red-600);
+    --color-primary-light: var(--saic-red-500);
+    --color-primary-dark: var(--saic-red-700);
+    --color-primary-darker: #70230C;
+    --color-primary-rgb: 190, 59, 18;
+    --color-secondary: var(--saic-navy-900);
+    --color-secondary-hover: #15345E;
+
+    --color-accent: var(--saic-gold-500);
+    --color-accent-light: #F2C968;
+    --color-accent-lighter: var(--saic-gold-100);
+    --color-accent-dark: var(--saic-gold-600);
+    --color-accent-rgb: 232, 181, 68;
 
     --color-white: #FFFFFF;
-    --color-gray-50: #F8FAFC;
-    --color-gray-100: #F1F5F9;
-    --color-gray-200: #E2E8F0;
-    --color-gray-300: #CBD5E1;
-    --color-gray-400: #94A3B8;
-    --color-gray-500: #64748B;
-    --color-gray-600: #475569;
-    --color-gray-700: #334155;
-    --color-gray-800: #1E293B;
-    --color-gray-900: #0F172A;
-    --color-black: #020617;
+    --color-gray-50: var(--saic-background);
+    --color-gray-100: #F1EFE8;
+    --color-gray-200: var(--saic-border);
+    --color-gray-300: #C3CBC4;
+    --color-gray-400: var(--saic-muted);
+    --color-gray-500: #626A6B;
+    --color-gray-600: var(--saic-text);
+    --color-gray-700: #343D43;
+    --color-gray-800: #2A3339;
+    --color-gray-900: var(--saic-ink);
+    --color-black: #172027;
 
-    --color-success: #16A34A;
-    --color-success-light: #DCFCE7;
-    --color-warning: #F59E0B;
-    --color-error: #DC2626;
+    --color-success: var(--saic-green-700);
+    --color-success-light: var(--saic-green-100);
+    --color-warning: var(--saic-gold-600);
+    --color-error: var(--saic-red-700);
     --color-error-light: #FEE2E2;
     --color-info: #0EA5E9;
     --color-info-light: #E0F2FE;
 
-    --color-canvas: var(--color-white);
+    --color-canvas: var(--saic-background);
     --color-surface: var(--color-gray-50);
     --color-surface-alt: var(--color-gray-100);
     --color-surface-raised: var(--color-white);
 
-    --color-text-primary: var(--color-gray-900);
-    --color-text-secondary: var(--color-gray-600);
-    --color-text-muted: var(--color-gray-400);
+    --color-text-primary: var(--saic-ink);
+    --color-text-secondary: var(--saic-text);
+    --color-text-muted: var(--saic-muted);
     --color-text-inverse: var(--color-white);
 
     --color-border: var(--color-gray-200);
     --color-border-strong: var(--color-gray-300);
-    --color-border-focus: var(--color-primary);
+    --color-border-focus: var(--saic-navy-700);
 
     --font-family-heading: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --font-family-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;

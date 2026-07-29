@@ -38,7 +38,7 @@ const VARIANT_CLASSES: Record<ButtonVariant, string> = {
   primary:
     "bg-[var(--color-primary)] text-[var(--color-text-inverse)] border border-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] hover:border-[var(--color-primary-dark)] shadow-sm hover:shadow-md btn-shine",
   secondary:
-    "bg-transparent text-[var(--color-primary)] border border-[var(--color-primary)] hover:bg-[var(--color-primary)] hover:text-[var(--color-text-inverse)]",
+    "bg-[var(--color-secondary)] text-[var(--color-text-inverse)] border border-[var(--color-secondary)] hover:bg-[var(--color-secondary-hover)] hover:border-[var(--color-secondary-hover)]",
   accent:
     "bg-[var(--color-accent)] text-[var(--color-gray-900)] border border-[var(--color-accent)] hover:bg-[var(--color-accent-dark)] hover:border-[var(--color-accent-dark)] btn-shine",
   ghost:

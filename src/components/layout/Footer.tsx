@@ -7,15 +7,15 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-[var(--color-gray-900)] text-[var(--color-gray-300)]">
-      <div className="border-b border-[var(--color-gray-800)]">
+    <footer className="bg-[var(--saic-navy-900)] text-[var(--color-gray-300)]">
+      <div className="border-b border-[var(--saic-navy-700)]">
         <Container className="py-10 lg:py-12">
           <div className="max-w-xl mx-auto text-center">
             <h3 className="text-[var(--color-white)] font-semibold text-lg mb-2">Stay Updated</h3>
             <p className="text-sm text-[var(--color-gray-400)] mb-6">
               Subscribe to our newsletter for course updates and news.
             </p>
-            <form action="#" className="flex max-w-md mx-auto shadow-sm rounded-xl overflow-hidden focus-within:ring-2 focus-within:ring-[var(--color-accent)]/30 focus-within:ring-offset-2 focus-within:ring-offset-[var(--color-gray-900)] transition-all">
+            <form action="#" className="flex max-w-md mx-auto shadow-sm rounded-xl overflow-hidden focus-within:ring-2 focus-within:ring-[var(--color-accent)]/30 focus-within:ring-offset-2 focus-within:ring-offset-[var(--saic-navy-900)] transition-all">
               <input
                 type="email"
                 placeholder="Enter your email"

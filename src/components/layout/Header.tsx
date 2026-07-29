@@ -155,7 +155,7 @@ export default function Header() {
                 href={item.url}
                 className={cn(
                   "relative inline-flex items-center px-3 py-2 text-[15px] font-semibold rounded-lg transition-all duration-200",
-                  "after:absolute after:bottom-[2px] after:left-1/2 after:-translate-x-1/2 after:h-[2px] after:w-0 after:bg-[var(--color-primary)] after:rounded-full after:transition-all after:duration-200",
+                  "after:absolute after:bottom-[2px] after:left-1/2 after:-translate-x-1/2 after:h-[2px] after:w-0 after:bg-[var(--color-accent)] after:rounded-full after:transition-all after:duration-200",
                   "hover:after:w-[60%] hover:text-[var(--color-primary)] hover:bg-[var(--color-gray-50)]",
                   isActive(item.url)
                     ? "text-[var(--color-primary)] after:w-[60%]"
