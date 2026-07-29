@@ -13,7 +13,7 @@ import ApplicationCountdown from "./ApplicationCountdown";
 
 const slides: SlideData[] = [
   {
-    image: "/images/SA-INNOVATION-COLLEGE-2-scaled.webp",
+    image: "/images/hero_image-final.webp",
     tag: "September 2026 applications",
     title: "Build skills for",
     highlight: "your future",
