@@ -51,7 +51,7 @@ export default function Footer() {
                 </div>
               </Link>
               <p className="text-sm leading-relaxed mb-4">
-                Empowering South African youth with globally recognised skills in digital technology, creative design, and business innovation.
+                Helping learners build practical skills for work, business and further study through accessible programmes and learner-focused support.
               </p>
               <div className="flex items-center gap-2.5">
                 {[

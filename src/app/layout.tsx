@@ -19,11 +19,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.sainnovationcollege.co.za"),
   title: {
-    default: "SA Innovation College | Your Future in Tech Starts Here",
+    default: "SA Innovation College | Practical Skills and Career-Focused Courses",
     template: "%s | SA Innovation College",
   },
   description:
-    "Globally recognised skills. Industry-ready graduates. No matric required for select programmes. Join 5,000+ students at SA Innovation College.",
+    "Build practical skills for work, business and further study through career-focused courses, flexible options and clear Admissions guidance.",
   keywords: [
     "SA Innovation College",
     "traffic officer course",
@@ -51,9 +51,9 @@ export const metadata: Metadata = {
     locale: "en_ZA",
     url: "https://www.sainnovationcollege.co.za",
     siteName: "SA Innovation College",
-    title: "SA Innovation College | Your Future in Tech Starts Here",
-    description:
-      "Globally recognised skills. Industry-ready graduates. No matric required for select programmes.",
+    title: "SA Innovation College | Practical Skills and Career-Focused Courses",
+      description:
+        "Build practical skills for work, business and further study through career-focused courses, flexible options and clear Admissions guidance.",
     images: [
       {
         url: "/images/SA-INNOVATION-COLLEGE-2-scaled.webp",
@@ -65,9 +65,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "SA Innovation College | Your Future in Tech Starts Here",
+    title: "SA Innovation College | Practical Skills and Career-Focused Courses",
     description:
-      "Globally recognised skills. Industry-ready graduates. No matric required for select programmes.",
+      "Build practical skills for work, business and further study through career-focused courses, flexible options and clear Admissions guidance.",
     images: ["/images/SA-INNOVATION-COLLEGE-2-scaled.webp"],
   },
   robots: {

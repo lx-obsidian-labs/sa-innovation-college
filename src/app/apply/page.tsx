@@ -8,7 +8,7 @@ import Icon from "@/components/ui/Icon";
 
 export const metadata: Metadata = {
   title: "Apply Now | SA Innovation College",
-  description: "Apply online to study at SA Innovation College. Choose from 50+ accredited courses across engineering, business, IT, and more.",
+  description: "Start your online application and get Admissions guidance about programmes, requirements, fees and registration.",
 };
 
 const steps = [

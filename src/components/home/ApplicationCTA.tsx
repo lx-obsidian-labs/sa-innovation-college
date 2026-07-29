@@ -11,7 +11,7 @@ const steps = [
   {
     number: "01",
     title: "Choose Your Course",
-    desc: "Browse our 30+ accredited programmes and find the one that fits your goals.",
+    desc: "Compare courses and find a programme that fits your goals, interests and circumstances.",
   },
   {
     number: "02",
@@ -21,7 +21,7 @@ const steps = [
   {
     number: "03",
     title: "Get Reviewed",
-    desc: "Our admissions team reviews your application and contacts you within 48 hours.",
+    desc: "Admissions reviews your details and contacts you within 2–3 business days during operating hours.",
   },
   {
     number: "04",
@@ -51,30 +51,30 @@ export default function ApplicationCTA() {
       <Container className="relative z-10">
         <div className="mx-auto max-w-3xl text-center">
           <span className="inline-block text-xs font-semibold uppercase tracking-[0.15em] text-[var(--color-accent)] mb-4">
-            Take the Next Step
+            Speak to Admissions
           </span>
           <h2 className="mb-5 text-[var(--fs-4xl)] font-extrabold text-white leading-tight">
-            Ready to Start Your Journey?
+            Ready to choose your next step?
           </h2>
           <p className="mx-auto max-w-xl text-lg text-white/70 leading-relaxed mb-10">
-            Join thousands of South African students building their future at SA Innovation College.
+            Compare your options, ask about requirements and fees, or speak to Admissions before you apply.
           </p>
 
           <div className="flex flex-wrap justify-center gap-4 mb-12">
             <Button variant="accent" size="lg" href="/apply" className="shadow-lg shadow-[var(--color-accent)]/25">
-              Apply Now &mdash; It&apos;s Free
+              Start an Application
             </Button>
             <Link
               href="/courses"
               className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold rounded-lg border-2 border-white/40 text-white bg-transparent hover:bg-white/10 transition-all duration-200 hover:-translate-y-0.5"
             >
-              View Courses
+              Explore Courses
             </Link>
             <Link
               href="/contact"
               className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold rounded-lg border-2 border-white/40 text-white bg-transparent hover:bg-white/10 transition-all duration-200 hover:-translate-y-0.5"
             >
-              Contact Us
+              Speak to Admissions
             </Link>
           </div>
 

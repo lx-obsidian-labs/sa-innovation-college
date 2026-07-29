@@ -8,7 +8,7 @@ import Icon from "@/components/ui/Icon";
 export const metadata: Metadata = {
   title: "About Us | SA Innovation College",
   description:
-    "SA Innovation College is a leading private college in Centurion, Gauteng, committed to accessible, quality education that bridges the skills gap and empowers learners.",
+    "Learn how SA Innovation College supports learners through practical programmes, accessible guidance and career-focused skills development in Centurion, Gauteng.",
 };
 
 const values = [
@@ -64,11 +64,11 @@ export default function AboutPage() {
             <div>
               <h2 className="mb-4 text-[var(--fs-2xl)] font-bold text-[var(--color-primary)]">Our Mission</h2>
               <p className="text-[var(--color-text-secondary)] leading-relaxed text-[var(--fs-md)]">
-                To empower learners with knowledge, skills, and innovation to unlock opportunities through accessible, quality education.
+                To make practical, quality education more accessible by helping learners build relevant knowledge, workplace skills and confidence for their next step.
               </p>
               <h2 className="mt-10 mb-4 text-[var(--fs-2xl)] font-bold text-[var(--color-primary)]">Our Vision</h2>
               <p className="text-[var(--color-text-secondary)] leading-relaxed text-[var(--fs-md)]">
-                To be South Africa&apos;s leading college of innovation, producing skilled graduates who drive economic growth and community development.
+                To become a trusted South African skills college known for clear guidance, practical learning and meaningful support for learners and communities.
               </p>
             </div>
             <div className="relative">

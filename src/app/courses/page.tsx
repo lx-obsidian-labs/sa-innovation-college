@@ -8,7 +8,7 @@ import { categoryImages } from "@/lib/course-images";
 export const metadata: Metadata = {
   title: "Our Courses | SA Innovation College",
   description:
-    "Find your path to success with 50+ accredited programmes at SA Innovation College.",
+    "Compare practical courses and programmes by subject area, duration, study mode and entry requirements at SA Innovation College.",
 };
 
 interface CourseItem {
@@ -604,7 +604,7 @@ export default function CoursesPage() {
     <>
       <PageHero
         title="Our Courses"
-        description="Find your path to success with 50+ accredited programmes across 14 fields of study."
+        description="Compare practical courses by subject area, duration, study mode and entry requirements across a range of fields."
       />
 
       <section className="py-16 md:py-24">

@@ -10,7 +10,7 @@ import BlankApplicationDownload from "@/components/ui/BlankApplicationDownload";
 export const metadata: Metadata = {
   title: "For Students | SA Innovation College",
   description:
-    "Student support, application guidance, learner resources, and FAQs for current and prospective students at SA Innovation College.",
+    "Find application guidance, student resources, FAQs, study support and information for current and prospective learners at SA Innovation College.",
 };
 
 const supportServices = [
@@ -21,12 +21,12 @@ const supportServices = [
   },
   {
     title: "Career Services",
-    description: "CV workshops, interview preparation, and job placement assistance to launch your career.",
+    description: "CV guidance and interview preparation to help you approach your next work or study opportunity with confidence.",
     icon: <Icon name="briefcase" size={8} />,
   },
   {
     title: "Student Wellness",
-    description: "Mental health support, professional counseling, and peer networks for your well-being.",
+    description: "Find practical information, learner guidance and contacts to help you stay supported during your studies.",
     icon: <Icon name="heart" size={8} />,
   },
 ];
@@ -53,15 +53,15 @@ const faqs = [
   },
   {
     question: "Is financial assistance available?",
-    answer: "Yes, we offer flexible payment plans. Contact our admissions team to discuss options that suit your budget.",
+    answer: "Payment-plan options may be available for selected programmes. Contact Admissions for current fees, payment schedules and eligibility information.",
   },
   {
     question: "Can I study part-time while working?",
-    answer: "Yes, many of our programmes offer part-time and online learning options designed for working professionals.",
+    answer: "Study modes differ by programme. Check the individual course page or ask Admissions whether your selected programme is available full-time, part-time, online or blended.",
   },
   {
     question: "What if I don't have matric?",
-    answer: "Select programmes accept learners based on aptitude assessments and relevant work experience. Speak to our admissions team for guidance.",
+    answer: "Entry requirements differ by programme. Some programmes may offer alternative entry routes, such as an assessment or relevant experience. Contact Admissions to check your eligibility.",
   },
   {
     question: "How long does registration take?",

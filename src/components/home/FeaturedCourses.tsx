@@ -117,9 +117,9 @@ export default function FeaturedCourses() {
 
       <Container>
         <SectionHeader
-          eyebrow="Our Programmes"
-          title="Find Your Path to Success"
-          description="Choose from 30+ accredited programmes designed with industry experts to launch your career."
+          eyebrow="Explore your options"
+          title="Find a course that fits your goals"
+          description="Compare course content, duration and study options before you choose your next step. Recognition and entry requirements vary by programme."
           className="mb-12"
         />
 

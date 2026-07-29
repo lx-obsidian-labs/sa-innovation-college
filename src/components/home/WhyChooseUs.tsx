@@ -5,9 +5,9 @@ import Icon from "@/components/ui/Icon";
 
 const features = [
   {
-    title: "Accredited Qualifications",
+    title: "Programme information you can check",
     description:
-      "SETA and QCTO accredited programmes meeting national quality standards.",
+      "Review the recognition and entry details for your chosen programme before you enrol.",
     icon: <Icon name="check-badge" size={7} />,
   },
   {
@@ -25,7 +25,7 @@ const features = [
   {
     title: "Career Support",
     description:
-      "CV workshops, employer connections, and job placement assistance.",
+      "CV guidance and interview preparation to help you approach your next opportunity with confidence.",
     icon: <Icon name="academic-cap" size={7} />,
   },
 ];
@@ -40,8 +40,8 @@ export default function WhyChooseUs() {
       <Container>
         <SectionHeader
           eyebrow="Why SA Innovation"
-          title="Why Choose SA Innovation"
-          description="We are committed to providing accessible, high-quality education that prepares students for real-world success."
+          title="A clearer way to take your next step"
+          description="Build relevant knowledge with practical programmes, flexible options and guidance designed to help you make an informed decision."
           className="mb-12"
         />
 
