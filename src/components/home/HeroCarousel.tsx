@@ -4,62 +4,43 @@ import { useCallback, useRef, useEffect } from "react";
 import Container from "@/components/layout/Container";
 import Button from "@/components/ui/Button";
 import HeroSlide from "./HeroSlide";
-import HeroBenefitCards from "./HeroBenefitCards";
 import CarouselControls from "./CarouselControls";
 import CarouselPagination from "./CarouselPagination";
 import { useHeroCarousel } from "./use-hero-carousel";
-import type { SlideData, BenefitCard } from "./hero-carousel.types";
+import type { SlideData } from "./hero-carousel.types";
 import { getWhatsAppUrl } from "@/lib/utils";
 import ApplicationCountdown from "./ApplicationCountdown";
 
 const slides: SlideData[] = [
   {
     image: "/images/SA-INNOVATION-COLLEGE-2-scaled.webp",
-    tag: "Applications Open for 2026",
-    title: "Your Future in Education",
-    highlight: "Starts Here",
-    tagline: "Through Knowledge, We Grow Towards Excellence",
-    description: "Empowering learners with knowledge, skills, and innovation to unlock career opportunities.",
+    tag: "September 2026 applications",
+    title: "Build skills for",
+    highlight: "your future",
+    tagline: "Knowledge · Growth · Excellence",
+    description: "Practical programmes, flexible study options and a clear path to your next opportunity.",
     cta: { text: "Explore Courses", href: "/courses" },
     secondary: { text: "Talk to Us", href: getWhatsAppUrl("+27727733960") },
   },
   {
     image: "/images/SA-INNOVATION-COLLEGE3-scaled.jpg",
-    tag: "30+ Accredited Programmes",
-    title: "Industry-Aligned",
-    highlight: "Qualifications",
-    tagline: "SETA & QCTO Accredited",
-    description: "Industry-aligned programmes designed with experts to ensure you graduate job-ready.",
+    tag: "Choose your next step",
+    title: "Learn with",
+    highlight: "purpose",
+    tagline: "Career-focused programmes",
+    description: "Compare programmes, check requirements and find a study option that fits your goals.",
     cta: { text: "View Programmes", href: "/courses" },
     secondary: { text: "Contact Us", href: "/contact" },
   },
   {
     image: "/images/SA-INNOVATION-COLLEGE2-scaled.jpg",
-    tag: "No Matric? No Problem",
-    title: "Education for",
-    highlight: "Everyone",
-    tagline: "Accessible Learning Opportunities",
-    description: "Education accessible to all — no matric required for select programmes.",
+    tag: "Accessible learning",
+    title: "Your next chapter",
+    highlight: "starts here",
+    tagline: "Support for every learner",
+    description: "Explore your options with our admissions team and apply for a programme that suits you.",
     cta: { text: "Apply Now", href: "/apply" },
     secondary: { text: "Chat on WhatsApp", href: getWhatsAppUrl("+27727733960") },
-  },
-];
-
-const benefitCards: BenefitCard[] = [
-  {
-    icon: "check-badge",
-    title: "Accredited Programmes",
-    desc: "Formally recognised and industry-endorsed qualifications",
-  },
-  {
-    icon: "user-group",
-    title: "Expert Instructors",
-    desc: "Learn from qualified professionals with real-world experience",
-  },
-  {
-    icon: "clock",
-    title: "Flexible Learning",
-    desc: "Full-time, part-time, and online study options available",
   },
 ];
 
@@ -153,11 +134,7 @@ export default function HeroCarousel() {
             </span>
           </h1>
 
-          <p className="mb-2 text-lg font-medium text-[var(--color-accent)]/90 animate-fadeInUp" style={{ animationDelay: "0.25s" }} key={`tagline-${context.current}`}>
-            {slide.tagline}
-          </p>
-
-          <p className="mx-auto mb-8 max-w-2xl text-base leading-relaxed text-white/80 animate-fadeInUp" style={{ animationDelay: "0.3s" }} key={`desc-${context.current}`}>
+          <p className="mx-auto mb-8 max-w-2xl text-base leading-relaxed text-white/80 animate-fadeInUp" style={{ animationDelay: "0.25s" }} key={`desc-${context.current}`}>
             {slide.description}
           </p>
 
@@ -179,7 +156,6 @@ export default function HeroCarousel() {
             )}
           </div>
 
-          <HeroBenefitCards cards={benefitCards} />
         </div>
       </Container>
 
