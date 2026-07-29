@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useCallback, type FormEvent } from "react"
 import { cn } from "@/lib/utils";
 import Icon, { type IconName } from "@/components/ui/Icon";
 import DownloadPdfButton from "@/components/ui/DownloadPdfButton";
+import Link from "next/link";
 import type { ApplicationFormValues } from "@/lib/application-types";
 import { APPLICATION_DRAFT_KEY } from "@/lib/application-types";
 
@@ -666,7 +667,10 @@ export default function ApplicationForm() {
               <div className="rounded-xl border border-[var(--color-border)] bg-gradient-to-br from-[var(--color-primary)]/[0.03] to-transparent p-6">
                 <h4 className="mb-3 text-sm font-bold uppercase tracking-wider text-[var(--color-text-primary)]">Declaration</h4>
                 <p className="mb-4 text-sm leading-relaxed text-[var(--color-text-secondary)]">
-                  By submitting this application, you confirm that you have read, understood, and agree to SA Innovation College&apos;s Terms & Conditions and Refund Policy. You also confirm that all information provided is accurate and complete.
+                  By submitting this application, you confirm that you have read, understood, and agree to SA Innovation College&apos;s application information. You also confirm that all information provided is accurate and complete.
+                </p>
+                <p className="mb-4 text-xs leading-relaxed text-[var(--color-text-muted)]">
+                  Your details are used to review your application and contact you about your selected programme and next steps. Read our Privacy Notice for more information.
                 </p>
                 <label className="flex items-start gap-3 cursor-pointer select-none group">
                   <div className="relative flex h-5 w-5 shrink-0 mt-0.5">
@@ -679,7 +683,7 @@ export default function ApplicationForm() {
                     />
                   </div>
                   <span className="text-sm font-medium text-[var(--color-text-primary)] group-hover:text-[var(--color-primary)] transition-colors">
-                    I Agree to the Terms & Conditions and Refund Policy <span className="text-red-500">*</span>
+                    I agree to the <Link href="/terms" className="font-semibold text-[var(--color-primary)] underline decoration-[var(--color-accent)] underline-offset-2 hover:text-[var(--color-accent-dark)]">Terms and Application Information</Link> and <Link href="/privacy" className="font-semibold text-[var(--color-primary)] underline decoration-[var(--color-accent)] underline-offset-2 hover:text-[var(--color-accent-dark)]">Privacy Notice</Link> <span className="text-red-500">*</span>
                   </span>
                 </label>
                 {errors.agree && (

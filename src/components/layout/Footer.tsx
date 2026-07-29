@@ -19,20 +19,7 @@ export default function Footer() {
             <p className="text-sm text-[var(--color-gray-400)] mb-6">
               Subscribe to our newsletter for course updates and news.
             </p>
-            <form action="#" className="mx-auto flex max-w-md overflow-hidden rounded-xl border border-white/15 shadow-sm transition-all focus-within:ring-2 focus-within:ring-[var(--color-accent)]/50 focus-within:ring-offset-2 focus-within:ring-offset-[var(--saic-navy-950)]">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                required
-                className="flex-1 px-5 py-3.5 text-sm text-[var(--color-text-primary)] bg-[var(--color-white)] outline-none placeholder:text-[var(--color-gray-400)]"
-              />
-              <button
-                type="submit"
-                className="px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-[var(--color-text-inverse)] bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-dark)] hover:from-[var(--color-accent-dark)] hover:to-[var(--color-accent-dark)] transition-all duration-200 shrink-0 btn-shine"
-              >
-                Subscribe
-              </button>
-            </form>
+            <a href="https://wa.me/27727733960?text=Hi%20Admissions%2C%20please%20send%20me%20course%20and%20application%20updates." target="_blank" rel="noopener noreferrer" className="mx-auto inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-dark)] px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-[var(--saic-navy-950)] shadow-lg shadow-[var(--color-accent)]/20 transition hover:-translate-y-0.5 hover:shadow-xl btn-shine">Get updates from Admissions</a>
           </div>
         </Container>
       </div>
@@ -183,6 +170,8 @@ export default function Footer() {
             <Link href="/contact" className="transition-colors hover:text-[var(--color-accent)]">Contact Us</Link>
             <Link href="/about" className="transition-colors hover:text-[var(--color-accent)]">About</Link>
             <Link href="/apply" className="transition-colors hover:text-[var(--color-accent)]">Apply</Link>
+            <Link href="/privacy" className="transition-colors hover:text-[var(--color-accent)]">Privacy</Link>
+            <Link href="/terms" className="transition-colors hover:text-[var(--color-accent)]">Terms</Link>
           </div>
         </Container>
       </div>
