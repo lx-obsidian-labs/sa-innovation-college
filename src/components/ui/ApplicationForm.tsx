@@ -307,7 +307,7 @@ export default function ApplicationForm() {
           <Icon name="check" size={12} />
         </div>
         <h3 className="mb-2 text-2xl font-extrabold text-green-800">Application Submitted!</h3>
-        <p className="mb-6 max-w-md text-green-700">{message}</p>
+        <p role="status" aria-live="polite" className="mb-6 max-w-md text-green-700">{message}</p>
         <div className="mb-8 rounded-xl border border-green-200 bg-white px-8 py-5 shadow-sm">
           <p className="mb-1 text-xs font-medium uppercase tracking-wider text-[var(--color-text-muted)]">Reference Number</p>
           <p className="text-2xl font-bold tracking-wider text-[var(--color-primary)]">{refNumber}</p>
@@ -316,7 +316,7 @@ export default function ApplicationForm() {
           <DownloadPdfButton type="application" data={{ ...form, refNumber }} label="Download application PDF" fileName={`SAIC-Application-${refNumber}-${form.fullName.replace(/\s+/g, "-") || "Applicant"}`} />
           <button type="button" onClick={() => window.print()} className="inline-flex items-center gap-2 rounded-xl border border-[var(--color-border)] px-5 py-2.5 text-sm font-bold text-[var(--color-primary)]">Print application</button>
         </div>
-        <p className="mb-6 text-sm text-[var(--color-text-secondary)]">
+        <p role="status" aria-live="polite" className="mb-6 text-sm text-[var(--color-text-secondary)]">
           Please save your reference number. Our admissions team will contact you within 2-3 business days.
         </p>
         <button onClick={() => { setState("idle"); setForm(initialForm); setStep(1); setRefNumber(""); }}

@@ -166,7 +166,7 @@ export default function ContactForm() {
           <Icon name="check" size={10} />
         </div>
         <h3 className="mb-2 text-xl font-extrabold text-green-800">Message Sent!</h3>
-        <p className="mb-6 max-w-sm text-green-700">{message}</p>
+        <p role="status" aria-live="polite" className="mb-6 max-w-sm text-green-700">{message}</p>
         <button onClick={() => setState("idle")}
           className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold rounded-xl bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-dark)] text-white hover:shadow-lg btn-shine transition-all">
           <Icon name="envelope" size={4} />

@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import Icon from "@/components/ui/Icon";
 
 interface CourseItem {
@@ -123,11 +124,12 @@ function CourseCard({ course, imageSrc, gradient }: { course: CourseItem; imageS
       className="group relative flex flex-col rounded-2xl bg-white shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl overflow-hidden hover-border-glow"
     >
       <div className="relative h-44 overflow-hidden bg-[var(--color-gray-200)]">
-        <img
+        <Image
           src={imageSrc}
-          alt=""
-          className="h-full w-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
-          loading="lazy"
+          alt={`${course.title} programme`}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
         />
         <div className={`absolute inset-0 bg-gradient-to-t ${gradient}`} />
         <span className="absolute top-3 left-3 inline-flex items-center rounded-md bg-white/20 backdrop-blur-sm px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-lg border border-white/20">

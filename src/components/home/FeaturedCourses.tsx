@@ -3,6 +3,7 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import Container from "@/components/layout/Container";
 import { StaggerReveal } from "@/components/ui/ScrollReveal";
 import Icon from "@/components/ui/Icon";
+import Image from "next/image";
 
 const courses = [
   {
@@ -132,11 +133,12 @@ export default function FeaturedCourses() {
                 className="group relative flex flex-col rounded-2xl bg-white shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl overflow-hidden hover-border-glow before:absolute before:inset-0 before:rounded-2xl before:opacity-0 before:transition-opacity before:duration-500 hover:before:opacity-100 before:pointer-events-none before:bg-gradient-to-br before:from-[var(--color-primary)]/[0.04] before:to-transparent"
               >
                 <div className="relative h-48 overflow-hidden bg-[var(--color-gray-200)]">
-                  <img
+                  <Image
                     src={course.image}
-                    alt=""
-                    className="h-full w-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
-                    loading="lazy"
+                    alt={`${course.title} programme`}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
                   />
                   <div className={`absolute inset-0 bg-gradient-to-t ${course.gradient}`} />
 
