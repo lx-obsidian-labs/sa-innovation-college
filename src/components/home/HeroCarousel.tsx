@@ -74,7 +74,7 @@ export default function HeroCarousel() {
     <section
       ref={sectionRef}
       id="hero"
-      className="relative min-h-[440px] lg:min-h-[500px] flex items-center overflow-hidden bg-[var(--saic-campaign-crimson)]"
+      className="relative min-h-[400px] lg:min-h-[460px] flex items-center overflow-hidden bg-[var(--saic-campaign-crimson)]"
       role="region"
       aria-roledescription="carousel"
       aria-label="Featured slides"
