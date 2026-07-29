@@ -54,6 +54,8 @@ export default function AboutPage() {
       <PageHero
         title="About SA Innovation College"
         description="Through Knowledge, We Grow Towards Excellence"
+        image="/images/saic-graduate-hero-alternative-v3.png"
+        imageAlt="SA Innovation College graduate in academic regalia"
       />
 
       <section className="py-[var(--section-py)] bg-white relative overflow-hidden">
@@ -74,7 +76,7 @@ export default function AboutPage() {
             <div className="relative">
               <img
                 src="/images/sa-innovation-graduation.webp"
-                alt="SA Innovation College Graduation"
+                alt="SA Innovation College graduation ceremony"
                 className="w-full h-auto rounded-2xl shadow-[var(--shadow-lg)]"
                 loading="lazy"
               />

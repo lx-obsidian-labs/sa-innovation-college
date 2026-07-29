@@ -5,9 +5,11 @@ interface PageHeroProps {
   title: string;
   description?: string;
   breadcrumbs?: { label: string; href: string }[];
+  image?: string;
+  imageAlt?: string;
 }
 
-export default function PageHero({ title, description, breadcrumbs }: PageHeroProps) {
+export default function PageHero({ title, description, breadcrumbs, image, imageAlt = "" }: PageHeroProps) {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-[var(--color-primary)] via-[var(--color-primary-dark)] to-[#0B1F3F] pt-24 pb-14 md:pt-32 md:pb-20">
       <div
@@ -23,6 +25,8 @@ export default function PageHero({ title, description, breadcrumbs }: PageHeroPr
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--color-accent)]/30 to-transparent" aria-hidden />
 
       <Container className="relative z-10">
+        <div className={image ? "grid items-center gap-8 lg:grid-cols-[1fr_0.7fr]" : undefined}>
+        <div>
         {breadcrumbs && breadcrumbs.length > 0 && (
           <nav className="mb-6 flex items-center gap-2 text-sm text-white/60" aria-label="Breadcrumb">
             {breadcrumbs.map((crumb, i) => (
@@ -49,6 +53,14 @@ export default function PageHero({ title, description, breadcrumbs }: PageHeroPr
             {description}
           </p>
         )}
+        </div>
+        {image && (
+          <div className="relative hidden h-64 lg:block">
+            <div className="absolute inset-x-8 bottom-0 top-4 rounded-full bg-[var(--color-accent)]/10 blur-3xl" aria-hidden />
+            <img src={image} alt={imageAlt} className="relative z-10 mx-auto h-full w-auto object-contain object-bottom drop-shadow-[0_18px_24px_rgba(0,0,0,0.28)]" />
+          </div>
+        )}
+        </div>
       </Container>
     </section>
   );
