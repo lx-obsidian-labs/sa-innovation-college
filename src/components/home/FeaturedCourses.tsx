@@ -19,7 +19,7 @@ const courses = [
     free: false,
     new: false,
     image: "/images/hero-horizontal.jpg",
-    gradient: "from-red-900/80 via-red-800/60 to-transparent",
+    gradient: "from-[var(--saic-campaign-crimson-dark)]/85 via-[var(--saic-campaign-crimson)]/55 to-transparent",
   },
   {
     title: "FREE Computer Literacy",
@@ -34,7 +34,7 @@ const courses = [
     free: true,
     new: false,
     image: "/images/001.jpg",
-    gradient: "from-purple-900/80 via-purple-800/60 to-transparent",
+    gradient: "from-[var(--saic-navy-950)]/85 via-[var(--saic-navy-900)]/55 to-transparent",
   },
   {
     title: "National Diploma: Policing NQF 6",
@@ -49,7 +49,7 @@ const courses = [
     free: false,
     new: true,
     image: "/images/SA-INNOVATION-COLLEGE3-scaled.jpg",
-    gradient: "from-blue-900/80 via-blue-800/60 to-transparent",
+    gradient: "from-[var(--saic-navy-950)]/85 via-[var(--saic-navy-700)]/55 to-transparent",
   },
   {
     title: "Business Management N4-N6",
@@ -64,7 +64,7 @@ const courses = [
     free: false,
     new: false,
     image: "/images/SA-INNOVATION-COLLEGE-2-scaled.webp",
-    gradient: "from-amber-900/80 via-amber-800/60 to-transparent",
+    gradient: "from-[var(--saic-navy-900)]/85 via-[var(--saic-campaign-crimson-dark)]/55 to-transparent",
   },
   {
     title: "CompTIA A+ (PC Engineering)",
@@ -79,7 +79,7 @@ const courses = [
     free: false,
     new: false,
     image: "/images/002.jpg",
-    gradient: "from-purple-900/80 via-purple-800/60 to-transparent",
+    gradient: "from-[var(--saic-navy-950)]/85 via-[var(--saic-navy-900)]/55 to-transparent",
   },
   {
     title: "Table Service Course",
@@ -94,14 +94,14 @@ const courses = [
     free: false,
     new: false,
     image: "/images/Intro-Home-page-new.png",
-    gradient: "from-orange-900/80 via-orange-800/60 to-transparent",
+    gradient: "from-[var(--saic-campaign-crimson-dark)]/85 via-[var(--saic-campaign-crimson)]/55 to-transparent",
   },
 ];
 
 const categoryThemes: Record<string, { badge: string; tag: string; accent: string }> = {
   "Law Enforcement": { badge: "bg-[var(--saic-navy-900)]", tag: "bg-[var(--saic-gold-100)] text-[var(--saic-navy-950)]", accent: "text-[var(--saic-navy-700)]" },
   "Computer & Digital Skills": { badge: "bg-[var(--saic-navy-700)]", tag: "bg-[var(--saic-gold-100)] text-[var(--saic-navy-950)]", accent: "text-[var(--saic-navy-700)]" },
-  "Hospitality": { badge: "bg-[var(--saic-red-600)]", tag: "bg-[var(--saic-gold-100)] text-[var(--saic-red-700)]", accent: "text-[var(--saic-red-700)]" },
+  "Hospitality": { badge: "bg-[var(--saic-campaign-crimson)]", tag: "bg-[var(--saic-gold-100)] text-[var(--saic-campaign-crimson-dark)]", accent: "text-[var(--saic-campaign-crimson-dark)]" },
   "Policing": { badge: "bg-[var(--saic-navy-900)]", tag: "bg-[var(--saic-gold-100)] text-[var(--saic-navy-950)]", accent: "text-[var(--saic-navy-700)]" },
   "Management & Entrepreneurship": { badge: "bg-[var(--saic-green-700)]", tag: "bg-[var(--saic-green-100)] text-[var(--saic-green-700)]", accent: "text-[var(--saic-green-700)]" },
 };

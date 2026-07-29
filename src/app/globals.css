@@ -31,11 +31,11 @@
     --saic-surface: #FFFFFF;
     --saic-background: #F8F6F0;
 
-    --color-primary: var(--saic-red-600);
-    --color-primary-light: var(--saic-red-600);
-    --color-primary-dark: var(--saic-red-700);
-    --color-primary-darker: #70230C;
-    --color-primary-rgb: 190, 59, 18;
+    --color-primary: var(--saic-campaign-crimson);
+    --color-primary-light: #C92A45;
+    --color-primary-dark: var(--saic-campaign-crimson-dark);
+    --color-primary-darker: #741021;
+    --color-primary-rgb: 178, 26, 50;
     --color-secondary: var(--saic-navy-900);
     --color-secondary-hover: #15345E;
 

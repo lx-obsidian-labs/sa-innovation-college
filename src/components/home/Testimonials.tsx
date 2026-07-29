@@ -31,8 +31,8 @@ const testimonials = [
 
 const avatarGradients = [
   "from-[var(--color-primary)] to-[var(--color-primary-dark)]",
-  "from-[var(--color-accent)] to-amber-600",
-  "from-emerald-500 to-teal-600",
+  "from-[var(--saic-navy-700)] to-[var(--saic-navy-950)]",
+  "from-[var(--color-accent-dark)] to-[var(--saic-campaign-crimson)]",
 ];
 
 export default function Testimonials() {
