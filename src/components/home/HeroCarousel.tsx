@@ -10,6 +10,7 @@ import CarouselPagination from "./CarouselPagination";
 import { useHeroCarousel } from "./use-hero-carousel";
 import type { SlideData, BenefitCard } from "./hero-carousel.types";
 import { getWhatsAppUrl } from "@/lib/utils";
+import ApplicationCountdown from "./ApplicationCountdown";
 
 const slides: SlideData[] = [
   {
@@ -159,6 +160,8 @@ export default function HeroCarousel() {
           <p className="mx-auto mb-8 max-w-2xl text-base leading-relaxed text-white/80 animate-fadeInUp" style={{ animationDelay: "0.3s" }} key={`desc-${context.current}`}>
             {slide.description}
           </p>
+
+          <ApplicationCountdown />
 
           <div className="flex animate-fadeInUp flex-wrap justify-center gap-4 mb-8" style={{ animationDelay: "0.4s" }} key={`cta-${context.current}`}>
             <Button variant="accent" size="lg" href={slide.cta.href} className="shadow-lg shadow-[var(--color-accent)]/25">
