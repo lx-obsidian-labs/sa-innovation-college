@@ -15,7 +15,7 @@ interface ApplicationData {
   title: string; fullName: string; gender: string; nationality: string; postalCode: string;
   idNumber: string; dob: string; phone: string; email: string; address: string; startDate: string;
   category: string; course: string; education: string; employStatus: string; hearAbout: string;
-  emergencyName: string; emergencyPhone: string; fundingSource: string; previousSchool: string;
+  emergencyName: string; emergencyPhone: string; fundingSource: string; previousSchool: string; refNumber?: string;
 }
 
 interface ContactPdfProps {

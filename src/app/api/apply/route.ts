@@ -10,41 +10,48 @@ function generateRef(): string {
 
 export async function POST(req: Request) {
   try {
-    const body = await req.json();
+    const raw = await req.text();
+    if (raw.length > 100_000) return NextResponse.json({ error: "Application payload is too large" }, { status: 413 });
+    const body = JSON.parse(raw) as Record<string, string | boolean | undefined>;
     const {
       title, fullName, gender, nationality, postalCode, idNumber, dob,
       phone, email, address, startDate, category, course, education,
       previousSchool, employStatus, fundingSource, emergencyName, emergencyPhone, hearAbout, agree,
     } = body;
 
-    if (!fullName || !phone || !email || !course || !agree) {
+    if (typeof fullName !== "string" || typeof phone !== "string" || typeof email !== "string" || typeof course !== "string" || agree !== true) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
+    if (fullName.length > 120 || phone.length > 40 || email.length > 254 || course.length > 160) {
+      return NextResponse.json({ error: "One or more fields are too long" }, { status: 400 });
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return NextResponse.json({ error: "Enter a valid email address" }, { status: 400 });
+    const text = (value: string | boolean | undefined) => typeof value === "string" ? value : "";
 
     const refNumber = generateRef();
 
     await sendApplicationEmail({
       refNumber,
-      title: title || "",
+      title: text(title),
       fullName,
-      gender: gender || "",
-      nationality: nationality || "",
-      postalCode: postalCode || "",
-      idNumber: idNumber || "",
-      dob: dob || "",
+      gender: text(gender),
+      nationality: text(nationality),
+      postalCode: text(postalCode),
+      idNumber: text(idNumber),
+      dob: text(dob),
       phone,
       email,
-      address: address || "",
-      startDate: startDate || "",
-      category: category || "",
+      address: text(address),
+      startDate: text(startDate),
+      category: text(category),
       course,
-      education: education || "",
-      previousSchool: previousSchool || "",
-      employStatus: employStatus || "",
-      fundingSource: fundingSource || "",
-      emergencyName: emergencyName || "",
-      emergencyPhone: emergencyPhone || "",
-      hearAbout: hearAbout || "",
+      education: text(education),
+      previousSchool: text(previousSchool),
+      employStatus: text(employStatus),
+      fundingSource: text(fundingSource),
+      emergencyName: text(emergencyName),
+      emergencyPhone: text(emergencyPhone),
+      hearAbout: text(hearAbout),
     });
 
     return NextResponse.json({

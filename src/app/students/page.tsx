@@ -4,6 +4,8 @@ import PageHero from "@/components/layout/PageHero";
 import Button from "@/components/ui/Button";
 import SectionHeader from "@/components/ui/SectionHeader";
 import Icon from "@/components/ui/Icon";
+import ResourcePdfButton from "@/components/ui/ResourcePdfButton";
+import BlankApplicationDownload from "@/components/ui/BlankApplicationDownload";
 
 export const metadata: Metadata = {
   title: "For Students | SA Innovation College",
@@ -38,10 +40,10 @@ const steps = [
 ];
 
 const downloads = [
-  { name: "Student Handbook", filename: "Student-Handbook-2026.pdf" },
-  { name: "Application Form", filename: "Application-Form-2026.pdf" },
-  { name: "Fee Schedule", filename: "Fee-Schedule-2026.pdf" },
-  { name: "Course Prospectus", filename: "Course-Prospectus-2026.pdf" },
+  { name: "Student Handbook", filename: "SAIC-Student-Handbook-2026.pdf", description: "A practical guide to learner support, academic expectations, conduct, and key college contacts." },
+  { name: "Application Form", filename: "SAIC-FRM-ADM-001-Rev-1-Application-Form.pdf", description: "A printer-friendly blank application form for applicants who prefer to submit a hard copy." },
+  { name: "Fee Schedule", filename: "SAIC-Fee-Schedule-2026.pdf", description: "Programme fees and payment information. Confirm the current quotation with Admissions before payment." },
+  { name: "Course Prospectus", filename: "SAIC-Course-Prospectus-2026.pdf", description: "An overview of available programmes, study options, and the application journey." },
 ];
 
 const faqs = [
@@ -151,14 +153,8 @@ export default function StudentsPage() {
                   <Icon name="download" size={8} />
                 </div>
                 <h3 className="mb-1 text-sm font-bold text-[var(--color-text-primary)]">{item.name}</h3>
-                <p className="mb-4 text-xs text-[var(--color-text-muted)]">{item.filename}</p>
-                <a
-                  href="/contact"
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wider text-[var(--color-primary)] transition-all duration-200 group-hover:gap-2.5"
-                >
-                  Request Document
-                  <Icon name="arrow-right" size={4} className="transition-transform duration-200 group-hover:translate-x-1" />
-                </a>
+                <p className="mb-2 text-xs text-[var(--color-text-muted)]">Version 1.0 · Published 01 Jan 2026</p>
+                {item.name === "Application Form" ? <BlankApplicationDownload /> : <ResourcePdfButton name={item.name} filename={item.filename} version="1.0" description={item.description} />}
               </div>
             ))}
           </div>

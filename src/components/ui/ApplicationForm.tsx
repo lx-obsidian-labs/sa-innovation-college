@@ -4,6 +4,8 @@ import { useState, useEffect, useRef, useCallback, type FormEvent } from "react"
 import { cn } from "@/lib/utils";
 import Icon, { type IconName } from "@/components/ui/Icon";
 import DownloadPdfButton from "@/components/ui/DownloadPdfButton";
+import type { ApplicationFormValues } from "@/lib/application-types";
+import { APPLICATION_DRAFT_KEY } from "@/lib/application-types";
 
 const TITLES = ["Mr", "Mrs", "Miss", "Ms", "Dr", "Prof"];
 
@@ -29,7 +31,7 @@ const HEAR_OPTIONS = ["Google / Search", "Facebook", "Instagram", "WhatsApp", "F
 const FUNDING_OPTIONS = ["Self-funded", "Employer / Company", "Bursary / Scholarship", "NSFAS", "Other"];
 const GENDER_OPTIONS = ["Male", "Female", "Other", "Prefer not to say"];
 
-interface FormValues {
+interface FormValues extends ApplicationFormValues {
   title: string; fullName: string; idNumber: string; dob: string; phone: string; email: string; address: string; startDate: string;
   category: string; course: string; education: string; employStatus: string; hearAbout: string; agree: boolean;
   gender: string; nationality: string; postalCode: string; emergencyName: string; emergencyPhone: string;
@@ -68,8 +70,21 @@ export default function ApplicationForm() {
   const [showConfirm, setShowConfirm] = useState(false);
   const nameRef = useRef<HTMLInputElement>(null);
   const isMobile = useMediaQuery("(max-width: 639px)");
-
   const hasData = Object.values(form).some((v) => typeof v === "string" && v.trim().length > 0);
+
+  useEffect(() => {
+    const saved = window.localStorage.getItem(APPLICATION_DRAFT_KEY);
+    const course = new URLSearchParams(window.location.search).get("course");
+    if (saved) {
+      try { setForm({ ...initialForm, ...JSON.parse(saved), ...(course ? { course } : {}) }); } catch { /* discard invalid local draft */ }
+    } else if (course) {
+      setForm((current) => ({ ...current, course }));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (hasData && state !== "success") window.localStorage.setItem(APPLICATION_DRAFT_KEY, JSON.stringify(form));
+  }, [form, hasData, state]);
 
   useEffect(() => {
     if (hasData) {
@@ -143,6 +158,7 @@ export default function ApplicationForm() {
       const data = await res.json();
       if (res.ok) {
         setState("success");
+        window.localStorage.removeItem(APPLICATION_DRAFT_KEY);
         setMessage(data.message || "Application submitted successfully!");
         setRefNumber(data.refNumber || `SAIC-${Date.now().toString(36).toUpperCase()}`);
       } else {
@@ -295,6 +311,10 @@ export default function ApplicationForm() {
         <div className="mb-8 rounded-xl border border-green-200 bg-white px-8 py-5 shadow-sm">
           <p className="mb-1 text-xs font-medium uppercase tracking-wider text-[var(--color-text-muted)]">Reference Number</p>
           <p className="text-2xl font-bold tracking-wider text-[var(--color-primary)]">{refNumber}</p>
+        </div>
+        <div className="mb-6 flex flex-wrap justify-center gap-3">
+          <DownloadPdfButton type="application" data={{ ...form, refNumber }} label="Download application PDF" fileName={`SAIC-Application-${refNumber}-${form.fullName.replace(/\s+/g, "-") || "Applicant"}`} />
+          <button type="button" onClick={() => window.print()} className="inline-flex items-center gap-2 rounded-xl border border-[var(--color-border)] px-5 py-2.5 text-sm font-bold text-[var(--color-primary)]">Print application</button>
         </div>
         <p className="mb-6 text-sm text-[var(--color-text-secondary)]">
           Please save your reference number. Our admissions team will contact you within 2-3 business days.

@@ -2048,7 +2048,7 @@ export default async function CourseDetailPage({
                     )}
                   </p>
                   <div className="space-y-3">
-                    <Button variant="accent" size="lg" href="/apply" className="w-full">
+                    <Button variant="accent" size="lg" href={`/apply?course=${encodeURIComponent(course.title)}`} className="w-full">
                       Apply Now
                     </Button>
                     <Button
