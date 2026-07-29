@@ -89,9 +89,9 @@ export default function HeroCarousel() {
       ))}
 
       <Container className="relative z-10 w-full">
-        <div className="mx-auto max-w-4xl text-center pt-16 lg:mr-[38%] lg:pt-0">
+        <div className="mx-auto max-w-4xl rounded-2xl bg-[var(--saic-navy-950)]/20 px-4 py-6 text-center backdrop-blur-[2px] sm:px-8 lg:mr-[38%] lg:max-w-2xl lg:bg-transparent lg:px-0 lg:py-0 lg:backdrop-blur-none">
           <div
-            className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/35 bg-black/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-white backdrop-blur-sm"
+            className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/60 bg-black/25 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-white shadow-sm backdrop-blur-sm"
             key={`tag-${context.current}`}
           >
             <span className="relative flex h-2 w-2">
@@ -129,7 +129,7 @@ export default function HeroCarousel() {
                 variant="secondary"
                 size="lg"
                 href={slide.secondary.href}
-                className="!border-white/40 !text-white hover:!bg-white/10"
+                className="!border-white/70 !bg-white/10 !text-white hover:!bg-white/20"
               >
                 {slide.secondary.text}
               </Button>
