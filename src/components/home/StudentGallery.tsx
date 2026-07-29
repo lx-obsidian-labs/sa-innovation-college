@@ -25,7 +25,7 @@ export default function StudentGallery() {
           {images.map((img, idx) => (
             <div
               key={img.src}
-              className={`group relative overflow-hidden rounded-xl bg-[var(--color-gray-100)] shadow-sm transition-all duration-300 hover:shadow-lg ${
+              className={`group premium-card relative overflow-hidden rounded-xl bg-[var(--color-gray-100)] shadow-sm transition-all duration-300 hover:shadow-lg ${
                 idx === 0 ? "row-span-2 col-span-2 md:col-span-1" : ""
               }`}
             >

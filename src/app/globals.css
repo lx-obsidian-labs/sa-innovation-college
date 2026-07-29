@@ -350,6 +350,12 @@
   100% { background-position: 0% 50%; }
 }
 
+@keyframes gold-sweep {
+  0% { transform: translateX(-140%); opacity: 0; }
+  18% { opacity: 0.9; }
+  55%, 100% { transform: translateX(140%); opacity: 0; }
+}
+
 @keyframes scalePulse {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.03); }
@@ -472,6 +478,51 @@
   transform: skewX(-15deg);
   transition: left 0.6s ease;
   pointer-events: none;
+}
+
+.premium-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.premium-card::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  z-index: 2;
+  height: 2px;
+  width: 42%;
+  background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+  opacity: 0.45;
+  transform: translateX(-140%);
+  pointer-events: none;
+}
+
+.premium-card:hover::after,
+.premium-card:focus-within::after {
+  animation: gold-sweep 1.4s ease-out forwards;
+}
+
+.gold-rule {
+  position: relative;
+}
+
+.gold-rule::after {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 4rem;
+  margin: 1rem auto 0;
+  background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 3.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gold-rule::after { animation: none; }
+  .premium-card:hover::after,
+  .premium-card:focus-within::after { animation: none; opacity: 0.65; transform: none; }
 }
 .btn-shine:hover::before {
   left: 150%;

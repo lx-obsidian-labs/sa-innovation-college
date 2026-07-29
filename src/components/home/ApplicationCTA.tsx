@@ -46,7 +46,7 @@ export default function ApplicationCTA() {
         }}
         aria-hidden
       />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--color-accent)]/40 to-transparent" aria-hidden />
+      <div className="absolute top-0 left-0 right-0 h-0.5 animate-shimmer bg-gradient-to-r from-transparent via-[var(--color-accent)] to-transparent" aria-hidden />
 
       <Container className="relative z-10">
         <div className="mx-auto max-w-3xl text-center">

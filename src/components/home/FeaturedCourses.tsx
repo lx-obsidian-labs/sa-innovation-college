@@ -130,7 +130,7 @@ export default function FeaturedCourses() {
               <a
                 key={course.title}
                 href={course.href}
-                className="group relative flex flex-col rounded-2xl bg-white shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl overflow-hidden hover-border-glow before:absolute before:inset-0 before:rounded-2xl before:opacity-0 before:transition-opacity before:duration-500 hover:before:opacity-100 before:pointer-events-none before:bg-gradient-to-br before:from-[var(--color-primary)]/[0.04] before:to-transparent"
+                className="group premium-card relative flex flex-col rounded-2xl border border-[var(--color-border)] bg-white shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl overflow-hidden hover-border-glow before:absolute before:inset-0 before:rounded-2xl before:opacity-0 before:transition-opacity before:duration-500 hover:before:opacity-100 before:pointer-events-none before:bg-gradient-to-br before:from-[var(--color-primary)]/[0.04] before:to-transparent"
               >
                 <div className="relative h-48 overflow-hidden bg-[var(--color-gray-200)]">
                   <Image

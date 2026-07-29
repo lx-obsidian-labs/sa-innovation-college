@@ -84,7 +84,7 @@ export default function Testimonials() {
                 className={`absolute inset-0 transition-all duration-700 ease-in-out ${visible(idx)}`}
                 aria-hidden={idx !== current}
               >
-                <div className="group relative flex flex-col rounded-2xl border border-[var(--color-gray-200)] bg-[var(--color-surface-raised)] p-8 md:p-10 shadow-md text-center items-center hover-border-glow">
+                <div className="group premium-card relative flex flex-col rounded-2xl border border-[var(--color-gray-200)] bg-[var(--color-surface-raised)] p-8 md:p-10 shadow-md text-center items-center hover-border-glow">
                   <div className="absolute top-4 right-6 select-none text-7xl font-serif leading-none text-[var(--color-primary)]/8" aria-hidden>
                     &ldquo;
                   </div>

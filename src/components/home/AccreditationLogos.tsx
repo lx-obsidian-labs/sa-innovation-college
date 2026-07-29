@@ -31,7 +31,7 @@ export default function AccreditationLogos() {
           {accreditations.map((a) => (
             <div
               key={a.name}
-              className="group flex aspect-[3/2] items-center justify-center rounded-xl border border-[var(--color-gray-200)] bg-white p-5 transition-all duration-300 hover:-translate-y-1.5 hover:border-[var(--color-primary)] hover:shadow-lg"
+              className="group premium-card flex aspect-[3/2] items-center justify-center rounded-xl border border-[var(--color-gray-200)] bg-white p-5 transition-all duration-300 hover:-translate-y-1.5 hover:border-[var(--color-primary)] hover:shadow-lg"
             >
               <img
                 src={`/images/${a.file}`}
