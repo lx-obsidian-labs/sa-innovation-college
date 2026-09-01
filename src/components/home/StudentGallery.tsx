@@ -12,7 +12,7 @@ const images = [
 
 export default function StudentGallery() {
   return (
-    <section id="gallery" className="relative py-16 md:py-24 overflow-hidden bg-white">
+    <section id="gallery" className="relative py-20 md:py-28 overflow-hidden bg-white">
       <Container>
         <SectionHeader
           eyebrow="Our Community"

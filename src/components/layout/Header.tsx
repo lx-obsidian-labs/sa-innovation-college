@@ -123,35 +123,24 @@ export default function Header() {
       className={cn(
         "sticky top-0 z-[var(--z-sticky)] transition-all duration-300",
         scrolled
-          ? "bg-white/85 backdrop-blur-xl shadow-lg"
+          ? "bg-white/90 backdrop-blur-xl shadow-lg shadow-black/[0.03]"
           : "bg-white/95 shadow-sm"
       )}
     >
       <Container className="flex items-center justify-between h-14 lg:h-[80px]">
-        <Link href="/" className="flex items-center gap-3 shrink-0 group">
+        <Link href="/" className="flex items-center shrink-0 group">
           <div className={cn(
             "rounded-xl overflow-hidden border-2 border-white/80 shadow-sm transition-all duration-300 group-hover:scale-[1.05] group-hover:shadow-lg group-hover:border-[var(--color-accent)]/40",
-            scrolled ? "h-[42px] w-[42px]" : "h-[42px] w-[42px] lg:h-[52px] lg:w-[52px]"
+            scrolled ? "h-[40px] w-[40px]" : "h-[40px] w-[40px] lg:h-[48px] lg:w-[48px]"
           )}>
             <img
               src="/images/logo-sa-innovation.webp"
               alt="SA Innovation College"
               className="h-full w-full object-contain p-0.5"
               loading="eager"
-              width={52}
-              height={52}
+              width={48}
+              height={48}
             />
-          </div>
-          <div className="hidden sm:block">
-            <span className={cn(
-              "font-bold text-sm lg:text-[15px] leading-tight block transition-all duration-300",
-              scrolled ? "text-[var(--color-primary)]" : "text-[var(--color-primary)]"
-            )}>
-              SA Innovation
-            </span>
-            <span className="text-[11px] lg:text-xs font-semibold uppercase tracking-[0.15em] text-[var(--color-accent)] leading-tight block">
-              College
-            </span>
           </div>
         </Link>
 
@@ -162,7 +151,7 @@ export default function Header() {
                 href={item.url}
                 className={cn(
                   "relative inline-flex items-center px-3 py-2 text-[15px] font-semibold rounded-lg transition-all duration-200",
-                  "after:absolute after:bottom-[2px] after:left-1/2 after:-translate-x-1/2 after:h-[2px] after:w-0 after:bg-[var(--color-accent)] after:rounded-full after:transition-all after:duration-200",
+                  "after:absolute after:bottom-[2px] after:left-1/2 after:-translate-x-1/2 after:h-[2px] after:w-0 after:bg-gradient-to-r after:from-[var(--color-primary)] after:to-[var(--color-accent)] after:rounded-full after:transition-all after:duration-300",
                   "hover:after:w-[60%] hover:text-[var(--color-primary)] hover:bg-[var(--color-gray-50)]",
                   isActive(item.url)
                     ? "text-[var(--color-primary)] after:w-[60%]"
@@ -235,7 +224,7 @@ export default function Header() {
         <div className="hidden lg:flex items-center gap-3">
             <Link
               href="/apply"
-              className="btn-shine inline-flex items-center justify-center px-5 py-2 h-[44px] text-sm font-bold uppercase tracking-wide text-[var(--color-text-inverse)] bg-gradient-to-r from-[var(--color-primary)] via-[var(--color-primary-light)] to-[var(--color-primary-dark)] bg-[length:200%_200%] animate-border-flow rounded-xl transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg shadow-md"
+              className="btn-shine inline-flex items-center justify-center px-5 py-2 h-[44px] text-sm font-bold uppercase tracking-wide text-[var(--color-text-inverse)] bg-gradient-to-r from-[var(--color-primary)] via-[var(--color-primary-light)] to-[var(--color-primary-dark)] bg-[length:200%_200%] animate-border-flow rounded-xl shadow-md shadow-[var(--color-primary)]/15 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[var(--color-primary)]/25 hover:border hover:border-[var(--color-accent)]/40"
             >
               Apply Now
             </Link>
@@ -298,7 +287,7 @@ export default function Header() {
             <Link
               href="/apply"
               onClick={() => setIsOpen(false)}
-              className="btn-shine block w-full text-center px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-[var(--color-text-inverse)] bg-gradient-to-r from-[var(--color-primary)] via-[var(--color-primary-light)] to-[var(--color-primary-dark)] bg-[length:200%_200%] animate-border-flow rounded-xl transition-all duration-200"
+              className="btn-shine block w-full text-center px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-[var(--color-text-inverse)] bg-gradient-to-r from-[var(--color-primary)] via-[var(--color-primary-light)] to-[var(--color-primary-dark)] bg-[length:200%_200%] animate-border-flow rounded-xl shadow-lg shadow-[var(--color-primary)]/15 transition-all duration-200 hover:shadow-xl"
             >
               Apply Now
             </Link>

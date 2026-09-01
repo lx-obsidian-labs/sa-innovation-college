@@ -13,18 +13,18 @@ export default function Footer() {
       <div className="absolute inset-x-0 top-0 h-0.5 animate-gold-shimmer" aria-hidden />
       <div className="relative border-b border-white/10">
         <Container className="py-10 lg:py-12">
-          <div className="mx-auto max-w-xl rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-7 text-center shadow-2xl shadow-black/10 backdrop-blur-sm sm:px-8">
+          <div className="mx-auto max-w-xl rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] px-5 py-7 text-center shadow-2xl shadow-black/10 backdrop-blur-sm sm:px-8">
             <span className="mb-2 inline-block text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--color-accent)]">Keep connected</span>
             <h3 className="mb-2 text-lg font-semibold text-[var(--color-white)]">Stay Updated</h3>
             <p className="text-sm text-[var(--color-gray-400)] mb-6">
               Subscribe to our newsletter for course updates and news.
             </p>
-            <a href="https://wa.me/27727733960?text=Hi%20Admissions%2C%20please%20send%20me%20course%20and%20application%20updates." target="_blank" rel="noopener noreferrer" className="mx-auto inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-dark)] px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-[var(--saic-navy-950)] shadow-lg shadow-[var(--color-accent)]/20 transition hover:-translate-y-0.5 hover:shadow-xl btn-shine">Get updates from Admissions</a>
+            <a href="https://wa.me/27727733960?text=Hi%20Admissions%2C%20please%20send%20me%20course%20and%20application%20updates." target="_blank" rel="noopener noreferrer" className="mx-auto inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-dark)] px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-[var(--saic-navy-950)] shadow-lg shadow-[var(--color-accent)]/20 transition hover:-translate-y-0.5 hover:shadow-xl hover:shadow-[var(--color-accent)]/30 btn-shine">Get updates from Admissions</a>
           </div>
         </Container>
       </div>
 
-      <div className="relative py-12 lg:py-16">
+      <div className="relative py-14 lg:py-20">
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
             <div className="lg:col-span-1">
@@ -37,10 +37,6 @@ export default function Footer() {
                     width={48}
                     height={48}
                   />
-                </div>
-                <div>
-                  <div className="font-bold text-[var(--color-white)] text-sm leading-tight">SA Innovation</div>
-                  <div className="text-[var(--color-accent)] text-[10px] font-semibold uppercase tracking-[0.15em] leading-tight">College</div>
                 </div>
               </Link>
               <p className="text-sm leading-relaxed mb-4">
@@ -57,10 +53,10 @@ export default function Footer() {
                   <a
                     key={social.label}
                     href="#"
-                    className="group flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--color-accent)]/60 hover:bg-[var(--color-accent)] hover:shadow-lg hover:shadow-[var(--color-accent)]/20"
+                    className="group flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.06] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--color-accent)]/60 hover:bg-[var(--color-accent)] hover:shadow-lg hover:shadow-[var(--color-accent)]/25"
                     aria-label={`Follow us on ${social.label}`}
                   >
-                    <Icon name={social.icon} size={4} className="text-[var(--color-gray-400)] transition-colors group-hover:text-[var(--saic-navy-950)]" />
+                    <Icon name={social.icon} size={4} className="text-[var(--color-gray-400)] transition-colors duration-300 group-hover:text-[var(--saic-navy-950)]" />
                   </a>
                 ))}
               </div>
@@ -80,7 +76,7 @@ export default function Footer() {
                   { title: "Contact Us", url: "/contact" },
                 ].map(link => (
                   <li key={link.url}>
-                    <Link href={link.url} className="text-sm hover:text-[var(--color-accent)] transition-colors hover:translate-x-0.5 inline-block">
+                    <Link href={link.url} className="text-sm hover:text-[var(--color-accent)] transition-all duration-200 hover:translate-x-1 inline-block">
                       {link.title}
                     </Link>
                   </li>
@@ -119,7 +115,7 @@ export default function Footer() {
                   "Table Service",
                 ].map(prog => (
                   <li key={prog}>
-                    <Link href="/courses" className="text-sm hover:text-[var(--color-accent)] transition-colors hover:translate-x-0.5 inline-block">
+                    <Link href="/courses" className="text-sm hover:text-[var(--color-accent)] transition-all duration-200 hover:translate-x-1 inline-block">
                       {prog}
                     </Link>
                   </li>
@@ -134,16 +130,16 @@ export default function Footer() {
               </h3>
               <ul className="space-y-3.5 mt-5">
                 <li>
-                  <a href={getTelUrl("0800 014 568")} className="flex items-start gap-3 text-sm hover:text-[var(--color-accent)] transition-colors group">
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[var(--color-gray-800)] text-[var(--color-gray-400)] group-hover:bg-[var(--color-accent)]/20 group-hover:text-[var(--color-accent)] transition-all duration-200">
+                  <a href={getTelUrl("0800 014 568")} className="flex items-start gap-3 text-sm hover:text-[var(--color-accent)] transition-all duration-200 group">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[var(--color-gray-800)] text-[var(--color-gray-400)] group-hover:bg-[var(--color-accent)]/20 group-hover:text-[var(--color-accent)] transition-all duration-300 group-hover:scale-110">
                       <Icon name="phone" size={4} />
                     </span>
                     <span>0800 014 568 (Toll Free)</span>
                   </a>
                 </li>
                 <li>
-                  <a href={getWhatsAppUrl("+27727733960")} className="flex items-start gap-3 text-sm hover:text-[var(--color-accent)] transition-colors group" target="_blank" rel="noopener noreferrer">
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[var(--color-gray-800)] text-[var(--color-gray-400)] group-hover:bg-[var(--color-accent)]/20 group-hover:text-[var(--color-accent)] transition-all duration-200">
+                  <a href={getWhatsAppUrl("+27727733960")} className="flex items-start gap-3 text-sm hover:text-[var(--color-accent)] transition-all duration-200 group" target="_blank" rel="noopener noreferrer">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[var(--color-gray-800)] text-[var(--color-gray-400)] group-hover:bg-[var(--color-accent)]/20 group-hover:text-[var(--color-accent)] transition-all duration-300 group-hover:scale-110">
                       <Icon name="whatsapp" size={4} />
                     </span>
                     +27 72 773 3960
@@ -168,7 +164,7 @@ export default function Footer() {
       </div>
 
       <div className="relative border-t border-white/10 bg-black/15">
-        <Container className="flex flex-col sm:flex-row items-center justify-between gap-3 py-5">
+        <Container className="flex flex-col sm:flex-row items-center justify-between gap-3 py-6">
           <p className="text-xs text-[var(--color-gray-500)]">
             &copy; {currentYear} SA Innovation College. All rights reserved.
           </p>

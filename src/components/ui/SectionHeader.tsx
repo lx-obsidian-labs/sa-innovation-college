@@ -10,7 +10,7 @@ interface SectionHeaderProps {
 
 export default function SectionHeader({ eyebrow, title, description, align = "center", className }: SectionHeaderProps) {
   return (
-    <div className={cn("max-w-3xl gold-rule", align === "center" && "mx-auto text-center", align === "left" && "text-left", className)}>
+    <div className={cn("max-w-4xl gold-rule", align === "center" && "mx-auto text-center", align === "left" && "text-left", className)}>
       {eyebrow && (
         <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-[var(--color-accent)] mb-4 relative">
           <span className="relative inline-flex items-center gap-2.5">

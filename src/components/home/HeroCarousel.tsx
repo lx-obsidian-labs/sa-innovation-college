@@ -74,7 +74,7 @@ export default function HeroCarousel() {
     <section
       ref={sectionRef}
       id="hero"
-      className="relative min-h-[400px] lg:min-h-[460px] flex items-center overflow-hidden bg-[var(--saic-campaign-crimson)]"
+      className="relative min-h-[480px] lg:min-h-[560px] flex items-center overflow-hidden bg-[var(--saic-campaign-crimson)]"
       role="region"
       aria-roledescription="carousel"
       aria-label="Featured slides"
@@ -89,7 +89,7 @@ export default function HeroCarousel() {
       ))}
 
       <Container className="relative z-10 w-full">
-        <div className="mx-auto max-w-4xl rounded-2xl bg-[var(--saic-navy-950)]/20 px-4 py-6 text-center backdrop-blur-[2px] sm:px-8 lg:mr-[38%] lg:max-w-2xl lg:bg-transparent lg:px-0 lg:py-0 lg:backdrop-blur-none">
+        <div className="mx-auto max-w-5xl rounded-2xl bg-[var(--saic-navy-950)]/20 px-4 py-6 text-center backdrop-blur-[2px] sm:px-8 lg:mr-[35%] lg:max-w-3xl lg:bg-transparent lg:px-0 lg:py-0 lg:backdrop-blur-none">
           <div
             className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/60 bg-black/25 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-white shadow-sm backdrop-blur-sm"
             key={`tag-${context.current}`}
@@ -102,7 +102,7 @@ export default function HeroCarousel() {
           </div>
 
           <h1
-            className="mb-3 text-[var(--fs-4xl)] font-extrabold leading-[1.05] tracking-tight text-white"
+            className="mb-3 text-[var(--fs-4xl)] font-extrabold leading-[1.05] tracking-tight text-white lg:text-[3.5rem]"
             key={`title-${context.current}`}
           >
             <span className="animate-fadeInUp" style={{ animationDelay: "0.1s", display: "inline-block" }}>
@@ -114,7 +114,7 @@ export default function HeroCarousel() {
             </span>
           </h1>
 
-          <p className="mx-auto mb-8 max-w-2xl text-base leading-relaxed text-white/90 animate-fadeInUp" style={{ animationDelay: "0.25s" }} key={`desc-${context.current}`}>
+          <p className="mx-auto mb-8 max-w-2xl text-lg leading-relaxed text-white/90 animate-fadeInUp" style={{ animationDelay: "0.25s" }} key={`desc-${context.current}`}>
             {slide.description}
           </p>
 

@@ -5,8 +5,8 @@ import Icon from "@/components/ui/Icon";
 
 export default function UtilityBar() {
   return (
-    <div className="bg-[var(--color-primary-dark)] text-[var(--color-text-inverse)] text-[11px]">
-      <div className="mx-auto flex max-w-[var(--container-max)] items-center justify-between px-[var(--container-padding)] h-[34px]">
+    <div className="bg-gradient-to-r from-[var(--saic-campaign-crimson-dark)] via-[var(--saic-campaign-crimson)] to-[var(--saic-navy-950)] text-[var(--color-text-inverse)] text-[11px]">
+      <div className="mx-auto flex max-w-[var(--container-max)] items-center justify-between px-[var(--container-padding)] h-[36px]">
         <div className="flex items-center gap-4">
           <a
             href={getTelUrl("0800 014 568")}

@@ -49,7 +49,7 @@ export default function Testimonials() {
   const visible = (i: number) => (i === current ? "opacity-100 scale-100 z-10" : "opacity-0 scale-95 z-0");
 
   return (
-    <section id="testimonials" className="relative bg-[var(--color-gray-50)] py-16 md:py-24 overflow-hidden">
+    <section id="testimonials" className="relative bg-[var(--color-gray-50)] py-20 md:py-28 overflow-hidden">
       <div className="bg-mesh-gradient absolute inset-0" aria-hidden />
       <div
         className="absolute inset-0 opacity-[0.03]"
