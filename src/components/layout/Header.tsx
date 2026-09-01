@@ -130,16 +130,16 @@ export default function Header() {
       <Container className="flex items-center justify-between h-14 lg:h-[80px]">
         <Link href="/" className="flex items-center shrink-0 group">
           <div className={cn(
-            "rounded-xl overflow-hidden border-2 border-white/80 shadow-sm transition-all duration-300 group-hover:scale-[1.05] group-hover:shadow-lg group-hover:border-[var(--color-accent)]/40",
-            scrolled ? "h-[48px] w-[48px]" : "h-[48px] w-[48px] lg:h-[60px] lg:w-[60px]"
+            "overflow-hidden transition-all duration-300 group-hover:scale-[1.05] rounded-lg",
+            scrolled ? "h-[40px] w-[120px]" : "h-[40px] w-[120px] lg:h-[50px] lg:w-[150px]"
           )}>
             <img
               src="/images/logo-sa-innovation.webp"
               alt="SA Innovation College"
               className="h-full w-full object-contain"
               loading="eager"
-              width={60}
-              height={60}
+              width={150}
+              height={50}
             />
           </div>
         </Link>
