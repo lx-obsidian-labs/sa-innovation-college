@@ -131,15 +131,15 @@ export default function Header() {
         <Link href="/" className="flex items-center shrink-0 group">
           <div className={cn(
             "overflow-hidden transition-all duration-300 group-hover:scale-[1.05] rounded-lg",
-            scrolled ? "h-[40px] w-[120px]" : "h-[40px] w-[120px] lg:h-[50px] lg:w-[150px]"
+            scrolled ? "h-[44px] w-[140px]" : "h-[44px] w-[140px] lg:h-[56px] lg:w-[180px]"
           )}>
             <img
               src="/images/logo-sa-innovation.webp"
               alt="SA Innovation College"
               className="h-full w-full object-contain"
               loading="eager"
-              width={150}
-              height={50}
+              width={180}
+              height={56}
             />
           </div>
         </Link>
