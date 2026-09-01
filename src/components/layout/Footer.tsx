@@ -29,12 +29,18 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
             <div className="lg:col-span-1">
               <Link href="/" className="group mb-4 flex items-center gap-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-primary-dark)] rounded-lg flex items-center justify-center shadow-md transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-0.5">
-                  <span className="text-[var(--color-text-inverse)] font-bold text-lg">SA</span>
+                <div className="w-12 h-12 rounded-xl overflow-hidden border border-white/10 bg-white/5 shadow-md transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-0.5 group-hover:border-[var(--color-accent)]/30">
+                  <img
+                    src="/images/logo-sa-innovation.webp"
+                    alt="SA Innovation College"
+                    className="h-full w-full object-contain p-1"
+                    width={48}
+                    height={48}
+                  />
                 </div>
                 <div>
                   <div className="font-bold text-[var(--color-white)] text-sm leading-tight">SA Innovation</div>
-                  <div className="text-[var(--color-gray-400)] text-xs leading-tight">College</div>
+                  <div className="text-[var(--color-accent)] text-[10px] font-semibold uppercase tracking-[0.15em] leading-tight">College</div>
                 </div>
               </Link>
               <p className="text-sm leading-relaxed mb-4">

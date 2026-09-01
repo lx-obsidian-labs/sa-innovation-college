@@ -130,22 +130,29 @@ export default function Header() {
       <Container className="flex items-center justify-between h-14 lg:h-[80px]">
         <Link href="/" className="flex items-center gap-3 shrink-0 group">
           <div className={cn(
-            "rounded-full overflow-hidden border-2 border-white/80 shadow-sm transition-all duration-300 group-hover:scale-[1.05] group-hover:shadow-md",
-            scrolled ? "h-[44px] w-[44px]" : "h-[44px] w-[44px] lg:h-[56px] lg:w-[56px]"
+            "rounded-xl overflow-hidden border-2 border-white/80 shadow-sm transition-all duration-300 group-hover:scale-[1.05] group-hover:shadow-lg group-hover:border-[var(--color-accent)]/40",
+            scrolled ? "h-[42px] w-[42px]" : "h-[42px] w-[42px] lg:h-[52px] lg:w-[52px]"
           )}>
             <img
-              src="/images/SA-INNOVATION-COLLEGE.webp"
+              src="/images/logo-sa-innovation.webp"
               alt="SA Innovation College"
-              className="h-full w-full object-cover"
+              className="h-full w-full object-contain p-0.5"
               loading="eager"
+              width={52}
+              height={52}
             />
           </div>
-          <span className={cn(
-            "font-bold text-sm lg:text-base transition-all duration-300",
-            scrolled ? "text-[var(--color-primary)]" : "text-[var(--color-primary)]"
-          )}>
-            SA Innovation<span className="text-[var(--color-accent)]"> College</span>
-          </span>
+          <div className="hidden sm:block">
+            <span className={cn(
+              "font-bold text-sm lg:text-[15px] leading-tight block transition-all duration-300",
+              scrolled ? "text-[var(--color-primary)]" : "text-[var(--color-primary)]"
+            )}>
+              SA Innovation
+            </span>
+            <span className="text-[11px] lg:text-xs font-semibold uppercase tracking-[0.15em] text-[var(--color-accent)] leading-tight block">
+              College
+            </span>
+          </div>
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1" aria-label="Main navigation">
