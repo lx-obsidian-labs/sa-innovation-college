@@ -29,13 +29,13 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
             <div className="lg:col-span-1">
               <Link href="/" className="group mb-4 flex items-center gap-3">
-                <div className="w-12 h-12 rounded-xl overflow-hidden border border-white/10 bg-white/5 shadow-md transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-0.5 group-hover:border-[var(--color-accent)]/30">
+                <div className="w-14 h-14 rounded-xl overflow-hidden border border-white/10 bg-white/5 shadow-md transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-0.5 group-hover:border-[var(--color-accent)]/30">
                   <img
                     src="/images/logo-sa-innovation.webp"
                     alt="SA Innovation College"
                     className="h-full w-full object-contain p-1"
-                    width={48}
-                    height={48}
+                    width={56}
+                    height={56}
                   />
                 </div>
               </Link>
