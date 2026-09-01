@@ -26,7 +26,7 @@ export default function ApplyPage() {
         description="Tell us about your goals, choose a programme and get guidance from Admissions on the next step."
       />
 
-      <section className="relative overflow-hidden bg-gradient-to-b from-white via-[var(--color-gray-50)] to-[var(--saic-gold-100)]/30 py-16 md:py-24">
+      <section className="relative overflow-hidden bg-gradient-to-b from-white via-[var(--color-gray-50)] to-[var(--saic-gold-100)]/30 py-20 md:py-28">
         <div className="bg-mesh-gradient-subtle absolute inset-0 pointer-events-none" aria-hidden />
         <div className="floating-blob" style={{ width: 350, height: 350, top: "5%", right: "-8%", opacity: 0.04 }} aria-hidden />
         <Container>
@@ -69,52 +69,52 @@ export default function ApplyPage() {
             <div className="mt-8 grid gap-4 sm:grid-cols-3">
               <a
                 href={getTelUrl("0800 014 568")}
-                className="group premium-card flex items-center gap-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-4 transition-all duration-200 hover:border-[var(--color-primary)]/30 hover:shadow-md hover:-translate-y-0.5"
+                className="group premium-card flex items-center gap-3 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-4 transition-all duration-300 hover:border-[var(--color-primary)]/30 hover:shadow-lg hover:-translate-y-0.5"
               >
-                <div className="icon-hover-scale flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[var(--color-primary)]/10 text-[var(--color-primary)] transition-all duration-200 group-hover:bg-[var(--color-primary)] group-hover:text-white">
+                <div className="icon-hover-scale flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[var(--color-primary)]/10 text-[var(--color-primary)] transition-all duration-300 group-hover:bg-[var(--color-primary)] group-hover:text-white group-hover:shadow-md group-hover:shadow-[var(--color-primary)]/15">
                   <Icon name="phone" size={5} />
                 </div>
                 <div>
                   <span className="text-xs font-medium text-[var(--color-text-muted)]">Call Us</span>
-                  <p className="text-sm font-semibold text-[var(--color-text-primary)] group-hover:text-[var(--color-primary)] transition-colors">0800 014 568</p>
+                  <p className="text-sm font-semibold text-[var(--color-text-primary)] group-hover:text-[var(--color-primary)] transition-colors duration-200">0800 014 568</p>
                 </div>
               </a>
 
               <a
                 href={getWhatsAppUrl("+27727733960")}
-                className="group premium-card flex items-center gap-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-4 transition-all duration-200 hover:border-emerald-300 hover:shadow-md hover:-translate-y-0.5"
+                className="group premium-card flex items-center gap-3 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-4 transition-all duration-300 hover:border-emerald-300 hover:shadow-lg hover:-translate-y-0.5"
               >
-                <div className="icon-hover-scale flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600 transition-all duration-200 group-hover:bg-emerald-500 group-hover:text-white">
+                <div className="icon-hover-scale flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 transition-all duration-300 group-hover:bg-emerald-500 group-hover:text-white group-hover:shadow-md group-hover:shadow-emerald-500/20">
                   <Icon name="whatsapp" size={5} />
                 </div>
                 <div>
                   <span className="text-xs font-medium text-[var(--color-text-muted)]">WhatsApp</span>
-                  <p className="text-sm font-semibold text-[var(--color-text-primary)] group-hover:text-emerald-600 transition-colors">+27 72 773 3960</p>
+                  <p className="text-sm font-semibold text-[var(--color-text-primary)] group-hover:text-emerald-600 transition-colors duration-200">+27 72 773 3960</p>
                 </div>
               </a>
 
               <a
                 href="mailto:info@sainnovationcollege.co.za"
-                className="group premium-card flex items-center gap-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-4 transition-all duration-200 hover:border-[var(--color-primary)]/30 hover:shadow-md hover:-translate-y-0.5"
+                className="group premium-card flex items-center gap-3 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-4 transition-all duration-300 hover:border-[var(--color-primary)]/30 hover:shadow-lg hover:-translate-y-0.5"
               >
-                <div className="icon-hover-scale flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[var(--color-primary)]/10 text-[var(--color-primary)] transition-all duration-200 group-hover:bg-[var(--color-primary)] group-hover:text-white">
+                <div className="icon-hover-scale flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[var(--color-primary)]/10 text-[var(--color-primary)] transition-all duration-300 group-hover:bg-[var(--color-primary)] group-hover:text-white group-hover:shadow-md group-hover:shadow-[var(--color-primary)]/15">
                   <Icon name="envelope" size={5} />
                 </div>
                 <div>
                   <span className="text-xs font-medium text-[var(--color-text-muted)]">Email Us</span>
-                  <p className="text-sm font-semibold text-[var(--color-text-primary)] group-hover:text-[var(--color-primary)] transition-colors">info@sainnovationcollege.co.za</p>
+                  <p className="text-sm font-semibold text-[var(--color-text-primary)] group-hover:text-[var(--color-primary)] transition-colors duration-200">info@sainnovationcollege.co.za</p>
                 </div>
               </a>
             </div>
 
-            <div className="premium-card mt-8 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-6 shadow-[var(--shadow-card)] md:p-8">
+            <div className="premium-card mt-8 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-6 shadow-[var(--shadow-card)] md:p-8">
               <h3 className="mb-6 text-center text-[var(--fs-xl)] font-bold text-[var(--color-text-primary)]">
                 What Happens After You Apply
               </h3>
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                 {steps.map((item) => (
                   <div key={item.step} className="text-center group">
-                    <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-primary-dark)] text-sm font-bold text-white shadow-md transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg">
+                    <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-primary-dark)] text-sm font-bold text-white shadow-md shadow-[var(--color-primary)]/20 transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-[var(--color-primary)]/30">
                       {item.step}
                     </div>
                     <h4 className="mb-1 text-sm font-bold text-[var(--color-text-primary)]">{item.title}</h4>

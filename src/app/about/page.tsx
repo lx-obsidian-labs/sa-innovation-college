@@ -101,9 +101,9 @@ export default function AboutPage() {
           </p>
           <div className="mt-12 grid grid-cols-2 gap-6 md:grid-cols-4">
             {stats.map((stat) => (
-              <div key={stat.label} className="group relative rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-6 text-center shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lg)] overflow-hidden">
+              <div key={stat.label} className="group relative rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-6 text-center shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--shadow-lg)] hover:border-[var(--color-primary)]/20 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-primary)]/[0.02] to-transparent pointer-events-none" aria-hidden />
-                <div className="text-[var(--fs-3xl)] font-extrabold text-[var(--color-primary)] group-hover:text-[var(--color-accent)] transition-colors">{stat.value}</div>
+                <div className="text-[var(--fs-3xl)] font-extrabold text-[var(--color-primary)] group-hover:text-[var(--color-accent)] transition-colors duration-300">{stat.value}</div>
                 <div className="mt-1 text-sm font-medium uppercase tracking-wider text-[var(--color-text-secondary)]">{stat.label}</div>
               </div>
             ))}
@@ -123,9 +123,9 @@ export default function AboutPage() {
             {values.map((value) => (
               <div
                 key={value.title}
-                className="group rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-6 shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[var(--shadow-lg)]"
+                className="group rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-6 shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[var(--shadow-lg)] hover:border-[var(--color-primary)]/20"
               >
-                <div className="icon-hover-scale mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-[var(--color-primary)]/10 text-[var(--color-primary)] transition-all duration-300 group-hover:bg-[var(--color-primary)] group-hover:text-white group-hover:shadow-md">
+                <div className="icon-hover-scale mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-[var(--color-primary)]/10 text-[var(--color-primary)] transition-all duration-300 group-hover:bg-[var(--color-primary)] group-hover:text-white group-hover:shadow-md group-hover:shadow-[var(--color-primary)]/20">
                   {value.icon}
                 </div>
                 <h3 className="mb-2 text-lg font-bold text-[var(--color-text-primary)]">{value.title}</h3>
@@ -150,13 +150,13 @@ export default function AboutPage() {
             {teamMembers.map((member) => (
               <div
                 key={member.name}
-                className="group rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-6 text-center shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[var(--shadow-lg)]"
+                className="group rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-6 text-center shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[var(--shadow-lg)] hover:border-[var(--color-primary)]/20"
               >
-                <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-primary-dark)] text-xl font-bold text-white shadow-md transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg">
+                <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-primary-dark)] text-xl font-bold text-white shadow-md shadow-[var(--color-primary)]/20 transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg group-hover:shadow-[var(--color-primary)]/30">
                   {member.initials}
                 </div>
                 <h3 className="text-lg font-bold text-[var(--color-text-primary)]">{member.name}</h3>
-                <p className="mt-1 text-sm text-[var(--color-text-secondary)]">{member.role}</p>
+                <p className="mt-1 text-sm text-[var(--color-primary)] font-medium">{member.role}</p>
               </div>
             ))}
           </div>

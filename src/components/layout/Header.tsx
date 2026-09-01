@@ -123,7 +123,7 @@ export default function Header() {
       className={cn(
         "sticky top-0 z-[var(--z-sticky)] transition-all duration-300",
         scrolled
-          ? "bg-white/90 backdrop-blur-xl shadow-lg shadow-black/[0.03]"
+          ? "bg-white/90 backdrop-blur-xl shadow-lg shadow-black/[0.04]"
           : "bg-white/95 shadow-sm"
       )}
     >
@@ -247,8 +247,8 @@ export default function Header() {
 
       <div
         className={cn(
-          "fixed inset-0 top-14 z-[var(--z-modal-backdrop)] bg-[var(--color-gray-900)]/50 lg:hidden transition-opacity duration-300",
-          isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          "fixed inset-0 top-14 z-[var(--z-modal-backdrop)] bg-[var(--color-gray-900)]/60 lg:hidden transition-all duration-300",
+          isOpen ? "opacity-100 pointer-events-auto backdrop-blur-sm" : "opacity-0 pointer-events-none"
         )}
         onClick={() => setIsOpen(false)}
         aria-hidden="true"
@@ -258,7 +258,7 @@ export default function Header() {
         ref={menuRef}
         id="mobile-menu"
         className={cn(
-          "fixed top-14 right-0 bottom-0 w-full sm:w-[400px] z-[var(--z-modal)] bg-[var(--color-white)] shadow-xl transform transition-all duration-300 ease-in-out lg:hidden overflow-y-auto",
+          "fixed top-14 right-0 bottom-0 w-full sm:w-[400px] z-[var(--z-modal)] bg-[var(--color-white)] shadow-2xl shadow-black/10 transform transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] lg:hidden overflow-y-auto",
           isOpen ? "translate-x-0" : "translate-x-full"
         )}
         role="dialog"
@@ -272,10 +272,10 @@ export default function Header() {
               href={item.url}
               onClick={() => setIsOpen(false)}
               className={cn(
-                "block px-4 py-4 text-base font-medium rounded-lg transition-all duration-300 min-h-[48px]",
+                "flex items-center gap-3 px-4 py-4 text-base font-medium rounded-xl transition-all duration-300 min-h-[52px]",
                 isActive(item.url)
-                  ? "text-[var(--color-primary)] bg-[var(--color-primary)]/5 border-l-2 border-[var(--color-primary)]"
-                  : "text-[var(--color-text-primary)] hover:bg-[var(--color-gray-50)]",
+                  ? "text-[var(--color-primary)] bg-[var(--color-primary)]/5 border-l-4 border-[var(--color-primary)]"
+                  : "text-[var(--color-text-primary)] hover:bg-[var(--color-gray-50)] hover:text-[var(--color-primary)]",
                 isOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"
               )}
               style={{ transitionDelay: isOpen ? `${i * 60}ms` : "0ms" }}
@@ -287,13 +287,13 @@ export default function Header() {
             <Link
               href="/apply"
               onClick={() => setIsOpen(false)}
-              className="btn-shine block w-full text-center px-6 py-3.5 text-sm font-bold uppercase tracking-wide text-[var(--color-text-inverse)] bg-gradient-to-r from-[var(--color-primary)] via-[var(--color-primary-light)] to-[var(--color-primary-dark)] bg-[length:200%_200%] animate-border-flow rounded-xl shadow-lg shadow-[var(--color-primary)]/15 transition-all duration-200 hover:shadow-xl"
+              className="btn-shine block w-full text-center px-6 py-4 text-sm font-bold uppercase tracking-wide text-[var(--color-text-inverse)] bg-gradient-to-r from-[var(--color-primary)] via-[var(--color-primary-light)] to-[var(--color-primary-dark)] bg-[length:200%_200%] animate-border-flow rounded-xl shadow-lg shadow-[var(--color-primary)]/15 transition-all duration-200 hover:shadow-xl"
             >
               Apply Now
             </Link>
             <a
               href={getWhatsAppUrl("+27727733960")}
-              className="flex items-center justify-center gap-2 w-full px-6 py-3.5 text-sm font-semibold text-[var(--color-primary)] border-2 border-[var(--color-primary)] rounded-xl hover:bg-[var(--color-primary)] hover:text-[var(--color-text-inverse)] transition-all duration-200"
+              className="flex items-center justify-center gap-2 w-full px-6 py-4 text-sm font-semibold text-[var(--color-primary)] border-2 border-[var(--color-primary)] rounded-xl hover:bg-[var(--color-primary)] hover:text-[var(--color-text-inverse)] transition-all duration-300 hover:shadow-lg hover:shadow-[var(--color-primary)]/15"
               target="_blank"
               rel="noopener noreferrer"
             >

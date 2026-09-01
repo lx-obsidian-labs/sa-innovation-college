@@ -200,21 +200,23 @@
 
   :focus-visible {
     outline: 2px solid var(--color-border-focus);
-    outline-offset: 2px;
+    outline-offset: 3px;
+    border-radius: 4px;
   }
 
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: var(--color-gray-100);
+    background: var(--color-gray-50);
   }
   ::-webkit-scrollbar-thumb {
-    background: var(--color-gray-300);
+    background: linear-gradient(180deg, var(--color-gray-300), var(--color-gray-400));
     border-radius: 99px;
+    border: 2px solid var(--color-gray-50);
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-gray-400);
+    background: linear-gradient(180deg, var(--color-gray-400), var(--color-primary));
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -825,6 +827,48 @@
 .ring-glow:focus-visible {
   outline: none;
   box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.2), 0 0 0 1px var(--color-primary);
+}
+
+.transition-base {
+  transition: all var(--transition-base);
+}
+
+.transition-smooth {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-brightness {
+  transition: filter 0.3s ease;
+}
+.hover-brightness:hover {
+  filter: brightness(1.05);
+}
+
+.shadow-glow-primary {
+  box-shadow: 0 0 20px rgba(var(--color-primary-rgb), 0.15), 0 4px 12px rgba(var(--color-primary-rgb), 0.1);
+}
+
+.shadow-glow-accent {
+  box-shadow: 0 0 20px rgba(var(--color-accent-rgb), 0.15), 0 4px 12px rgba(var(--color-accent-rgb), 0.1);
+}
+
+.border-gradient {
+  border: 1px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+}
+.border-gradient::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 @media print {

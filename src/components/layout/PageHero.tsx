@@ -11,7 +11,7 @@ interface PageHeroProps {
 
 export default function PageHero({ title, description, breadcrumbs, image, imageAlt = "" }: PageHeroProps) {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-[var(--color-primary)] via-[var(--color-primary-dark)] to-[#0B1F3F] pt-24 pb-14 md:pt-32 md:pb-20">
+    <section className="relative overflow-hidden bg-gradient-to-br from-[var(--color-primary)] via-[var(--color-primary-dark)] to-[#0B1F3F] pt-28 pb-16 md:pt-36 md:pb-24">
       <div
         className="absolute inset-0 opacity-[0.06]"
         style={{

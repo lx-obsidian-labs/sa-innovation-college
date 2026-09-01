@@ -46,21 +46,21 @@ export default function ApplicationCountdown() {
   ] as const;
 
   return (
-    <div className="mx-auto mb-7 max-w-xl rounded-2xl border border-white/20 bg-black/10 px-4 py-4 text-left shadow-[0_12px_32px_rgba(80,0,18,0.25)] backdrop-blur-sm">
+    <div className="mx-auto mb-7 max-w-xl rounded-2xl border border-white/20 bg-black/15 px-5 py-5 text-left shadow-[0_12px_32px_rgba(80,0,18,0.25)] backdrop-blur-sm">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <p className="text-sm font-extrabold uppercase tracking-[0.14em] text-white">Applications close soon</p>
           <p className="mt-1 text-sm font-medium text-white">September 2026 intake · Apply before places fill</p>
           <p className="mt-1 text-xs text-white/75">Closing: {deadlineLabel} (South Africa)</p>
         </div>
-        <Link href="/apply" className="inline-flex min-h-11 items-center justify-center rounded-lg bg-[var(--color-primary)] px-5 py-2.5 text-xs font-extrabold uppercase tracking-wide text-white shadow-md shadow-[var(--color-primary)]/30 transition hover:bg-[var(--color-primary-dark)] hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-[var(--color-focus)] focus-visible:outline-offset-2">
+        <Link href="/apply" className="inline-flex min-h-11 items-center justify-center rounded-xl bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-dark)] px-5 py-2.5 text-xs font-extrabold uppercase tracking-wide text-[var(--saic-navy-950)] shadow-md shadow-[var(--color-accent)]/25 transition-all duration-300 hover:bg-[var(--color-accent)] hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[var(--color-accent)]/30 focus-visible:outline-2 focus-visible:outline-[var(--color-focus)] focus-visible:outline-offset-2 btn-shine">
           Start application
         </Link>
       </div>
       <div className="mt-4" role="timer" aria-label={remaining.ended ? "Applications are currently closed" : `Time remaining until applications close on ${deadlineLabel}`}>
-          {remaining.ended ? <p className="rounded-lg bg-[var(--saic-campaign-crimson-dark)] px-3 py-3 text-sm font-bold text-white">Applications are currently closed. Contact Admissions for the next intake.</p> : <div className="flex gap-2">
+          {remaining.ended ? <p className="rounded-xl bg-[var(--saic-campaign-crimson-dark)] px-4 py-3.5 text-sm font-bold text-white shadow-lg shadow-[var(--saic-campaign-crimson-dark)]/20">Applications are currently closed. Contact Admissions for the next intake.</p> : <div className="flex gap-2.5">
           {units.map(([value, label]) => (
-          <div key={label} className="min-w-0 flex-1 rounded-none border border-white/10 bg-black px-2 py-2 text-center shadow-[0_5px_10px_rgba(0,0,0,0.2)]">
+          <div key={label} className="min-w-0 flex-1 rounded-xl border border-white/10 bg-gradient-to-b from-white/10 to-transparent px-2 py-2.5 text-center shadow-[0_5px_10px_rgba(0,0,0,0.2)] backdrop-blur-sm">
             <span className="block text-2xl font-black leading-none text-white tabular-nums sm:text-3xl">{String(value).padStart(2, "0")}</span>
             <span className="mt-1 block text-[10px] font-extrabold uppercase tracking-wide text-white/85">{label}</span>
           </div>

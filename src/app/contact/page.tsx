@@ -51,7 +51,7 @@ export default function ContactPage() {
         description="We'd love to hear from you. Get in touch with our admissions team."
       />
 
-      <section className="py-16 lg:py-24 bg-white relative overflow-hidden">
+      <section className="py-20 lg:py-28 bg-white relative overflow-hidden">
         <div className="floating-blob" style={{ width: 400, height: 400, top: "-10%", right: "-5%", opacity: 0.04 }} aria-hidden />
         <div className="floating-blob" style={{ width: 300, height: 300, bottom: "5%", left: "-8%", opacity: 0.03, animationDelay: "3s" }} aria-hidden />
         <Container className="relative z-10">
@@ -68,9 +68,9 @@ export default function ContactPage() {
                 {contactInfo.map((info) => (
                   <div
                     key={info.title}
-                    className="group flex gap-4 p-5 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] transition-all duration-200 hover:-translate-y-0.5"
+                    className="group flex gap-4 p-5 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-lg)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--color-primary)]/20"
                   >
-                    <div className="w-12 h-12 shrink-0 rounded-xl bg-[var(--color-primary)]/10 text-[var(--color-primary)] flex items-center justify-center transition-all duration-200 group-hover:bg-[var(--color-primary)] group-hover:text-white group-hover:shadow-md">
+                    <div className="w-12 h-12 shrink-0 rounded-xl bg-[var(--color-primary)]/10 text-[var(--color-primary)] flex items-center justify-center transition-all duration-300 group-hover:bg-[var(--color-primary)] group-hover:text-white group-hover:shadow-md group-hover:shadow-[var(--color-primary)]/15 group-hover:scale-105">
                       {info.icon}
                     </div>
                     <div>
@@ -80,7 +80,7 @@ export default function ContactPage() {
                           href={info.href}
                           target={info.href.startsWith("http") ? "_blank" : undefined}
                           rel={info.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                          className="text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] transition-colors"
+                          className="text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] transition-colors duration-200"
                         >
                           {info.value}
                         </a>
@@ -112,9 +112,9 @@ export default function ContactPage() {
         </Container>
       </section>
 
-      <section className="pb-16 lg:pb-24 bg-white">
+      <section className="pb-20 lg:pb-28 bg-white">
         <Container>
-          <div className="rounded-2xl overflow-hidden shadow-[var(--shadow-lg)] border border-[var(--color-border)]">
+          <div className="rounded-2xl overflow-hidden shadow-xl border border-[var(--color-border)]">
             <iframe
               src="https://www.google.com/maps?q=147+Burger+Avenue,+1st+Floor,+Barclays+Centre,+Lyttelton+Manor,+Centurion,+0157&output=embed"
               width="100%"

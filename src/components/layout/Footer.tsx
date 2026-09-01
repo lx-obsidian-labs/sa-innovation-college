@@ -163,7 +163,7 @@ export default function Footer() {
         </Container>
       </div>
 
-      <div className="relative border-t border-white/10 bg-black/15">
+      <div className="relative border-t border-white/10 bg-gradient-to-r from-black/20 via-black/10 to-black/20">
         <Container className="flex flex-col sm:flex-row items-center justify-between gap-3 py-6">
           <p className="text-xs text-[var(--color-gray-500)]">
             &copy; {currentYear} SA Innovation College. All rights reserved.

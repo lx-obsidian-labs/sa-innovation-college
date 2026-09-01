@@ -91,9 +91,9 @@ export default function StudentsPage() {
             {supportServices.map((service) => (
               <div
                 key={service.title}
-                className="group rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-6 shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[var(--shadow-lg)]"
+                className="group rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-6 shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[var(--shadow-lg)] hover:border-[var(--color-primary)]/20"
               >
-                <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-[var(--color-primary)]/10 text-[var(--color-primary)] transition-all duration-300 group-hover:bg-[var(--color-primary)] group-hover:text-white group-hover:shadow-md">
+                <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-[var(--color-primary)]/10 text-[var(--color-primary)] transition-all duration-300 group-hover:bg-[var(--color-primary)] group-hover:text-white group-hover:shadow-md group-hover:shadow-[var(--color-primary)]/20">
                   {service.icon}
                 </div>
                 <h3 className="mb-2 text-lg font-bold text-[var(--color-text-primary)]">{service.title}</h3>
@@ -117,11 +117,11 @@ export default function StudentsPage() {
             {steps.map((step) => (
               <div key={step.number} className="relative flex gap-6 pb-12 last:pb-0">
                 <div className="flex flex-col items-center">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-primary-dark)] text-sm font-bold text-white shadow-md">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-primary-dark)] text-sm font-bold text-white shadow-md shadow-[var(--color-primary)]/20 transition-all duration-300 hover:scale-110 hover:shadow-lg">
                     {step.number}
                   </div>
                   {step.number < steps.length && (
-                    <div className="mt-2 w-px flex-1 bg-gradient-to-b from-[var(--color-primary)]/40 to-transparent" />
+                    <div className="mt-2 w-px flex-1 bg-gradient-to-b from-[var(--color-primary)]/40 via-[var(--color-accent)]/20 to-transparent" />
                   )}
                 </div>
                 <div className="pt-1.5">
@@ -147,9 +147,9 @@ export default function StudentsPage() {
             {downloads.map((item) => (
               <div
                 key={item.name}
-                className="group rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-6 text-center shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[var(--shadow-lg)]"
+                className="group rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-6 text-center shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[var(--shadow-lg)] hover:border-[var(--color-primary)]/20"
               >
-                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-[var(--color-primary)]/10 text-[var(--color-primary)] transition-all duration-300 group-hover:bg-[var(--color-primary)] group-hover:text-white group-hover:shadow-md">
+                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-[var(--color-primary)]/10 text-[var(--color-primary)] transition-all duration-300 group-hover:bg-[var(--color-primary)] group-hover:text-white group-hover:shadow-md group-hover:shadow-[var(--color-primary)]/20">
                   <Icon name="download" size={8} />
                 </div>
                 <h3 className="mb-1 text-sm font-bold text-[var(--color-text-primary)]">{item.name}</h3>
@@ -174,11 +174,11 @@ export default function StudentsPage() {
             {faqs.map((faq) => (
               <details
                 key={faq.question}
-                className="group rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] shadow-[var(--shadow-card)] open:shadow-[var(--shadow-md)] transition-all duration-200 open:border-[var(--color-primary)]/20"
+                className="group rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] shadow-[var(--shadow-card)] open:shadow-[var(--shadow-md)] transition-all duration-300 open:border-[var(--color-primary)]/20 open:shadow-[var(--color-primary)]/5"
               >
-                <summary className="flex cursor-pointer items-center justify-between gap-4 p-5 text-base font-semibold text-[var(--color-text-primary)] transition-colors duration-200 hover:text-[var(--color-primary)] rounded-xl">
+                <summary className="flex cursor-pointer items-center justify-between gap-4 p-5 text-base font-semibold text-[var(--color-text-primary)] transition-colors duration-200 hover:text-[var(--color-primary)] rounded-2xl">
                   {faq.question}
-                  <Icon name="chevron-down" size={5} className="shrink-0 text-[var(--color-text-muted)] transition-transform duration-200 group-open:rotate-180" />
+                  <Icon name="chevron-down" size={5} className="shrink-0 text-[var(--color-text-muted)] transition-transform duration-300 group-open:rotate-180 group-open:text-[var(--color-primary)]" />
                 </summary>
                 <div className="border-t border-[var(--color-border)] px-5 pb-5 pt-3">
                   <p className="text-sm leading-relaxed text-[var(--color-text-secondary)]">{faq.answer}</p>

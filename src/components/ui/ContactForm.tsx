@@ -95,10 +95,10 @@ export default function ContactForm() {
     errors[field] ? "text-red-400" : "text-[var(--color-gray-400)] group-focus-within:text-[var(--color-primary)]"
   );
   const inputClass = (field: string) => cn(
-    "w-full rounded-xl border bg-[var(--color-white)] text-[var(--color-text-primary)] placeholder-[var(--color-text-muted)] outline-none transition-all duration-200 text-sm pl-10 pr-4 py-3",
+    "w-full rounded-xl border bg-[var(--color-white)] text-[var(--color-text-primary)] placeholder-[var(--color-text-muted)] outline-none transition-all duration-300 text-sm pl-10 pr-4 py-3.5",
     errors[field]
       ? "border-red-400 focus:border-red-500 focus:ring-3 focus:ring-red-500/10"
-      : "border-[var(--color-border)] focus:border-[var(--color-border-focus)] focus:ring-3 focus:ring-[var(--color-primary)]/10 hover:border-[var(--color-gray-300)]"
+      : "border-[var(--color-border)] focus:border-[var(--color-border-focus)] focus:ring-3 focus:ring-[var(--color-primary)]/10 hover:border-[var(--color-gray-300)] hover:shadow-sm focus:shadow-sm"
   );
 
   const labelClass = "block text-sm font-medium text-[var(--color-text-primary)] mb-1.5";
@@ -161,14 +161,14 @@ export default function ContactForm() {
 
   if (state === "success") {
     return (
-      <div className="flex flex-col items-center justify-center rounded-2xl border border-[var(--saic-green-700)]/20 bg-[var(--saic-green-100)] p-12 text-center animate-scaleIn">
-        <div className="mb-5 flex h-20 w-20 items-center justify-center rounded-full bg-[var(--saic-green-700)] text-white shadow-lg shadow-[var(--saic-green-700)]/20">
+      <div className="flex flex-col items-center justify-center rounded-2xl border border-[var(--saic-green-700)]/20 bg-gradient-to-b from-[var(--saic-green-100)] to-white p-12 text-center animate-scaleIn shadow-lg shadow-[var(--saic-green-700)]/5">
+        <div className="mb-5 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-[var(--saic-green-700)] to-[var(--saic-green-700)]/80 text-white shadow-lg shadow-[var(--saic-green-700)]/20">
           <Icon name="check" size={10} />
         </div>
         <h3 className="mb-2 text-xl font-extrabold text-[var(--saic-green-700)]">Message Sent!</h3>
         <p role="status" aria-live="polite" className="mb-6 max-w-sm text-[var(--saic-green-700)]">{message}</p>
         <button onClick={() => setState("idle")}
-          className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold rounded-xl bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-dark)] text-white hover:shadow-lg btn-shine transition-all">
+          className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold rounded-xl bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-dark)] text-white hover:shadow-lg hover:shadow-[var(--color-primary)]/20 btn-shine transition-all duration-300 hover:-translate-y-0.5 active:scale-[0.98]">
           <Icon name="envelope" size={4} />
           Send Another Message
         </button>
@@ -192,9 +192,9 @@ export default function ContactForm() {
             <p className="text-sm text-[var(--color-text-secondary)] mb-6 text-center">Are you sure you want to submit this message? Our team will respond within 2-3 business days.</p>
             <div className="flex gap-3">
               <button onClick={() => setShowConfirm(false)}
-                className="flex-1 px-4 py-2.5 text-sm font-semibold rounded-xl border border-[var(--color-border)] text-[var(--color-text-primary)] hover:bg-[var(--color-gray-50)] transition-all">Cancel</button>
+                className="flex-1 px-4 py-2.5 text-sm font-semibold rounded-xl border border-[var(--color-border)] text-[var(--color-text-primary)] hover:bg-[var(--color-gray-50)] transition-all duration-200 hover:shadow-sm active:scale-[0.98]">Cancel</button>
               <button onClick={handleSubmit}
-                className="flex-1 px-4 py-2.5 text-sm font-semibold rounded-xl bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-dark)] text-white hover:shadow-lg btn-shine transition-all">Send</button>
+                className="flex-1 px-4 py-2.5 text-sm font-semibold rounded-xl bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-dark)] text-white hover:shadow-lg hover:shadow-[var(--color-primary)]/20 btn-shine transition-all duration-300 hover:-translate-y-0.5 active:scale-[0.98]">Send</button>
             </div>
           </div>
         </div>
