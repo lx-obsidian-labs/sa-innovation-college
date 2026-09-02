@@ -84,8 +84,8 @@ export default function HeroCarousel() {
       onFocus={() => dispatch({ type: "FOCUS_ENTER" })}
       onBlur={() => dispatch({ type: "FOCUS_LEAVE" })}
     >
-      {slides.map((_, idx) => (
-        <HeroSlide key={idx} index={idx} current={context.current} />
+      {slides.map((s, idx) => (
+        <HeroSlide key={idx} index={idx} current={context.current} image={s.image} />
       ))}
 
       <Container className="relative z-10 w-full">
