@@ -37,19 +37,19 @@ const offerings = [
   {
     title: "Corporate & Workplace Training",
     description: "Tailored training solutions for employers and organisations investing in their workforce.",
-    icon: <Icon name="users" size={6} />,
+    icon: <Icon name="user-group" size={6} />,
     color: "var(--saic-navy-700)",
   },
   {
     title: "Workplace-Based Learning",
     description: "Practical, on-the-job training that prepares learners for real workplace environments.",
-    icon: <Icon name="building-office" size={6} />,
+    icon: <Icon name="building-library" size={6} />,
     color: "var(--saic-campaign-crimson)",
   },
   {
     title: "Digital Skills & Computer Literacy",
     description: "Essential digital competencies for the modern economy, including free computer literacy courses.",
-    icon: <Icon name="computer-desktop" size={6} />,
+    icon: <Icon name="display" size={6} />,
     color: "var(--saic-navy-900)",
   },
 ];
