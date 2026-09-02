@@ -9,11 +9,10 @@ import CarouselPagination from "./CarouselPagination";
 import { useHeroCarousel } from "./use-hero-carousel";
 import type { SlideData } from "./hero-carousel.types";
 import { getWhatsAppUrl } from "@/lib/utils";
-import ApplicationCountdown from "./ApplicationCountdown";
 
 const slides: SlideData[] = [
   {
-    image: "/images/graduate_hero_banner.jpg",
+    image: "/images/graduate_solid_red.webp",
     tag: "QCTO Accredited TVET & Skills Training Centre",
     title: "Through Knowledge,",
     highlight: "We Grow Towards Excellence",
@@ -23,7 +22,7 @@ const slides: SlideData[] = [
     secondary: { text: "Apply Online", href: "/apply" },
   },
   {
-    image: "/images/graduate_portrait_hero.jpg",
+    image: "/images/graduate_hero_banner.jpg",
     tag: "What We Offer",
     title: "Programmes that",
     highlight: "prepare you for success",
@@ -33,7 +32,7 @@ const slides: SlideData[] = [
     secondary: { text: "Speak to Admissions", href: getWhatsAppUrl("+27727733960") },
   },
   {
-    image: "/images/graduation_hero_banner_1.jpg",
+    image: "/images/graduate_portrait_hero.jpg",
     tag: "Flexible Study Options",
     title: "Study your way,",
     highlight: "on your schedule",
@@ -43,7 +42,7 @@ const slides: SlideData[] = [
     secondary: { text: "Compare Courses", href: "/courses" },
   },
   {
-    image: "/images/graduate_solid_red.webp",
+    image: "/images/graduation_hero_banner_1.jpg",
     tag: "Your Future Starts Here",
     title: "Start your journey,",
     highlight: "today",
@@ -84,7 +83,7 @@ export default function HeroCarousel() {
     <section
       ref={sectionRef}
       id="hero"
-      className="relative min-h-[480px] lg:min-h-[560px] flex items-center overflow-hidden bg-[var(--saic-navy-950)]"
+      className="relative min-h-[680px] flex items-center overflow-hidden bg-[#B91C1C]"
       role="region"
       aria-roledescription="carousel"
       aria-label="Featured slides"
@@ -98,40 +97,46 @@ export default function HeroCarousel() {
         <HeroSlide key={idx} index={idx} current={context.current} image={s.image} />
       ))}
 
-      <Container className="relative z-10 w-full">
-        <div className="mx-auto max-w-5xl rounded-2xl bg-[var(--saic-navy-950)]/20 px-4 py-6 text-center backdrop-blur-[2px] sm:px-8 lg:mr-[35%] lg:max-w-3xl lg:bg-transparent lg:px-0 lg:py-0 lg:backdrop-blur-none">
+      <div className="relative z-20 w-full max-w-7xl mx-auto px-6 py-24 flex items-center min-h-[680px]">
+        <div className="w-full lg:w-[60%]">
           <div
-            className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/60 bg-black/25 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-white shadow-sm backdrop-blur-sm"
+            className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-white"
             key={`tag-${context.current}`}
           >
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
-            </span>
             {slide.tag}
           </div>
 
           <h1
-            className="mb-3 text-[var(--fs-4xl)] font-extrabold leading-[1.05] tracking-tight text-white lg:text-[3.5rem]"
+            className="mb-4 text-white font-extrabold leading-[0.95] tracking-tight text-4xl md:text-5xl lg:text-6xl max-w-[600px]"
             key={`title-${context.current}`}
           >
             <span className="animate-fadeInUp" style={{ animationDelay: "0.1s", display: "inline-block" }}>
               {slide.title}
             </span>
             <br />
-            <span className="text-white animate-fadeInUp" style={{ animationDelay: "0.2s", display: "inline-block" }}>
+            <span className="animate-fadeInUp" style={{ animationDelay: "0.2s", display: "inline-block" }}>
               {slide.highlight}
             </span>
           </h1>
 
-          <p className="mx-auto mb-8 max-w-2xl text-lg leading-relaxed text-white/90 animate-fadeInUp" style={{ animationDelay: "0.25s" }} key={`desc-${context.current}`}>
+          <p className="mb-8 max-w-[520px] text-base lg:text-lg leading-relaxed text-white/90 animate-fadeInUp" style={{ animationDelay: "0.25s" }} key={`desc-${context.current}`}>
             {slide.description}
           </p>
 
-          <ApplicationCountdown />
+          <div className="w-full max-w-[480px] rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md p-5 mb-8 animate-fadeInUp" style={{ animationDelay: "0.3s" }}>
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <p className="text-sm font-bold text-white">September 2026 Intake</p>
+                <p className="text-xs text-white/70 mt-0.5">Applications closing soon — apply before places fill</p>
+              </div>
+              <Button variant="apply" size="sm" href="/apply">
+                Apply Online
+              </Button>
+            </div>
+          </div>
 
-          <div className="flex animate-fadeInUp flex-wrap justify-center gap-4 mb-8" style={{ animationDelay: "0.4s" }} key={`cta-${context.current}`}>
-            <Button variant="primary" size="lg" href={slide.cta.href} className="!bg-white !text-[var(--saic-campaign-crimson)] shadow-lg shadow-black/20 hover:!bg-white/90">
+          <div className="flex animate-fadeInUp flex-wrap gap-4" style={{ animationDelay: "0.4s" }} key={`cta-${context.current}`}>
+            <Button variant="primary" size="lg" href={slide.cta.href} className="!bg-white !text-[#B91C1C] shadow-lg shadow-black/20 hover:!bg-white/90">
               {slide.cta.text}
             </Button>
             {slide.secondary && (
@@ -139,15 +144,14 @@ export default function HeroCarousel() {
                 variant="secondary"
                 size="lg"
                 href={slide.secondary.href}
-                className="!border-white/70 !bg-white/10 !text-white hover:!bg-white/20"
+                className="!border-white/60 !bg-white/10 !text-white hover:!bg-white/20"
               >
                 {slide.secondary.text}
               </Button>
             )}
           </div>
-
         </div>
-      </Container>
+      </div>
 
       <CarouselPagination
         total={slides.length}

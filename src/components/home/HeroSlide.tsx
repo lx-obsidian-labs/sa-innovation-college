@@ -9,10 +9,9 @@ export default function HeroSlide({ index, current, image }: HeroSlideProps) {
 
   return (
     <div
-      className="absolute inset-0 transition-all duration-1000 ease-in-out"
+      className="absolute inset-0 transition-opacity duration-700 ease-in-out"
       style={{
         opacity: isActive ? 1 : 0,
-        transform: `scale(${isActive ? 1 : 1.05})`,
         zIndex: isActive ? 1 : 0,
       }}
       role="group"
@@ -24,9 +23,8 @@ export default function HeroSlide({ index, current, image }: HeroSlideProps) {
         src={image}
         alt=""
         aria-hidden="true"
-        className="absolute inset-0 h-full w-full object-cover"
+        className="absolute right-0 top-0 h-full w-1/2 object-cover object-right z-10 max-lg:hidden"
       />
-      <div className="absolute inset-0 bg-black/40" />
     </div>
   );
 }
