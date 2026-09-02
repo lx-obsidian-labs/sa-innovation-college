@@ -1,5 +1,4 @@
 import Button from "@/components/ui/Button";
-import Link from "next/link";
 import Container from "@/components/layout/Container";
 import { getWhatsAppUrl, getTelUrl } from "@/lib/utils";
 import Icon from "@/components/ui/Icon";
@@ -11,22 +10,22 @@ const steps = [
   {
     number: "01",
     title: "Choose Your Course",
-    desc: "Compare courses and find a programme that fits your goals, interests and circumstances.",
+    desc: "Compare courses and find a programme that fits your goals.",
   },
   {
     number: "02",
     title: "Submit Your Application",
-    desc: "Complete our online application form with your details and qualifications.",
+    desc: "Complete our online form with your details and qualifications.",
   },
   {
     number: "03",
     title: "Get Reviewed",
-    desc: "Admissions reviews your details and contacts you within 2–3 business days during operating hours.",
+    desc: "Admissions reviews your details within 2–3 business days.",
   },
   {
     number: "04",
     title: "Enrol & Start Learning",
-    desc: "Accept your offer, complete registration, and begin your academic journey.",
+    desc: "Accept your offer, register, and begin your journey.",
   },
 ];
 
@@ -36,81 +35,65 @@ export default function ApplicationCTA() {
       id="cta"
       className="relative overflow-hidden bg-gradient-to-br from-[var(--saic-campaign-crimson-dark)] via-[var(--saic-campaign-crimson)] to-[var(--saic-navy-950)] py-20 md:py-28"
     >
-      <div className="absolute top-10 left-10 w-72 h-72 rounded-full bg-[var(--color-accent)]/10 blur-3xl animate-float" aria-hidden />
-      <div className="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-[var(--color-accent)]/5 blur-3xl animate-float" style={{ animationDelay: "2s" }} aria-hidden />
       <div
-        className="absolute inset-0 opacity-[0.04]"
+        className="absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 0)`,
           backgroundSize: "40px 40px",
         }}
         aria-hidden
       />
-      <div className="absolute top-0 left-0 right-0 h-0.5 animate-shimmer bg-gradient-to-r from-transparent via-[var(--color-accent)] to-transparent" aria-hidden />
 
       <Container className="relative z-10">
         <div className="mx-auto max-w-3xl text-center">
           <span className="inline-block text-xs font-semibold uppercase tracking-[0.15em] text-[var(--color-accent)] mb-4">
             Your Future Starts Here
           </span>
-          <h2 className="mb-5 text-[var(--fs-4xl)] font-extrabold text-white leading-tight">
+          <h2 className="mb-5 text-[var(--fs-3xl)] font-extrabold text-white leading-tight">
             Start Your Future Now
           </h2>
-          <p className="mx-auto max-w-xl text-lg text-white/70 leading-relaxed mb-10">
-            At SA Innovation College, we believe education is more than earning a qualification — it's about unlocking potential, building confidence, and creating opportunities. Join thousands of learners who have chosen us as their partner in education and career development.
+          <p className="mx-auto max-w-xl text-base text-white/70 leading-relaxed mb-10">
+            Education is more than a qualification — it's about unlocking potential and creating opportunities. Join thousands of learners who chose SA Innovation College.
           </p>
 
-          <div className="flex flex-col items-center gap-5 mb-12">
-            <Button variant="apply" size="xl" href="/apply" className="shadow-2xl shadow-[var(--saic-gold-500)]/40 text-lg px-12 py-6 min-h-[72px] rounded-2xl uppercase tracking-widest font-extrabold animate-apply-glow">
-              <Icon name="academic-cap" size={6} />
+          <div className="flex flex-col items-center gap-4 mb-10">
+            <Button variant="apply" size="xl" href="/apply" className="shadow-xl shadow-[var(--saic-gold-500)]/30 text-base px-10 py-5 min-h-[60px] rounded-xl uppercase tracking-widest font-extrabold hover:shadow-[var(--saic-gold-500)]/50">
+              <Icon name="academic-cap" size={5} />
               Apply Online Now
             </Button>
-            <p className="text-white/50 text-sm">Quick and easy online application — take the first step today</p>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-4 mb-14">
-            <Link
-              href="/courses"
-              className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold rounded-lg border-2 border-white/40 text-white bg-transparent hover:bg-white/10 transition-all duration-200 hover:-translate-y-0.5"
-            >
-              Explore Courses
-            </Link>
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold rounded-lg border-2 border-white/40 text-white bg-transparent hover:bg-white/10 transition-all duration-200 hover:-translate-y-0.5"
-            >
-              Speak to Admissions
-            </Link>
-          </div>
-
-          <div className="flex flex-wrap justify-center gap-4 mb-14">
+          <div className="flex flex-wrap justify-center gap-3 mb-16">
             <a
               href={getTelUrl(phone)}
-              className="inline-flex items-center gap-2.5 rounded-full border border-white/20 bg-white/5 px-5 py-2.5 text-sm text-white/80 backdrop-blur-sm transition-all duration-200 hover:bg-white/10 hover:text-white hover:border-white/40 hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm text-white/80 transition-all duration-200 hover:bg-white/10 hover:text-white hover:border-white/40"
             >
               <Icon name="phone" size={4} />
-              Call: {phone}
+              {phone}
             </a>
             <a
               href={getWhatsAppUrl(whatsapp)}
-              className="inline-flex items-center gap-2.5 rounded-full border border-white/20 bg-white/5 px-5 py-2.5 text-sm text-white/80 backdrop-blur-sm transition-all duration-200 hover:bg-white/10 hover:text-white hover:border-white/40 hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-sm text-white/80 transition-all duration-200 hover:bg-white/10 hover:text-white hover:border-white/40"
             >
               <Icon name="chat-bubble-left-right" size={4} />
-              WhatsApp: {whatsapp}
+              WhatsApp Us
             </a>
           </div>
         </div>
 
         <div className="mx-auto max-w-4xl border-t border-white/10 pt-14">
-          <h3 className="text-center text-white font-semibold text-lg mb-10">How It Works</h3>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {steps.map((step) => (
-              <div key={step.number} className="text-center group">
-                <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-[var(--color-accent)]/20 text-[var(--color-accent)] font-bold text-lg transition-all duration-300 group-hover:bg-[var(--color-accent)] group-hover:text-white group-hover:shadow-lg group-hover:shadow-[var(--color-accent)]/30">
+          <h3 className="text-center text-white/90 font-semibold text-base mb-10">How It Works</h3>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 relative">
+            {steps.map((step, idx) => (
+              <div key={step.number} className="text-center group relative">
+                {idx < steps.length - 1 && (
+                  <div className="hidden lg:block absolute top-7 left-[60%] w-[calc(100%-20%)] h-px bg-white/15" aria-hidden />
+                )}
+                <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-[var(--color-accent)]/15 text-[var(--color-accent)] font-bold text-base transition-all duration-300 group-hover:bg-[var(--color-accent)] group-hover:text-[var(--saic-navy-950)]">
                   {step.number}
                 </div>
                 <h4 className="text-white font-semibold text-sm mb-1">{step.title}</h4>
-                <p className="text-white/60 text-xs leading-relaxed">{step.desc}</p>
+                <p className="text-white/50 text-xs leading-relaxed max-w-[200px] mx-auto">{step.desc}</p>
               </div>
             ))}
           </div>
