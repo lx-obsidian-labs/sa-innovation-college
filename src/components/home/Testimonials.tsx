@@ -49,18 +49,16 @@ export default function Testimonials() {
   const visible = (i: number) => (i === current ? "opacity-100 scale-100 z-10" : "opacity-0 scale-95 z-0");
 
   return (
-    <section id="testimonials" className="relative bg-[var(--color-gray-50)] py-20 md:py-28 overflow-hidden">
-      <div className="bg-mesh-gradient absolute inset-0" aria-hidden />
+    <section id="testimonials" className="relative bg-white py-20 md:py-28 overflow-hidden">
       <div
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.02]"
         style={{
           backgroundImage: `radial-gradient(circle at 2px 2px, var(--color-primary) 1px, transparent 0)`,
           backgroundSize: "30px 30px",
         }}
         aria-hidden
       />
-      <div className="floating-blob" style={{ width: 350, height: 350, top: "10%", left: "-5%", opacity: 0.05 }} aria-hidden />
-      <div className="floating-blob" style={{ width: 250, height: 250, bottom: "5%", right: "-3%", opacity: 0.04, animationDelay: "3s" }} aria-hidden />
+      <div className="floating-blob" style={{ width: 350, height: 350, top: "10%", left: "-5%", opacity: 0.04 }} aria-hidden />
 
       <Container className="relative z-10">
         <SectionHeader

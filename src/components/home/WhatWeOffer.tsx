@@ -56,11 +56,10 @@ const offerings = [
 
 export default function WhatWeOffer() {
   return (
-    <section id="what-we-offer" className="relative bg-[var(--color-gray-50)] py-20 md:py-28 overflow-hidden">
-      <div className="absolute inset-0 bg-noise opacity-40 pointer-events-none" aria-hidden />
+    <section id="what-we-offer" className="relative bg-white py-20 md:py-28 overflow-hidden">
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute top-0 left-0 w-[30rem] h-[30rem] bg-[var(--color-primary)]/[0.03] rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-[40rem] h-[40rem] bg-[var(--color-accent)]/[0.03] rounded-full blur-3xl" />
+        <div className="absolute top-0 left-0 w-[30rem] h-[30rem] bg-[var(--color-primary)]/[0.02] rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-[40rem] h-[40rem] bg-[var(--color-accent)]/[0.02] rounded-full blur-3xl" />
       </div>
 
       <Container>

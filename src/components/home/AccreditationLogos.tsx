@@ -18,7 +18,7 @@ const accreditations = [
 
 export default function AccreditationLogos() {
   return (
-    <section id="accreditations" className="relative bg-[var(--color-surface)] py-20 md:py-28 overflow-hidden">
+    <section id="accreditations" className="relative bg-[var(--color-gray-50)] py-20 md:py-28 overflow-hidden">
       <div className="absolute top-20 right-10 w-72 h-72 bg-[var(--color-primary)]/5 rounded-full blur-3xl" aria-hidden />
       <Container>
         <SectionHeader

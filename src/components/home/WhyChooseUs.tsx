@@ -44,8 +44,7 @@ const features = [
 
 export default function WhyChooseUs() {
   return (
-    <section id="why-choose-us" className="relative bg-[var(--color-surface)] py-20 md:py-28 overflow-hidden">
-      <div className="absolute inset-0 bg-noise opacity-30 pointer-events-none" aria-hidden />
+    <section id="why-choose-us" className="relative bg-[var(--color-gray-50)] py-20 md:py-28 overflow-hidden">
       <div className="absolute top-20 left-10 w-72 h-72 bg-[var(--color-primary)]/5 rounded-full blur-3xl" aria-hidden />
       <div className="absolute bottom-20 right-10 w-80 h-80 bg-[var(--color-accent)]/5 rounded-full blur-3xl" aria-hidden />
 

@@ -109,10 +109,9 @@ const categoryThemes: Record<string, { badge: string; tag: string; accent: strin
 export default function FeaturedCourses() {
   return (
     <section id="courses" className="relative py-20 md:py-28 overflow-hidden bg-[var(--color-gray-50)]">
-      <div className="absolute inset-0 bg-noise opacity-40 pointer-events-none" aria-hidden />
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute top-0 right-0 w-[40rem] h-[40rem] bg-[var(--color-primary)]/[0.03] rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-[30rem] h-[30rem] bg-[var(--color-accent)]/[0.03] rounded-full blur-3xl" />
+        <div className="absolute top-0 right-0 w-[40rem] h-[40rem] bg-[var(--color-primary)]/[0.02] rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-[30rem] h-[30rem] bg-[var(--color-accent)]/[0.02] rounded-full blur-3xl" />
       </div>
 
       <Container>
