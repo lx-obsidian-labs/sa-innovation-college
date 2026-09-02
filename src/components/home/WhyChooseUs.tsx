@@ -5,27 +5,39 @@ import Icon from "@/components/ui/Icon";
 
 const features = [
   {
-    title: "Programme information you can check",
+    title: "Established in 2016",
     description:
-      "Review the recognition and entry details for your chosen programme before you enrol.",
+      "A proven record of educational excellence, empowering individuals through quality education and occupational training.",
     icon: <Icon name="check-badge" size={7} />,
   },
   {
-    title: "Flexible Learning Options",
+    title: "QCTO Accredited",
     description:
-      "Full-time, part-time, and online learning designed around your life.",
+      "Quality-assured occupational and skills programmes that meet national standards as a QCTO Accredited TVET & Skills Training Centre.",
+    icon: <Icon name="academic-cap" size={7} />,
+  },
+  {
+    title: "ICDL International Certification",
+    description:
+      "Official ICDL South Africa Centre offering globally recognised computer certifications and digital skills.",
+    icon: <Icon name="globe-alt" size={7} />,
+  },
+  {
+    title: "Flexible Study Options",
+    description:
+      "Full-Time, Part-Time, Distance/E-Learning, and Saturday & Evening Classes designed around your life.",
     icon: <Icon name="clock" size={7} />,
   },
   {
-    title: "Practical Skills Focus",
+    title: "Industry-Experienced Facilitators",
     description:
-      "Hands-on training with real projects and workplace simulations.",
+      "Learn from facilitators and assessors with real workplace experience and industry knowledge.",
     icon: <Icon name="briefcase" size={7} />,
   },
   {
-    title: "Career Support",
+    title: "Career-Focused Training",
     description:
-      "CV guidance and interview preparation to help you approach your next opportunity with confidence.",
+      "Qualifications aligned with employer needs that combine knowledge, technology and innovation for today's competitive job market.",
     icon: <Icon name="academic-cap" size={7} />,
   },
 ];
@@ -45,7 +57,7 @@ export default function WhyChooseUs() {
           className="mb-12"
         />
 
-        <StaggerReveal className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <StaggerReveal className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {features.map((feature) => (
             <div
               key={feature.title}

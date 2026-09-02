@@ -51,13 +51,13 @@ export default function ApplicationCTA() {
       <Container className="relative z-10">
         <div className="mx-auto max-w-3xl text-center">
           <span className="inline-block text-xs font-semibold uppercase tracking-[0.15em] text-[var(--color-accent)] mb-4">
-            Speak to Admissions
+            Your Future Starts Here
           </span>
           <h2 className="mb-5 text-[var(--fs-4xl)] font-extrabold text-white leading-tight">
-            Ready to choose your next step?
+            Start Your Future Now
           </h2>
           <p className="mx-auto max-w-xl text-lg text-white/70 leading-relaxed mb-10">
-            Compare your options, ask about requirements and fees, or speak to Admissions before you apply.
+            At SA Innovation College, we believe education is more than earning a qualification — it's about unlocking potential, building confidence, and creating opportunities. Join thousands of learners who have chosen us as their partner in education and career development.
           </p>
 
           <div className="flex flex-col items-center gap-5 mb-12">

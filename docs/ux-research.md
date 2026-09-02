@@ -2,7 +2,50 @@
 
 **Document Type:** UX Research and Specifications
 **Created:** July 2026
+**Last Updated:** September 2026 (enhanced with WordPress homepage content analysis)
 **Scope:** User personas, journeys, information architecture, mobile UX patterns, interaction patterns, accessibility requirements, and performance budgets for the SA Innovation College website redesign.
+
+---
+
+## 0. Homepage Content Strategy (from WordPress Source)
+
+The original SA Innovation College WordPress homepage provides the following content structure, which informs the redesigned homepage components and IA:
+
+### Brand Messaging
+- **Tagline:** "Through Knowledge, We Grow Towards Excellence"
+- **Established:** 2016
+- **Dual identity:** QCTO Accredited TVET & Skills Training Centre + ICDL South Africa Centre
+- **Address:** 147 Burger Avenue, 1st Floor, Barclays Centre, Lyttelton Manor, Centurion, 0157
+
+### What We Offer (8 Service Categories)
+1. QCTO Occupational Qualifications
+2. TVET & Skills Development Programmes
+3. ICDL International Computer Certification
+4. Skills Programmes & Short Courses
+5. Recognition of Prior Learning (RPL)
+6. Corporate & Workplace Training
+7. Workplace-Based Learning
+8. Digital Skills & Computer Literacy
+
+### Why Choose SA Innovation College (Key Differentiators)
+- Established in 2016 with a proven record of educational excellence
+- Accredited Learning — QCTO Accredited TVET & Skills Training Centre
+- International Digital Skills — Official ICDL South Africa Centre
+- Industry-Focused Training — programmes aligned with workplace needs
+- Flexible study options: Full-Time, Part-Time, Distance/E-Learning/online, Saturday & Evening Classes
+- Industry-experienced facilitators and assessors
+- Career-focused qualifications aligned with employer needs
+- Modern learning that combines knowledge, technology and innovation
+
+### Homepage Section Order
+1. Hero carousel (tagline + primary CTA)
+2. What We Offer (8 service categories)
+3. Featured courses (6 cards)
+4. Student gallery
+5. Why Choose SA Innovation College (6 differentiators)
+6. Testimonials
+7. Accreditation logos (QCTO, DHET, ICDL highlighted)
+8. Application CTA ("Your Future Starts Here")
 
 ---
 
