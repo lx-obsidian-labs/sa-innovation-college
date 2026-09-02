@@ -500,25 +500,27 @@
 .premium-card {
   position: relative;
   isolation: isolate;
-  overflow: hidden;
 }
 
 .premium-card::after {
   content: "";
   position: absolute;
-  inset: 0 auto auto 0;
-  z-index: 2;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 2px;
-  width: 42%;
   background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
-  opacity: 0.45;
-  transform: translateX(-140%);
+  opacity: 0;
+  transform: scaleX(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
   pointer-events: none;
+  z-index: 2;
 }
 
 .premium-card:hover::after,
 .premium-card:focus-within::after {
-  animation: gold-sweep 1.4s ease-out forwards;
+  opacity: 0.6;
+  transform: scaleX(1);
 }
 
 .gold-rule {
@@ -533,13 +535,12 @@
   margin: 1rem auto 0;
   background: linear-gradient(90deg, transparent, var(--color-accent), transparent);
   background-size: 200% 100%;
-  animation: shimmer 3.5s ease-in-out infinite;
+  animation: shimmer 3.5s ease-in-out 1;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .gold-rule::after { animation: none; }
-  .premium-card:hover::after,
-  .premium-card:focus-within::after { animation: none; opacity: 0.65; transform: none; }
+  .premium-card::after { opacity: 0.3; transform: scaleX(1); }
 }
 .btn-shine:hover::before {
   left: 150%;
