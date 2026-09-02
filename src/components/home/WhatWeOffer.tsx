@@ -8,50 +8,47 @@ const offerings = [
     title: "QCTO Occupational Qualifications",
     description: "Nationally recognised qualifications designed for specific occupations and industries.",
     icon: <Icon name="check-badge" size={6} />,
-    color: "var(--saic-navy-700)",
   },
   {
     title: "TVET & Skills Development",
     description: "Comprehensive TVET programmes and skills training for school leavers and adults.",
     icon: <Icon name="academic-cap" size={6} />,
-    color: "var(--saic-campaign-crimson)",
   },
   {
     title: "ICDL International Computer Certification",
     description: "Globally recognised digital skills certification through our official ICDL South Africa Centre.",
     icon: <Icon name="globe-alt" size={6} />,
-    color: "var(--saic-navy-900)",
   },
   {
     title: "Skills Programmes & Short Courses",
     description: "Focused, industry-relevant short courses to build specific competencies quickly.",
     icon: <Icon name="briefcase" size={6} />,
-    color: "var(--saic-green-700)",
   },
   {
     title: "Recognition of Prior Learning (RPL)",
     description: "Get credit for skills and experience you already have through our RPL assessment process.",
     icon: <Icon name="star-solid" size={6} />,
-    color: "var(--color-accent-dark)",
   },
   {
     title: "Corporate & Workplace Training",
     description: "Tailored training solutions for employers and organisations investing in their workforce.",
     icon: <Icon name="user-group" size={6} />,
-    color: "var(--saic-navy-700)",
   },
   {
     title: "Workplace-Based Learning",
     description: "Practical, on-the-job training that prepares learners for real workplace environments.",
     icon: <Icon name="building-library" size={6} />,
-    color: "var(--saic-campaign-crimson)",
   },
   {
     title: "Digital Skills & Computer Literacy",
     description: "Essential digital competencies for the modern economy, including free computer literacy courses.",
     icon: <Icon name="display" size={6} />,
-    color: "var(--saic-navy-900)",
   },
+];
+
+const iconColors = [
+  "var(--saic-navy-700)",
+  "var(--saic-campaign-crimson)",
 ];
 
 export default function WhatWeOffer() {
@@ -71,14 +68,14 @@ export default function WhatWeOffer() {
         />
 
         <StaggerReveal className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {offerings.map((item) => (
+          {offerings.map((item, idx) => (
             <div
               key={item.title}
-              className="group premium-card relative flex flex-col rounded-xl border border-[var(--color-border)] bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg hover:border-[var(--color-primary)]"
+              className="group premium-card relative flex flex-col rounded-xl border border-[var(--color-border)] bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-[var(--color-primary)]"
             >
               <div
                 className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl text-white transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg"
-                style={{ backgroundColor: item.color }}
+                style={{ backgroundColor: iconColors[idx % iconColors.length] }}
               >
                 {item.icon}
               </div>
