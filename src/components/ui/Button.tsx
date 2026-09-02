@@ -5,8 +5,8 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import Icon from "@/components/ui/Icon";
 
-type ButtonVariant = "primary" | "secondary" | "accent" | "ghost" | "outline" | "primary-glow" | "premium";
-type ButtonSize = "sm" | "md" | "lg";
+type ButtonVariant = "primary" | "secondary" | "accent" | "ghost" | "outline" | "primary-glow" | "premium" | "apply";
+type ButtonSize = "sm" | "md" | "lg" | "xl";
 
 interface ButtonBaseProps {
   variant?: ButtonVariant;
@@ -49,12 +49,15 @@ const VARIANT_CLASSES: Record<ButtonVariant, string> = {
     "bg-[var(--color-primary)] text-[var(--color-text-inverse)] border border-[var(--color-primary)] shadow-[0_0_20px_rgba(var(--color-primary-rgb),0.4)] hover:shadow-[0_0_30px_rgba(var(--color-primary-rgb),0.6)] hover:bg-[var(--color-primary-dark)] hover:scale-[1.02]",
   premium:
     "bg-gradient-to-r from-[var(--color-primary)] via-[var(--color-primary-light)] to-[var(--color-primary-dark)] text-[var(--color-text-inverse)] border-0 bg-[length:200%_200%] animate-border-flow shadow-md hover:shadow-lg hover:shadow-[var(--color-primary)]/20 btn-shine",
+  apply:
+    "bg-gradient-to-r from-[var(--saic-gold-400)] via-[var(--saic-gold-500)] to-[var(--saic-gold-600)] text-[var(--saic-navy-950)] border-2 border-[var(--saic-gold-500)] shadow-[0_0_24px_rgba(234,179,8,0.4)] hover:shadow-[0_0_40px_rgba(234,179,8,0.6)] hover:scale-[1.03] btn-shine",
 };
 
 const SIZE_CLASSES: Record<ButtonSize, string> = {
   sm: "px-3 py-1.5 text-[0.8125rem] gap-1.5",
   md: "px-5 py-2.5 text-sm gap-2",
   lg: "px-6 py-3 text-base gap-2.5",
+  xl: "px-10 py-5 text-xl gap-3 min-h-[64px]",
 };
 
 export default function Button({

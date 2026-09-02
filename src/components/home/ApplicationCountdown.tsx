@@ -53,8 +53,8 @@ export default function ApplicationCountdown() {
           <p className="mt-1 text-sm font-medium text-white">September 2026 intake · Apply before places fill</p>
           <p className="mt-1 text-xs text-white/75">Closing: {deadlineLabel} (South Africa)</p>
         </div>
-        <Link href="/apply" className="inline-flex min-h-11 items-center justify-center rounded-xl bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-dark)] px-5 py-2.5 text-xs font-extrabold uppercase tracking-wide text-[var(--saic-navy-950)] shadow-md shadow-[var(--color-accent)]/25 transition-all duration-300 hover:bg-[var(--color-accent)] hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[var(--color-accent)]/30 focus-visible:outline-2 focus-visible:outline-[var(--color-focus)] focus-visible:outline-offset-2 btn-shine">
-          Start application
+        <Link href="/apply" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[var(--saic-gold-400)] via-[var(--saic-gold-500)] to-[var(--saic-gold-600)] px-6 py-3 text-sm font-extrabold uppercase tracking-wide text-[var(--saic-navy-950)] shadow-lg shadow-[var(--saic-gold-500)]/30 transition-all duration-300 hover:shadow-[var(--saic-gold-500)]/50 hover:-translate-y-0.5 hover:scale-[1.03] focus-visible:outline-2 focus-visible:outline-[var(--color-focus)] focus-visible:outline-offset-2 btn-shine">
+          Apply Online
         </Link>
       </div>
       <div className="mt-4" role="timer" aria-label={remaining.ended ? "Applications are currently closed" : `Time remaining until applications close on ${deadlineLabel}`}>

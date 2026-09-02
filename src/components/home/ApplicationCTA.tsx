@@ -60,10 +60,15 @@ export default function ApplicationCTA() {
             Compare your options, ask about requirements and fees, or speak to Admissions before you apply.
           </p>
 
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            <Button variant="accent" size="lg" href="/apply" className="shadow-lg shadow-[var(--color-accent)]/25">
-              Start an Application
+          <div className="flex flex-col items-center gap-5 mb-12">
+            <Button variant="apply" size="xl" href="/apply" className="shadow-2xl shadow-[var(--saic-gold-500)]/40 text-lg px-12 py-6 min-h-[72px] rounded-2xl uppercase tracking-widest font-extrabold animate-apply-glow">
+              <Icon name="academic-cap" size={6} />
+              Apply Online Now
             </Button>
+            <p className="text-white/50 text-sm">Quick and easy online application — take the first step today</p>
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-4 mb-14">
             <Link
               href="/courses"
               className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold rounded-lg border-2 border-white/40 text-white bg-transparent hover:bg-white/10 transition-all duration-200 hover:-translate-y-0.5"
