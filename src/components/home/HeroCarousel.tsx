@@ -18,7 +18,7 @@ const slides: SlideData[] = [
     title: "Through Knowledge,",
     highlight: "We Grow Towards Excellence",
     tagline: "Est. 2016 · ICDL South Africa Centre",
-    description: "Practical, flexible and industry-aligned learning designed for school leavers, working professionals, and employers. Your future starts here.",
+    description: "Practical, flexible and industry-aligned learning designed for school leavers, working professionals, and employers.",
     cta: { text: "Find Your Course", href: "/courses" },
     secondary: { text: "Apply Online", href: "/apply" },
   },
@@ -28,7 +28,7 @@ const slides: SlideData[] = [
     title: "Programmes that",
     highlight: "prepare you for success",
     tagline: "QCTO · ICDL · Skills Development",
-    description: "From occupational qualifications to international computer certification, explore courses designed for today's competitive job market.",
+    description: "From occupational qualifications to international computer certification, explore courses for today's competitive job market.",
     cta: { text: "Explore Courses", href: "/courses" },
     secondary: { text: "Speak to Admissions", href: getWhatsAppUrl("+27727733960") },
   },
@@ -38,9 +38,19 @@ const slides: SlideData[] = [
     title: "Study your way,",
     highlight: "on your schedule",
     tagline: "Full-Time · Part-Time · Online",
-    description: "Choose from Full-Time, Part-Time, Distance/E-Learning, or Saturday & Evening Classes. Industry-experienced facilitators guide you every step.",
+    description: "Choose from Full-Time, Part-Time, Distance/E-Learning, or Saturday & Evening Classes.",
     cta: { text: "Start an Application", href: "/apply" },
     secondary: { text: "Compare Courses", href: "/courses" },
+  },
+  {
+    image: "/images/graduate_solid_red.webp",
+    tag: "Your Future Starts Here",
+    title: "Start your journey,",
+    highlight: "today",
+    tagline: "Join thousands of learners",
+    description: "Education is more than a qualification — it's about unlocking potential and creating opportunities. Register now.",
+    cta: { text: "Apply Online Now", href: "/apply" },
+    secondary: { text: "Contact Admissions", href: "/contact" },
   },
 ];
 
@@ -74,7 +84,7 @@ export default function HeroCarousel() {
     <section
       ref={sectionRef}
       id="hero"
-      className="relative min-h-[480px] lg:min-h-[560px] flex items-center overflow-hidden bg-[var(--saic-campaign-crimson)]"
+      className="relative min-h-[480px] lg:min-h-[560px] flex items-center overflow-hidden bg-[var(--saic-navy-950)]"
       role="region"
       aria-roledescription="carousel"
       aria-label="Featured slides"

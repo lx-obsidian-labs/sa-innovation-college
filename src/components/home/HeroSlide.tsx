@@ -12,22 +12,21 @@ export default function HeroSlide({ index, current, image }: HeroSlideProps) {
       className="absolute inset-0 transition-all duration-1000 ease-in-out"
       style={{
         opacity: isActive ? 1 : 0,
-        transform: `scale(${isActive ? 1 : 1.08})`,
+        transform: `scale(${isActive ? 1 : 1.05})`,
         zIndex: isActive ? 1 : 0,
-        filter: isActive ? "none" : "blur(4px)",
       }}
       role="group"
       aria-roledescription="slide"
       aria-label={`Slide ${index + 1}`}
       aria-hidden={!isActive}
     >
-      <div className="absolute inset-0 bg-[var(--saic-campaign-crimson)]" />
       <img
         src={image}
         alt=""
         aria-hidden="true"
-        className="pointer-events-none absolute bottom-0 right-[-5%] z-[1] hidden h-[88%] w-auto max-w-[54%] object-contain object-bottom sm:block lg:right-[3%] lg:h-[94%]"
+        className="absolute inset-0 h-full w-full object-cover"
       />
+      <div className="absolute inset-0 bg-black/40" />
     </div>
   );
 }
