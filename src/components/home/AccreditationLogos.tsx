@@ -1,5 +1,6 @@
 import SectionHeader from "@/components/ui/SectionHeader";
 import Container from "@/components/layout/Container";
+import Image from "next/image";
 
 const accreditations = [
   { name: "QCTO", file: "4.png", highlight: true },
@@ -19,7 +20,6 @@ const accreditations = [
 export default function AccreditationLogos() {
   return (
     <section id="accreditations" className="relative bg-[var(--color-gray-50)] py-20 md:py-28 overflow-hidden">
-      <div className="absolute top-20 right-10 w-72 h-72 bg-[var(--color-primary)]/5 rounded-full blur-3xl" aria-hidden />
       <Container>
         <SectionHeader
           eyebrow="Accreditations & Regulatory Bodies"
@@ -28,34 +28,35 @@ export default function AccreditationLogos() {
           className="mb-12"
         />
 
-        <div className="grid grid-cols-3 gap-4 sm:grid-cols-4 lg:grid-cols-6">
+        <div className="grid grid-cols-3 gap-4 sm:grid-cols-4 lg:grid-cols-4">
           {accreditations.map((a) => (
             <div
               key={a.name}
-              className={`group premium-card flex aspect-[3/2] items-center justify-center rounded-xl border bg-white p-5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg ${
+              className={`group premium-card flex aspect-[3/2] items-center justify-center rounded-xl border bg-white p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${
                 a.highlight
-                  ? "border-[var(--color-primary)]/40 shadow-md ring-1 ring-[var(--color-primary)]/10"
-                  : "border-[var(--color-gray-200)] hover:border-[var(--color-primary)]"
+                  ? "border-[var(--color-primary)]/30 shadow-sm ring-1 ring-[var(--color-primary)]/10"
+                  : "border-[var(--color-border)] hover:border-[var(--color-primary)]/30"
               }`}
             >
-              <img
+              <Image
                 src={`/images/${a.file}`}
                 alt={`${a.name} logo`}
+                width={120}
+                height={56}
                 className={`max-h-14 w-auto max-w-full object-contain transition-all duration-300 group-hover:scale-105 ${
-                  a.highlight ? "opacity-90 group-hover:opacity-100" : "opacity-60 grayscale group-hover:opacity-100 group-hover:grayscale-0"
+                  a.highlight ? "opacity-85 group-hover:opacity-100" : "opacity-50 group-hover:opacity-80"
                 }`}
-                loading="lazy"
               />
             </div>
           ))}
         </div>
 
-        <div className="mt-8 rounded-xl border border-[var(--color-primary)]/20 bg-[var(--color-primary)]/5 p-6 text-center">
+        <div className="mt-8 rounded-xl border border-[var(--color-primary)]/15 bg-[var(--color-primary)]/[0.03] p-5 text-center">
           <p className="text-sm font-semibold text-[var(--color-gray-900)]">
             QCTO Accredited TVET & Skills Training Centre · Official ICDL South Africa Centre
           </p>
-          <p className="mt-1 text-sm text-[var(--color-text-muted)]">
-            SA Innovation College is accredited by the relevant SETAs and registered with the Department of Higher Education and Training.
+          <p className="mt-1 text-sm text-[var(--color-gray-500)]">
+            Registered with the Department of Higher Education and Training.
           </p>
         </div>
       </Container>
