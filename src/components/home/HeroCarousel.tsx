@@ -13,7 +13,7 @@ import ApplicationCountdown from "./ApplicationCountdown";
 
 const slides: SlideData[] = [
   {
-    image: "/images/hero_image-final.webp",
+    image: "/images/graduate_hero_banner.jpg",
     tag: "QCTO Accredited TVET & Skills Training Centre",
     title: "Through Knowledge,",
     highlight: "We Grow Towards Excellence",
@@ -23,7 +23,7 @@ const slides: SlideData[] = [
     secondary: { text: "Apply Online", href: "/apply" },
   },
   {
-    image: "/images/SA-INNOVATION-COLLEGE3-scaled.jpg",
+    image: "/images/graduate_portrait_hero.jpg",
     tag: "What We Offer",
     title: "Programmes that",
     highlight: "prepare you for success",
@@ -33,7 +33,7 @@ const slides: SlideData[] = [
     secondary: { text: "Speak to Admissions", href: getWhatsAppUrl("+27727733960") },
   },
   {
-    image: "/images/SA-INNOVATION-COLLEGE2-scaled.jpg",
+    image: "/images/graduation_hero_banner_1.jpg",
     tag: "Flexible Study Options",
     title: "Study your way,",
     highlight: "on your schedule",
