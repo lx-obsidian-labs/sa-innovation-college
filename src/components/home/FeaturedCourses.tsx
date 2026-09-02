@@ -129,39 +129,21 @@ export default function FeaturedCourses() {
               <a
                 key={course.title}
                 href={course.href}
-                className="group premium-card relative flex flex-col rounded-2xl border border-[var(--color-border)] bg-white shadow-sm transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl overflow-hidden hover-border-glow before:absolute before:inset-0 before:rounded-2xl before:opacity-0 before:transition-opacity before:duration-500 hover:before:opacity-100 before:pointer-events-none before:bg-gradient-to-br before:from-[var(--color-primary)]/[0.04] before:to-transparent"
+                className="group premium-card relative flex flex-col rounded-2xl border border-[var(--color-border)] bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg overflow-hidden"
               >
-                <div className="relative h-48 overflow-hidden bg-[var(--color-gray-200)]">
+                <div className="relative h-44 overflow-hidden bg-[var(--color-gray-200)]">
                   <Image
                     src={course.image}
                     alt={`${course.title} programme`}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className={`absolute inset-0 bg-gradient-to-t ${course.gradient}`} />
 
                   <span className={`absolute top-3 left-3 inline-flex items-center rounded-md ${theme?.badge || "bg-gray-500"} px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-lg`}>
                     {course.category}
                   </span>
-
-                  <div className="absolute top-3 right-3 flex flex-col gap-1.5">
-                    {course.free && (
-                      <span className="inline-flex items-center rounded-md bg-[var(--saic-green-700)] px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-lg">
-                        FREE
-                      </span>
-                    )}
-                    {course.popular && (
-                      <span className="inline-flex items-center rounded-md bg-[var(--color-accent)] px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[var(--color-gray-900)] shadow-lg">
-                        Popular
-                      </span>
-                    )}
-                    {course.new && !course.popular && (
-                      <span className="inline-flex items-center rounded-md bg-[var(--color-primary)] px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-lg">
-                        New
-                      </span>
-                    )}
-                  </div>
 
                   <div className="absolute bottom-3 left-3 right-3">
                     <h3 className="text-lg font-bold text-white leading-snug drop-shadow-sm">
@@ -176,23 +158,23 @@ export default function FeaturedCourses() {
                   </p>
 
                   <div className="flex flex-wrap gap-1.5 mb-4">
-                    <span className="inline-flex items-center gap-1 rounded-lg bg-[var(--color-gray-50)] border border-[var(--color-gray-200)] px-2 py-1 text-[11px] font-medium text-[var(--color-gray-600)]">
+                    <span className="inline-flex items-center gap-1 rounded-md bg-[var(--color-gray-50)] px-2.5 py-1 text-xs font-medium text-[var(--color-gray-600)]">
                       <Icon name="clock" size={3} />
                       {course.duration}
                     </span>
-                    <span className="inline-flex items-center gap-1 rounded-lg bg-[var(--color-gray-50)] border border-[var(--color-gray-200)] px-2 py-1 text-[11px] font-medium text-[var(--color-gray-600)]">
+                    <span className="inline-flex items-center gap-1 rounded-md bg-[var(--color-gray-50)] px-2.5 py-1 text-xs font-medium text-[var(--color-gray-600)]">
                       <Icon name="academic-cap" size={3} />
                       {course.nqf}
                     </span>
-                    <span className="inline-flex items-center gap-1 rounded-lg bg-[var(--color-gray-50)] border border-[var(--color-gray-200)] px-2 py-1 text-[11px] font-medium text-[var(--color-gray-600)]">
+                    <span className="inline-flex items-center gap-1 rounded-md bg-[var(--color-gray-50)] px-2.5 py-1 text-xs font-medium text-[var(--color-gray-600)]">
                       <Icon name="user" size={3} />
                       {course.mode}
                     </span>
                   </div>
 
-                  <div className="mt-auto flex items-center gap-1.5 text-sm font-semibold text-[var(--color-primary)] group/link">
-                    <span>View Course Details</span>
-                    <Icon name="arrow-right" size={4} className="transition-transform duration-200 group-hover/link:translate-x-1 icon-hover-slide-right" />
+                  <div className="mt-auto flex items-center gap-1.5 text-sm font-semibold text-[var(--color-primary)]">
+                    <span>View Details</span>
+                    <Icon name="arrow-right" size={4} className="transition-transform duration-200 group-hover:translate-x-1" />
                   </div>
                 </div>
               </a>
