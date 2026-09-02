@@ -23,7 +23,7 @@ export default function HeroSlide({ index, current, image }: HeroSlideProps) {
         src={image}
         alt=""
         aria-hidden="true"
-        className="absolute right-0 top-0 h-full w-1/2 object-cover object-right z-10 max-lg:hidden"
+        className="absolute right-0 bottom-0 h-[90%] w-1/2 object-cover object-right z-10 max-lg:hidden"
       />
     </div>
   );
