@@ -35,13 +35,6 @@ const values = [
   },
 ];
 
-const teamMembers = [
-  { name: "Dr. Sarah Mokoena", role: "Principal & CEO", initials: "SM", img: null },
-  { name: "Mr. Thabo Ndlovu", role: "Academic Dean", initials: "TN", img: null },
-  { name: "Ms. Lisa van der Merwe", role: "Head of Student Affairs", initials: "LV", img: null },
-  { name: "Mr. James Daniels", role: "Programme Director", initials: "JD", img: null },
-];
-
 const stats = [
   { label: "Years", value: "10+" },
   { label: "Students", value: "5,000+" },
@@ -200,33 +193,6 @@ export default function AboutPage() {
                   {faq.answer}
                 </div>
               </details>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      <section className="bg-[var(--color-surface)] py-[var(--section-py)] relative overflow-hidden">
-        <div className="bg-mesh-gradient-subtle absolute inset-0" aria-hidden />
-        <div className="floating-blob" style={{ width: 300, height: 300, top: "20%", right: "-5%", opacity: 0.05 }} aria-hidden />
-        <Container className="relative z-10">
-          <SectionHeader
-            eyebrow="Meet Our Team"
-            title="Leadership & Faculty"
-            description="Our dedicated team of educators and professionals is committed to your success."
-            className="mb-12"
-          />
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {teamMembers.map((member) => (
-              <div
-                key={member.name}
-                className="group rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-6 text-center shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[var(--shadow-lg)] hover:border-[var(--color-primary)]/20"
-              >
-                <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-primary-dark)] text-xl font-bold text-white shadow-md shadow-[var(--color-primary)]/20 transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg group-hover:shadow-[var(--color-primary)]/30">
-                  {member.initials}
-                </div>
-                <h3 className="text-lg font-bold text-[var(--color-text-primary)]">{member.name}</h3>
-                <p className="mt-1 text-sm text-[var(--color-primary)] font-medium">{member.role}</p>
-              </div>
             ))}
           </div>
         </Container>
