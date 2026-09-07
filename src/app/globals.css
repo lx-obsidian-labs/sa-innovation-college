@@ -81,7 +81,7 @@
     --color-border-focus: var(--saic-gold-500);
     --color-focus: var(--saic-gold-500);
 
-    --font-family-heading: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-family-heading: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --font-family-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
     --fs-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.8125rem);
@@ -618,6 +618,222 @@
 .ring-glow:focus-visible {
   outline: none;
   box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.2), 0 0 0 1px var(--color-primary);
+}
+
+/* ─── Enhanced Glassmorphism ─── */
+.glass-hero {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px) saturate(1.8);
+  -webkit-backdrop-filter: blur(20px) saturate(1.8);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px rgba(18, 46, 83, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px) saturate(1.5);
+  -webkit-backdrop-filter: blur(16px) saturate(1.5);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 24px rgba(18, 46, 83, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(18, 46, 83, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.glass-dark-hero {
+  background: rgba(18, 46, 83, 0.6);
+  backdrop-filter: blur(24px) saturate(1.6);
+  -webkit-backdrop-filter: blur(24px) saturate(1.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.glass-frost {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(30px) saturate(2);
+  -webkit-backdrop-filter: blur(30px) saturate(2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 4px 16px rgba(18, 46, 83, 0.04);
+}
+
+/* ─── Stagger Animation Utilities ─── */
+.stagger-children > * {
+  opacity: 0;
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+.stagger-children > *:nth-child(1) { animation-delay: 0ms; }
+.stagger-children > *:nth-child(2) { animation-delay: 80ms; }
+.stagger-children > *:nth-child(3) { animation-delay: 160ms; }
+.stagger-children > *:nth-child(4) { animation-delay: 240ms; }
+.stagger-children > *:nth-child(5) { animation-delay: 320ms; }
+.stagger-children > *:nth-child(6) { animation-delay: 400ms; }
+.stagger-children > *:nth-child(7) { animation-delay: 480ms; }
+.stagger-children > *:nth-child(8) { animation-delay: 560ms; }
+.stagger-children > *:nth-child(9) { animation-delay: 640ms; }
+.stagger-children > *:nth-child(10) { animation-delay: 720ms; }
+.stagger-children > *:nth-child(11) { animation-delay: 800ms; }
+.stagger-children > *:nth-child(12) { animation-delay: 880ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .stagger-children > * {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* ─── Skeleton Loading ─── */
+.skeleton {
+  background: linear-gradient(90deg, var(--color-gray-100) 25%, var(--color-gray-50) 50%, var(--color-gray-100) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: var(--radius-md);
+}
+
+.skeleton-text {
+  height: 1em;
+  margin-bottom: 0.5em;
+  border-radius: var(--radius-sm);
+}
+
+.skeleton-text:last-child {
+  width: 70%;
+}
+
+.skeleton-circle {
+  border-radius: 50%;
+}
+
+.skeleton-card {
+  padding: var(--space-6);
+  border-radius: var(--radius-xl);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+
+/* ─── Bento Grid ─── */
+.bento-grid {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(180px, auto);
+}
+
+.bento-grid .bento-span-2 { grid-column: span 2; }
+.bento-grid .bento-span-3 { grid-column: span 3; }
+.bento-grid .bento-span-4 { grid-column: span 4; }
+.bento-grid .bento-row-2 { grid-row: span 2; }
+
+@media (max-width: 1024px) {
+  .bento-grid { grid-template-columns: repeat(2, 1fr); }
+  .bento-grid .bento-span-3,
+  .bento-grid .bento-span-4 { grid-column: span 2; }
+}
+
+@media (max-width: 640px) {
+  .bento-grid { grid-template-columns: 1fr; }
+  .bento-grid .bento-span-2,
+  .bento-grid .bento-span-3,
+  .bento-grid .bento-span-4 { grid-column: span 1; }
+}
+
+/* ─── Magnetic Button ─── */
+.magnetic-btn {
+  position: relative;
+  transition: transform 0.2s cubic-bezier(0.33, 1, 0.68, 1);
+  will-change: transform;
+}
+
+/* ─── Tilt Card ─── */
+.tilt-card {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transition: transform 0.3s ease;
+}
+
+.tilt-card-inner {
+  transform: translateZ(20px);
+}
+
+/* ─── Gradient Mesh Background ─── */
+.bg-mesh-gradient-vibrant {
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(var(--color-primary-rgb), 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(var(--color-accent-rgb), 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 40% 80%, rgba(74, 121, 90, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 90% 70%, rgba(29, 65, 116, 0.1) 0%, transparent 50%),
+    var(--color-canvas);
+}
+
+.bg-mesh-gradient-hero {
+  background:
+    radial-gradient(ellipse at 10% 90%, rgba(var(--color-primary-rgb), 0.2) 0%, transparent 40%),
+    radial-gradient(ellipse at 90% 10%, rgba(var(--color-accent-rgb), 0.15) 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 50%, rgba(29, 65, 116, 0.08) 0%, transparent 60%),
+    linear-gradient(135deg, var(--saic-navy-950) 0%, var(--saic-navy-900) 100%);
+}
+
+/* ─── Scroll Progress Bar ─── */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  z-index: 9999;
+  transition: width 0.1s linear;
+}
+
+/* ─── Modern Card Hover Effects ─── */
+.card-lift {
+  transition: transform 0.3s cubic-bezier(0.33, 1, 0.68, 1), box-shadow 0.3s ease;
+}
+
+.card-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+.card-glow {
+  transition: box-shadow 0.3s ease;
+}
+
+.card-glow:hover {
+  box-shadow: 0 0 30px rgba(var(--color-primary-rgb), 0.12), var(--shadow-lg);
+}
+
+/* ─── Underline Hover Effect ─── */
+.hover-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.hover-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  transition: width 0.3s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.hover-underline:hover::after {
+  width: 100%;
+}
+
+/* ─── Parallax Container ─── */
+.parallax-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.parallax-layer {
+  will-change: transform;
+  transition: transform 0.1s linear;
 }
 
 @media print {

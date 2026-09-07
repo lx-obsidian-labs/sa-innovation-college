@@ -129,7 +129,7 @@ export default function FeaturedCourses() {
               <a
                 key={course.title}
                 href={course.href}
-                className="group premium-card relative flex flex-col rounded-2xl border border-[var(--color-border)] bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg overflow-hidden"
+                className="group premium-card card-lift relative flex flex-col rounded-2xl border border-[var(--color-border)] bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg overflow-hidden"
               >
                 <div className="relative h-44 overflow-hidden bg-[var(--color-gray-200)]">
                   <Image

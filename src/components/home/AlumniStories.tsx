@@ -47,7 +47,7 @@ export default function AlumniStories() {
           {alumni.map((person) => (
             <div
               key={person.name}
-              className="group premium-card relative flex flex-col rounded-2xl border border-[var(--color-border)] bg-[var(--color-gray-50)] p-6 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg hover:border-[var(--color-primary)]/30"
+              className="group premium-card card-lift relative flex flex-col rounded-2xl border border-[var(--color-border)] glass-card p-6 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg hover:border-[var(--color-primary)]/30"
             >
               <div className="mb-4 flex items-center gap-3">
                 <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-br ${person.gradient} text-sm font-bold text-white shadow-sm`}>

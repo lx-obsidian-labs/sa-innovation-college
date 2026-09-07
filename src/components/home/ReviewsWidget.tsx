@@ -67,6 +67,7 @@ export default function ReviewsWidget() {
 
   return (
     <section className="relative bg-[var(--color-gray-50)] py-20 md:py-28 overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 bg-mesh-gradient-vibrant opacity-40" aria-hidden />
       <Container>
         <div className="text-center mb-10">
           <div className="flex items-center justify-center gap-2 mb-3">
@@ -92,7 +93,7 @@ export default function ReviewsWidget() {
               className={`absolute inset-0 transition-all duration-700 ease-in-out ${visible(idx)}`}
               aria-hidden={idx !== current}
             >
-              <div className="rounded-2xl border border-[var(--color-border)] bg-white p-8 shadow-sm text-center">
+              <div className="rounded-2xl border border-[var(--color-border)] glass-card p-8 shadow-sm text-center">
                 <div className="flex items-center justify-center gap-1 mb-4">
                   {Array.from({ length: review.rating }).map((_, i) => (
                     <Icon key={i} name="star-solid" size={4} className="text-[var(--color-accent)]" />

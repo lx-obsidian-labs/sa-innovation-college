@@ -59,7 +59,7 @@ export default function AudienceLinks() {
             <Link
               key={a.title}
               href={a.href}
-              className="group relative flex flex-col items-center text-center rounded-2xl border border-[var(--color-border)] bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg hover:border-[var(--color-primary)]/30"
+              className="group relative flex flex-col items-center text-center rounded-2xl border border-[var(--color-border)] bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-lg hover:border-[var(--color-primary)]/30 card-glow"
             >
               <div className={`mb-4 flex h-14 w-14 items-center justify-center rounded-2xl ${a.bgLight} transition-all duration-300 group-hover:scale-110 group-hover:shadow-md`}>
                 <Icon name={a.icon} size={6} className={a.textColor} />

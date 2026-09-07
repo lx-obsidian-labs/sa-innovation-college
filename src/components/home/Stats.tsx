@@ -19,7 +19,7 @@ export default function Stats() {
           {stats.map((stat) => (
             <div
               key={stat.label}
-              className="text-center group"
+              className="text-center group card-lift"
             >
               <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[var(--color-primary)]/10 to-[var(--color-accent)]/10 transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-[var(--color-primary)]/10">
                 <span className="text-2xl font-extrabold text-[var(--color-primary)]">{stat.value}</span>

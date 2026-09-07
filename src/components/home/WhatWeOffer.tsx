@@ -54,6 +54,7 @@ const iconColors = [
 export default function WhatWeOffer() {
   return (
     <section id="what-we-offer" className="relative bg-white py-20 md:py-28 overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 bg-mesh-gradient-vibrant opacity-30" />
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute top-0 left-0 w-[30rem] h-[30rem] bg-[var(--color-primary)]/[0.02] rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-0 w-[40rem] h-[40rem] bg-[var(--color-accent)]/[0.02] rounded-full blur-3xl" />
@@ -71,7 +72,7 @@ export default function WhatWeOffer() {
           {offerings.map((item, idx) => (
             <div
               key={item.title}
-              className="group premium-card relative flex flex-col rounded-xl border border-[var(--color-border)] bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-[var(--color-primary)]"
+              className="group premium-card card-lift relative flex flex-col rounded-xl border border-[var(--color-border)] bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-[var(--color-primary)]"
             >
               <div
                 className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl text-white transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg"

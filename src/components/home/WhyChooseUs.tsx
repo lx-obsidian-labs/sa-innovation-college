@@ -45,6 +45,7 @@ const features = [
 export default function WhyChooseUs() {
   return (
     <section id="why-choose-us" className="relative bg-[var(--color-gray-50)] py-20 md:py-28 overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 bg-mesh-gradient-vibrant opacity-50" aria-hidden />
       <div className="absolute top-20 left-10 w-72 h-72 bg-[var(--color-primary)]/5 rounded-full blur-3xl" aria-hidden />
       <div className="absolute bottom-20 right-10 w-80 h-80 bg-[var(--color-accent)]/5 rounded-full blur-3xl" aria-hidden />
 
@@ -60,7 +61,7 @@ export default function WhyChooseUs() {
           {features.map((feature) => (
             <div
               key={feature.title}
-              className="group premium-card relative flex flex-col items-center text-center rounded-xl border border-[var(--color-border)] bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-[var(--color-primary)]"
+              className="group premium-card card-lift relative flex flex-col items-center text-center rounded-xl border border-[var(--color-border)] bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-[var(--color-primary)]"
             >
               <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--color-primary)]/10 text-[var(--color-primary)] transition-all duration-300 group-hover:bg-[var(--color-primary)] group-hover:text-white">
                 {feature.icon}
