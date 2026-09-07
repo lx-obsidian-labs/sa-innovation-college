@@ -47,6 +47,29 @@ const contactInfo = [
 export default function ContactPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            name: "Contact SA Innovation College",
+            url: "https://www.sainnovationcollege.co.za/contact/",
+            mainEntity: {
+              "@type": "EducationalOrganization",
+              name: "SA Innovation College",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "147 Burger Avenue, 1st Floor, Barclays Centre, Lyttelton Manor",
+                addressLocality: "Centurion",
+                postalCode: "0157",
+                addressCountry: "ZA",
+              },
+              telephone: "+27-800-014-568",
+            },
+          }),
+        }}
+      />
       <PageHero
         title="Contact Us"
         description="We'd love to hear from you. Get in touch with our admissions team."

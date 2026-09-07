@@ -1804,6 +1804,27 @@ export default async function CourseDetailPage({
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Course",
+            name: course.title,
+            description: course.description,
+            provider: {
+              "@type": "EducationalOrganization",
+              name: "SA Innovation College",
+              url: "https://www.sainnovationcollege.co.za",
+            },
+            url: `https://www.sainnovationcollege.co.za/courses/${course.slug}/`,
+            courseMode: course.mode.includes("Online") ? "online" : "blended",
+            timeRequired: course.duration,
+            educationalLevel: course.nqfLevel || undefined,
+            category: course.category,
+          }),
+        }}
+      />
       <section className="relative overflow-hidden bg-[var(--color-gray-900)]">
         <div className="absolute inset-0">
           <img

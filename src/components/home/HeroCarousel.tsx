@@ -11,11 +11,9 @@ import { useHeroCarousel } from "./use-hero-carousel";
 import type { SlideData } from "./hero-carousel.types";
 import { getWhatsAppUrl } from "@/lib/utils";
 
-const HERO_IMAGE = "/images/saic-graduate-hero-alternative-v3.png";
-
 const slides: SlideData[] = [
   {
-    image: HERO_IMAGE,
+    image: "/images/saic-graduate-hero-alternative-v3.png",
     tag: "QCTO Accredited TVET & Skills Training Centre",
     title: "Through Knowledge,",
     highlight: "We Grow Towards Excellence",
@@ -25,7 +23,7 @@ const slides: SlideData[] = [
     secondary: { text: "Apply Online", href: "/apply" },
   },
   {
-    image: HERO_IMAGE,
+    image: "/images/hero_image-final.webp",
     tag: "What We Offer",
     title: "Programmes that",
     highlight: "prepare you for success",
@@ -35,7 +33,7 @@ const slides: SlideData[] = [
     secondary: { text: "Speak to Admissions", href: getWhatsAppUrl("+27727733960") },
   },
   {
-    image: HERO_IMAGE,
+    image: "/images/graduate_hero_banner.jpg",
     tag: "Flexible Study Options",
     title: "Study your way,",
     highlight: "on your schedule",
@@ -45,7 +43,7 @@ const slides: SlideData[] = [
     secondary: { text: "Compare Courses", href: "/courses" },
   },
   {
-    image: HERO_IMAGE,
+    image: "/images/graduation_hero_banner_1.jpg",
     tag: "Your Future Starts Here",
     title: "Start your journey,",
     highlight: "today",

@@ -1,0 +1,88 @@
+import type { MetadataRoute } from "next";
+
+const BASE_URL = "https://www.sainnovationcollege.co.za";
+
+const STATIC_PAGES: MetadataRoute.Sitemap = [
+  { url: BASE_URL, lastModified: new Date(), changeFrequency: "weekly", priority: 1 },
+  { url: `${BASE_URL}/about/`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+  { url: `${BASE_URL}/courses/`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.9 },
+  { url: `${BASE_URL}/contact/`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
+  { url: `${BASE_URL}/apply/`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+  { url: `${BASE_URL}/blog/`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.6 },
+  { url: `${BASE_URL}/events/`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.6 },
+  { url: `${BASE_URL}/news/`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.6 },
+  { url: `${BASE_URL}/students/`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
+  { url: `${BASE_URL}/privacy/`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
+  { url: `${BASE_URL}/terms/`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
+];
+
+const COURSE_SLUGS = [
+  "basic-computer-literacy-nqf-3",
+  "advanced-computer-literacy-nqf-3",
+  "ms-word-intro-advanced",
+  "ms-excel-intro-advanced",
+  "ms-powerpoint-intro-advanced",
+  "ms-access",
+  "ms-outlook",
+  "ms-project",
+  "website-design-5-day",
+  "office-administration-nqf-3",
+  "general-administration-nqf-4",
+  "basic-bookkeeping",
+  "business-communication-skills",
+  "receptionist-course",
+  "customer-service-skills",
+  "table-service-course",
+  "call-centre-operator",
+  "basic-marketing-and-selling-nqf-2",
+  "marketing-management-n4-n6",
+  "entrepreneurship-small-business",
+  "new-venture-creation-nqf-2",
+  "project-management",
+  "conflict-management-nqf-5",
+  "business-management-n4-n6",
+  "management-assistant-n4-n6",
+  "basic-financial-management",
+  "bookkeeper",
+  "financial-management-n4-n6",
+  "human-resources-management-n4-n6",
+  "skills-development-facilitation-practitioner-nqf-5",
+  "facilitator-course-nqf-5",
+  "assessor-course",
+  "training-development-practitioner-nqf-5",
+  "learning-development-practitioner-nqf-6",
+  "work-based-learning-practitioner-nqf-5",
+  "educare-junior-teacher-n4-n6",
+  "adult-literacy-teacher",
+  "early-childhood-development-nqf-4",
+  "early-childhood-caregiver-nqf-1",
+  "basic-health-and-safety",
+  "health-and-safety-assistant-nqf-4",
+  "first-aid-basic-intermediate-advanced",
+  "occupational-health-and-safety-practitioner",
+  "traffic-officer-course",
+  "national-diploma-policing-nqf-6",
+  "national-certificate-paralegal-practice-nqf-5",
+  "family-law-practitioner-nqf-5",
+  "mechanical-engineering-n1-n6",
+  "electrical-engineering-n1-n6",
+  "civil-engineering-n1-n6",
+  "comptia-it-fundamentals",
+  "comptia-a-plus-pc-engineering",
+  "comptia-network-plus",
+  "comptia-security-plus",
+  "software-developer-nqf-5",
+  "website-design-bootcamp-5-day",
+  "health-promotion-officer-nqf-5",
+];
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const coursePages: MetadataRoute.Sitemap = COURSE_SLUGS.map((slug) => ({
+    url: `${BASE_URL}/courses/${slug}/`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  return [...STATIC_PAGES, ...coursePages];
+}
