@@ -11,7 +11,7 @@ import { useHeroCarousel } from "./use-hero-carousel";
 import type { SlideData } from "./hero-carousel.types";
 import { getWhatsAppUrl } from "@/lib/utils";
 
-const HERO_IMAGE = "/images/graduate_solid_red.webp";
+const HERO_IMAGE = "/images/saic-graduate-hero-alternative-v3.png";
 
 const slides: SlideData[] = [
   {
