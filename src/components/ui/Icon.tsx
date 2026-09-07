@@ -4,8 +4,8 @@ import { cn } from "@/lib/utils";
 
 export type IconName =
   | "academic-cap" | "arrow-down-tray" | "arrow-left" | "arrow-path"
-  | "arrow-right" | "arrow-up" | "arrow-uturn-left" | "book-open"
-  | "briefcase" | "building-library" | "calendar"
+  | "arrow-right" | "arrow-up" | "arrow-uturn-left" | "banknotes" | "book-open"
+  | "briefcase" | "building-library" | "calculator" | "calendar"
   | "chat-bubble-left-right" | "check" | "check-badge" | "check-circle"
   | "chevron-down" | "chevron-left" | "chevron-right" | "chevron-up"
   | "clock" | "currency-dollar" | "display" | "download"
@@ -15,7 +15,7 @@ export type IconName =
   | "magnifying-glass" | "map-pin" | "megaphone" | "menu"
   | "paper-airplane" | "pause" | "pencil" | "phone" | "play" | "search"
   | "shield-check" | "shield-health" | "sparkles" | "spinner"
-  | "star" | "star-solid" | "tiktok" | "twitter"
+  | "star" | "star-solid" | "tiktok" | "trending-up" | "twitter"
   | "user" | "user-group" | "whatsapp" | "x-mark";
 
 const ICON_PATHS: Record<IconName, { paths: string[]; viewBox?: string; fill?: boolean }> = {
@@ -42,6 +42,17 @@ const ICON_PATHS: Record<IconName, { paths: string[]; viewBox?: string; fill?: b
   },
   "arrow-uturn-left": {
     paths: ["M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3"]
+  },
+  banknotes: {
+    paths: ["M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 0 0-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 0 1-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 0 0 3 15h-.75M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"],
+    viewBox: "0 0 24 24"
+  },
+  "trending-up": {
+    paths: ["M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941"],
+  },
+  calculator: {
+    paths: ["M15.75 15.75V18m-7.5-6.75h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V13.5zm0 2.25h.008v.008H8.25v-.008zm0 2.25h.008v.008H8.25V18zm2.498-6.75h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V13.5zm0 2.25h.007v.008h-.007v-.008zm0 2.25h.007v.008h-.007V18zm2.504-6.75h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V13.5zm0 2.25h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V18zm2.498-6.75h.008v.008H18v-.008zm0 2.25h.008v.008H18V13.5zM6.75 6h10.5M6.75 9h10.5M6.75 12h10.5M6.75 15h10.5M6.75 18h10.5"],
+    viewBox: "0 0 24 24"
   },
   briefcase: {
     paths: [

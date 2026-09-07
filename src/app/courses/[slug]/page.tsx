@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Container from "@/components/layout/Container";
 import Button from "@/components/ui/Button";
+import CareerOutcomes from "@/components/courses/CareerOutcomes";
 import { categoryImages, heroGradients } from "@/lib/course-images";
 
 interface CourseData {
@@ -1989,6 +1990,8 @@ export default async function CourseDetailPage({
                   ))}
                 </div>
               </div>
+
+              <CareerOutcomes careers={course.careerOpportunities} category={course.category} />
 
               {course.certification && (
                 <div className="premium-card mb-10 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] p-6 shadow-[var(--shadow-card)] md:p-8">

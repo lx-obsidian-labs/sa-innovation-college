@@ -3,6 +3,7 @@ import Container from "@/components/layout/Container";
 import PageHero from "@/components/layout/PageHero";
 import Button from "@/components/ui/Button";
 import CourseFilterGrid from "@/components/courses/CourseFilterGrid";
+import FeeCalculator from "@/components/courses/FeeCalculator";
 import { categoryImages } from "@/lib/course-images";
 
 export const metadata: Metadata = {
@@ -614,6 +615,14 @@ export default function CoursesPage() {
               groups={categoryGroups}
               categoryImages={categoryImages}
             />
+          </div>
+        </Container>
+      </section>
+
+      <section className="py-20 md:py-28 bg-[var(--color-gray-50)]">
+        <Container>
+          <div className="mx-auto max-w-xl">
+            <FeeCalculator />
           </div>
         </Container>
       </section>
