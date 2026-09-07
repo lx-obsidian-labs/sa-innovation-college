@@ -49,6 +49,39 @@ const stats = [
   { label: "Success Rate", value: "95%" },
 ];
 
+const faqs = [
+  {
+    question: "What does it mean for a college to be accredited?",
+    answer:
+      "Accreditation is official recognition by the relevant South African education authorities that a college and its programmes meet nationally approved quality standards. It assures students that the qualifications they study are legitimate, nationally recognised, and aligned with the National Qualifications Framework (NQF).",
+  },
+  {
+    question: "Is SA Innovation College accredited?",
+    answer:
+      "Yes, we are fully accredited by QCTO, and have an approved ICDL South Africa Centre. You can verify our accreditation by directly contacting the QCTO and also ICDL South Africa.",
+  },
+  {
+    question: "Why is studying at an accredited college important?",
+    answer:
+      "Accreditation ensures your qualification is legitimate, accepted by employers, and provides a foundation for further studies. Employers and universities typically do not recognise qualifications from unaccredited institutions.",
+  },
+  {
+    question: "How can I verify SA Innovation College's accreditation?",
+    answer:
+      "You can verify our accreditation status with the QCTO by visiting https://www.qcto.org.za.",
+  },
+  {
+    question: "What happens if I enrol in a non-accredited institution?",
+    answer:
+      "Choosing where to study is one of the most important decisions you'll make. Enrolling with a non-accredited institution can place your future at risk, as qualifications may not be nationally recognised by employers, professional bodies, or higher education institutions. At SA Innovation College, together with our trusted academic partners — Crane International Academy (Mpumalanga, Limpopo & KwaZulu-Natal), Cape Business and Engineering College (Gqeberha), and HJN Training (Centurion) — we are committed to providing quality, nationally recognised education and training.",
+  },
+  {
+    question: "Are all courses accredited?",
+    answer:
+      "All qualifications and accredited skills programmes offered by SA Innovation College, together with our trusted academic partners, are fully accredited by the relevant South African quality assurance bodies. We also offer a selection of non-credit-bearing short skills programmes designed to provide practical, industry-relevant knowledge and hands-on skills.",
+  },
+];
+
 export default function AboutPage() {
   return (
     <>
@@ -101,7 +134,10 @@ export default function AboutPage() {
             className="mb-12"
           />
           <p className="mx-auto max-w-3xl text-center text-[var(--color-text-secondary)] leading-relaxed text-[var(--fs-md)]">
-            SA Innovation College was founded with a clear purpose &mdash; to bridge the skills gap in South Africa by providing accessible, career-focused education. Located in Centurion, Gauteng, we serve a diverse community of learners from across the province and beyond. Our programmes are designed in collaboration with industry experts to ensure our graduates are workplace-ready from day one.
+            Since opening our doors in 2016, SA Innovation College has been committed to empowering individuals through quality education, occupational training, and internationally recognised digital skills programmes. Located in Centurion, Gauteng, we serve a diverse community of learners from across the province and beyond. Today, we are a trusted QCTO Accredited TVET &amp; Skills Training Centre and an ICDL South Africa Centre, providing learners with qualifications and certifications that prepare them for employment, entrepreneurship, and lifelong learning.
+          </p>
+          <p className="mx-auto max-w-3xl text-center text-[var(--color-text-secondary)] leading-relaxed text-[var(--fs-md)] mt-6">
+            Together with our trusted academic partners — Crane International Academy (Mpumalanga, Limpopo &amp; KwaZulu-Natal), Cape Business and Engineering College (Gqeberha), and HJN Training (Centurion) — we are committed to providing quality, nationally recognised education and training.
           </p>
           <div className="mt-12 grid grid-cols-2 gap-6 md:grid-cols-4">
             {stats.map((stat) => (
@@ -143,6 +179,35 @@ export default function AboutPage() {
       <section className="bg-[var(--color-surface)] py-[var(--section-py)] relative overflow-hidden">
         <div className="bg-dot-grid-primary absolute inset-0" aria-hidden />
         <div className="floating-blob" style={{ width: 400, height: 400, top: "-15%", left: "-10%", opacity: 0.04 }} aria-hidden />
+        <Container className="relative z-10">
+          <SectionHeader
+            eyebrow="Accreditation"
+            title="Frequently Asked Questions"
+            description="Common questions about accreditation and quality assurance at SA Innovation College."
+            className="mb-12"
+          />
+          <div className="mx-auto max-w-3xl space-y-4">
+            {faqs.map((faq, idx) => (
+              <details
+                key={idx}
+                className="group rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] shadow-[var(--shadow-card)] overflow-hidden"
+              >
+                <summary className="flex cursor-pointer items-center justify-between gap-4 p-5 text-[var(--color-text-primary)] font-semibold text-[var(--fs-sm)] hover:bg-[var(--color-primary)]/[0.03] transition-colors">
+                  <span>{faq.question}</span>
+                  <Icon name="chevron-down" size={4} className="shrink-0 text-[var(--color-text-secondary)] transition-transform duration-200 group-open:rotate-180" />
+                </summary>
+                <div className="border-t border-[var(--color-border)] px-5 pb-5 pt-4 text-sm leading-relaxed text-[var(--color-text-secondary)]">
+                  {faq.answer}
+                </div>
+              </details>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section className="bg-[var(--color-surface)] py-[var(--section-py)] relative overflow-hidden">
+        <div className="bg-mesh-gradient-subtle absolute inset-0" aria-hidden />
+        <div className="floating-blob" style={{ width: 300, height: 300, top: "20%", right: "-5%", opacity: 0.05 }} aria-hidden />
         <Container className="relative z-10">
           <SectionHeader
             eyebrow="Meet Our Team"
