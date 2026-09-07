@@ -1,5 +1,6 @@
 import Container from "@/components/layout/Container";
 import Icon from "@/components/ui/Icon";
+import Image from "next/image";
 
 interface PageHeroProps {
   title: string;
@@ -49,15 +50,21 @@ export default function PageHero({ title, description, breadcrumbs, image, image
         </h1>
 
         {description && (
-          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-white/80">
+          <p className="mt-4 max-w-2xl text-base sm:text-lg leading-relaxed text-white/80">
             {description}
           </p>
         )}
         </div>
         {image && (
-          <div className="relative hidden h-64 lg:block">
+          <div className="relative mt-6 h-48 sm:h-56 lg:h-64 lg:mt-0">
             <div className="absolute inset-x-8 bottom-0 top-4 rounded-full bg-[var(--color-accent)]/10 blur-3xl" aria-hidden />
-            <img src={image} alt={imageAlt} className="relative z-10 mx-auto h-full w-auto object-contain object-bottom drop-shadow-[0_18px_24px_rgba(0,0,0,0.28)]" />
+            <Image
+              src={image}
+              alt={imageAlt}
+              fill
+              sizes="(max-width: 1024px) 80vw, 40vw"
+              className="relative z-10 mx-auto object-contain object-bottom drop-shadow-[0_18px_24px_rgba(0,0,0,0.28)]"
+            />
           </div>
         )}
         </div>

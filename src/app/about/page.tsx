@@ -4,6 +4,7 @@ import PageHero from "@/components/layout/PageHero";
 import Button from "@/components/ui/Button";
 import SectionHeader from "@/components/ui/SectionHeader";
 import Icon from "@/components/ui/Icon";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "About Us | SA Innovation College",
@@ -74,12 +75,15 @@ export default function AboutPage() {
               </p>
             </div>
             <div className="relative">
-              <img
-                src="/images/sa-innovation-graduation.webp"
-                alt="SA Innovation College graduation ceremony"
-                className="w-full h-auto rounded-2xl shadow-[var(--shadow-lg)]"
-                loading="lazy"
-              />
+              <div className="relative h-72 sm:h-80 md:h-96 w-full overflow-hidden rounded-2xl shadow-[var(--shadow-lg)]">
+                <Image
+                  src="/images/sa-innovation-graduation.webp"
+                  alt="SA Innovation College graduation ceremony"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover"
+                />
+              </div>
               <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-[var(--color-accent)]/20 rounded-full blur-2xl" aria-hidden />
               <div className="absolute -top-4 -right-4 w-32 h-32 bg-[var(--color-primary)]/20 rounded-full blur-2xl" aria-hidden />
             </div>

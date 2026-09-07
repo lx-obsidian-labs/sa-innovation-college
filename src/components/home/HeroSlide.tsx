@@ -22,29 +22,31 @@ export default function HeroSlide({ index, current, image }: HeroSlideProps) {
       aria-label={`Slide ${index + 1}`}
       aria-hidden={!isActive}
     >
-      {/* Mobile: full bleed image */}
+      {/* Mobile: full bleed image — face visible via object-position top */}
       <Image
         src={image}
         alt="SA Innovation College graduate in red academic gown"
         fill
         priority={index === 0}
         sizes="100vw"
-        className="object-cover object-center sm:object-right md:object-right"
+        className="object-cover"
+        style={{ objectPosition: "50% 15%" }}
       />
-      {/* Gradient overlay — left side dark for text, transparent on right to show image */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[var(--saic-campaign-crimson)] via-[var(--saic-campaign-crimson)]/70 to-transparent sm:from-[var(--saic-campaign-crimson)]/95 sm:via-[var(--saic-campaign-crimson)]/60 sm:to-transparent" />
+      {/* Gradient overlay — dark left for text, transparent right to show face */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[var(--saic-campaign-crimson)] via-[var(--saic-campaign-crimson)]/60 to-transparent" />
 
-      {/* Desktop: larger image on right side */}
-      <div className="absolute right-0 bottom-0 h-full w-1/2 max-lg:hidden">
+      {/* Desktop: right half shows the image with face visible */}
+      <div className="absolute right-0 top-0 h-full w-1/2 max-lg:hidden">
         <Image
           src={image}
           alt="SA Innovation College graduate in red academic gown"
           fill
           priority={index === 0}
           sizes="50vw"
-          className="object-cover object-right"
+          className="object-cover"
+          style={{ objectPosition: "50% 15%" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[var(--saic-campaign-crimson)] to-transparent opacity-40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[var(--saic-campaign-crimson)] to-transparent opacity-30" />
       </div>
     </div>
   );
