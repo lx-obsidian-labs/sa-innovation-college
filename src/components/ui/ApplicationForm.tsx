@@ -69,6 +69,7 @@ export default function ApplicationForm() {
   const [form, setForm] = useState<FormValues>(initialForm);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [showConfirm, setShowConfirm] = useState(false);
+  const [honeypot, setHoneypot] = useState("");
   const nameRef = useRef<HTMLInputElement>(null);
   const isMobile = useMediaQuery("(max-width: 639px)");
   const hasData = Object.values(form).some((v) => typeof v === "string" && v.trim().length > 0);
@@ -154,7 +155,7 @@ export default function ApplicationForm() {
       const res = await fetch("/api/apply", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, website: honeypot }),
       });
       const data = await res.json();
       if (res.ok) {
@@ -362,6 +363,11 @@ export default function ApplicationForm() {
       </div>
 
       <form onSubmit={(e) => { e.preventDefault(); setShowConfirm(true); }} noValidate>
+        {/* Honeypot — hidden from humans, bots will fill it */}
+        <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", opacity: 0, height: 0, width: 0, overflow: "hidden" }}>
+          <label htmlFor="af-website">Leave this empty</label>
+          <input id="af-website" name="website" type="text" tabIndex={-1} autoComplete="off" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} />
+        </div>
         <div className="mb-10 rounded-xl border border-[var(--color-border)] bg-[var(--color-gray-50)]/70 px-3 py-5 shadow-[var(--shadow-xs)] sm:px-5">
           <div className="mb-4 flex items-center justify-between gap-4">
             <div>

@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-deploy:
+  lint-and-typecheck:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -16,9 +16,32 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Type check
+        run: npx tsc --noEmit
+
+  build-and-deploy:
+    needs: lint-and-typecheck
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
 
       - name: Build static export
         run: npm run build
@@ -41,3 +64,6 @@ jobs:
           local-dir: ./out/
           protocol: ftp
           port: 21
+
+      - name: Health check
+        run: sleep 15 && curl -sf https://www.sainnovationcollege.co.za/ | head -c 500

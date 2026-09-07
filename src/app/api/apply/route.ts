@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { sendApplicationEmail } from "@/lib/email";
+import { sendApplicationEmail, sendApplicationConfirmation } from "@/lib/email";
 
 function generateRef(): string {
   const prefix = "SAIC";
@@ -13,6 +13,12 @@ export async function POST(req: Request) {
     const raw = await req.text();
     if (raw.length > 100_000) return NextResponse.json({ error: "Application payload is too large" }, { status: 413 });
     const body = JSON.parse(raw) as Record<string, string | boolean | undefined>;
+
+    // Honeypot check — silently reject bots
+    if (body.website) {
+      return NextResponse.json({ success: true, refNumber: `SAIC-${Date.now().toString(36).toUpperCase()}`, message: "Application submitted successfully!" });
+    }
+
     const {
       title, fullName, gender, nationality, postalCode, idNumber, dob,
       phone, email, address, startDate, category, course, education,
@@ -52,6 +58,11 @@ export async function POST(req: Request) {
       emergencyName: text(emergencyName),
       emergencyPhone: text(emergencyPhone),
       hearAbout: text(hearAbout),
+    });
+
+    // Send confirmation to the applicant
+    await sendApplicationConfirmation({ refNumber, fullName, email, course }).catch(() => {
+      console.warn("[Application] Failed to send confirmation email");
     });
 
     return NextResponse.json({

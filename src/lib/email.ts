@@ -1,5 +1,14 @@
 import nodemailer from "nodemailer";
 
+function escapeHtml(text: string): string {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
 function getTransporter() {
   const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS } = process.env;
   if (!SMTP_HOST || !SMTP_PORT || !SMTP_USER || !SMTP_PASS) {
@@ -31,7 +40,7 @@ function layout(body: string): string {
 }
 
 function field(label: string, value: string): string {
-  return `<div class="field"><span class="label">${label}</span><span class="value">${value || "—"}</span></div>`;
+  return `<div class="field"><span class="label">${escapeHtml(label)}</span><span class="value">${escapeHtml(value) || "—"}</span></div>`;
 }
 
 export async function sendContactEmail(data: {
@@ -97,6 +106,44 @@ export async function sendApplicationEmail(data: {
       <h3 style="margin:16px 0 8px;font-size:14px;color:#1B4D8E;border-bottom:2px solid #1B4D8E;padding-bottom:4px">Emergency Contact</h3>
       ${field("Name", data.emergencyName)}
       ${field("Phone", data.emergencyPhone)}
+    `),
+  });
+}
+
+export async function sendContactConfirmation(data: {
+  name: string; email: string;
+}): Promise<void> {
+  const transporter = getTransporter();
+  await transporter.sendMail({
+    from: `"SA Innovation College" <${process.env.SMTP_USER}>`,
+    to: data.email,
+    subject: "We received your enquiry — SA Innovation College",
+    html: layout(`
+      <h2 style="margin-top:0">Thank you, ${escapeHtml(data.name)}!</h2>
+      <p style="font-size:14px;color:#555;line-height:1.6">We have received your enquiry and our team will get back to you within <strong>2-3 business days</strong>.</p>
+      <p style="font-size:14px;color:#555;line-height:1.6">If your matter is urgent, please call us at <strong>0800 014 568</strong> or WhatsApp us at <strong>+27 72 773 3960</strong>.</p>
+      <p style="font-size:14px;color:#555;line-height:1.6;margin-top:24px">Warm regards,<br><strong>SA Innovation College Admissions</strong></p>
+    `),
+  });
+}
+
+export async function sendApplicationConfirmation(data: {
+  refNumber: string; fullName: string; email: string; course: string;
+}): Promise<void> {
+  const transporter = getTransporter();
+  await transporter.sendMail({
+    from: `"SA Innovation College" <${process.env.SMTP_USER}>`,
+    to: data.email,
+    subject: `Application Received — ${data.refNumber} | SA Innovation College`,
+    html: layout(`
+      <div class="ref">${escapeHtml(data.refNumber)}</div>
+      <h2 style="margin-top:0">Thank you, ${escapeHtml(data.fullName)}!</h2>
+      <p style="font-size:14px;color:#555;line-height:1.6">Your application has been received successfully. Here are your details:</p>
+      ${field("Reference Number", data.refNumber)}
+      ${field("Programme", data.course)}
+      <p style="font-size:14px;color:#555;line-height:1.6;margin-top:16px">Our admissions team will contact you within <strong>2-3 business days</strong> to guide you through the next steps.</p>
+      <p style="font-size:14px;color:#555;line-height:1.6">If you have any questions, please quote your reference number and contact us at <strong>0800 014 568</strong>.</p>
+      <p style="font-size:14px;color:#555;line-height:1.6;margin-top:24px">Warm regards,<br><strong>SA Innovation College Admissions</strong></p>
     `),
   });
 }

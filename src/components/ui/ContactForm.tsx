@@ -30,6 +30,7 @@ export default function ContactForm() {
   const [formData, setFormData] = useState({ name: "", surname: "", company: "", preferredContact: "", phone: "", email: "", course: "", message: "" });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [showConfirm, setShowConfirm] = useState(false);
+  const [honeypot, setHoneypot] = useState("");
   const nameRef = useRef<HTMLInputElement>(null);
 
   const hasData = Object.values(formData).some((v) => v.trim().length > 0);
@@ -70,7 +71,7 @@ export default function ContactForm() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, website: honeypot }),
       });
       const data = await res.json();
       if (res.ok) {
@@ -201,6 +202,11 @@ export default function ContactForm() {
       )}
 
       <form onSubmit={(e) => { e.preventDefault(); setShowConfirm(true); }} className="space-y-5" noValidate>
+        {/* Honeypot — hidden from humans, bots will fill it */}
+        <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", opacity: 0, height: 0, width: 0, overflow: "hidden" }}>
+          <label htmlFor="cf-website">Leave this empty</label>
+          <input id="cf-website" name="website" type="text" tabIndex={-1} autoComplete="off" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} />
+        </div>
         <div className="grid sm:grid-cols-2 gap-5">
           <Field field="name" label="First Name" required />
           <Field field="surname" label="Surname" required />
