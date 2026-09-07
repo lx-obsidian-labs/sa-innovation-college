@@ -43,6 +43,8 @@ export default function ApplicationCTA() {
         }}
         aria-hidden
       />
+      <div className="absolute top-0 left-1/3 h-64 w-64 rounded-full bg-[var(--color-accent)]/10 blur-3xl animate-float" aria-hidden />
+      <div className="absolute bottom-0 right-1/4 h-80 w-80 rounded-full bg-[var(--color-primary-light)]/10 blur-3xl animate-float" style={{ animationDelay: "2s" }} aria-hidden />
 
       <Container className="relative z-10">
         <div className="mx-auto max-w-3xl text-center">
@@ -52,14 +54,17 @@ export default function ApplicationCTA() {
           <h2 className="mb-5 text-[var(--fs-3xl)] font-extrabold text-white leading-tight">
             Start Your Future Now
           </h2>
-          <p className="mx-auto max-w-xl text-base text-white/70 leading-relaxed mb-10">
-            Education is more than a qualification — it's about unlocking potential and creating opportunities. Join thousands of learners who chose SA Innovation College.
+          <p className="mx-auto max-w-2xl text-base text-white/75 leading-relaxed mb-4">
+            At SA Innovation College, we believe education is more than earning a qualification — it&apos;s about unlocking potential, building confidence, and creating opportunities. Every programme is designed to equip learners with the knowledge, practical skills and professional competencies needed to succeed in today&apos;s competitive workplace.
+          </p>
+          <p className="mx-auto max-w-xl text-sm text-white/60 leading-relaxed mb-10">
+            Join thousands of learners who have chosen SA Innovation College as their partner in education and career development.
           </p>
 
           <div className="flex flex-col items-center gap-4 mb-10">
             <Button variant="apply" size="xl" href="/apply" className="shadow-xl shadow-[var(--saic-gold-500)]/30 text-base px-10 py-5 min-h-[60px] rounded-xl uppercase tracking-widest font-extrabold hover:shadow-[var(--saic-gold-500)]/50">
               <Icon name="academic-cap" size={5} />
-              Apply Online Now
+              Register Today
             </Button>
           </div>
 

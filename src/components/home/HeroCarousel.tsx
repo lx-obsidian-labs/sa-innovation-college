@@ -20,7 +20,7 @@ const slides: SlideData[] = [
     title: "Through Knowledge,",
     highlight: "We Grow Towards Excellence",
     tagline: "Est. 2016 · ICDL South Africa Centre",
-    description: "Practical, flexible and industry-aligned learning designed for school leavers, working professionals, and employers.",
+    description: "Welcome to SA Innovation College, where education meets innovation, practical skills, and career success. A trusted QCTO Accredited TVET & Skills Training Centre and ICDL South Africa Centre.",
     cta: { text: "Find Your Course", href: "/courses" },
     secondary: { text: "Apply Online", href: "/apply" },
   },

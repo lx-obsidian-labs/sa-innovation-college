@@ -10,7 +10,7 @@ const offerings = [
     icon: <Icon name="check-badge" size={6} />,
   },
   {
-    title: "TVET & Skills Development",
+    title: "TVET & Skills Development Programmes",
     description: "Comprehensive TVET programmes and skills training for school leavers and adults.",
     icon: <Icon name="academic-cap" size={6} />,
   },

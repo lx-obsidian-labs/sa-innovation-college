@@ -23,22 +23,40 @@ const features = [
     icon: <Icon name="globe-alt" size={6} />,
   },
   {
+    title: "Industry-Focused Training",
+    description:
+      "Programmes aligned with current workplace needs and industry standards. Career-focused training designed to improve employability with practical learning that prepares students for real workplace environments.",
+    icon: <Icon name="briefcase" size={6} />,
+  },
+  {
     title: "Flexible Study Options",
     description:
-      "Full-Time, Part-Time, Distance/E-Learning, and Saturday & Evening Classes designed around your life.",
+      "Full-Time, Part-Time, Distance/E-Learning/Online, and Saturday & Evening Classes designed around your life for school leavers, working professionals and adult learners.",
     icon: <Icon name="clock" size={6} />,
+  },
+  {
+    title: "Career-Focused Qualifications",
+    description:
+      "Qualifications aligned with employer needs that combine knowledge, technology and innovation. Accredited programmes that support career growth, professional development and workplace-ready skills.",
+    icon: <Icon name="building-library" size={6} />,
   },
   {
     title: "Industry-Experienced Facilitators",
     description:
-      "Learn from facilitators and assessors with real workplace experience and industry knowledge.",
-    icon: <Icon name="briefcase" size={6} />,
+      "Learn from facilitators and assessors with real workplace experience and industry knowledge. Training pathways that support employment, entrepreneurship and further studies.",
+    icon: <Icon name="user-group" size={6} />,
   },
   {
-    title: "Career-Focused Training",
+    title: "Modern Learning Approach",
     description:
-      "Qualifications aligned with employer needs that combine knowledge, technology and innovation for today's competitive job market.",
-    icon: <Icon name="building-library" size={6} />,
+      "Learning that combines knowledge, technology and innovation. Digital and technical skills for the modern economy, with continuous curriculum improvement to keep pace with workplace innovation.",
+    icon: <Icon name="light-bulb" size={6} />,
+  },
+  {
+    title: "Skills for Growing Sectors",
+    description:
+      "Programmes that respond to skills shortages in South Africa. Qualifications that prepare learners for opportunities in growing sectors with relevant, future-focused education.",
+    icon: <Icon name="trending-up" size={6} />,
   },
 ];
 
@@ -52,7 +70,7 @@ export default function WhyChooseUs() {
       <Container>
         <SectionHeader
           eyebrow="Why SA Innovation"
-          title="A clearer way to take your next step"
+          title="Why Choose SA Innovation College?"
           description="Build relevant knowledge with practical programmes, flexible options and guidance designed to help you make an informed decision."
           className="mb-12"
         />
