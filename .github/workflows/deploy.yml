@@ -38,7 +38,7 @@ jobs:
           ls -la out/index.html
 
       - name: Deploy to cPanel via FTP
-        uses: SamKirkland/FTP-Deploy-Action@4.3.8
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
         with:
           server: ftp.sainnovationcollege.co.za
           username: sainnova
@@ -47,8 +47,3 @@ jobs:
           local-dir: ./out/
           protocol: ftp
           port: 21
-          dangerous-clean-skip: false
-          exclude: |
-            .git*
-            node_modules*
-            .github*
