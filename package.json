@@ -32,5 +32,10 @@
     "eslint-config-next": {
       "typescript-eslint": "8.65.0"
     }
+  },
+  "pnpm": {
+    "overrides": {
+      "eslint-config-next>typescript-eslint": "8.65.0"
+    }
   }
 }
