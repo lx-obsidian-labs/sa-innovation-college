@@ -608,7 +608,8 @@ export default function CoursesPage() {
         description="Compare practical courses by subject area, duration, study mode and entry requirements across a range of fields."
       />
 
-      <section className="py-20 md:py-28">
+      <section className="py-[var(--section-py)] relative overflow-hidden">
+        <div className="floating-blob" style={{ width: 300, height: 300, top: "-10%", left: "-5%", opacity: 0.04 }} aria-hidden />
         <Container>
           <div className="mb-8" id="all-courses">
             <CourseFilterGrid
@@ -619,17 +620,18 @@ export default function CoursesPage() {
         </Container>
       </section>
 
-      <section className="py-20 md:py-28 bg-[var(--color-gray-50)]">
-        <Container>
+      <section className="py-[var(--section-py)] bg-[var(--color-gray-50)] relative overflow-hidden">
+        <div className="bg-mesh-gradient-subtle absolute inset-0" aria-hidden />
+        <Container className="relative z-10">
           <div className="mx-auto max-w-xl">
             <FeeCalculator />
           </div>
         </Container>
       </section>
 
-      <section className="relative overflow-hidden bg-gradient-to-br from-[var(--color-primary)] via-[var(--color-primary-dark)] to-[#0B1F3F] py-20 md:py-28">
-        <div className="absolute top-0 left-1/3 h-64 w-64 rounded-full bg-[var(--color-accent)]/10 blur-3xl" aria-hidden />
-        <div className="absolute bottom-0 right-1/4 h-80 w-80 rounded-full bg-[var(--color-primary-light)]/10 blur-3xl" aria-hidden />
+      <section className="relative overflow-hidden bg-gradient-to-br from-[var(--color-primary)] via-[var(--color-primary-dark)] to-[#0B1F3F] py-16 md:py-24">
+        <div className="absolute top-0 left-1/3 h-64 w-64 rounded-full bg-[var(--color-accent)]/10 blur-3xl animate-float" aria-hidden />
+        <div className="absolute bottom-0 right-1/4 h-80 w-80 rounded-full bg-[var(--color-primary-light)]/10 blur-3xl animate-float" style={{ animationDelay: "2s" }} aria-hidden />
         <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)", backgroundSize: "40px 40px" }} aria-hidden />
         <Container className="relative z-10">
           <div className="mx-auto max-w-3xl text-center">

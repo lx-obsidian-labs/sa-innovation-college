@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Container from "@/components/layout/Container";
 import PageHero from "@/components/layout/PageHero";
+import Button from "@/components/ui/Button";
+import SectionHeader from "@/components/ui/SectionHeader";
 import Icon from "@/components/ui/Icon";
 
 export const metadata: Metadata = {
@@ -55,11 +57,12 @@ export default function BlogPage() {
       <section className="py-[var(--section-py)] bg-white relative overflow-hidden">
         <div className="floating-blob" style={{ width: 350, height: 350, top: "-10%", right: "-5%", opacity: 0.04 }} aria-hidden />
         <Container>
-          <div className="mx-auto max-w-3xl text-center mb-12">
-            <p className="text-[var(--color-text-secondary)] leading-relaxed text-[var(--fs-md)]">
-              Welcome to the SA Innovation College Blog — your trusted source for educational insights, career guidance, industry trends, and professional development resources. Whether you&apos;re a prospective student, working professional, employer, or lifelong learner, our blog provides valuable information to help you make informed decisions about your education and career.
-            </p>
-          </div>
+          <SectionHeader
+            eyebrow="Blog"
+            title="Insights, Career Advice & Industry News"
+            description="Welcome to the SA Innovation College Blog — your trusted source for educational insights, career guidance, industry trends, and professional development resources."
+            className="mb-12"
+          />
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {categories.map((cat) => (
@@ -86,9 +89,31 @@ export default function BlogPage() {
             <p className="text-[var(--color-text-secondary)] leading-relaxed text-[var(--fs-md)] mb-6">
               Knowledge is the foundation of success. Follow our blog for regular updates, expert insights, and practical advice that will help you stay competitive in today&apos;s rapidly changing world.
             </p>
-            <p className="text-[var(--color-accent)] font-semibold text-lg">
+            <p className="text-[var(--color-accent)] font-semibold text-lg mb-8">
               Learn. Grow. Innovate. Succeed.
             </p>
+          </div>
+        </Container>
+      </section>
+
+      <section className="relative overflow-hidden bg-gradient-to-br from-[var(--color-primary)] via-[var(--color-primary-dark)] to-[#0B1F3F] py-16 md:py-24">
+        <div className="absolute top-0 left-1/3 h-64 w-64 rounded-full bg-[var(--color-accent)]/10 blur-3xl animate-float" aria-hidden />
+        <div className="absolute bottom-0 right-1/4 h-80 w-80 rounded-full bg-[var(--color-primary-light)]/10 blur-3xl animate-float" style={{ animationDelay: "2s" }} aria-hidden />
+        <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)", backgroundSize: "40px 40px" }} aria-hidden />
+        <Container className="relative z-10">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="mb-4 text-[var(--fs-3xl)] font-extrabold text-white">Ready to Start Your Journey?</h2>
+            <p className="mx-auto mb-8 max-w-2xl text-lg text-white/80">
+              Take the first step toward a brighter future. Contact us today to learn more about our programmes.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button variant="accent" size="lg" href="/apply" className="shadow-lg shadow-[var(--color-accent)]/25">
+                Apply Now
+              </Button>
+              <Button variant="secondary" size="lg" href="/courses" className="!border-white/30 !text-white hover:!bg-white/10">
+                Browse Courses
+              </Button>
+            </div>
           </div>
         </Container>
       </section>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Container from "@/components/layout/Container";
 import PageHero from "@/components/layout/PageHero";
+import Button from "@/components/ui/Button";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -116,6 +117,28 @@ export default function PrivacyPage() {
               <li><strong>Phone:</strong> 0800 014 568</li>
               <li><strong>Address:</strong> 147 Burger Avenue, 1st Floor, Barclays Centre, Lyttelton Manor, Centurion, 0157</li>
             </ul>
+          </div>
+        </Container>
+      </section>
+
+      <section className="relative overflow-hidden bg-gradient-to-br from-[var(--color-primary)] via-[var(--color-primary-dark)] to-[#0B1F3F] py-16 md:py-24">
+        <div className="absolute top-0 left-1/3 h-64 w-64 rounded-full bg-[var(--color-accent)]/10 blur-3xl animate-float" aria-hidden />
+        <div className="absolute bottom-0 right-1/4 h-80 w-80 rounded-full bg-[var(--color-primary-light)]/10 blur-3xl animate-float" style={{ animationDelay: "2s" }} aria-hidden />
+        <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)", backgroundSize: "40px 40px" }} aria-hidden />
+        <Container className="relative z-10">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="mb-4 text-[var(--fs-3xl)] font-extrabold text-white">Questions About Your Privacy?</h2>
+            <p className="mx-auto mb-8 max-w-2xl text-lg text-white/80">
+              Contact our Information Officer for any questions about this privacy policy or to exercise your rights.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button variant="accent" size="lg" href="/contact" className="shadow-lg shadow-[var(--color-accent)]/25">
+                Contact Us
+              </Button>
+              <Button variant="secondary" size="lg" href="/terms" className="!border-white/30 !text-white hover:!bg-white/10">
+                Terms &amp; Conditions
+              </Button>
+            </div>
           </div>
         </Container>
       </section>
