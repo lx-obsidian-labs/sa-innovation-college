@@ -4,6 +4,7 @@ import PageHero from "@/components/layout/PageHero";
 import SectionHeader from "@/components/ui/SectionHeader";
 import Button from "@/components/ui/Button";
 import Icon from "@/components/ui/Icon";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "News & Updates | SA Innovation College",
@@ -87,11 +88,12 @@ export default function NewsPage() {
                 className="group relative flex flex-col rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-raised)] shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[var(--shadow-lg)] overflow-hidden"
               >
                 <div className="relative h-48 overflow-hidden">
-                  <img
+                  <Image
                     src={article.img}
                     alt={article.title}
-                    className="h-full w-full object-cover transition-all duration-700 group-hover:scale-110"
-                    loading="lazy"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-all duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                   <div className="absolute bottom-3 left-4 inline-flex items-center rounded-md bg-[var(--color-primary)] px-3 py-1.5 text-xs font-semibold text-white shadow-md">
@@ -115,13 +117,6 @@ export default function NewsPage() {
                 </div>
               </div>
             ))}
-          </div>
-
-          <div className="mt-12 flex items-center justify-center gap-2 text-sm text-[var(--color-text-secondary)]">
-            <span className="rounded-lg border border-[var(--color-border)] bg-[var(--color-primary)] px-3 py-1.5 font-semibold text-white shadow-sm">
-              1
-            </span>
-            <span className="px-3 py-1.5">Page 1 of 1</span>
           </div>
         </Container>
       </section>

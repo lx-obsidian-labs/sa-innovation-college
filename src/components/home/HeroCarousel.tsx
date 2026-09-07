@@ -1,8 +1,8 @@
 "use client";
 
 import { useCallback, useRef, useEffect, useState } from "react";
-import Container from "@/components/layout/Container";
 import Button from "@/components/ui/Button";
+import Icon from "@/components/ui/Icon";
 import HeroSlide from "./HeroSlide";
 import CarouselControls from "./CarouselControls";
 import CarouselPagination from "./CarouselPagination";
@@ -62,6 +62,13 @@ const benefitCards = [
   { icon: "clock" as const, title: "Flexible Learning", desc: "Study full-time, part-time or online" },
 ];
 
+const trustLogos = [
+  { name: "QCTO", label: "QCTO Accredited" },
+  { name: "ICDL", label: "ICDL Centre" },
+  { name: "SETA", label: "SETA Accredited" },
+  { name: "DHET", label: "DHET Registered" },
+];
+
 function getIntakeLabel(): string {
   const now = new Date();
   const month = now.getMonth();
@@ -96,51 +103,42 @@ export default function HeroCarousel() {
     dispatch(context.state === "paused" ? { type: "PLAY" } : { type: "PAUSE" });
   }, [dispatch, context.state]);
 
-  // Progress bar animation
+  // Progress bar
   useEffect(() => {
     setProgress(0);
     if (context.state !== "playing") {
       if (progressRef.current) cancelAnimationFrame(progressRef.current);
       return;
     }
-
     startTimeRef.current = performance.now();
     const duration = 7000;
-
     const tick = (now: number) => {
       const elapsed = now - startTimeRef.current;
       const pct = Math.min(elapsed / duration, 1);
       setProgress(pct);
       if (pct < 1) progressRef.current = requestAnimationFrame(tick);
     };
-
     progressRef.current = requestAnimationFrame(tick);
-    return () => {
-      if (progressRef.current) cancelAnimationFrame(progressRef.current);
-    };
+    return () => { if (progressRef.current) cancelAnimationFrame(progressRef.current); };
   }, [context.state, context.current]);
 
-  // Keyboard navigation
+  // Keyboard
   useEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
-
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === "ArrowLeft") { e.preventDefault(); dispatch({ type: "PREV" }); }
       if (e.key === "ArrowRight") { e.preventDefault(); dispatch({ type: "NEXT" }); }
     };
-
     el.addEventListener("keydown", handleKey);
     return () => el.removeEventListener("keydown", handleKey);
   }, [dispatch]);
 
-  // Touch/swipe support
+  // Touch/swipe
   const touchStart = useRef<number | null>(null);
-
   const handleTouchStart = useCallback((e: React.TouchEvent) => {
     touchStart.current = e.touches[0].clientX;
   }, []);
-
   const handleTouchEnd = useCallback((e: React.TouchEvent) => {
     if (touchStart.current === null) return;
     const diff = touchStart.current - e.changedTouches[0].clientX;
@@ -174,7 +172,7 @@ export default function HeroCarousel() {
       {context.state === "playing" && (
         <div className="absolute top-0 left-0 right-0 z-30 h-1 bg-white/10">
           <div
-            className="h-full bg-gradient-to-r from-[var(--color-accent)] to-white transition-none"
+            className="h-full bg-gradient-to-r from-[var(--color-accent)] to-white"
             style={{ width: `${progress * 100}%` }}
           />
         </div>
@@ -182,44 +180,56 @@ export default function HeroCarousel() {
 
       <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 pt-28 pb-20 md:pt-36 md:pb-24 flex items-center min-h-[600px] md:min-h-[680px]">
         <div className="w-full lg:w-[60%]">
+          {/* Tag badge */}
           <div
-            className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/10 px-3 sm:px-4 py-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.12em] text-white"
+            className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 backdrop-blur-sm px-3 sm:px-4 py-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.12em] text-white animate-fadeInUp"
             key={`tag-${context.current}`}
           >
+            <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-accent)] animate-pulse-dot" />
             {slide.tag}
           </div>
 
+          {/* Tagline */}
           {slide.tagline && (
             <p
-              className="mb-2 text-[11px] sm:text-xs font-medium uppercase tracking-[0.15em] text-white/60"
+              className="mb-2 text-[11px] sm:text-xs font-medium uppercase tracking-[0.15em] text-white/60 animate-fadeInUp"
+              style={{ animationDelay: "0.05s" }}
               key={`tagline-${context.current}`}
             >
               {slide.tagline}
             </p>
           )}
 
+          {/* Heading with gradient highlight */}
           <h1
             className="mb-4 text-white font-extrabold leading-[0.95] tracking-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl max-w-[600px]"
             key={`title-${context.current}`}
           >
-            <span className="animate-fadeInUp" style={{ animationDelay: "0.1s", display: "inline-block" }}>
+            <span className="animate-fadeInUp block" style={{ animationDelay: "0.1s" }}>
               {slide.title}
             </span>
-            <br />
-            <span className="animate-fadeInUp" style={{ animationDelay: "0.2s", display: "inline-block" }}>
+            <span className="hero-gradient-text animate-fadeInUp block mt-1" style={{ animationDelay: "0.2s" }}>
               {slide.highlight}
             </span>
           </h1>
 
-          <p className="mb-6 sm:mb-8 max-w-[520px] text-sm sm:text-base lg:text-lg leading-relaxed text-white/90 animate-fadeInUp" style={{ animationDelay: "0.25s" }} key={`desc-${context.current}`}>
+          {/* Description */}
+          <p className="mb-6 sm:mb-8 max-w-[520px] text-sm sm:text-base lg:text-lg leading-relaxed text-white/85 animate-fadeInUp" style={{ animationDelay: "0.25s" }} key={`desc-${context.current}`}>
             {slide.description}
           </p>
 
-          <div className="w-full max-w-[480px] rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md p-4 sm:p-5 mb-6 sm:mb-8 animate-fadeInUp" style={{ animationDelay: "0.3s" }}>
+          {/* Intake banner */}
+          <div className="w-full max-w-[480px] rounded-2xl border border-white/15 bg-white/10 backdrop-blur-md p-4 sm:p-5 mb-6 sm:mb-8 animate-fadeInUp" style={{ animationDelay: "0.3s" }}>
             <div className="flex flex-wrap items-center justify-between gap-3">
-              <div>
-                <p className="text-sm font-bold text-white">{getIntakeLabel()}</p>
-                <p className="text-xs text-white/70 mt-0.5">Applications closing soon — apply before places fill</p>
+              <div className="flex items-center gap-2.5">
+                <span className="relative flex h-2.5 w-2.5 shrink-0">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--color-accent)] opacity-75" />
+                  <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[var(--color-accent)]" />
+                </span>
+                <div>
+                  <p className="text-sm font-bold text-white">{getIntakeLabel()}</p>
+                  <p className="text-xs text-white/60 mt-0.5">Applications closing soon — apply before places fill</p>
+                </div>
               </div>
               <Button variant="apply" size="sm" href="/apply">
                 Apply Online
@@ -227,8 +237,9 @@ export default function HeroCarousel() {
             </div>
           </div>
 
+          {/* CTA buttons */}
           <div className="flex animate-fadeInUp flex-wrap gap-3 sm:gap-4" style={{ animationDelay: "0.4s" }} key={`cta-${context.current}`}>
-            <Button variant="primary" size="lg" href={slide.cta.href} className="!bg-white !text-[var(--saic-campaign-crimson)] shadow-lg shadow-black/20 hover:!bg-white/90">
+            <Button variant="primary" size="lg" href={slide.cta.href} className="!bg-white !text-[var(--saic-campaign-crimson)] shadow-lg shadow-black/20 hover:!bg-white/90 hover:shadow-xl hover:shadow-black/30 hover:-translate-y-0.5 transition-all duration-300">
               {slide.cta.text}
             </Button>
             {slide.secondary && (
@@ -236,17 +247,34 @@ export default function HeroCarousel() {
                 variant="secondary"
                 size="lg"
                 href={slide.secondary.href}
-                className="!border-white/60 !bg-white/10 !text-white hover:!bg-white/20"
+                className="!border-white/50 !bg-white/10 !text-white hover:!bg-white/20 hover:!border-white/70 hover:-translate-y-0.5 transition-all duration-300"
               >
                 {slide.secondary.text}
               </Button>
             )}
           </div>
 
+          {/* Benefit cards */}
           <div className="mt-6 sm:mt-8 hidden sm:block">
             <HeroBenefitCards cards={benefitCards} />
           </div>
+
+          {/* Trust badges */}
+          <div className="mt-6 flex flex-wrap items-center gap-4 sm:gap-6 animate-fadeInUp" style={{ animationDelay: "0.6s" }}>
+            {trustLogos.map((logo) => (
+              <div key={logo.name} className="flex items-center gap-1.5 text-[10px] sm:text-[11px] font-medium uppercase tracking-wider text-white/40">
+                <Icon name="check-badge" size={3} className="text-[var(--color-accent)]/60" />
+                {logo.label}
+              </div>
+            ))}
+          </div>
         </div>
+      </div>
+
+      {/* Scroll down indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 hidden md:flex flex-col items-center gap-2 animate-scroll-bounce">
+        <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/40">Scroll</span>
+        <Icon name="chevron-down" size={5} className="text-white/40" />
       </div>
 
       <CarouselPagination

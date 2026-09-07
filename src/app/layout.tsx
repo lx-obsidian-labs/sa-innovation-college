@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import SkipLink from "@/components/layout/SkipLink";
+import CookieConsent from "@/components/layout/CookieConsent";
 import UtilityBar from "@/components/home/UtilityBar";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -100,6 +101,40 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${poppins.variable} h-full`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "EducationalOrganization",
+              name: "SA Innovation College",
+              url: "https://www.sainnovationcollege.co.za",
+              logo: "https://www.sainnovationcollege.co.za/images/logo-sa-innovation.webp",
+              description: "Practical, flexible and industry-aligned learning designed for school leavers, working professionals, and employers.",
+              address: {
+                "@type": "PostalAddress",
+                streetAddress: "147 Burger Avenue, 1st Floor, Barclays Centre, Lyttelton Manor",
+                addressLocality: "Centurion",
+                postalCode: "0157",
+                addressCountry: "ZA",
+              },
+              contactPoint: {
+                "@type": "ContactPoint",
+                telephone: "+27-800-014-568",
+                contactType: "admissions",
+                availableLanguage: ["English", "Afrikaans", "Zulu", "Sotho"],
+              },
+              sameAs: [
+                "https://www.facebook.com/sainnovationcollege",
+                "https://www.instagram.com/sainnovationcollege",
+                "https://x.com/sainnovationcol",
+                "https://www.linkedin.com/company/sa-innovation-college",
+              ],
+            }),
+          }}
+        />
+      </head>
       <body className="min-h-full flex flex-col font-[var(--font-family-body)]">
         <RouteProgress />
         <ReadingProgress />
@@ -112,6 +147,7 @@ export default function RootLayout({
           </main>
           <Footer />
           <WhatsAppSupport />
+          <CookieConsent />
           <BackToTop />
         </ToastProvider>
       </body>

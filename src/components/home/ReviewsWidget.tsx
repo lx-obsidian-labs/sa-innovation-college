@@ -7,32 +7,11 @@ import Icon from "@/components/ui/Icon";
 
 const reviews = [
   {
-    name: "Thabo M.",
-    source: "Google",
-    rating: 5,
-    text: "SA Innovation College gave me the skills to start my own business. The practical training and supportive lecturers made all the difference. Highly recommend!",
-    date: "2 weeks ago",
-  },
-  {
-    name: "Lerato K.",
-    source: "Google",
-    rating: 5,
-    text: "From basic computer skills to a full-time office job in 6 months. The lecturers truly care about your success. Amazing experience!",
-    date: "1 month ago",
-  },
-  {
-    name: "Sipho N.",
-    source: "Google",
-    rating: 5,
-    text: "Best decision I ever made. The Traffic Officer programme was professional, practical, and life-changing. Thank you SA Innovation!",
-    date: "3 weeks ago",
-  },
-  {
     name: "Amahle D.",
     source: "Google",
     rating: 5,
     text: "Flexible study options that fit around my work schedule. The online learning platform is excellent and the support is always there when you need it.",
-    date: "2 months ago",
+    date: "2 weeks ago",
   },
   {
     name: "Jabulani T.",
@@ -46,7 +25,28 @@ const reviews = [
     source: "Google",
     rating: 5,
     text: "Friendly staff, clean facilities, and courses that actually prepare you for the workplace. I got my qualification and a job within 3 months of graduating.",
+    date: "3 weeks ago",
+  },
+  {
+    name: "Kagiso P.",
+    source: "Google",
+    rating: 5,
+    text: "The CompTIA A+ programme was intense but worth every moment. I landed a IT support role within a month of completing my certification.",
+    date: "2 months ago",
+  },
+  {
+    name: "Zanele H.",
+    source: "Google",
+    rating: 5,
+    text: "Best decision I ever made. The lecturers are approachable and the facilities are top-notch. I recommend SA Innovation to anyone serious about their future.",
     date: "6 weeks ago",
+  },
+  {
+    name: "Pieter V.",
+    source: "Google",
+    rating: 5,
+    text: "Completed the Office Administration programme while working full-time. The flexible schedule made it possible and the qualification opened new doors.",
+    date: "1 month ago",
   },
 ];
 

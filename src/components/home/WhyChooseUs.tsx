@@ -38,7 +38,7 @@ const features = [
     title: "Career-Focused Training",
     description:
       "Qualifications aligned with employer needs that combine knowledge, technology and innovation for today's competitive job market.",
-    icon: <Icon name="academic-cap" size={6} />,
+    icon: <Icon name="building-library" size={6} />,
   },
 ];
 

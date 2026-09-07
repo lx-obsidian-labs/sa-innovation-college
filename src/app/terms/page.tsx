@@ -3,25 +3,90 @@ import Container from "@/components/layout/Container";
 import PageHero from "@/components/layout/PageHero";
 
 export const metadata: Metadata = {
-  title: "Terms and Application Information | SA Innovation College",
-  description: "Important information about enquiries, applications, programme information and registration at SA Innovation College.",
+  title: "Terms & Conditions",
+  description: "SA Innovation College terms and conditions governing enrolment, fees, refunds and student conduct.",
 };
 
 export default function TermsPage() {
   return (
     <>
-      <PageHero title="Terms and Application Information" description="Important information to review before submitting an enquiry or application." />
-      <section className="bg-[var(--color-surface)] py-[var(--section-py)]">
+      <PageHero
+        title="Terms & Conditions"
+        description="The terms governing your enrolment and studies at SA Innovation College"
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "Terms & Conditions", href: "/terms" },
+        ]}
+      />
+
+      <section className="py-16 md:py-24 bg-white">
         <Container>
-          <article className="premium-card mx-auto max-w-3xl rounded-2xl border border-[var(--color-border)] bg-white p-6 shadow-[var(--shadow-lg)] md:p-10">
-            <div className="space-y-8 text-[var(--color-text-secondary)] leading-relaxed">
-              <section><h2 className="mb-3 text-2xl font-bold text-[var(--color-text-primary)]">Applications and enquiries</h2><p>Submitting an online application or enquiry allows Admissions to review the information provided and contact you about the relevant next steps. It does not by itself guarantee acceptance, registration or employment.</p></section>
-              <section><h2 className="mb-3 text-2xl font-bold text-[var(--color-text-primary)]">Programme information</h2><p>Entry requirements, study modes, fees, duration and recognition status can differ by programme and intake. Confirm the current details with Admissions before making payment or registering.</p></section>
-              <section><h2 className="mb-3 text-2xl font-bold text-[var(--color-text-primary)]">Fees and registration</h2><p>Tuition, registration, assessment, materials and certification costs may apply depending on the selected programme. Admissions will confirm applicable costs and payment arrangements before registration.</p></section>
-              <section><h2 className="mb-3 text-2xl font-bold text-[var(--color-text-primary)]">Programme outcomes</h2><p>Completion of a programme does not guarantee employment. Outcomes depend on the learner’s circumstances, performance, experience, employer requirements and broader job-market conditions.</p></section>
-              <section><h2 className="mb-3 text-2xl font-bold text-[var(--color-text-primary)]">Contact us</h2><p>If you need clarification before applying, contact <a className="font-semibold text-[var(--color-primary)] hover:text-[var(--color-accent-dark)]" href="/contact">Admissions</a> before submitting or paying.</p></section>
-            </div>
-          </article>
+          <div className="mx-auto max-w-3xl prose prose-gray prose-headings:font-bold prose-headings:text-[var(--color-text-primary)] prose-p:text-[var(--color-text-secondary)] prose-p:leading-relaxed">
+            <p className="text-sm text-[var(--color-text-muted)]">Last updated: September 2026</p>
+
+            <h2>1. General</h2>
+            <p>
+              These terms and conditions (&quot;Terms&quot;) govern your enrolment at SA Innovation College (Pty) Ltd (&quot;SAIC&quot;). By submitting an application or registering for a programme, you agree to be bound by these Terms.
+            </p>
+
+            <h2>2. Enrolment</h2>
+            <ul>
+              <li>Enrolment is subject to meeting programme entry requirements and acceptance by SAIC.</li>
+              <li>Providing false or misleading information on an application is grounds for immediate dismissal.</li>
+              <li>Enrolment is confirmed only upon receipt of completed registration documents and payment of the required fees.</li>
+            </ul>
+
+            <h2>3. Fees &amp; Payment</h2>
+            <ul>
+              <li>All fees are quoted in South African Rand (ZAR) and are subject to annual review.</li>
+              <li>Payment must be made according to the agreed payment schedule.</li>
+              <li>Failed payments may result in suspension of access to learning materials and assessments.</li>
+              <li>Fee estimates provided by the Fee Calculator are indicative only — confirm the final amount with Admissions.</li>
+            </ul>
+
+            <h2>4. Refunds</h2>
+            <ul>
+              <li>Refund requests must be submitted in writing within 5 business days of registration.</li>
+              <li>An administrative fee may be deducted from any refund.</li>
+              <li>No refund is available after the first 20% of the programme has been attended.</li>
+            </ul>
+
+            <h2>5. Academic Policy</h2>
+            <ul>
+              <li>Students must attend a minimum of 80% of scheduled sessions per module.</li>
+              <li>Assessment criteria are determined by the relevant QCTO, SETA or accrediting body.</li>
+              <li>Academic dishonesty or plagiarism will result in disciplinary action.</li>
+            </ul>
+
+            <h2>6. Student Conduct</h2>
+            <ul>
+              <li>Students must behave professionally and respectfully at all times.</li>
+              <li>Harassment, discrimination or disruption of learning is not tolerated.</li>
+              <li>SAIC reserves the right to suspend or dismiss students for misconduct.</li>
+            </ul>
+
+            <h2>7. Certificates &amp; Qualifications</h2>
+            <ul>
+              <li>Certificates are issued only upon successful completion of all programme requirements.</li>
+              <li>SAIC does not guarantee employment upon completion of any programme.</li>
+              <li>Qualifications are subject to verification by the relevant accrediting body.</li>
+            </ul>
+
+            <h2>8. Limitation of Liability</h2>
+            <p>
+              SAIC shall not be liable for any indirect, incidental or consequential damages arising from your use of our services. Our liability is limited to the fees paid for the specific programme in question.
+            </p>
+
+            <h2>9. Changes to Programmes</h2>
+            <p>
+              SAIC reserves the right to modify programme content, schedules, fees or delivery methods with reasonable notice to enrolled students.
+            </p>
+
+            <h2>10. Governing Law</h2>
+            <p>
+              These Terms are governed by the laws of the Republic of South Africa. Any disputes shall be resolved in the courts of Gauteng.
+            </p>
+          </div>
         </Container>
       </section>
     </>

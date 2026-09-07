@@ -22,31 +22,38 @@ export default function HeroSlide({ index, current, image }: HeroSlideProps) {
       aria-label={`Slide ${index + 1}`}
       aria-hidden={!isActive}
     >
-      {/* Mobile: full bleed image — face visible via object-position top */}
-      <Image
-        src={image}
-        alt="SA Innovation College graduate in red academic gown"
-        fill
-        priority={index === 0}
-        sizes="100vw"
-        className="object-cover"
-        style={{ objectPosition: "50% 15%" }}
-      />
-      {/* Gradient overlay — dark left for text, transparent right to show face */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[var(--saic-campaign-crimson)] via-[var(--saic-campaign-crimson)]/60 to-transparent" />
+      {/* Mobile: full bleed image with Ken Burns zoom */}
+      <div className="absolute inset-0 overflow-hidden">
+        <Image
+          src={image}
+          alt="SA Innovation College graduate in red academic gown"
+          fill
+          priority={index === 0}
+          sizes="100vw"
+          className={`object-cover ${isActive ? "animate-ken-burns" : "scale-100"}`}
+          style={{ objectPosition: "50% 15%" }}
+        />
+      </div>
 
-      {/* Desktop: right half shows the image with face visible */}
-      <div className="absolute right-0 top-0 h-full w-1/2 max-lg:hidden">
+      {/* Multi-layer gradient for depth */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[var(--saic-campaign-crimson)] via-[var(--saic-campaign-crimson)]/70 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[var(--saic-campaign-crimson-dark)]/40 via-transparent to-transparent" />
+
+      {/* Desktop: right half with Ken Burns + face visible */}
+      <div className="absolute right-0 top-0 h-full w-1/2 max-lg:hidden overflow-hidden">
         <Image
           src={image}
           alt="SA Innovation College graduate in red academic gown"
           fill
           priority={index === 0}
           sizes="50vw"
-          className="object-cover"
+          className={`object-cover ${isActive ? "animate-ken-burns" : "scale-100"}`}
           style={{ objectPosition: "50% 15%" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[var(--saic-campaign-crimson)] to-transparent opacity-30" />
+        {/* Left edge feather */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[var(--saic-campaign-crimson)] via-[var(--saic-campaign-crimson)]/50 to-transparent" />
+        {/* Bottom vignette */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[var(--saic-campaign-crimson-dark)]/50 via-transparent to-transparent" />
       </div>
     </div>
   );

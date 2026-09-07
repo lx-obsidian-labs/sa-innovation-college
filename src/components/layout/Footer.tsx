@@ -44,15 +44,17 @@ export default function Footer() {
               </p>
               <div className="flex items-center gap-2.5">
                 {[
-                  { label: "Facebook", icon: "facebook" as const },
-                  { label: "Instagram", icon: "instagram" as const },
-                  { label: "X", icon: "twitter" as const },
-                  { label: "LinkedIn", icon: "linkedin" as const },
-                  { label: "TikTok", icon: "tiktok" as const },
+                  { label: "Facebook", icon: "facebook" as const, url: "https://www.facebook.com/sainnovationcollege" },
+                  { label: "Instagram", icon: "instagram" as const, url: "https://www.instagram.com/sainnovationcollege" },
+                  { label: "X", icon: "twitter" as const, url: "https://x.com/sainnovationcol" },
+                  { label: "LinkedIn", icon: "linkedin" as const, url: "https://www.linkedin.com/company/sa-innovation-college" },
+                  { label: "TikTok", icon: "tiktok" as const, url: "https://www.tiktok.com/@sainnovationcollege" },
                 ].map(social => (
                   <a
                     key={social.label}
-                    href="#"
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="group flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/[0.06] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--color-accent)]/60 hover:bg-[var(--color-accent)] hover:shadow-lg hover:shadow-[var(--color-accent)]/25"
                     aria-label={`Follow us on ${social.label}`}
                   >

@@ -21,6 +21,7 @@
     --saic-campaign-crimson-dark: #98142C;
     --saic-gold-600: #D9A02A;
     --saic-gold-500: #E8B544;
+    --saic-gold-400: #EFBF5C;
     --saic-gold-100: #F8EBC7;
     --saic-green-700: #4A795A;
     --saic-green-100: #E6EFE5;
@@ -325,6 +326,52 @@
 @keyframes spinSlow {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+/* ─── Hero Ken Burns Zoom ─── */
+@keyframes kenBurns {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.08); }
+}
+
+.animate-ken-burns {
+  animation: kenBurns 8s ease-out forwards;
+}
+
+/* ─── Hero Gradient Text ─── */
+@keyframes gradientText {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.hero-gradient-text {
+  background: linear-gradient(135deg, #ffffff 0%, var(--color-accent) 50%, #ffffff 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientText 4s ease infinite;
+}
+
+/* ─── Scroll Down Bounce ─── */
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(8px); opacity: 1; }
+}
+
+.animate-scroll-bounce {
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+/* ─── Pulse Dot ─── */
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.5); }
+}
+
+.animate-pulse-dot {
+  animation: pulseDot 2s ease-in-out infinite;
 }
 
 @keyframes drawStroke {
