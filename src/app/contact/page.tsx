@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Container from "@/components/layout/Container";
 import PageHero from "@/components/layout/PageHero";
+import Button from "@/components/ui/Button";
 import ContactForm from "@/components/ui/ContactForm";
 import { PrintableContactForm } from "@/components/ui/PrintableForm";
 import { getWhatsAppUrl, getTelUrl } from "@/lib/utils";
