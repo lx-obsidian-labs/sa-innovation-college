@@ -180,7 +180,7 @@ export default function HeroCarousel() {
         </div>
       )}
 
-      <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 py-20 md:py-24 flex items-center min-h-[600px] md:min-h-[680px]">
+      <div className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 pt-28 pb-20 md:pt-36 md:pb-24 flex items-center min-h-[600px] md:min-h-[680px]">
         <div className="w-full lg:w-[60%]">
           <div
             className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/10 px-3 sm:px-4 py-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-[0.12em] text-white"
