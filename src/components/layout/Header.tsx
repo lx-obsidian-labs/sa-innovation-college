@@ -222,6 +222,14 @@ export default function Header() {
         </nav>
 
         <div className="hidden lg:flex items-center gap-3">
+            <a
+              href="https://wa.me/27727733960?text=Hi%20Admissions%2C%20I'd%20like%20to%20enquire%20about%20your%20programmes."
+              className="inline-flex items-center justify-center px-5 py-2 h-[44px] text-sm font-semibold text-[var(--color-primary)] border-2 border-[var(--color-primary)] rounded-xl transition-all duration-300 hover:bg-[var(--color-primary)] hover:text-white hover:shadow-lg hover:shadow-[var(--color-primary)]/15"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Enquire Now
+            </a>
             <Link
               href="/apply"
               className="btn-shine inline-flex items-center justify-center px-5 py-2 h-[44px] text-sm font-bold uppercase tracking-wide text-[var(--color-text-inverse)] bg-gradient-to-r from-[var(--color-primary)] via-[var(--color-primary-light)] to-[var(--color-primary-dark)] bg-[length:200%_200%] animate-border-flow rounded-xl shadow-md shadow-[var(--color-primary)]/15 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[var(--color-primary)]/25 hover:border hover:border-[var(--color-accent)]/40"

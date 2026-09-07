@@ -43,12 +43,6 @@ export default function ScrollReveal({
     return () => observer.disconnect();
   }, [once]);
 
-  const d = distance * 0.25;
-  const hidden = direction === "up" ? `translate-y-${d} opacity-0` :
-    direction === "down" ? `-translate-y-${d} opacity-0` :
-    direction === "left" ? `translate-x-${d} opacity-0` :
-    `-translate-x-${d} opacity-0`;
-
   const style: React.CSSProperties = {
     transitionDuration: `${duration}ms`,
     transitionDelay: `${delay}ms`,

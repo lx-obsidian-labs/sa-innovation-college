@@ -74,6 +74,7 @@ export default function Footer() {
                   { title: "For Students", url: "/students" },
                   { title: "News & Updates", url: "/news" },
                   { title: "Contact Us", url: "/contact" },
+                  { title: "Apply Now", url: "/apply" },
                 ].map(link => (
                   <li key={link.url}>
                     <Link href={link.url} className="text-sm hover:text-[var(--color-accent)] transition-all duration-200 hover:translate-x-1 inline-block">
@@ -174,6 +175,15 @@ export default function Footer() {
             <Link href="/apply" className="transition-colors hover:text-[var(--color-accent)]">Apply</Link>
             <Link href="/privacy" className="transition-colors hover:text-[var(--color-accent)]">Privacy</Link>
             <Link href="/terms" className="transition-colors hover:text-[var(--color-accent)]">Terms</Link>
+          </div>
+        </Container>
+        <Container className="pb-4">
+          <div className="rounded-lg border border-white/5 bg-white/[0.02] p-3 text-center">
+            <p className="text-[10px] leading-relaxed text-[var(--color-gray-500)]">
+              SA Innovation College is a QCTO Accredited TVET & Skills Training Centre and Official ICDL South Africa Centre.
+              Registered with the Department of Higher Education and Training.
+              Programmes are accredited by the Quality Council for Trades and Occupations (QCTO).
+            </p>
           </div>
         </Container>
       </div>

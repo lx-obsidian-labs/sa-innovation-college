@@ -13,7 +13,7 @@ export default function HeroBenefitCards({ cards }: HeroBenefitCardsProps) {
           key={card.title}
           className="group rounded-xl p-3.5 flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl"
         >
-          <div className="shrink-0 w-10 h-10 rounded-lg bg-[var(--color-accent)]/20 flex items-center justify-center text-[var(--color-accent)] transition-all duration-300 group-hover:bg-[var(--color-accent)] group-hover:text-white group-hover:scale-110 transition-transform duration-200">
+          <div className="shrink-0 w-10 h-10 rounded-lg bg-[var(--color-accent)]/20 flex items-center justify-center text-[var(--color-accent)] transition-all duration-300 group-hover:bg-[var(--color-accent)] group-hover:text-white group-hover:scale-110">
             <Icon name={card.icon} size={5} />
           </div>
           <div className="text-left">
