@@ -1,5 +1,7 @@
 # SA Innovation College — Website
 
+**Engineering verification:** [Documentation verification](docs/VERIFICATION_MATRIX.md). This guide separates documented functionality from independently verified test and deployment evidence.
+
 **Education website | Next.js 16 / React 19 / TypeScript**
 
 **Stage:** Active development; production readiness not independently confirmed.  
